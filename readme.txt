@@ -1,4 +1,4 @@
-=== Book Reviews ===
+=== Bluet keywords tooltip generator ===
 Contributors: lebleut
 Tags: inline, tooltip, highlight
 Requires at least: 3.6
