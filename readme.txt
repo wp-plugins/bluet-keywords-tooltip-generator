@@ -1,6 +1,6 @@
 === Bluet keywords tooltip generator ===
 Contributors: lebleut
-Tags: inline, tooltip, highlight
+Tags: inline, tooltip, highlight, bubble, glossary, hover, phrase, popup, Post, tag, tooltip
 Requires at least: 3.6
 Tested up to: 3.6
 Stable tag: trunk
