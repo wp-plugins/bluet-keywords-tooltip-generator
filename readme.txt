@@ -4,10 +4,13 @@ Tags: inline, tooltip, highlight
 Requires at least: 3.6
 Tested up to: 3.6
 Stable tag: trunk
-Bluet keywords tooltip generator allows you to highlight the keywords in your content.
+"Bluet keywords tooltip generator" allows you to highlight the keywords in your content.
 == Description ==
-Have you wanted a day to highlight key words or technical words in your content in order to further explained your visitors and illustrated with tooltips? if yes then this plugin is exactly what you want.
-Bluet Keywords Tooltip Generator will allow you to simply create a dictionary that contains a list of words created you want to highlight with the proper explanation for each one, the rest is the plugin that will do it for you; any words that you mentioned will display their descriptions in tooltips on mouse over.
+Have you wanted a day to highlight keywords or technical words in your content in order to further explained your visitors and illustrated with tooltips?
+
+If yes then this plugin is exactly what you want.
+
+"Bluet Keywords Tooltip Generator" will allow you to simply create a dictionary that contains a list of words created you want to highlight with the proper explanation for each one, the rest is the plugin that will do it for you; any words that you mentioned will display their descriptions in tooltips on mouse over.
 == Installation ==
 1. Download the plugin
 1. Upload the bluet-keywords-tooltip-generator folder to your site's
