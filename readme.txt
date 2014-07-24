@@ -11,6 +11,14 @@ Have you wanted a day to highlight keywords or technical words in your content i
 If yes then this plugin is exactly what you want.
 
 "BlueT Keywords Tooltip Generator" will allow you to simply create a dictionary that contains a list of words created you want to highlight with the proper explanation for each one, the rest is the plugin that will do it for you; any words that you mentioned will display their descriptions in tooltips on mouse over.
+
+== Screenshots ==
+
+1. To add a new term
+2. Term list
+3. Settings page (template)
+4. demo - work done
+
 == Installation ==
 1. Download the plugin
 1. Upload the bluet-keywords-tooltip-generator folder to your site's
