@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltip, highlight, bubble, glossary, hover, phrase, popup, Post, tag, tooltip
 Requires at least: 3.6
 Tested up to: 3.6
-Stable tag: trunk
+Stable tag: 1.5
 "BlueT keywords tooltip generator" allows you to highlight the keywords in your content.
 == Description ==
 Have you wanted a day to highlight keywords or technical words in your content in order to further explained your visitors and illustrated with tooltips?
