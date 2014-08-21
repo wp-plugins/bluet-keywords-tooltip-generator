@@ -1,0 +1,46 @@
+		.bluet_tooltip
+		{
+			text-decoration: none;
+			position: relative;
+			color: chocolate;
+			background: gainsboro;
+			padding-right: 3px;
+			padding-left: 3px;
+			padding-bottom: 3px;
+			border-radius: 10px;
+		}
+		 
+		 
+		.bluet_tooltip span
+		{
+			display:none;
+			-moz-border-radius:6px;
+			-webkit-border-radius:6px;
+			border-radius: 10px;
+			background: grey;		
+		}
+		 
+		 
+		.bluet_tooltip span img
+		{
+			float:left;
+			margin:0px 8px 8px 0;
+			max-width:150px !important; 
+		}
+		 
+		 
+		.bluet_tooltip:hover span
+		{
+			color:white;
+				
+			display:block;
+			position:absolute;
+			top:8px;
+			left:0px;
+			z-index:1000;
+			width:160px;
+			border:1px solid black;
+			margin-top:12px;
+			overflow:hidden;
+			padding:8px;
+		}
