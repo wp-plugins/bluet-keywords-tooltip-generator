@@ -13,6 +13,7 @@ Bluet Keywords Tooltip Generator will allow you to simply create a dictionary th
 version 1.5 :
 	allows to add pictures inside the tooltip
 	the manupilation is much easy then before
+
 == Installation ==
 1. Download the plugin
 1. Upload the plugin to your site's
@@ -20,6 +21,12 @@ wp-content/plugins directory
 1. Activate the plugin in the WordPress Admin Panel
 1. Start creating your own key words dictionary
 1. The hole content will be affected on your site.
+
+
+== Screenshots ==
+1. Add a new KeyWord
+2. KeyWords list
+3. front end single page highlited KeyWords
 
 == Changelog ==
 = 1.0 =
