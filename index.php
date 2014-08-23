@@ -3,7 +3,7 @@
 Plugin Name: BleuT advanced inline tooltip generator
 Description: this plugin lets you put illustrated keywords in a dictionary of terms tooltip (automatic generation) ...
 Author: Jamel Zarga
-Version: 1.0
+Version: 1.5
 Author URI: https://www.facebook.com/jameleddine.zarga
 */
 
