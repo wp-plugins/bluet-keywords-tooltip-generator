@@ -13,21 +13,28 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 
 This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 
-> #### DEMO
-> * [Front Live Demo](http://www.blueskills.net/wordpress-4-0-release-candidate/)
-> * [Admin Live Demo](http://www.blueskills.net/wp-admin/edit.php?post_type=my_keywords) - user: demo, pw: demo
+
+> #### Features
+
+> * It's very simple: After installing and activating the plugin you only need to add your keywords (KeyWord, description, image) the rest is magic
+> * From the settings Customize the style of the tooltips depending on the color scheme of your site
+> * The widget will display the list of keywords related to the current post on your sidebar
+> * Decide if you want to apply the plugin for posts and/or pages
+> * The plugin is available in two languages ​​for this version 2.0 (English and French)
+> * Case insensitive fetch
+> * A list of related keywords will be updated after each post/keyWord manipulation
 
 ---
 
-= Features : =
+> #### ScreenShots
+> * [Screenshots Here](https://wordpress.org/plugins/bluet-keywords-tooltip-generator/screenshots/)
 
-* It's very simple: After installing and activating the plugin you only need to add your keywords (KeyWord, description, image) the rest is magic
-* From the settings Customize the style of the tooltips depending on the color scheme of your site
-* The widget will display the list of keywords related to the current post on your sidebar
-* Decide if you want to apply the plugin for posts and/or pages
-* The plugin is available in two languages ​​for this version 2.0 (English and French)
-* Case insensitive fetch
-* A list of related keywords will be updated after each post/keyWord manipulation
+---
+
+> #### Support
+> * [Support](http://wordpress.org/support/plugin/bluet-keywords-tooltip-generator)
+
+---
 
 == Installation ==
 
