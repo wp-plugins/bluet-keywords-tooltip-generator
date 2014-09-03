@@ -1,8 +1,6 @@
 ﻿=== Keywords ToolTip Generator ===
 Contributors: lebleut
-
 Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
-
 Requires at least: 3.6
 Tested up to: 3.9.2
 Stable tag: 2.0
