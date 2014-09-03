@@ -9,8 +9,16 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 
 == Description ==
 
-This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
+* This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 
+
+> #### DEMO
+> * [FrontEnd Live DEMO](http://www.blueskills.net/talking-birds)
+> * [Admin Live DEMO](http://www.blueskills.net/wp-admin/edit.php?post_type=my_keywords) 
+user 		: demo
+password 	: demo
+
+---
 
 > #### Features
 
@@ -44,12 +52,12 @@ This plugin allows you automatically create tooltip boxes for your technical key
 
 
 == Screenshots ==
-1. My Keywords List
+1. Front end single page highlited KeyWords
 1. Add a new KeyWord description
+1. My Keywords List
 1. Style customization
 1. Style preview
 1. Settings
-1. Front end single page highlited KeyWords
 1. Widget
 
 == Changelog ==
