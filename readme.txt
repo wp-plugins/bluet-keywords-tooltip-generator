@@ -56,6 +56,9 @@ This plugin allows you automatically create tooltip boxes for your technical key
 
 == Changelog ==
 
+= 2.0.1 =
+* Fix Overlapping display in '<a>' tag
+
 = 2.0 =
 * New aspect of the plugin made with Custom Posts.
 * Allows you to customise the tooltip style
