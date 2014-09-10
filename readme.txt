@@ -1,18 +1,24 @@
 ﻿=== Keywords ToolTip Generator ===
 Contributors: lebleut
-
 Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
-
 Requires at least: 3.6
-Tested up to: 3.9.2
-Stable tag: 2.0.1
+Tested up to: 4.0
+Stable tag: 2.0.2
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
 
 == Description ==
 
-This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
+* This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 
+
+> #### DEMO
+> * [FrontEnd Live DEMO](http://www.blueskills.net/talking-birds)
+> * [Admin Live DEMO](http://www.blueskills.net/wp-admin/edit.php?post_type=my_keywords) 
+>    user 	: demo
+>    password 	: demo
+
+---
 
 > #### Features
 
@@ -23,6 +29,13 @@ This plugin allows you automatically create tooltip boxes for your technical key
 > * The plugin is available in two languages ​​for this version 2.0 (English and French)
 > * Case insensitive fetch
 > * A list of related keywords will be updated after each post/keyWord manipulation
+
+---
+
+> #### NEW Features
+> * Synonyms support
+> * Related posts metaBox in the Keyword edit page
+> * Keywords in concern metaBox in the post edit page
 
 ---
 
@@ -46,18 +59,23 @@ This plugin allows you automatically create tooltip boxes for your technical key
 
 
 == Screenshots ==
-1. My Keywords List
+1. Front end single page highlited KeyWords
 1. Add a new KeyWord description
+1. My Keywords List
 1. Style customization
 1. Style preview
 1. Settings
-1. Front end single page highlited KeyWords
 1. Widget
 
 == Changelog ==
 
+= 2.0.2 =
+* supports synonyms
+* related posts metaBox in the Keyword edit page
+* keywords in concern metaBox in the post edit page
+
 = 2.0.1 =
-* Fix Overlapping display in '<a>' tag
+* Fix Overlapping display in 'a' (anchor) tag
 
 = 2.0 =
 * New aspect of the plugin made with Custom Posts.
