@@ -70,6 +70,9 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 
 == Changelog ==
 
+= 2.0.4 =
+* allowing to choose which keywords to be matching in a specific post
+
 = 2.0.3 =
 * allow to choose to Match all occurrences or once in the same post from the settings page
 * Choose to activate or not excerpt matching
