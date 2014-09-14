@@ -11,20 +11,6 @@ add_action('admin_head','bluet_kw_custom_style');
 function bluet_kw_load_scripts() {
 	wp_enqueue_script( 'angular-script', plugins_url('angular.min.js',__FILE__), array(), false, true );
 	wp_enqueue_script( 'angular-app', plugins_url('app.js',__FILE__), array(), false, true );
-?>	<script type="text/javascript">
-	jQuery( document ).ready(function() {
-		hideIfChecked();
-	}); 
-	function hideIfChecked(){
-		if(document.getElementById("bluet_kw_admin_exclude_post_from_matching_id").checked){
-			document.getElementById("bluet_kw_admin_div_terms").classList.add("bluet-hide-excluded");
-		}else{			
-			document.getElementById("bluet_kw_admin_div_terms").classList.remove("bluet-hide-excluded");
-		}
-		
-	}
-</script>
-<?php
 }
 add_action( 'admin_head', 'bluet_kw_load_scripts' );
 
