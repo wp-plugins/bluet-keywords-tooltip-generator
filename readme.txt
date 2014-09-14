@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
 
@@ -69,6 +69,9 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 1. Excluded Posts list
 
 == Changelog ==
+
+= 2.0.4 =
+* allowing to choose which keywords to be matching in a specific post
 
 = 2.0.3 =
 * allow to choose to Match all occurrences or once in the same post from the settings page
