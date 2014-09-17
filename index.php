@@ -162,7 +162,7 @@ function filter_any_content($subject_hooks){
 				}
 			}
 			return $cont;
-		});
+		},100);
 	}
 }
 
