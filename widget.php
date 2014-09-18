@@ -65,7 +65,12 @@ class bluet_keyword_widget extends wp_widget{
 						$delimiter_2='<b>'.$trm.'</b><br>';
 						$delimiter_3='</span></span> ';
 						
-						echo('<li>'.$delimiter_1.''.$img.''.$delimiter_2.''.$dfn.''.$delimiter_3.'</li>');
+						$string_to_show='<li>'.$delimiter_1.''.$img.''.$delimiter_2.''.$dfn.''.$delimiter_3.'</li>';
+						
+						// adding &zwnj; (invisible character) to avoid tooltips overlapping 
+						$string_to_show=preg_replace('#('.$trm.')#i',$trm.'&zwnj;',$string_to_show);
+						
+						echo($string_to_show);
 					}
 				}else{
 					_e('no terms found for this post','bluet-kw');
