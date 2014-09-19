@@ -52,8 +52,13 @@ class bluet_keyword_widget extends wp_widget{
 							$the_wk_query->the_post();
 							
 								$trm=get_the_title();
-								$dfn=get_the_content();
+								
+							// adding &zwnj; (invisible character) to avoid tooltips overlapping 
+								$dfn=preg_replace('#('.$trm.')#i',$trm.'&zwnj;',get_the_content());
+								
 								$img=get_the_post_thumbnail($term_id,'medium');
+								
+								$trm=$trm.'&zwnj;';
 						}
 						
 					}
@@ -66,9 +71,6 @@ class bluet_keyword_widget extends wp_widget{
 						$delimiter_3='</span></span> ';
 						
 						$string_to_show='<li>'.$delimiter_1.''.$img.''.$delimiter_2.''.$dfn.''.$delimiter_3.'</li>';
-						
-						// adding &zwnj; (invisible character) to avoid tooltips overlapping 
-						$string_to_show=preg_replace('#('.$trm.')#i',$trm.'&zwnj;',$string_to_show);
 						
 						echo($string_to_show);
 					}
