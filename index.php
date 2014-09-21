@@ -133,7 +133,7 @@ function filter_any_content($subject_hooks){
 							$img=$arr['img'];
 							$dfn=$arr['dfn'];
 							
-							$cont=preg_replace('#(('.$term.')([,\.\s\*]))#i','__$2__$3',$cont,$limit_match);
+							$cont=preg_replace('#(([\*\s\(])('.$term.')([,\.\s\*\)]))#i','$2__$3__$4',$cont,$limit_match);
 						}
 						
 						foreach($my_keywords_terms as $id=>$arr){
