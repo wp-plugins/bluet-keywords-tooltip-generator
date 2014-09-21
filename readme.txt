@@ -10,13 +10,19 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 == Description ==
 
 * This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
-
+* you can import keywords from other plugins instead of re writing them
 
 > #### DEMO
 > * [FrontEnd Live DEMO](http://www.blueskills.net/talking-birds)
 > * [Admin Live DEMO](http://www.blueskills.net/wp-admin/edit.php?post_type=my_keywords) 
 >    user 	: demo
 >    password 	: demo
+
+---
+
+> ### New Features
+
+> * Keywords importer tool (nemu : Tools -> KTTG Importer), allows you to import keywords from third party plugins adding them to your glossary
 
 ---
 
@@ -36,12 +42,6 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 > * supports synonyms
 > * related posts metaBox in the Keyword edit page
 > * keywords in concern metaBox in the post edit page
-
----
-
-> ### new Features
-
-> * Keywords importer tool (Tools -> KTTG Importer), allows you to import keywords from third party plugins adding them to your glossary
 
 ---
 
