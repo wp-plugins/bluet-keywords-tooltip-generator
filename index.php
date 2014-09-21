@@ -66,7 +66,7 @@ function filter_any_content($subject_hooks){
 			
 			$exclude_me = get_post_meta(get_the_id(),'bluet_exclude_post_from_matching',true);
 			//if the current post tells us to exclude from fetch
-			//if($exclude_me) return $cont;
+			if($exclude_me) return $cont;
 			
 			$settings=get_option('bluet_kw_settings');
 
