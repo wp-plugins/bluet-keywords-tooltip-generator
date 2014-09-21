@@ -52,7 +52,9 @@ add_action('init',function(){
 
 //test	
 add_action('init',function(){
-	new bluet_keyword();
+	if(is_admin()){
+		new bluet_keyword();
+	}
 });
 //call add filter for all hooks in need
 	//you can pass cutom hooks you'v done
@@ -64,7 +66,7 @@ function filter_any_content($subject_hooks){
 			
 			$exclude_me = get_post_meta(get_the_id(),'bluet_exclude_post_from_matching',true);
 			//if the current post tells us to exclude from fetch
-			if($exclude_me) return $cont;
+			//if($exclude_me) return $cont;
 			
 			$settings=get_option('bluet_kw_settings');
 
