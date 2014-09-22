@@ -78,10 +78,12 @@ function bluet_keywords_related_render(){
 	$bluet_matching_keywords_field=get_post_meta(get_the_id(),'bluet_matching_keywords_field',true);
 	
 	//print_r($bluet_matching_keywords_field);
-	
+	?>
+		<div id="bluet_kw_admin_div_terms">
+		<?php
+
 	if(!empty($my_kws)){
 	?>		
-	<div id="bluet_kw_admin_div_terms">
 		<p><b>- <?php _e('Specifie keywords to match','bluet-kw');?></b></p>
 	<?php
 	echo('<ul>');
@@ -99,7 +101,7 @@ function bluet_keywords_related_render(){
 	<p style="color:green;"><?php _e('Notice : if you leave them all unchecked they will be ALL matched','bluet-kw');?></p>
 	<?php
 	}else{
-		echo(__('No KeyWords found for this post','bluet-kw').'<br>');
+		echo('<p>'.__('No KeyWords found for this post','bluet-kw').'</p>');
 	}
 	
 	echo('<a href="'.get_admin_url().'edit.php?post_type=my_keywords">');
