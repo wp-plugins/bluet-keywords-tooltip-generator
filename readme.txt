@@ -20,7 +20,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 
 ---
 
-> ### New Features
+> #### New Features
 
 > * CSS optimisation and font size field in the style admin page
 
