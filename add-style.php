@@ -9,7 +9,9 @@ function bluet_kw_custom_style(){
 	
 	$desc_color=$style_options['bt_kw_desc_color'];
 	$desc_bg_color=$style_options['bt_kw_desc_bg_color'];
-	$desc_font_size=$style_options['bt_kw_desc_font_size'];
+
+	$desc_font_size=(empty($style_options['bt_kw_desc_font_size'])? 17 : $style_options['bt_kw_desc_font_size']);
+
 	
 	?>
 	<style>
