@@ -174,6 +174,8 @@ function filter_any_content($subject_hooks){
 add_action('publish_my_keywords','regenerate_keywords');
 add_action('publish_post','regenerate_keywords');
 add_action('publish_page','regenerate_keywords');
+add_action('trashed_post','regenerate_keywords');
+
 register_activation_hook( __FILE__,'regenerate_keywords');
 
 function regenerate_keywords(){
