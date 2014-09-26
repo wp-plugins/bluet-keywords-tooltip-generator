@@ -44,6 +44,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 > * related posts metaBox in the Keyword edit page
 > * keywords in concern metaBox in the post edit page
 > * Keywords importer tool (nemu : Tools -> KTTG Importer), allows you to import keywords from third party plugins adding them to your glossary
+
 ---
 
 > #### ScreenShots
