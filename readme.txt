@@ -3,7 +3,8 @@ Contributors: lebleut
 Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 2.1.2
+Stable tag: 2.1.3
+Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CZ7T4KQ7JR8LN
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
 
@@ -15,45 +16,50 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 > #### DEMO
 > * [FrontEnd Live DEMO](http://www.blueskills.net/talking-birds)
 > * [Admin Live DEMO](http://www.blueskills.net/wp-admin/edit.php?post_type=my_keywords) 
->    user 	: demo
->    password 	: demo
+* user 		: demo
+* password 	: demo
 
 ---
 
-> #### New Features
+= New Features =
 
-> * CSS optimisation and font size field in the style admin page
+* CSS optimisation and font size field in the style admin page
+* Dutch translation thanks to [Kees Hessels](http://www.slotschaesberg.nl)
 
----
 
-> #### Features
+= Features =
 
-> * It's very simple: After installing and activating the plugin you only need to add your keywords (KeyWord, description, image) the rest is magic
-> * From the settings Customize the style of the tooltips depending on the color scheme of your site
-> * The widget will display the list of keywords related to the current post on your sidebar
-> * Decide if you want to apply the plugin for posts and/or pages
-> * The plugin is available in two languages ​​for this version 2.0 (English and French)
-> * Case insensitive fetch
-> * A list of related keywords will be updated after each post/keyWord manipulation
-> * allow to choose to Match all occurrences or once in the same post from the settings page
-> * Choose to activate or not excerpt matching
-> * activate or desactivate a specific post being matched by keywors
-> * list excluded posts in a new tab in the admin setting page
-> * supports synonyms
-> * related posts metaBox in the Keyword edit page
-> * keywords in concern metaBox in the post edit page
-> * Keywords importer tool (nemu : Tools -> KTTG Importer), allows you to import keywords from third party plugins adding them to your glossary
----
+* It's very simple: After installing and activating the plugin you only need to add your keywords (KeyWord, description, image) the rest is magic
+* From the settings Customize the style of the tooltips depending on the color scheme of your site
+* The widget will display the list of keywords related to the current post on your sidebar
+* Decide if you want to apply the plugin for posts and/or pages
+* Case insensitive fetch
+* A list of related keywords will be updated after each post/keyWord manipulation
+* allow to choose to Match all occurrences or once in the same post from the settings page
+* Choose to activate or not excerpt matching
+* activate or desactivate a specific post being matched by keywors
+* list excluded posts in a new tab in the admin setting page
+* supports synonyms
+* related posts metaBox in the Keyword edit page
+* keywords in concern metaBox in the post edit page
+* Keywords importer tool (nemu : Tools -> KTTG Importer), allows you to import keywords from third party plugins adding them to your glossary
 
-> #### ScreenShots
-> * [Screenshots Here](https://wordpress.org/plugins/bluet-keywords-tooltip-generator/screenshots/)
+= Languages =
 
----
+The plugin is available in these languages :
 
-> #### Support
-> * [Support](http://wordpress.org/support/plugin/bluet-keywords-tooltip-generator)
+* English - [Jamel Zarga](http://www.BlueSkills.net) my self :)
+* French (fr_FR) - [Jamel Zarga](http://www.BlueSkills.net)
+* Dutch (nl_NL) - [Kees Hessels](http://www.slotschaesberg.nl)
 
----
+= ScreenShots =
+
+* [Screenshots Here](https://wordpress.org/plugins/bluet-keywords-tooltip-generator/screenshots/)
+
+
+= Support =
+* [Support](http://wordpress.org/support/plugin/bluet-keywords-tooltip-generator)
+
 
 == Installation ==
 
@@ -76,6 +82,12 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 1. Importing keywords from other plugins you have used
 
 == Changelog ==
+
+= 2.1.3 =
+* Translation to Dutch thanks to Kees Hessels
+
+= 2.1.2 =
+* keywords optimisations on the Edit post page
 
 = 2.1.1 =
 * CSS optimisation and font size field in the style admin page
