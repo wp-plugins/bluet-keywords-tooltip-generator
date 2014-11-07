@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 2.1.5
+Stable tag: 2.1.6
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CZ7T4KQ7JR8LN
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
@@ -23,7 +23,9 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 
 
 = New Features =
-* images tooltip with the 'alt' property in content (v2.1.5)
+* Mobile friendly with jQuery from version 2.1.6
+* Show up the tooltip with SlideDown jQuery animation
+* Arabic language translation added "ar_AR"
 
 = Features =
 
@@ -45,6 +47,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * add checkbox to add or remove background color
 * javascript optimizations
 * Dutch translation optimizations
+* images tooltip with the 'alt' property in content (v2.1.5)
 
 = Languages =
 
@@ -52,6 +55,7 @@ The plugin is available in these languages :
 
 * English - [Jamel Zarga](http://www.BlueSkills.net) my self :)
 * French (fr_FR) - [Jamel Zarga](http://www.BlueSkills.net)
+* Arabic (ar_AR) - [Jamel Zarga](http://www.BlueSkills.net)
 * Dutch (nl_NL) - [Kees Hessels](http://www.slotschaesberg.nl)
 
 = ScreenShots =
@@ -84,6 +88,11 @@ The plugin is available in these languages :
 1. Importing keywords from other plugins you have used
 
 == Changelog ==
+
+= 2.1.6 =
+* Mobile friendly with jQuery and some other optimizations
+* Show up the tooltip with slideDown/slideUp jQuery animation
+* Arabic language translation added "ar_AR"
 
 = 2.1.5 =
 * images tooltip with the 'alt' property in content
