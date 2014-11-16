@@ -89,7 +89,7 @@ The plugin is available in these languages :
 
 == Changelog ==
 
-= 2.1.7
+= 2.1.7 =
 * fix themes with overflow hidden attribute like Hueman theme
 * unmatched keywords will helm
 * fix realtime styling on setting page
