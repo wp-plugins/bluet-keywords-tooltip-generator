@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 2.1.6.6
+Stable tag: 2.1.7
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CZ7T4KQ7JR8LN
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
@@ -22,8 +22,10 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 ---
 
 = New Features =
+* fix themes with overflow hidden attribute like Hueman theme
 * Fix blinking when moving the mouse from the keyWord to the tooltip v2.1.6.6
 * Arabic language translation added "ar_AR"
+* Dutch language file updated
 
 = Features =
 
@@ -86,6 +88,12 @@ The plugin is available in these languages :
 1. Importing keywords from other plugins you have used
 
 == Changelog ==
+
+= 2.1.7 =
+* fix themes with overflow hidden attribute like Hueman theme
+* unmatched keywords will helm
+* fix realtime styling on setting page
+* Dutch language file updated
 
 = 2.1.6.6 =
 * No more blinking when moving from the keyWord to the tooltip
