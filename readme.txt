@@ -23,7 +23,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 
 = Premium Add-On =
 * KTTG images AddOn : This add-on allows you to add tooltips triggered by images
-* [Buy Now] (http://www.blueskills.net/product/kttg-images-add-on)
+* [Buy Now](http://www.blueskills.net/product/kttg-images-add-on)
 
 = New Features =
 * fix themes with overflow hidden attribute like Hueman theme
