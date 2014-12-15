@@ -4,7 +4,7 @@ Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, po
 Requires at least: 3.8
 Tested up to: 4.0
 Stable tag: 2.1.8
-Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CZ7T4KQ7JR8LN
+Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2F5CSJEYTNC8
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
 
