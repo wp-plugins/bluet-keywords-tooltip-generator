@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 2.1.7.3
+Stable tag: 2.1.8
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CZ7T4KQ7JR8LN
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
@@ -26,13 +26,9 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * [Buy Now](http://www.blueskills.net/product/kttg-images-add-on)
 
 = New Features =
-* fix themes with overflow hidden attribute like Hueman theme
-* Fix blinking when moving the mouse from the keyWord to the tooltip v2.1.6.6
-* Arabic language translation added "ar_AR"
-* Dutch language file updated
+* Dotted style is now available for keywords (v2.1.8)
 
 = Features =
-
 * It's very simple: After installing and activating the plugin you only need to add your keywords (KeyWord, description, image) the rest is magic
 * From the settings Customize the style of the tooltips depending on the color scheme of your site
 * The widget will display the list of keywords related to the current post on your sidebar
@@ -52,6 +48,10 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * javascript optimizations
 * Dutch translation optimizations
 * images tooltip with the 'alt' property in content (v2.1.5)
+* fix themes with overflow hidden attribute like Hueman theme
+* Fix blinking when moving the mouse from the keyWord to the tooltip v2.1.6.6
+* Arabic language translation added "ar_AR"
+* Dutch language file updated
 
 = Languages =
 
@@ -92,6 +92,9 @@ The plugin is available in these languages :
 1. Importing keywords from other plugins you have used
 
 == Changelog ==
+
+= 2.1.8 =
+* Dotted style is now available for keywords
 
 = 2.1.7.3 =
 * Fix no-space bug
