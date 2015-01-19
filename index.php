@@ -174,13 +174,13 @@ function filter_any_content($subject_hooks){
 							
 							$html_to_replace='<span class="bluet_tooltip" data-tooltip="'.$arr["kw_id"].'">'
 												.'$2'
-												.'<div class="bluet_block_to_show" data-tooltip="'.$arr["kw_id"].'">'
-													.'<div class="bluet_block_container">'
+												.'<span class="bluet_block_to_show" data-tooltip="'.$arr["kw_id"].'">'
+													.'<span class="bluet_block_container">'
 														.$img
 														.'<span class="bluet_title_on_block">$2</span>'
 														.$dfn
-													.'</div>'
-												.'</div>'
+													.'</span>'
+												.'</span>'
 											.'</span>';
 							
 							$cont=preg_replace('#(__('.$term.')__)#i',$html_to_replace,$cont,$limit_match);
