@@ -45,7 +45,8 @@ function bluet_kw_custom_style(){
 			echo("font-size: 1em;");
 			echo("border-radius: 10px;");
 		}else{
-			echo("border-bottom: ".$tooltip_color." 1px dotted;");
+			echo("border-bottom: 1px dotted;");
+			echo("border-bottom-color: ".$tooltip_color.";");
 		}
 		?>
 	}
