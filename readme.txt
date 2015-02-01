@@ -91,6 +91,7 @@ The plugin is available in these languages :
 1. Widget
 1. Excluded Posts list
 1. Importing keywords from other plugins you have used
+1. Glossary ShortCode support [kttg_glossary]
 
 == Changelog ==
 = 2.3 =
