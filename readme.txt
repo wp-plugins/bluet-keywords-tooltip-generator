@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 2.2.2
+Stable tag: 2.3
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2F5CSJEYTNC8
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
@@ -26,9 +26,10 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * [Buy Now](http://www.blueskills.net/product/kttg-images-add-on)
 
 = New Features =
-* Dotted style is now available for keywords (v2.1.8)
+* Glossary support ShortCode : [kttg_glossary] insert it anywhere in your content to see all your keywords (from v2.3)
 
 = Features =
+* Dotted style is now available for keywords (from v2.1.8)
 * It's very simple: After installing and activating the plugin you only need to add your keywords (KeyWord, description, image) the rest is magic
 * From the settings Customize the style of the tooltips depending on the color scheme of your site
 * The widget will display the list of keywords related to the current post on your sidebar
@@ -92,6 +93,9 @@ The plugin is available in these languages :
 1. Importing keywords from other plugins you have used
 
 == Changelog ==
+= 2.3 =
+* Glossary support ShortCode : [kttg_glossary] insert it anywhere in your content to see all your keywords
+
 = 2.2.2 =
 * display bug fixed
 
