@@ -189,10 +189,10 @@ The plugin is available in these languages :
 = How to Add a new keyword  ? =
 In the menu «My Keywords» choose the submenu «Add another»
 Enter now  :
-* The keyword as a title
-* The description contained in the text area
-* The list of synonyms separated by \'|\' (pipe) in the «Synonyms» text field
-* The image expressing keyword as «Featured image»
+- The keyword as a title
+- The description contained in the text area
+- The list of synonyms separated by '|' (pipe) in the «Synonyms» text field
+- The image expressing keyword as «Featured image»
 And Publish, now the tooltip expressing this keyword appears anywhere on your site content.
 = How to create a glossary page of my keywords list ? =
 Edit page/article in which you want to add the glossary and add the shortcode [kttg_glossary] Finally Update article.
@@ -208,7 +208,7 @@ In the menu «My Keywords» choose the submenu «Settings» in the tab «Setting
 (Can I exclude filtering a page/Post with KTTG ?)
 Yes we can exclude one or more keywords to be treated with KTTG:
 Open in edition mode the post/page which lists the keywords a widget called «Keywords related» appears on the right side so you can choose the keywords to filter by checking their boxes or exclude any article being filtered
-* NB: If you do not check any box, all of them will be treated
+- NB: If you do not check any box, all of them will be treated
 Finally press the button «Update»
 = How to add a Widget with the list of keywords of the current post? =
 The menu «Apprence» Then the submenu «Widgets» Choose the widget «My Keywords (Bluet)» Then Add Widget.
