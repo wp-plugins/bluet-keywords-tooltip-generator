@@ -186,38 +186,38 @@ The plugin is available in these languages :
 * First version of the plugin.
 
 == Frequently Asked Questions ==
-1.	How to Add a new keyword  ?
+= How to Add a new keyword  ? =
 In the menu «My Keywords» choose the submenu «Add another»
 Enter now  :
-•	The keyword as a title
-•	The description contained in the text area
-•	The list of synonyms separated by \'|\' (pipe) in the «Synonyms» text field
-•	The image expressing keyword as «Featured image»
+* The keyword as a title
+* The description contained in the text area
+* The list of synonyms separated by \'|\' (pipe) in the «Synonyms» text field
+* The image expressing keyword as «Featured image»
 And Publish, now the tooltip expressing this keyword appears anywhere on your site content.
-2.	How to create a glossary page of my keywords list ?
+= How to create a glossary page of my keywords list ? =
 Edit page/article in which you want to add the glossary and add the shortcode [kttg_glossary] Finally Update article.
-3.	How to change the appearance of tooltips ?
+= How to change the appearance of tooltips ? =
 In the menu «My Keywords» choose the submenu «Settings» and then select the tab «Style» here you can customize the appearance of your tooltips (colors, font size, highlight method ...) finally press the button «Save Settings»
-4.	Can I change the keywords highlighting mode ?
+= Can I change the keywords highlighting mode ? =
 In the menu «My Keywords» choose the submenu «Settings» Check No background (Dotted-style) Finally, press the button «Save Settings»
-5.	How to view the text of the property «alt» of my images as a tooltip  ? 
+= How to view the text of the property «alt» of my images as a tooltip  ? =
 In the menu «My Keywords» choose the submenu «Settings» Check «alt property of the images will be displayed as a tooltip» finally, press the button «Save Settings»
-6.	How to choose whether tooltips appear on the pages and/or articles ?
+= How to choose whether tooltips appear on the pages and/or articles ? =
 In the menu «My Keywords» choose the submenu «Settings» in the tab «Settings» Tick the boxes «Posts/Pages» Finally, press the button «Save Settings»
-7.	Can I exclude the occurrence of one or more tooltips in a specific page  ?
+= Can I exclude the occurrence of one or more tooltips in a specific page  ? =
 (Can I exclude filtering a page/Post with KTTG ?)
 Yes we can exclude one or more keywords to be treated with KTTG:
 Open in edition mode the post/page which lists the keywords a widget called «Keywords related» appears on the right side so you can choose the keywords to filter by checking their boxes or exclude any article being filtered
-NB: If you do not check any box, all of them will be treated
+* NB: If you do not check any box, all of them will be treated
 Finally press the button «Update»
-8.	How to add a Widget with the list of keywords of the current post?
+= How to add a Widget with the list of keywords of the current post? =
 The menu «Apprence» Then the submenu «Widgets» Choose the widget «My Keywords (Bluet)» Then Add Widget.
-9.	I have used a similar plugin to KTTG, I want to migrate to KTTG and automatically add my old list of keywords, how to?
+= I have used a similar plugin to KTTG, I want to migrate to KTTG and automatically add my old list of keywords, how to? =
 You can convert the list of keywords for other plugins using the tool «KTTG converter» under the menu «Tools»: Carefully select on the drop down list the name of the post-type in concern and click «Begin conversion», now back on «My Keywords»  and you will find new keywords from the old plugin.
-10.	Can I apply the tooltips on specific images?
+= Can I apply the tooltips on specific images? =
 This is possible but Premium version, so first you must purchase the add-on «Bluet KTTG images addon» On the following link www.blueskills.net/product/kttg-images-add-on
-11.	Can I export and import my keywords from one site to another  ?
+= Can I export and import my keywords from one site to another  ? =
 Yes it is possible by using the tool «Import» and «Export» on the tool menu
 For example:  To import my list of keywords to a new site: Tools> Import>WordPress and select the XML file you exported from the old site.
-12.	How to preserve the color of text that contains the keyword?
+= How to preserve the color of text that contains the keyword ? =
 In the menu «My Keywords» choose the submenu «Settings»  In the Style section of the keyword press to change the color of text in the input box, delete the color code (Example  : #123FFF) And write «inherit» in instead and confirm.
