@@ -7,8 +7,10 @@ function bluet_kttg_glossary() {
  
     // The Query
     $args=array(
-           'post_type'=>'my_keywords',
-           'posts_per_page'=>-1	//to retrieve all keywords
+           'post_type'      =>'my_keywords',
+           'posts_per_page' =>-1,	//to retrieve all keywords
+            'order'         => 'ASC',
+            'orderby'       => 'title',
     );
    
    $ret='<p>* <span class="bluet_glossary_all"><a href="'.get_the_guid().'">ALL</a></span> * ';
@@ -48,6 +50,7 @@ function bluet_kttg_glossary() {
    }
    /* Restore original Post Data */
    wp_reset_postdata();
+   
    
    return $ret;
 
