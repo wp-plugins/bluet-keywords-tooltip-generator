@@ -102,6 +102,7 @@ class bluet_keyword{
 			$defaults['the_picture']=__('Picture','bluet-kw');
 			
 			//we want to rearrange the columns apearance
+			$reArr['cb']=$defaults['cb']; //checkBox column
 			$reArr['the_picture']=$defaults['the_picture'];
 			$reArr['title']=$defaults['title'];
 			$reArr['nbr_posts_related']=$defaults['nbr_posts_related'];
