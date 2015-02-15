@@ -219,7 +219,7 @@ function bluet_kw_render_settings_page() {
 					<a class="nav-tab" id="bluet_excluded_tab" data-tab="bluet-section-excluded"><?php _e('Excluded posts','bluet-kw');?></a>
 					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="https://wordpress.org/support/plugin/bluet-keywords-tooltip-generator" ><?php _e('Help ?','bluet-kw');?></a>
 					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="http://www.blueskills.net/product/kttg-images-add-on" ><?php _e('Premium Add-Ons','bluet-kw');?></a>
-					<a class="nav-tab" target="_blank" style="background-color: aliceblue;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CZ7T4KQ7JR8LN" ><?php _e('Donate','bluet-kw');?></a>
+					<a class="nav-tab" target="_blank" style="background-color: aliceblue;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ" ><?php _e('Donate','bluet-kw');?></a>
 
 				</h2>
 			<form method="post" action="options.php">
