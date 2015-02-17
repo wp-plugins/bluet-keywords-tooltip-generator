@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /* enqueue js functions for the front side*/
 function bluet_kw_load_scripts_front() {
@@ -241,7 +241,7 @@ function bluet_kttg_regenerate_keywords(){
 					if(function_exists('bluet_kttg_add_meta_to_check')){
 						$content_to_check.=bluet_kttg_add_meta_to_check();
 					}
-				echo $content_to_check; //die;
+
 					if(preg_match($term,strip_tags($content_to_check))){ //strip_tags eliminates HTML tags before passing in pregmatch
 						$post_have_kws[get_the_id()][]=$term_id;
 					}										
