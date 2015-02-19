@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
 Plugin Name: BleuT KeyWord ToolTip Generator
 Description: this plugin lets you put illustrated keywords in a dictionary of terms tooltip (automatic generation) ...
@@ -68,7 +68,7 @@ add_action('trashed_post','bluet_kttg_regenerate_keywords');
 /* enqueue js functions for the front side*/
 function bluet_kw_load_scripts_front() {
 	//
-	wp_enqueue_script( 'functions-script', plugins_url('assets/functions_tooltip.js',__FILE__), array(), false, true );
+	wp_enqueue_script( 'functions-script', plugins_url('assets/kttg_tooltip.js',__FILE__), array(), false, true );
 		
 	$opt_tmp=get_option('bluet_kw_style');
 	if($opt_tmp['bt_kw_alt_img']=='on'){
