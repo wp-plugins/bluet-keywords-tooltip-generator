@@ -15,7 +15,7 @@ function bluet_kw_load_scripts() {
 	wp_enqueue_script( 'functions-script', plugins_url('assets/functions.js',__FILE__), array(), false, true );
 	
 	//
-	wp_enqueue_script( 'functions-tooltip-script', plugins_url('assets/functions_tooltip.js',__FILE__), array(), false, true );
+	wp_enqueue_script( 'functions-tooltip-script', plugins_url('assets/kttg_tooltip.js',__FILE__), array(), false, true );
 }
 add_action( 'admin_head', 'bluet_kw_load_scripts' );
 
