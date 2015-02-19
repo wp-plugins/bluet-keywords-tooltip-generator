@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 Plugin Name: BleuT KeyWord ToolTip Generator
 Description: this plugin lets you put illustrated keywords in a dictionary of terms tooltip (automatic generation) ...
