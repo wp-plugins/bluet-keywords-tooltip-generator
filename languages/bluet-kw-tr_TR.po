@@ -1,0 +1,304 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: translate Bluet KW\n"
+"POT-Creation-Date: 2014-11-07 20:58+0100\n"
+"PO-Revision-Date: 2015-02-21 00:13+0200\n"
+"Last-Translator: \n"
+"Language-Team: leBleut\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: .\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\mon_site\\wp-content\\plugins\\bluet-"
+"keywords-tooltip-generator\n"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/importer.php:6
+msgid "KeyWords Tooltip Generator Importer"
+msgstr "KeyWords Tooltip Generator Importer"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/importer.php:7
+msgid "KTTG Importer"
+msgstr "İçe Aktar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/importer.php:17
+msgid "Begin importing my keywords"
+msgstr "Anahtar Kelimeleri İçe Aktarmaya Başla "
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/importer.php:31
+msgid "Import from"
+msgstr "Şurdan İçe Aktar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/importer.php:84
+msgid "keywords imported"
+msgstr "İçe Aktarılan Anahtar Kelimeler"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/importer.php:88
+msgid "These posts were not imported (Duplicated)"
+msgstr "Bu yazılar içe aktarılamadı (Çakışma var)"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/importer.php:94
+msgid ""
+"if you want to re-import them, you have to delete them from My Keywords."
+msgstr ""
+"Yeniden içe aktarmak istiyorsanız, çakışan Anahtar Kelimeleri silmeniz "
+"gerekli"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/importer.php:104
+msgid "No posts found"
+msgstr "Yazı bulunamadı"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:59
+msgid "KeyWords"
+msgstr "Anahtar Kelimeler"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:60
+msgid "KeyWord"
+msgstr "Anahtar Kelime"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:61
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:62
+msgid "My KeyWords"
+msgstr "Anahtar Kelimelerim"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:63
+msgid "All my KeyWords"
+msgstr "Tüm Anahtar Kelimelerim"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:64
+msgid "Add new one"
+msgstr "Yeni ekle"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:65
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:67
+msgid "New KeyWord"
+msgstr "Yeni Anahtar Kelime"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:66
+msgid "Edit KeyWord"
+msgstr "Düzenle"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:68
+msgid "View KeyWord"
+msgstr "Anahtar Kelimeyi incele"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:69
+msgid "Search for KeyWords"
+msgstr "Anahtar Kelime ara"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:70
+msgid "KeyWords not found"
+msgstr "Anahtar Kelimeler bulunamadı"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:71
+msgid "KeyWords not found in trash"
+msgstr "Anahtar Kelime çöpte bulunamadı"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:72
+msgid "Parent KeyWords colon"
+msgstr "Üst Anahtar Kelime Sütunu"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:101
+msgid "Posts related"
+msgstr "İlgili yazılar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/keyword-posttype.php:102
+msgid "Picture"
+msgstr "Resim"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:18
+msgid "Synonyms"
+msgstr "Eş Anlamlılar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:27
+msgid "Posts in concern"
+msgstr "İlgili yazı"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:37
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:46
+msgid "Keywords related"
+msgstr "İlgili Anahtar Kelimeler"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:63
+msgid "Type here the keyword's Synonyms separated with '|'"
+msgstr ""
+"Anahtar Kelimelerin eş anlamlılarını aralarına '|' karakterini ekleyerek "
+"girin "
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:72
+msgid "Exclude this post from being matched"
+msgstr "Bu yazıda Anahtar Kelime eşleştirmesi yapma"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:73
+msgid "Exclude this post"
+msgstr "Bu yazıyı hariç tut"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:87
+msgid "Specify keywords to match"
+msgstr "Eşleştirilecek Anahtar Kelimeleri tanımlayın"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:101
+msgid "Notice : if you leave them all unchecked they will be ALL matched"
+msgstr "Dikkat: Eğer seçim yapmazsanız tüm Anahtar Kelimeler eşleştirilecektir"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:104
+msgid "No KeyWords found for this post"
+msgstr "Bu yazıda eşleştirilecek Anahtar Kelime bulunmamıştır"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/meta-boxes.php:108
+msgid "Manage KeyWords"
+msgstr "Anahtar Kelimeleri eşleştir"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:51
+msgid "Post Types in concern :"
+msgstr "İlgili yazı türleri"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:59
+msgid "Customise the tooltip style :"
+msgstr "İpucu kutusunu düzenle"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:70
+msgid "Posts / Pages"
+msgstr "Yazılar / Sayfalar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:79
+msgid "Match once or all occurrences"
+msgstr "Bulunan ilk kelimeyi eşleştir veya tüm kelimeleri eşleştir"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:87
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:219
+msgid "Match excerpts"
+msgstr "Alıntılarda da eşleştirme yap"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:95
+msgid "Keyword style"
+msgstr "Anahtar Kelime tipi"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:103
+msgid "Description tooltip style"
+msgstr "İpucu açıklaması biçimi"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:111
+msgid "Description tooltip Font size"
+msgstr "İpucu açıklaması font boyutu"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:119
+msgid "Activate tooltips for images ?"
+msgstr "Resimler için ipuçlarını aktifleştir?"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:144
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:227
+msgid "KeyWords Settings"
+msgstr "Anahtar Kelime ayarları"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:145
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:231
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:163
+msgid "alt property of the images will be displayed as a tooltip"
+msgstr "Resim açıklaması ipucu olarak belirsin"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:176
+msgid "Description Background Colour"
+msgstr "Açıklama arkaplan rengi"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:178
+msgid "Description font Colour"
+msgstr "Açıklama font rengi"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:187
+msgid "Background Colour"
+msgstr "Arkaplan rengi"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:188
+msgid "Font Colour"
+msgstr "Font rengi"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:194
+msgid "Choose either Posts or/and Pages in concern"
+msgstr "İlgili yazılar ve / veya sayfaları seçin"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:197
+msgid "Make your own style."
+msgstr "Kendi biçiminizi belirleyin"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:202
+msgid "Posts"
+msgstr "Yazılar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:203
+msgid "Pages"
+msgstr "Sayfalar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:211
+msgid "Match all occurrences"
+msgstr "Tüm eşleşmelerde göster"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:232
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:263
+msgid "Excluded posts"
+msgstr "Hariç tutulan yazılar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:233
+msgid "Help ?"
+msgstr "Yardım?"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:234
+msgid "Donate"
+msgstr "Bağışta bulun"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:251
+msgid "Preview"
+msgstr "Önizleme"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:252
+msgid "Pass your mouse over the word"
+msgstr "İmleci kelime üzerine getirin"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:252
+msgid ""
+"this plugin allows you easely create tooltips for your technical keywords in "
+"order to explain them for your site visitors making surfing more comfortable."
+msgstr ""
+"Bu eklenti oluşturduğunuz içeriklerde yer alan seçtiğiniz kelimelerle ilgili "
+"ek bilgi (sözlük, alt bilgi gibi) vermenizi sağlar."
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:253
+msgid "Click"
+msgstr "Tıkla"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:253
+msgid "Here"
+msgstr "Burası"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:253
+msgid "to rate our plugin if you appreciate it"
+msgstr "Eklentimizi derecelendirin"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:253
+msgid "to test the tooltip layout."
+msgstr "İpucu kutusunu test edin"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:264
+msgid "Posts which are excluded from being matched"
+msgstr "Eşleştirmeden hariç tutulan yazılar"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:270
+msgid "No posts or pages are excluded"
+msgstr "Hariç tutulan yazı ve sayfa bulunmamaktadır"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/settings-page.php:289
+msgid "Save Settings"
+msgstr "Değişiklikleri kaydedin"
+
+#: C:\wamp\www\mon_site\wp-content\plugins\bluet-keywords-tooltip-generator/widget.php:78
+msgid "no terms found for this post"
+msgstr "Bu yazıda kelime bulunamamıştır"
+
+#~ msgid "Keywords Related"
+#~ msgstr "Mots clés en relation"
