@@ -1,9 +1,9 @@
 ﻿=== Keywords ToolTip Generator ===
 Contributors: lebleut
-Tags: inline, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
+Tags: inline, tooltips, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 2.4.5
+Stable tag: 2.4.6
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
@@ -26,7 +26,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * [Buy Now](http://www.blueskills.net/product/kttg-images-add-on)
 
 = New Features =
-* Tooltip content is more flexible
+* New tooltip display layout
 * Glossary support ShortCode : [kttg_glossary] insert it anywhere in your content to see all your keywords (from v2.3) [View Glossary](http://www.blueskills.net/glossary)
 
 = Features =
@@ -52,8 +52,10 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * images tooltip with the 'alt' property in content (v2.1.5)
 * fix themes with overflow hidden attribute like Hueman theme
 * Fix blinking when moving the mouse from the keyWord to the tooltip v2.1.6.6
-* Arabic language translation added "ar_AR"
-* Dutch language file updated
+* Arabic translation
+* Dutch translation
+* Turkish translation
+* Glossary support ShortCode [kttg_glossary]
 
 = Languages =
 
@@ -61,8 +63,9 @@ The plugin is available in these languages :
 
 * English - [Jamel Zarga](http://www.BlueSkills.net) my self :)
 * French (fr_FR) - [Jamel Zarga](http://www.BlueSkills.net)
-* Arabic (ar_AR) - [Jamel Zarga](http://www.BlueSkills.net)
+* Arabic (ar) - [Jamel Zarga](http://www.BlueSkills.net)
 * Dutch (nl_NL) - [Kees Hessels](http://www.slotschaesberg.nl)
+* Turkish (tr_TR) - Eyyüp Güner
 
 = ScreenShots =
 
@@ -95,6 +98,12 @@ The plugin is available in these languages :
 1. Glossary ShortCode support [kttg_glossary]
 
 == Changelog ==
+
+= 2.4.6 =
+* New tooltip display layout
+* Fix matching (keywords at the begining)
+* Turkish translation available
+* Translation update
 
 = 2.4.5 =
 * Template for keywords are now available (you can now view the keyword page on your site)
