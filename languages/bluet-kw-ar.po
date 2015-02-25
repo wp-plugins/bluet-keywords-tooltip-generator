@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translate Bluet KW\n"
-"POT-Creation-Date: 2015-02-22 10:05+0100\n"
-"PO-Revision-Date: 2015-02-22 10:05+0100\n"
+"POT-Creation-Date: 2015-02-26 00:07+0100\n"
+"PO-Revision-Date: 2015-02-26 00:11+0100\n"
 "Last-Translator: Jamel Zarga <jamel.zarga@gmail.com>\n"
 "Language-Team: leBleut\n"
 "MIME-Version: 1.0\n"
@@ -116,40 +116,45 @@ msgstr "اعدادات المصطلحات"
 msgid "Posts in concern"
 msgstr "المقالات ذات الصلة"
 
-#: ../meta-boxes.php:37 ../meta-boxes.php:46
+#: ../meta-boxes.php:37 ../meta-boxes.php:47
+#: ..\..\Bluet_kttg_pro_addon/index.php:37
 msgid "Keywords related"
 msgstr "المصطلحات ذات الصلة"
 
-#: ../meta-boxes.php:63
+#: ../meta-boxes.php:64
 msgid "Synonyms"
 msgstr "مرادفات"
 
-#: ../meta-boxes.php:63
+#: ../meta-boxes.php:64
 msgid "Type here the keyword's Synonyms separated with '|'"
 msgstr "قم بكتابة المرادفات و قم بتفرقتها بـ' | '"
 
-#: ../meta-boxes.php:75
+#: ../meta-boxes.php:68
+msgid "Make this keyword <b>Case Sensitive</b>"
+msgstr ""
+
+#: ../meta-boxes.php:81
 msgid "Exclude this post from being matched"
 msgstr "استبعاد هذا المقال من المصطلحات"
 
-#: ../meta-boxes.php:76
+#: ../meta-boxes.php:82
 msgid "Exclude this post"
 msgstr "استبعاد هذا المقال"
 
-#: ../meta-boxes.php:90
+#: ../meta-boxes.php:95
 msgid "Specify keywords to match"
 msgstr "قم بتعين الصطلحات المراد معالجتها"
 
-#: ../meta-boxes.php:104
+#: ../meta-boxes.php:109
 msgid "Notice : if you leave them all unchecked they will be ALL matched"
 msgstr ""
 "ملاحظة : في حالة عدم تعين اي من الصطلحات التالية فسوف يتم معالجتها كلها آليا"
 
-#: ../meta-boxes.php:107
+#: ../meta-boxes.php:112
 msgid "No KeyWords found for this post"
 msgstr "لم يتم ايجاد مصطلحات في هذا المقال"
 
-#: ../meta-boxes.php:111
+#: ../meta-boxes.php:116
 msgid "Manage KeyWords"
 msgstr "ادارة المصطلحات"
 
@@ -237,6 +242,10 @@ msgstr "صفحات"
 msgid "Match all occurrences"
 msgstr "طبق على الكل"
 
+#: ../settings-page.php:225
+msgid "Style"
+msgstr "الشكل"
+
 #: ../settings-page.php:227 ../settings-page.php:280
 msgid "Excluded posts"
 msgstr "المقالات التي تم استبعادها"
@@ -294,21 +303,25 @@ msgstr "المقالات أو الصفحات المستبعدة من المعا�
 msgid "No posts or pages are excluded"
 msgstr "لم يتم استبعاد أي مقال أو صفحة"
 
-#: ../settings-page.php:306 ..\..\Bluet_kttg_pro_addon/settings-page.php:72
+#: ../settings-page.php:306 ..\..\Bluet_kttg_pro_addon/settings-page.php:82
 msgid "Save Settings"
 msgstr "حفض الاعدادات"
 
-#: ../widget.php:79
+#: ../widget.php:96
 msgid "no terms found for this post"
 msgstr "لم يتم ايجاد مصطلحات في هذا المقال"
 
 #: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:9
-msgid "This Keyword is a Prefix"
+msgid "This Keyword is a <b>Prefix</b>"
 msgstr "هذا المصطلح بمثابة بداة (Prefix)"
 
-#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:21
+#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:23
 msgid "Prefix"
 msgstr "Is Prefix (بداية)"
+
+#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:26
+msgid "No"
+msgstr "لا"
 
 #: ..\..\Bluet_kttg_pro_addon/settings-page.php:8
 msgid "KTTG Advanced"
@@ -326,17 +339,25 @@ msgstr "معالجة الحقول المخصصة :"
 msgid "Match custom-fields"
 msgstr "معالجة الحقول المخصصة"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:59
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:43
+msgid "Match custom-posts"
+msgstr "معالجة المقالات المخصصة"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:68
 msgid "KeyWords Avanced"
 msgstr "المصطلحات المتقدمة"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:81
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:91
 msgid "Advanced space"
 msgstr "فضاء الخصائص المتقدمة"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:88
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:99
 msgid "Write the name of the hooks in concern separated by \"|\"."
 msgstr "قم بكتابة الخطافات المناسبة مفصولة بـ ‘|’"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:108
+msgid "Write the name of Post types in concern separated by \"|\"."
+msgstr "قم بكتابة أسماء المقالات المخصصة مفصولة بـ ‘|’"
 
 #~ msgid "Match excerpts"
 #~ msgstr "طبق على المقتطفات"
