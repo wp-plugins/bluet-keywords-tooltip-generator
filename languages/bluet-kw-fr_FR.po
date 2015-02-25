@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translate Bluet KW\n"
-"POT-Creation-Date: 2015-02-22 10:05+0100\n"
-"PO-Revision-Date: 2015-02-22 10:05+0100\n"
+"POT-Creation-Date: 2015-02-26 00:11+0100\n"
+"PO-Revision-Date: 2015-02-26 00:14+0100\n"
 "Last-Translator: Jamel Zarga <jamel.zarga@gmail.com>\n"
 "Language-Team: leBleut\n"
 "MIME-Version: 1.0\n"
@@ -118,39 +118,44 @@ msgstr "Réglages des Mots Clés"
 msgid "Posts in concern"
 msgstr "Articles en sujet"
 
-#: ../meta-boxes.php:37 ../meta-boxes.php:46
+#: ../meta-boxes.php:37 ../meta-boxes.php:47
+#: ..\..\Bluet_kttg_pro_addon/index.php:37
 msgid "Keywords related"
 msgstr "Mots clés en relation"
 
-#: ../meta-boxes.php:63
+#: ../meta-boxes.php:64
 msgid "Synonyms"
 msgstr "Synonymes"
 
-#: ../meta-boxes.php:63
+#: ../meta-boxes.php:64
 msgid "Type here the keyword's Synonyms separated with '|'"
 msgstr "Tapez ici les synonymes en les séparant par des '|'"
 
-#: ../meta-boxes.php:75
+#: ../meta-boxes.php:68
+msgid "Make this keyword <b>Case Sensitive</b>"
+msgstr "<b>Respecter la casse</b> pour ce mot-clés "
+
+#: ../meta-boxes.php:81
 msgid "Exclude this post from being matched"
 msgstr "Exclure cet article d'etre traité par les mots clés"
 
-#: ../meta-boxes.php:76
+#: ../meta-boxes.php:82
 msgid "Exclude this post"
 msgstr "Exclure cet article"
 
-#: ../meta-boxes.php:90
+#: ../meta-boxes.php:95
 msgid "Specify keywords to match"
 msgstr "Specifie les mots clés à traiter"
 
-#: ../meta-boxes.php:104
+#: ../meta-boxes.php:109
 msgid "Notice : if you leave them all unchecked they will be ALL matched"
 msgstr "NB : si vous ne cochez aucune case ils serons tous traités"
 
-#: ../meta-boxes.php:107
+#: ../meta-boxes.php:112
 msgid "No KeyWords found for this post"
 msgstr "Mots Clés introuvable pour cet article"
 
-#: ../meta-boxes.php:111
+#: ../meta-boxes.php:116
 msgid "Manage KeyWords"
 msgstr "Gérer les Mots clés"
 
@@ -238,6 +243,10 @@ msgstr ""
 msgid "Match all occurrences"
 msgstr "Appliquer sur tous les occurences"
 
+#: ../settings-page.php:225
+msgid "Style"
+msgstr ""
+
 #: ../settings-page.php:227 ../settings-page.php:280
 msgid "Excluded posts"
 msgstr "Articles exclues"
@@ -295,21 +304,25 @@ msgstr "Articles ou pages exclues d'être traités"
 msgid "No posts or pages are excluded"
 msgstr "Aucun article ou page sont exclues"
 
-#: ../settings-page.php:306 ..\..\Bluet_kttg_pro_addon/settings-page.php:72
+#: ../settings-page.php:306 ..\..\Bluet_kttg_pro_addon/settings-page.php:82
 msgid "Save Settings"
 msgstr "Sauvegarder les réglages"
 
-#: ../widget.php:79
+#: ../widget.php:96
 msgid "no terms found for this post"
 msgstr "Pas de mot clés trouvé pour cet article"
 
 #: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:9
-msgid "This Keyword is a Prefix"
-msgstr "Ce Mot-clés est un préfixe"
+msgid "This Keyword is a <b>Prefix</b>"
+msgstr "Ce Mot-clés est un <b>préfixe</b>"
 
-#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:21
+#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:23
 msgid "Prefix"
 msgstr "Préfixe"
+
+#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:26
+msgid "No"
+msgstr "Non"
 
 #: ..\..\Bluet_kttg_pro_addon/settings-page.php:8
 msgid "KTTG Advanced"
@@ -327,17 +340,25 @@ msgstr "Traiter les champ personnalisé :"
 msgid "Match custom-fields"
 msgstr "Traiter les champ personnalisé :"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:59
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:43
+msgid "Match custom-posts"
+msgstr "Traiter les articles personnalisés :"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:68
 msgid "KeyWords Avanced"
 msgstr "Mots clés Avancés"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:81
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:91
 msgid "Advanced space"
 msgstr "Espace avancé"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:88
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:99
 msgid "Write the name of the hooks in concern separated by \"|\"."
-msgstr "Saisir les noms es Hooks à traiter séparés par '|'"
+msgstr "Saisir les noms des Hooks à traiter séparés par '|'"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:108
+msgid "Write the name of Post types in concern separated by \"|\"."
+msgstr "Saisir les noms articles personnalisés à traiter séparés par '|'"
 
 #~ msgid "Match excerpts"
 #~ msgstr "Appliquer sur les extraits"
