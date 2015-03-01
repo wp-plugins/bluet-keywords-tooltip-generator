@@ -27,7 +27,7 @@ function moveTooltipElementsTop(className){
 		jQuery(this).show();
 	})
 	jQuery(".bluet_block_to_show").mouseout(function(){
-		jQuery(this).hide();
+		jQuery(this).css("display","none");
 	})
 
 }
@@ -68,7 +68,7 @@ function bluet_placeTooltips(inlineClass){
 		var tooltipBlock=jQuery("#tooltip_blocks_to_show").children("[data-tooltip="+id_post_type+"]").first();
 
 	   if(tooltipBlock){
-	   tooltipBlock.hide();
+	   tooltipBlock.css("display","none");
 		   
 	   }
 	});
