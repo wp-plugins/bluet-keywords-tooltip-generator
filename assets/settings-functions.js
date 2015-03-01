@@ -4,6 +4,7 @@ jQuery(document).ready(function(){
 	return;
 
 	bleutExcludeKwStyle();	
+
 	//add listener to checkboxes
 	jQuery("#bluet_kw_admin_div_terms li input").each(function(ind){
 		jQuery(this).change(function(){

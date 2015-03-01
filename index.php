@@ -71,12 +71,12 @@ add_action('trashed_post','bluet_kttg_regenerate_keywords');
 /* enqueue js functions for the front side*/
 function bluet_kw_load_scripts_front() {
 	//
-	wp_enqueue_script( 'functions-script', plugins_url('assets/kttg_tooltip.js',__FILE__), array(), false, true );
+	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip.js',__FILE__), array(), false, true );
 		
 	$opt_tmp=get_option('bluet_kw_style');
 	if($opt_tmp['bt_kw_alt_img']=='on'){
 		//
-		wp_enqueue_script( 'functions-alt-img-script', plugins_url('assets/functions_alt_img_tooltip.js',__FILE__), array(), false, true );
+		wp_enqueue_script( 'kttg-functions-alt-img-script', plugins_url('assets/img-alt-tooltip.js',__FILE__), array(), false, true );
 	}
 }
 
