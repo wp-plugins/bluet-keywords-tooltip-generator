@@ -137,6 +137,15 @@ function bluet_kw_custom_style(){
 	.bluet_glossary_found_letter{
 		font-weight: bold;
 	}
+	
+	/* hide button */
+	.bluet_hide_tooltip_button{
+		width: 25px;
+		height: 25px;
+		position: absolute;
+		right: -13px;
+		top: -2px;
+	}
 	</style>
 	<?php
 }

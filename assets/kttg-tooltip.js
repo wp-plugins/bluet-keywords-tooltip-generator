@@ -27,7 +27,13 @@ function moveTooltipElementsTop(className){
 		jQuery(this).show();
 	})
 	jQuery(".bluet_block_to_show").mouseout(function(){
+		//leave it like that .css("display","none"); for Safari navigator issue
 		jQuery(this).css("display","none");
+	})
+	
+	jQuery(".bluet_hide_tooltip_button").click(function(){
+		//leave it like that .css("display","none"); for Safari navigator issue
+		jQuery(".bluet_block_to_show").css("display","none");
 	})
 
 }
@@ -68,6 +74,7 @@ function bluet_placeTooltips(inlineClass){
 		var tooltipBlock=jQuery("#tooltip_blocks_to_show").children("[data-tooltip="+id_post_type+"]").first();
 
 	   if(tooltipBlock){
+		   //leave it like that .css("display","none"); for Safari navigator issue
 	   tooltipBlock.css("display","none");
 		   
 	   }
