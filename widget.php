@@ -11,6 +11,7 @@ class bluet_keyword_widget extends wp_widget{
 	}
 	
 	public function widget( $args, $instance ) {
+		global $is_kttg_glossary_page;
 		if(!(is_single() or is_page())) return;
 		$exclude_me = get_post_meta(get_the_id(),'bluet_exclude_post_from_matching',true);
 
@@ -29,6 +30,7 @@ class bluet_keyword_widget extends wp_widget{
 										or ((get_post_type(get_the_id())!='post') and !$filter_this_custom_post_type))
 					)
 			or (is_page() and !$settings['bt_kw_for_pages'])
+			or $is_kttg_glossary_page
 		){
 			return false;
 		}

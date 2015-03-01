@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltips, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
 Requires at least: 3.8
 Tested up to: 4.1.1
-Stable tag: 2.4.7
+Stable tag: 2.4.8
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
@@ -11,7 +11,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 == Description ==
 
 * This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
-* new : you can import keywords from other plugins instead of re writing them
+* With shortcode Glossary [kttg_glossary]
 
 > #### DEMO
 > * [FrontEnd Live DEMO](http://www.blueskills.net/talking-birds)
@@ -26,9 +26,9 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * [Buy Now](http://www.blueskills.net/product/kttg-images-add-on)
 
 = New Features =
+* Hide tooltip title setting aded
+* Better Glossary layout with Pagination
 * Support case sensitive (as a metabox)
-* match all synonyms when check match once
-* Glossary support ShortCode : [kttg_glossary] insert it anywhere in your content to see all your keywords (from v2.3) [View Glossary](http://www.blueskills.net/glossary)
 
 = Features =
 * Dotted style is now available for keywords (from v2.1.8)
@@ -45,17 +45,10 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * supports synonyms
 * related posts metaBox in the Keyword edit page
 * keywords in concern metaBox in the post edit page
-* Keywords importer tool (nemu : Tools -> KTTG Importer), allows you to import keywords from third party plugins adding them to your glossary
-* Style settings optimized (real time preview)
-* add checkbox to add or remove background color
-* javascript optimizations
-* Dutch translation optimizations
+* Keywords Converter tool (nemu : Tools -> KTTG Converter), allows you to import keywords from third party plugins adding them to your glossary
+* Style settings (real time preview)
+* Checkbox to add or remove background color
 * images tooltip with the 'alt' property in content (v2.1.5)
-* fix themes with overflow hidden attribute like Hueman theme
-* Fix blinking when moving the mouse from the keyWord to the tooltip v2.1.6.6
-* Arabic translation
-* Dutch translation
-* Turkish translation
 * Glossary support ShortCode [kttg_glossary]
 * Support case sensitive (as a metabox)
 * match all synonyms when check match once
@@ -89,7 +82,7 @@ The plugin is available in these languages :
 
 
 == Screenshots ==
-1. Front end single page highlited KeyWords
+1. Front end single page highlighted KeyWords
 1. Add a new KeyWord description
 1. My Keywords List
 1. Style customization
@@ -101,6 +94,10 @@ The plugin is available in these languages :
 1. Glossary ShortCode support [kttg_glossary]
 
 == Changelog ==
+= 2.4.8 =
+* Hide tooltip title setting aded
+* Better Glossary layout with Pagination
+
 = 2.4.7 =
 * Support case sensitive (as a metabox)
 * match all synonyms when check match once
@@ -225,7 +222,7 @@ In the menu «My Keywords» choose the submenu «Add another»
 Enter now  :
 - The keyword as a title
 - The description contained in the text area
-- The list of synonyms separated by \'|\' (pipe) in the «Synonyms» text field
+- The list of synonyms separated by « | » (pipe) in the «Synonyms» text field
 - The image expressing keyword as «Featured image»
 And Publish, now the tooltip expressing this keyword appears anywhere on your site content.
 = How to create a glossary page of my keywords list ? =

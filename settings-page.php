@@ -84,6 +84,15 @@ add_action( 'admin_init',function () {
 		'concern_section'					
 	);
 
+	// Define the hide title settings field
+	add_settings_field( 
+		'bt_kw_hide_title', 					
+		__('Tooltip title','bluet-kw'), 			
+		'bt_kw_hide_title_display', 		
+		'my_keywords_settings',				
+		'concern_section'					
+	);
+	
 	// Define the settings field for tooltip font color
 	add_settings_field( 
 		'bt_kw_tt_colour', 					// The ID (or the name) of the field
@@ -94,19 +103,19 @@ add_action( 'admin_init',function () {
 	);
 	
 	add_settings_field( 
-		'bt_kw_desc_colour', 					// The ID (or the name) of the field
-		__('Description tooltip style','bluet-kw'), 			// The text used to label the field
-		'bt_kw_desc_colour_display', 		// The callback function used to render the field
-		'my_keywords_style',				// The page on which we'll be rendering this field
-		'style_section'					// The section to which we're adding the setting
+		'bt_kw_desc_colour', 					
+		__('Description tooltip style','bluet-kw'), 			
+		'bt_kw_desc_colour_display', 		
+		'my_keywords_style',				
+		'style_section'					
 	);
 
 	add_settings_field( 
-		'bt_kw_desc_font_size', 					// The ID (or the name) of the field
-		__('Description tooltip Font size','bluet-kw'), 			// The text used to label the field
-		'bt_kw_desc_font_size_display', 		// The callback function used to render the field
-		'my_keywords_style',				// The page on which we'll be rendering this field
-		'style_section'					// The section to which we're adding the setting
+		'bt_kw_desc_font_size', 					
+		__('Description tooltip Font size','bluet-kw'), 			
+		'bt_kw_desc_font_size_display', 		
+		'my_keywords_style',				
+		'style_section'					
 	);
 
 	add_settings_field( 
@@ -208,6 +217,13 @@ function bt_kw_match_all_display(){
 
  }
 
+ function bt_kw_hide_title_display(){
+	$options = get_option( 'bluet_kw_settings' );
+?>
+	<input type="checkbox" 	id="bt_kw_hide_title_id" 	name="bluet_kw_settings[bt_kw_hide_title]" <?php if($options['bt_kw_hide_title']) echo 'checked'; ?>/><?php _e('Hide the tooltips title','bluet-kw'); ?><br>
+<?php
+	 
+ }
 /************************/
 function bluet_kw_render_settings_page() {
 	?>
@@ -245,7 +261,7 @@ function bluet_kw_render_settings_page() {
 				
 			//the tooltip display
 				//tooltip content vars
-				$test_name='bluet Keywords ToolTip Generator : ';
+				$test_name='bluet Keywords ToolTip Generator';
 				$test_dfn= __('this plugin allows you easely create tooltips for your technical keywords in order to explain them for your site visitors making surfing more comfortable.','bluet-kw')
 							.'<br>'
 							.__('Click','bluet-kw')

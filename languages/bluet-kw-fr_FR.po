@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translate Bluet KW\n"
-"POT-Creation-Date: 2015-02-26 00:11+0100\n"
-"PO-Revision-Date: 2015-02-26 00:14+0100\n"
+"POT-Creation-Date: 2015-03-01 02:33+0100\n"
+"PO-Revision-Date: 2015-03-01 02:37+0100\n"
 "Last-Translator: Jamel Zarga <jamel.zarga@gmail.com>\n"
 "Language-Team: leBleut\n"
 "MIME-Version: 1.0\n"
@@ -14,6 +14,14 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: ..\\..\\Bluet_kttg_pro_prefix_addon\n"
 "X-Poedit-SearchPath-2: ..\\..\\Bluet_kttg_pro_addon\n"
+
+#: ../glossary-shortcode.php:11
+msgid "ALL"
+msgstr "TOUT"
+
+#: ../glossary-shortcode.php:95
+msgid "Sorry, no posts matched your criteria."
+msgstr "Prdon, pas de mots-clés trouvés"
 
 #: ../importer.php:6
 msgid "KeyWords Tooltip Generator Converter"
@@ -176,94 +184,102 @@ msgid "Match once or all occurrences"
 msgstr "Appliquer sur un/tous les mots clés dans l'article"
 
 #: ../settings-page.php:90
+msgid "Tooltip title"
+msgstr "Titre du tooltip"
+
+#: ../settings-page.php:99
 msgid "Keyword style"
 msgstr "Style du Mot Clé"
 
-#: ../settings-page.php:98
+#: ../settings-page.php:107
 msgid "Description tooltip style"
 msgstr "Style de la description de l'infobulle"
 
-#: ../settings-page.php:106
+#: ../settings-page.php:115
 msgid "Description tooltip Font size"
 msgstr "Taille de police de l'infobulle"
 
-#: ../settings-page.php:114
+#: ../settings-page.php:123
 msgid "Activate tooltips for images ?"
 msgstr "Activer les tooltips pour les images ?"
 
-#: ../settings-page.php:139 ../settings-page.php:221
+#: ../settings-page.php:148 ../settings-page.php:237
 msgid "KeyWords Settings"
 msgstr "Réglages des Mots Clés"
 
-#: ../settings-page.php:140 ../settings-page.php:226
+#: ../settings-page.php:149 ../settings-page.php:242
 msgid "Settings"
 msgstr "Réglages"
 
-#: ../settings-page.php:158
+#: ../settings-page.php:167
 msgid "alt property of the images will be displayed as a tooltip"
 msgstr "La propriété 'alt' des images sera affiché comme tooltip"
 
-#: ../settings-page.php:171
+#: ../settings-page.php:180
 msgid "Description Background Colour"
 msgstr "Couleur de l'arrière-plan de l'infobulle"
 
-#: ../settings-page.php:173
+#: ../settings-page.php:182
 msgid "Description font Colour"
 msgstr "Couleur du texte de l'infobulle"
 
-#: ../settings-page.php:182
+#: ../settings-page.php:191
 msgid "Background Colour"
 msgstr "Couleur de l'arrière-plan"
 
-#: ../settings-page.php:182
+#: ../settings-page.php:191
 msgid "No background (Dotted style)"
 msgstr "Pas de surbrillance (style pointillé)"
 
-#: ../settings-page.php:183
+#: ../settings-page.php:192
 msgid "Font Colour"
 msgstr "Couleur du texte"
 
-#: ../settings-page.php:189
+#: ../settings-page.php:198
 msgid "Choose either Posts or/and Pages in concern"
 msgstr "Choisir Articles et/ou Pages en sujet"
 
-#: ../settings-page.php:192
+#: ../settings-page.php:201
 msgid "Make your own style."
 msgstr "Faites votre propre style."
 
-#: ../settings-page.php:197
+#: ../settings-page.php:206
 msgid "Posts"
 msgstr "Articles"
 
-#: ../settings-page.php:198
+#: ../settings-page.php:207
 msgid "Pages"
 msgstr ""
 
-#: ../settings-page.php:206
+#: ../settings-page.php:215
 msgid "Match all occurrences"
 msgstr "Appliquer sur tous les occurences"
 
-#: ../settings-page.php:225
+#: ../settings-page.php:223
+msgid "Hide the tooltips title"
+msgstr "Cacher le titre de l'infobulle"
+
+#: ../settings-page.php:241
 msgid "Style"
 msgstr ""
 
-#: ../settings-page.php:227 ../settings-page.php:280
+#: ../settings-page.php:243 ../settings-page.php:296
 msgid "Excluded posts"
 msgstr "Articles exclues"
 
-#: ../settings-page.php:228
+#: ../settings-page.php:244
 msgid "Help ?"
 msgstr "Aide ?"
 
-#: ../settings-page.php:229
+#: ../settings-page.php:245
 msgid "Premium Add-Ons"
 msgstr ""
 
-#: ../settings-page.php:230
+#: ../settings-page.php:246
 msgid "Donate"
 msgstr "Faire un don"
 
-#: ../settings-page.php:249
+#: ../settings-page.php:265
 msgid ""
 "this plugin allows you easely create tooltips for your technical keywords in "
 "order to explain them for your site visitors making surfing more comfortable."
@@ -272,43 +288,43 @@ msgstr ""
 "Clés techniques dans le but de les expliquer davantage pour les visiteur de "
 "votre site."
 
-#: ../settings-page.php:251
+#: ../settings-page.php:267
 msgid "Click"
 msgstr "Cliquez"
 
-#: ../settings-page.php:253
+#: ../settings-page.php:269
 msgid "Here"
 msgstr "-- ICI --"
 
-#: ../settings-page.php:255
+#: ../settings-page.php:271
 msgid "to rate our plugin if you appreciate it"
 msgstr "pour donner une note à notre plugin si vous l'appreciez"
 
-#: ../settings-page.php:268
+#: ../settings-page.php:284
 msgid "Preview"
 msgstr "Aperçu"
 
-#: ../settings-page.php:269
+#: ../settings-page.php:285
 msgid "Pass your mouse over the word"
 msgstr "Faite passer le pointeur sur le mot"
 
-#: ../settings-page.php:270
+#: ../settings-page.php:286
 msgid "to test the tooltip layout."
 msgstr "pour tester l'apparence de l'infobulle"
 
-#: ../settings-page.php:281
+#: ../settings-page.php:297
 msgid "Posts which are excluded from being matched"
 msgstr "Articles ou pages exclues d'être traités"
 
-#: ../settings-page.php:287
+#: ../settings-page.php:303
 msgid "No posts or pages are excluded"
 msgstr "Aucun article ou page sont exclues"
 
-#: ../settings-page.php:306 ..\..\Bluet_kttg_pro_addon/settings-page.php:82
+#: ../settings-page.php:322 ..\..\Bluet_kttg_pro_addon/settings-page.php:82
 msgid "Save Settings"
 msgstr "Sauvegarder les réglages"
 
-#: ../widget.php:96
+#: ../widget.php:98
 msgid "no terms found for this post"
 msgstr "Pas de mot clés trouvé pour cet article"
 

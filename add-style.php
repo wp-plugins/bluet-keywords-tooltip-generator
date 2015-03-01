@@ -84,10 +84,11 @@ function bluet_kw_custom_style(){
 		border-radius: inherit;
 		width:100%;
 		height: auto;
+		margin-bottom: 0px;
 	}
 	
 	.bluet_text_content{
-		padding:3px 10px 6px 10px;		
+		padding:6px 10px 6px 10px;		
 	}
 	.bluet_block_to_show:after {
 	  content: '';
@@ -117,16 +118,24 @@ function bluet_kw_custom_style(){
 		text-decoration: none;
 		padding: 3px;
 		background-color: beige;
-		font-weight: bold;
 		border-radius: 3px;
 	}
 	
-	span.bluet_glossary_all a {
+	.bluet_glossary_all a {
 		text-decoration: none;
 		padding: 3px;
 		background-color: bisque;
 		font-weight: bold;
 		border-radius: 3px;
+	}
+	.bluet_glossary_letter_count {
+		vertical-align: super;
+		font-size: 70%;
+		color: crimson;
+		padding-left: 2px;
+	}
+	.bluet_glossary_found_letter{
+		font-weight: bold;
 	}
 	</style>
 	<?php

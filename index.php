@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.4.7
+Version: 2.4.8
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -39,7 +39,7 @@ add_action('init',function(){
 	//instenciate the post type
 		new bluet_keyword();
 });
-	
+
 	//call add filter for all hooks in need
 	//you can pass cutom hooks you've done
 	//(### do something here to support custom fields)
@@ -53,6 +53,8 @@ add_action('wp_head',function(){
 			$contents_to_filter[]=$val;
 		}
 	}
+
+
 	bluet_kttg_filter_any_content($contents_to_filter);
 }); //'other content hook' if needed
 
@@ -80,15 +82,18 @@ function bluet_kw_load_scripts_front() {
 
 function bluet_kw_activation(){
 	$style_options=array();
+	
 	//initialise style option if bluet_kw_style is empty
 	$style_options=array(
-		'bt_kw_tt_color'=>'#fff',
-		'bt_kw_tt_bg_color'=>'#ad7154',
+		'bt_kw_tt_color'=>'#dd3333',
+		'bt_kw_tt_bg_color'=>'#67d3b3',
 		
 		'bt_kw_desc_color'=>'#fff',
-		'bt_kw_desc_bg_color'=>'#c0a599',
+		'bt_kw_desc_bg_color'=>'#5eaa0d',
 		
-		'bt_kw_desc_font_size'=>'17'
+		'bt_kw_desc_font_size'=>'17',
+		
+		'bt_kw_on_background' =>'on'
 	);
 	
 	if(!get_option('bluet_kw_style')){
@@ -108,7 +113,8 @@ function bluet_kw_activation(){
 }
 
 function bluet_kttg_filter_any_content($subject_hooks){
-
+	/////////////////////////////
+	
 	foreach($subject_hooks as $hook){
 		add_filter($hook,function($cont){
 			
@@ -128,7 +134,7 @@ function bluet_kttg_filter_any_content($subject_hooks){
 				$filter_this_custom_post_type=false;				
 			}
 			
-			if(
+			if( 
 				(is_single() and (((get_post_type(get_the_id())=='post') and $settings['bt_kw_for_posts'])
 									or ((get_post_type(get_the_id())!='post') and $filter_this_custom_post_type))
 				)
@@ -271,8 +277,10 @@ function bluet_kttg_filter_any_content($subject_hooks){
 							$html_to_replace='<span class="bluet_tooltip" data-tooltip="'.$arr["kw_id"].'">$2</span>';
 							
 							$term_and_syns_array=explode('|',$term);
-							
-							$html_tooltips_to_add.=bluet_kttg_tooltip_layout($term_and_syns_array[0],$dfn,$img,$arr["kw_id"]);
+
+							$kttg_term_title=$term_and_syns_array[0];
+
+							$html_tooltips_to_add.=bluet_kttg_tooltip_layout($kttg_term_title,$dfn,$img,$arr["kw_id"]);
 							
 							//verify if case sensitive
 							if($arr['case']){
