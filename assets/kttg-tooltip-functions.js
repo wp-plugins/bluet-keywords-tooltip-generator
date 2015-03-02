@@ -87,8 +87,8 @@ function bluet_placeTooltips(inlineClass,position){
 					//tooltipBlock.addClass("kttg_arrow_show_left");
 					break;
 				default:
-					tooltipBlock.offset({"top":xTop_show_top,"left":yLeft_show_center});
-					tooltipBlock.addClass("kttg_arrow_show_top");
+					tooltipBlock.offset({"top":xTop_show_bottom,"left":yLeft_show_center});
+					tooltipBlock.addClass("kttg_arrow_show_bottom");
 					break;
 			}
 
