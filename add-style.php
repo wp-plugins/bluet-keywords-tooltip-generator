@@ -55,7 +55,7 @@ function bluet_kw_custom_style(){
 		display:none;	
 		max-width:300px;
 		z-index:9999;
-		padding-top:10px;
+		padding:10px;
 		
 		position: absolute;
 		height: auto;
@@ -93,15 +93,32 @@ function bluet_kw_custom_style(){
 	.bluet_block_to_show:after {
 	  content: '';
 	  position: absolute;
-	  bottom: 100%;
 	  left: 50%;
-	  top:3px;
 	  margin-left: -8px;
 	  width: 0;
 	  height: 0;
-	  border-bottom: 7px solid <?php echo $desc_bg_color; ?>;
 	  border-right: 8px solid transparent;
 	  border-left: 8px solid transparent;
+	}
+	
+	.kttg_arrow_show_bottom:after{
+		top:3px;
+		border-bottom: 7px solid <?php echo $desc_bg_color; ?>;
+	}
+	
+	.kttg_arrow_show_top:after{
+		bottom: 5px;
+		border-top: 7px solid <?php echo $desc_bg_color; ?>;
+	}
+	
+	.kttg_arrow_show_right:after{
+		bottom: 5px;
+		border-top: 7px solid <?php echo $desc_bg_color; ?>;
+	}
+	
+	.kttg_arrow_show_left:after{
+		bottom: 5px;
+		border-top: 7px solid <?php echo $desc_bg_color; ?>;
 	}
 	
 	.bluet-hide-excluded{

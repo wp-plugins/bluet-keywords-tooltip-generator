@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.4.8
+Version: 2.4.9
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -40,6 +40,21 @@ add_action('init',function(){
 		new bluet_keyword();
 });
 
+add_action('wp_footer','bluet_kttg_place_tooltips');
+add_action('admin_footer','bluet_kttg_place_tooltips');
+
+function bluet_kttg_place_tooltips(){
+	$kttg_sttings_options=get_option('bluet_kw_settings');
+	$kttg_tooltip_position=$kttg_sttings_options["bt_kw_position"];
+	?>
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			bluet_placeTooltips(".bluet_tooltip, .bluet_img_tooltip","<?php echo($kttg_tooltip_position); ?>");	 
+			moveTooltipElementsTop(".bluet_block_to_show");
+		})
+	</script>
+	<?php
+}
 	//call add filter for all hooks in need
 	//you can pass cutom hooks you've done
 	//(### do something here to support custom fields)
@@ -71,7 +86,7 @@ add_action('trashed_post','bluet_kttg_regenerate_keywords');
 /* enqueue js functions for the front side*/
 function bluet_kw_load_scripts_front() {
 	//
-	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip.js',__FILE__), array(), false, true );
+	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functions.js',__FILE__), array(), false, true );
 		
 	$opt_tmp=get_option('bluet_kw_style');
 	if($opt_tmp['bt_kw_alt_img']=='on'){
@@ -100,15 +115,16 @@ function bluet_kw_activation(){
 		add_option('bluet_kw_style',$style_options);
 	}
 	
-	$consern_options=array();
+	$settings_options=array();
 	//initialise settings option if empty
-	$consern_options=array(
+	$settings_options=array(
 		'bt_kw_for_posts'=>'on',
-		'bt_kw_match_all'=>'on'
+		'bt_kw_match_all'=>'on',
+		'bt_kw_position'=>'bottom'		
 	);
 	
 	if(!get_option('bluet_kw_settings')){
-		add_option('bluet_kw_settings',$consern_options);
+		add_option('bluet_kw_settings',$settings_options);
 	}
 }
 

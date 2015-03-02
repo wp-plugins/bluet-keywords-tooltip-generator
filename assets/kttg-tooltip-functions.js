@@ -1,9 +1,3 @@
-jQuery(document).ready(function(){
-	bluet_placeTooltips(".bluet_tooltip, .bluet_img_tooltip");	 
-	
-	moveTooltipElementsTop(".bluet_block_to_show");
-})
-
 function moveTooltipElementsTop(className){
 //this function moves les tooltip elements after the tag BODY
 		jQuery("body").prepend("<div id='tooltip_blocks_to_show'></div>");
@@ -39,36 +33,69 @@ function moveTooltipElementsTop(className){
 }
 
 
-function bluet_placeTooltips(inlineClass){
-	//add listeners to inline keywords
+function bluet_placeTooltips(inlineClass,position){
+	//add listeners to inline keywords on mouseover
 	jQuery(inlineClass).mouseover(function(){
 		//id of the posttype in concern
-		
+
 		id_post_type=jQuery(this).data("tooltip");
 		var tooltipBlock=jQuery("#tooltip_blocks_to_show").children("[data-tooltip="+id_post_type+"]").first();
 	  
 		if(tooltipBlock){
 
 			//Calculate the new Position
-			var xTop=(jQuery(this).offset().top+jQuery(this).outerHeight(true));
-			var yLeft=(jQuery(this).offset().left+(jQuery(this).outerWidth(false)/2)-tooltipBlock.outerWidth(true)/2);
+			
+			//vertical offsets
+			var xTop_show_middle=jQuery(this).offset().top+jQuery(this).outerHeight(true)-tooltipBlock.outerHeight(true)/2;	
+			
+			var xTop_show_bottom=(jQuery(this).offset().top+jQuery(this).outerHeight(true));			
+			var xTop_show_top=jQuery(this).offset().top-tooltipBlock.outerHeight(true);
+			
+			//horizontal offsets
+			var yLeft_show_center=jQuery(this).offset().left+(jQuery(this).outerWidth(false)/2)-tooltipBlock.outerWidth(true)/2;
+			
+			var yLeft_show_left=jQuery(this).offset().left-tooltipBlock.outerWidth(true);			
+			var yLeft_show_right=jQuery(this).offset().left+jQuery(this).outerWidth(true);
 			
 			//to prevent to be before the left side of the doc
-			if(yLeft<0){
-				yLeft=0;
+			if(yLeft_show_center<0){
+				yLeft_show_center=0;
 			}
 			
 			//to prevent to be before the right side of the doc
-			if( jQuery(document).outerWidth() < (yLeft+tooltipBlock.outerWidth(true)) ){
-				yLeft=yLeft-(yLeft+tooltipBlock.outerWidth(true)-jQuery(document).outerWidth())
+			if( jQuery(document).outerWidth() < (yLeft_show_center+tooltipBlock.outerWidth(true)) ){
+				yLeft_show_center=yLeft_show_center-(yLeft_show_center+tooltipBlock.outerWidth(true)-jQuery(document).outerWidth())
 			}
 	
 			tooltipBlock.show();
-			tooltipBlock.offset({"top":xTop,"left":yLeft});
+
+			switch(position) {
+				case "top":					
+					tooltipBlock.offset({"top":xTop_show_top,"left":yLeft_show_center});
+					tooltipBlock.addClass("kttg_arrow_show_top");
+					break;
+				case "bottom":					
+					tooltipBlock.offset({"top":xTop_show_bottom,"left":yLeft_show_center});
+					tooltipBlock.addClass("kttg_arrow_show_bottom");
+					break;
+				case "right":
+					tooltipBlock.offset({"top":xTop_show_middle,"left":yLeft_show_right});
+					//tooltipBlock.addClass("kttg_arrow_show_right");
+					break;
+				case "left":
+					tooltipBlock.offset({"top":xTop_show_middle,"left":yLeft_show_left});
+					//tooltipBlock.addClass("kttg_arrow_show_left");
+					break;
+				default:
+					tooltipBlock.offset({"top":xTop_show_top,"left":yLeft_show_center});
+					tooltipBlock.addClass("kttg_arrow_show_top");
+					break;
+			}
 
 		}
-	});//end mouseenter
+	});
 	
+	//on mouseout
 	jQuery(inlineClass).mouseout(function(){
 		id_post_type=jQuery(this).data("tooltip");
 		var tooltipBlock=jQuery("#tooltip_blocks_to_show").children("[data-tooltip="+id_post_type+"]").first();

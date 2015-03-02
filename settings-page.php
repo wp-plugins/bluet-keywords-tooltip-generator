@@ -15,7 +15,7 @@ function bluet_kw_load_scripts() {
 	wp_enqueue_script( 'kttg-settings-functions-script', plugins_url('assets/settings-functions.js',__FILE__), array(), false, true );
 	
 	//
-	wp_enqueue_script( 'kttg-admin-tooltips-functions-script', plugins_url('assets/kttg-tooltip.js',__FILE__), array(), false, true );
+	wp_enqueue_script( 'kttg-admin-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functions.js',__FILE__), array(), false, true );
 }
 add_action( 'admin_head', 'bluet_kw_load_scripts' );
 
@@ -89,6 +89,15 @@ add_action( 'admin_init',function () {
 		'bt_kw_hide_title', 					
 		__('Tooltip title','bluet-kw'), 			
 		'bt_kw_hide_title_display', 		
+		'my_keywords_settings',				
+		'concern_section'					
+	);
+	
+	// Define the position settings field
+	add_settings_field( 
+		'bt_kw_position', 					
+		__('Tooltip position','bluet-kw'), 			
+		'bt_kw_position_display', 		
 		'my_keywords_settings',				
 		'concern_section'					
 	);
@@ -217,10 +226,21 @@ function bt_kw_match_all_display(){
 
  }
 
- function bt_kw_hide_title_display(){
+function bt_kw_hide_title_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
 	<input type="checkbox" 	id="bt_kw_hide_title_id" 	name="bluet_kw_settings[bt_kw_hide_title]" <?php if($options['bt_kw_hide_title']) echo 'checked'; ?>/><?php _e('Hide the tooltips title','bluet-kw'); ?><br>
+<?php
+	 
+}
+
+function bt_kw_position_display(){
+	$options = get_option( 'bluet_kw_settings' );
+?>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="top" <?php if($options['bt_kw_position']=="top") echo 'checked'; ?>/><?php _e('Top','bluet-kw'); ?><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="bottom" <?php if($options['bt_kw_position']=="bottom") echo 'checked'; ?>/><?php _e('Bottom','bluet-kw'); ?><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="right" <?php if($options['bt_kw_position']=="right") echo 'checked'; ?>/><?php _e('Right','bluet-kw'); ?><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="left" <?php if($options['bt_kw_position']=="left") echo 'checked'; ?>/><?php _e('Left','bluet-kw'); ?><br>
 <?php
 	 
  }
@@ -261,8 +281,8 @@ function bluet_kw_render_settings_page() {
 				
 			//the tooltip display
 				//tooltip content vars
-				$test_name='bluet Keywords ToolTip Generator';
-				$test_dfn= __('this plugin allows you easely create tooltips for your technical keywords in order to explain them for your site visitors making surfing more comfortable.','bluet-kw')
+				$test_name='Keywords ToolTip Generator';
+				$test_dfn= __('this plugin allows you easely create tooltips for your technical keywords.','bluet-kw')
 							.'<br>'
 							.__('Click','bluet-kw')
 							.'<a target="_blank" href="http://wordpress.org/support/view/plugin-reviews/bluet-keywords-tooltip-generator">'
@@ -278,16 +298,18 @@ function bluet_kw_render_settings_page() {
 				echo(bluet_kttg_tooltip_layout($test_name,$test_dfn,$test_img,$test_id));
 				echo('</div>');
 				
+				echo('<div id="tooltip_settings_sections">');
+					do_settings_sections( 'my_keywords_style' );	
+				echo('</div>');
 				?>	
 							
-					<div id="bluet_kw_preview">
-						<h3><?php _e('Preview','bluet-kw'); ?> :</h3>
+					<div id="bluet_kw_preview" style="background-color: rgb(211, 211, 211);  width: 75%;  padding: 15px;  border-radius: 10px;">
+						<h3 style="margin-bottom: 12px;  margin-top: 0px;"><?php _e('Preview','bluet-kw'); ?> :</h3>
 						<?php _e('Pass your mouse over the word','bluet-kw'); ?>
 						<span class="bluet_tooltip" data-tooltip="111">KTTG</span> <?php _e('to test the tooltip layout.','bluet-kw'); ?>
 					</div>				
 				<?php
-				
-				do_settings_sections( 'my_keywords_style' );			
+						
 				echo('</div>');
 				
 				echo('<div class="bluet-section" id="bluet-section-excluded" >');

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translate Bluet KW\n"
-"POT-Creation-Date: 2015-03-01 02:33+0100\n"
-"PO-Revision-Date: 2015-03-01 02:37+0100\n"
+"POT-Creation-Date: 2015-03-02 20:18+0100\n"
+"PO-Revision-Date: 2015-03-02 20:19+0100\n"
 "Last-Translator: Jamel Zarga <jamel.zarga@gmail.com>\n"
 "Language-Team: leBleut\n"
 "MIME-Version: 1.0\n"
@@ -187,139 +187,157 @@ msgid "Tooltip title"
 msgstr "عنوان المصطلح"
 
 #: ../settings-page.php:99
+msgid "Tooltip position"
+msgstr "مكان المصطلح"
+
+#: ../settings-page.php:108
 msgid "Keyword style"
 msgstr "هيأة المصطلح"
 
-#: ../settings-page.php:107
+#: ../settings-page.php:116
 msgid "Description tooltip style"
 msgstr "هيأة التولتب"
 
-#: ../settings-page.php:115
+#: ../settings-page.php:124
 msgid "Description tooltip Font size"
 msgstr "حجم الخط في التولتب"
 
-#: ../settings-page.php:123
+#: ../settings-page.php:132
 msgid "Activate tooltips for images ?"
 msgstr "تفعيل التولتب للصور"
 
-#: ../settings-page.php:148 ../settings-page.php:237
+#: ../settings-page.php:157 ../settings-page.php:257
 msgid "KeyWords Settings"
 msgstr "اعدادات المصطلحات"
 
-#: ../settings-page.php:149 ../settings-page.php:242
+#: ../settings-page.php:158 ../settings-page.php:262
 msgid "Settings"
 msgstr "الاعدادات"
 
-#: ../settings-page.php:167
+#: ../settings-page.php:176
 msgid "alt property of the images will be displayed as a tooltip"
 msgstr "سوف يتم عرض معطى 'alt' للصور في التولتب"
 
-#: ../settings-page.php:180
+#: ../settings-page.php:189
 msgid "Description Background Colour"
 msgstr "لون خلفية التولتب"
 
-#: ../settings-page.php:182
+#: ../settings-page.php:191
 msgid "Description font Colour"
 msgstr "لون الخط في التولتب"
 
-#: ../settings-page.php:191
+#: ../settings-page.php:200
 msgid "Background Colour"
 msgstr "لون الخلفية"
 
-#: ../settings-page.php:191
+#: ../settings-page.php:200
 msgid "No background (Dotted style)"
 msgstr "بدون خلفية (Dotted style)"
 
-#: ../settings-page.php:192
+#: ../settings-page.php:201
 msgid "Font Colour"
 msgstr "لون النص"
 
-#: ../settings-page.php:198
+#: ../settings-page.php:207
 msgid "Choose either Posts or/and Pages in concern"
 msgstr "اختر ان كنت تريد التطبيق على المقالات و/أو الصفحات"
 
-#: ../settings-page.php:201
+#: ../settings-page.php:210
 msgid "Make your own style."
 msgstr "اختر الهيأة التي تناسب الموقع"
 
-#: ../settings-page.php:206
+#: ../settings-page.php:215
 msgid "Posts"
 msgstr "مقالات"
 
-#: ../settings-page.php:207
+#: ../settings-page.php:216
 msgid "Pages"
 msgstr "صفحات"
 
-#: ../settings-page.php:215
+#: ../settings-page.php:224
 msgid "Match all occurrences"
 msgstr "طبق على الكل"
 
-#: ../settings-page.php:223
+#: ../settings-page.php:232
 msgid "Hide the tooltips title"
 msgstr "اخفاء العنوان"
 
+#: ../settings-page.php:240
+msgid "Top"
+msgstr "فوق"
+
 #: ../settings-page.php:241
+msgid "Bottom"
+msgstr "تحت"
+
+#: ../settings-page.php:242
+msgid "Right"
+msgstr "يمين"
+
+#: ../settings-page.php:243
+msgid "Left"
+msgstr "يسار"
+
+#: ../settings-page.php:261
 msgid "Style"
 msgstr "الشكل"
 
-#: ../settings-page.php:243 ../settings-page.php:296
+#: ../settings-page.php:263 ../settings-page.php:318
 msgid "Excluded posts"
 msgstr "المقالات التي تم استبعادها"
 
-#: ../settings-page.php:244
+#: ../settings-page.php:264
 msgid "Help ?"
 msgstr "مساعدة"
 
-#: ../settings-page.php:245
+#: ../settings-page.php:265
 msgid "Premium Add-Ons"
 msgstr "اضافات (add-ons)"
 
-#: ../settings-page.php:246
+#: ../settings-page.php:266
 msgid "Donate"
 msgstr "تبرع"
 
-#: ../settings-page.php:265
+#: ../settings-page.php:285
 msgid ""
-"this plugin allows you easely create tooltips for your technical keywords in "
-"order to explain them for your site visitors making surfing more comfortable."
+"this plugin allows you easely create tooltips for your technical keywords."
 msgstr ""
 "هذا البرنامج \"البلوغن\" يمكنك بسهولة من خلق نوافذ مساعدة \"أو تولتب\" على "
-"الكلمات الفنية ذات من أجل توضيح معنى الكلمة أو المصطلح للزائر في موقع الويب "
-"الخاص بك."
+"الكلمات الفنية ذات ."
 
-#: ../settings-page.php:267
+#: ../settings-page.php:287
 msgid "Click"
 msgstr "أنقر"
 
-#: ../settings-page.php:269
+#: ../settings-page.php:289
 msgid "Here"
 msgstr "-- هنا --"
 
-#: ../settings-page.php:271
+#: ../settings-page.php:291
 msgid "to rate our plugin if you appreciate it"
 msgstr "لتقيم البرنامج اذا حاز علا اعجابك"
 
-#: ../settings-page.php:284
+#: ../settings-page.php:307
 msgid "Preview"
 msgstr "مثال"
 
-#: ../settings-page.php:285
+#: ../settings-page.php:308
 msgid "Pass your mouse over the word"
 msgstr "قم بتمرير مأشر الفأرة فوق المصطلح"
 
-#: ../settings-page.php:286
+#: ../settings-page.php:309
 msgid "to test the tooltip layout."
 msgstr "لاختبال مظهر التولتب"
 
-#: ../settings-page.php:297
+#: ../settings-page.php:319
 msgid "Posts which are excluded from being matched"
 msgstr "المقالات أو الصفحات المستبعدة من المعالجة بالمصطلحات"
 
-#: ../settings-page.php:303
+#: ../settings-page.php:325
 msgid "No posts or pages are excluded"
 msgstr "لم يتم استبعاد أي مقال أو صفحة"
 
-#: ../settings-page.php:322 ..\..\Bluet_kttg_pro_addon/settings-page.php:82
+#: ../settings-page.php:344 ..\..\Bluet_kttg_pro_addon/settings-page.php:82
 msgid "Save Settings"
 msgstr "حفض الاعدادات"
 

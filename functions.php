@@ -48,8 +48,7 @@ function is_i_devise(){
     $os_array       =   array(
                             '/iphone/i',
                             '/ipod/i',
-                            '/ipad/i',
-							'/Mac OS/i'
+                            '/ipad/i'
                         );
 
     foreach ($os_array as $regex) {

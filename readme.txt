@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltips, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link
 Requires at least: 3.8
 Tested up to: 4.1.1
-Stable tag: 2.4.8
+Stable tag: 2.4.9
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
@@ -26,7 +26,8 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * [Buy Now](http://www.blueskills.net/product/kttg-images-add-on)
 
 = New Features =
-* Hide tooltip title setting aded
+* Tooltip Positions setting provided (Top, Bottom, Right, Left) (v2.4.9)
+* Hide tooltip title setting added
 * Better Glossary layout with Pagination
 * Support case sensitive (as a metabox)
 
@@ -52,6 +53,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * Glossary support ShortCode [kttg_glossary]
 * Support case sensitive (as a metabox)
 * match all synonyms when check match once
+* Tooltip Positions setting provided (Top, Bottom, Right, Left)
 
 = Languages =
 
@@ -94,6 +96,10 @@ The plugin is available in these languages :
 1. Glossary ShortCode support [kttg_glossary]
 
 == Changelog ==
+
+= 2.4.9 =
+* Tooltip Positions setting provided (Top, Bottom, Right, Left)
+
 = 2.4.8 =
 * Hide tooltip title setting aded
 * Better Glossary layout with Pagination
@@ -227,6 +233,8 @@ Enter now  :
 And Publish, now the tooltip expressing this keyword appears anywhere on your site content.
 = How to create a glossary page of my keywords list ? =
 Edit page/article in which you want to add the glossary and add the shortcode [kttg_glossary] Finally Update article.
+= How to change the tooltip position ? =
+In the menu «My Keywords» choose the submenu «Settings» in the tab «Settings» select the position from «Tooltip position».
 = How to change the appearance of tooltips ? =
 In the menu «My Keywords» choose the submenu «Settings» and then select the tab «Style» here you can customize the appearance of your tooltips (colors, font size, highlight method ...) finally press the button «Save Settings»
 = Can I change the keywords highlighting mode ? =
