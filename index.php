@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.4.9
+Version: 2.4.9.5
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -134,6 +134,11 @@ function bluet_kttg_filter_any_content($subject_hooks){
 	foreach($subject_hooks as $hook){
 		add_filter($hook,function($cont){
 			
+		$bluet_kttg_show_glossary_link=get_option('bluet_kw_settings');
+		
+		$bluet_kttg_show_glossary_link=$bluet_kttg_show_glossary_link['bluet_kttg_show_glossary_link'];
+		$bluet_kttg_glossary_page=get_option('bluet_kttg_glossary_page');
+
 			$exclude_me = get_post_meta(get_the_id(),'bluet_exclude_post_from_matching',true);
 			//if the current post tells us to exclude from fetch
 			if($exclude_me) return $cont;
@@ -295,8 +300,15 @@ function bluet_kttg_filter_any_content($subject_hooks){
 							$term_and_syns_array=explode('|',$term);
 
 							$kttg_term_title=$term_and_syns_array[0];
-
-							$html_tooltips_to_add.=bluet_kttg_tooltip_layout($kttg_term_title,$dfn,$img,$arr["kw_id"]);
+						
+							$html_tooltips_to_add.=bluet_kttg_tooltip_layout(
+													$kttg_term_title 	//title
+													,$dfn				//content def
+													,$img				//image
+													,$arr["kw_id"]		//id
+													,$bluet_kttg_show_glossary_link	//show glossary link y/n
+													,$bluet_kttg_glossary_page		//glossary page permalink
+													);
 							
 							//verify if case sensitive
 							if($arr['case']){

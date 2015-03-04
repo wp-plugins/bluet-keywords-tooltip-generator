@@ -7,8 +7,18 @@ function bluet_kttg_glossary(){
 	 global $is_kttg_glossary_page;
 	 global $wpdb;
     $is_kttg_glossary_page=true;
-   
-   $ret='<p>* <span class="bluet_glossary_all"><a href="'.get_the_guid().'">'.__('ALL','bluet-kw').'</a></span> * ';
+	
+//Begin -- glossary permalink page option
+	if(!get_option('bluet_kttg_glossary_page')){
+		//attribute glossary page permalink
+		add_option('bluet_kttg_glossary_page',get_the_permalink());
+	}elseif(get_option('bluet_kttg_glossary_page')!=get_the_permalink()){
+		//update glossary page permalink if different
+		update_option('bluet_kttg_glossary_page',get_the_permalink());
+	}
+//End -- glossary permalink page option
+
+   $ret='<div class="kttg_glossary_header">* <span class="bluet_glossary_all"><a href="'.get_the_guid().'">'.__('ALL','bluet-kw').'</a></span> * ';
    $chara='A';
    for($i=0;$i<26;$i++){ 
    
@@ -24,14 +34,16 @@ function bluet_kttg_glossary(){
 		
 		if($kttg_posts_num==0){
 			$kttg_posts_num='';
+			$link_to_the_letter_page="";
 		}else{
 			$found_letter_class='bluet_glossary_found_letter';
+			$link_to_the_letter_page='href="'.get_the_guid().'&letter='.$chara.'"';
 		}
-       $ret.=' <span class="bluet_glossary_letter '.$found_letter_class.'"><a href="'.get_the_guid().'&letter='.$chara.'">'.$chara.'<span class="bluet_glossary_letter_count">'.$kttg_posts_num.'</span></a></span>';
+       $ret.=' <span class="bluet_glossary_letter '.$found_letter_class.'"><a '.$link_to_the_letter_page.'>'.$chara.'<span class="bluet_glossary_letter_count">'.$kttg_posts_num.'</span></a></span>';
        $chara++;
    }
    
-   $ret.='</p>';
+   $ret.='</div>';
    
    $postids=array();
    
@@ -68,7 +80,7 @@ function bluet_kttg_glossary(){
     ?>
 
     <?php if ( $the_query->have_posts() ) : 
-        $ret.='<ul>';
+        $ret.='<div class="kttg_glossary_content"><ul>';
 			while ( $the_query->have_posts() ) :
                 $the_query->the_post();
 
@@ -78,7 +90,7 @@ function bluet_kttg_glossary(){
                 }
                 
 			endwhile;
-        $ret.='</ul>';
+        $ret.='</ul></div>';
 	
     // next_posts_link() usage with max_num_pages
     $ret.=get_previous_posts_link( '<span style="">Prev --   </span>' );

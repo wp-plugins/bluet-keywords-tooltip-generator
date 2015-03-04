@@ -160,7 +160,7 @@ function bluet_kw_custom_style(){
 		width: 25px;
 		height: 25px;
 		position: absolute;
-		right: -13px;
+		right: -4px;
 		top: -2px;
 	}
 	</style>

@@ -102,6 +102,15 @@ add_action( 'admin_init',function () {
 		'concern_section'					
 	);
 	
+	// Define view glossary page field
+	add_settings_field( 
+		'bluet_kttg_show_glossary_link', 					
+		__('Glossary page','bluet-kw'), 			
+		'bt_kw_show_glossary_link_display', 		
+		'my_keywords_settings',				
+		'concern_section'					
+	);
+	
 	// Define the settings field for tooltip font color
 	add_settings_field( 
 		'bt_kw_tt_colour', 					// The ID (or the name) of the field
@@ -212,8 +221,10 @@ function bluet_kw_style_display(){
 function bt_kw_in_concern_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
-	<input type="checkbox" 	id="bt_kw_for_posts_id" 	name="bluet_kw_settings[bt_kw_for_posts]" <?php if($options['bt_kw_for_posts']) echo 'checked'; ?>/><?php _e('Posts','bluet-kw'); ?><br>
-	<input type="checkbox" 	id="bt_kw_for_pages_id" 	name="bluet_kw_settings[bt_kw_for_pages]" <?php if($options['bt_kw_for_pages']) echo 'checked'; ?>/><?php _e('Pages','bluet-kw'); ?>
+	<input type="checkbox" 	id="bt_kw_for_posts_id" 	name="bluet_kw_settings[bt_kw_for_posts]" <?php if($options['bt_kw_for_posts']) echo 'checked'; ?>/>
+		<label for="bt_kw_for_posts_id"><?php _e('Posts','bluet-kw'); ?></label><br>
+	<input type="checkbox" 	id="bt_kw_for_pages_id" 	name="bluet_kw_settings[bt_kw_for_pages]" <?php if($options['bt_kw_for_pages']) echo 'checked'; ?>/>
+		<label for="bt_kw_for_pages_id"><?php _e('Pages','bluet-kw'); ?></label>
 <?php
 
  }
@@ -221,7 +232,8 @@ function bt_kw_in_concern_display(){
 function bt_kw_match_all_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
-	<input type="checkbox" 	id="bt_kw_match_all_id" 	name="bluet_kw_settings[bt_kw_match_all]" <?php if($options['bt_kw_match_all']) echo 'checked'; ?>/><?php _e('Match all occurrences','bluet-kw'); ?><br>
+	<input type="checkbox" 	id="bt_kw_match_all_id" 	name="bluet_kw_settings[bt_kw_match_all]" <?php if($options['bt_kw_match_all']) echo 'checked'; ?>/>
+		<label for="bt_kw_match_all_id"><?php _e('Match all occurrences','bluet-kw'); ?></label><br>
 <?php
 
  }
@@ -229,7 +241,29 @@ function bt_kw_match_all_display(){
 function bt_kw_hide_title_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
-	<input type="checkbox" 	id="bt_kw_hide_title_id" 	name="bluet_kw_settings[bt_kw_hide_title]" <?php if($options['bt_kw_hide_title']) echo 'checked'; ?>/><?php _e('Hide the tooltips title','bluet-kw'); ?><br>
+	<input type="checkbox" 	id="bt_kw_hide_title_id" 	name="bluet_kw_settings[bt_kw_hide_title]" <?php if($options['bt_kw_hide_title']) echo 'checked'; ?>/>
+		<label for="bt_kw_hide_title_id"><?php _e('Hide the tooltips title','bluet-kw'); ?></label><br>
+<?php
+	 
+}
+
+function bt_kw_show_glossary_link_display(){
+	$options = get_option( 'bluet_kw_settings' );
+	$desable_if_noglossary=null;
+	
+	if(!get_option('bluet_kttg_glossary_page')){
+		$desable_if_noglossary="disabled";
+	}
+?>
+	<input type="checkbox" 	id="bt_kw_show_glossary_link_id" 	name="bluet_kw_settings[bluet_kttg_show_glossary_link]" <?php if($options['bluet_kttg_show_glossary_link']) echo 'checked'; ?> <?php echo $desable_if_noglossary ?>/>
+		<label for="bt_kw_show_glossary_link_id"><?php _e('Add glossary page link in the tooltip footer','bluet-kw'); ?></label><br>
+		<?php
+		if($desable_if_noglossary){
+			?>
+			<div style="color:red;"><?php _e('This checkbox will be active after creating a glossary page.','bluet-kw')?></div>
+			<?php
+		}
+		?>
 <?php
 	 
 }

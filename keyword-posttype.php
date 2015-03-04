@@ -38,7 +38,7 @@ class bluet_keyword{
 				),
 			'public'=>true,
 			'supports'=>array('title','editor','thumbnail'),
-			'menu_icon'=>plugins_url('assets/ico_16x16.png',__FILE__),	
+			'menu_icon'=>plugins_url('assets/ico_16x16.png',__FILE__),
 			
 		);
 		
@@ -53,8 +53,7 @@ class bluet_keyword{
 				'delete_post' => $bluet_kw_capability,
 			);
 			
-		}
-		
+		}		
 	
 		register_post_type('my_keywords',$args);		
 	}

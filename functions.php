@@ -2,8 +2,8 @@
 defined('ABSPATH') or die("No script kiddies please!");
 
 //common functions
-
-function bluet_kttg_tooltip_layout($term_title,$dfn,$img,$id){
+function bluet_kttg_tooltip_layout($term_title,$dfn,$img,$id,$bluet_kttg_show_glossary_link = null,$bluet_kttg_glossary_page = null){
+	global $is_kttg_glossary_page;
 //generates the HTML code of the tooltip model
 
 $kttg_title_layout='';
@@ -20,16 +20,24 @@ $kttg_title_layout='';
 		//dont make additional spaces inside this html tag 
 		$kttg_title_layout='<span class="bluet_title_on_block">'.$term_title.'</span>';
 	}
-
+	
+	$kttg_footer='';
+	if(!$is_kttg_glossary_page and $bluet_kttg_show_glossary_link=="on" and $bluet_kttg_glossary_page!=""){
+		//add a note at the footer of the tooltip	
+		$kttg_footer=$bluet_kttg_glossary_page;
+		$kttg_footer='<a href="'.$kttg_footer.'">'.__('View glossary','bluet-kw').'</a>';
+	}
+	
 		$layout_ret='<span class="bluet_block_to_show" data-tooltip="'.$id.'">'
-					.'<img src="'.plugin_dir_url(__FILE__).'assets/close.png" class="bluet_hide_tooltip_button" style="display:'.$button_prop.';"/>'
-					.'<div class="bluet_block_container">'
-						.'<div class="bluet_img_in_tooltip">'.$img.'</div>'
-						.'<div class="bluet_text_content">'
-							.$kttg_title_layout
-							.wpautop($dfn)
+						.'<img src="'.plugin_dir_url(__FILE__).'assets/close.png" class="bluet_hide_tooltip_button" style="display:'.$button_prop.';"/>'
+						.'<div class="bluet_block_container">'
+							.'<div class="bluet_img_in_tooltip">'.$img.'</div>'
+							.'<div class="bluet_text_content">'
+								.$kttg_title_layout
+								.wpautop($dfn)
+							.'</div>'
+							.'<div class="bluet_block_footer">'.$kttg_footer.'</div>'
 						.'</div>'
-					.'</div>'
 				.'</span>';
 				
 	return $layout_ret;
