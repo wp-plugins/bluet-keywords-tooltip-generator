@@ -2,6 +2,22 @@
 defined('ABSPATH') or die("No script kiddies please!");
 
 function bluet_kw_custom_style(){
+	
+	if(function_exists('bluet_kttg_pro_addon')){//if pro addon activated
+	
+		$adv_options=get_option('bluet_kw_advanced');
+		$apply_custom_style_sheet=$adv_options['bt_kw_adv_style']['apply_custom_style_sheet'];
+		
+		/*
+			If apply custom sheet is activated so don't load this style file
+			
+		*/
+		if($apply_custom_style_sheet){
+			return false;
+		}
+		
+	}
+	
 	$style_options=get_option('bluet_kw_style');
 	
 	$tooltip_color=$style_options['bt_kw_tt_color'];

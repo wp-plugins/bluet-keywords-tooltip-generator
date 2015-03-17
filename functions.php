@@ -13,7 +13,7 @@ $kttg_title_layout='';
 	$kttg_hide_title_setting=$kttg_tmp_title_setting['bt_kw_hide_title'];
 	$button_prop='none';
 	
-	if(is_i_devise()){
+	if(is_i_device()){
 		$button_prop='block';
 	}
 	if($kttg_hide_title_setting!='on'){
@@ -22,10 +22,10 @@ $kttg_title_layout='';
 	}
 	
 	$kttg_footer='';
+	
 	if(!$is_kttg_glossary_page and $bluet_kttg_show_glossary_link=="on" and $bluet_kttg_glossary_page!=""){
 		//add a note at the footer of the tooltip	
-		$kttg_footer=$bluet_kttg_glossary_page;
-		$kttg_footer='<a href="'.$kttg_footer.'">'.__('View glossary','bluet-kw').'</a>';
+		$kttg_footer='<a href="'.$bluet_kttg_glossary_page.'">'.__('View glossary','bluet-kw').'</a>';
 	}
 	
 		$layout_ret='<span class="bluet_block_to_show" data-tooltip="'.$id.'">'
@@ -48,7 +48,7 @@ function kttg_length_compare( $a, $b ) {
 }
 
 
-function is_i_devise(){ 
+function is_i_device(){ 
 //verify if the client is on a mac iphone ipod or ipad
 
 	$user_agent     =   $_SERVER['HTTP_USER_AGENT'];
@@ -56,7 +56,8 @@ function is_i_devise(){
     $os_array       =   array(
                             '/iphone/i',
                             '/ipod/i',
-                            '/ipad/i'
+                            '/ipad/i',
+							'/android/i'
                         );
 
     foreach ($os_array as $regex) {

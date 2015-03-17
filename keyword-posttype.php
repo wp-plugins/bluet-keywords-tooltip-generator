@@ -65,6 +65,7 @@ class bluet_keyword{
 			$defaults['nbr_posts_related'] =__('Posts related','bluet-kw');
 			$defaults['the_picture']=__('Picture','bluet-kw');
 			$defaults['is_prefix'] =__('Is Prefix ?','bluet-kw');
+			$defaults['is_video'] =__('Video tooltip','bluet-kw');
 			
 			//we want to rearrange the columns apearance
 			$reArr['cb']=$defaults['cb']; //checkBox column
@@ -74,6 +75,10 @@ class bluet_keyword{
 			//is prefix ? if appropriate addon is activated
 			if(function_exists('bluet_prefix_metabox')){
 				$reArr['is_prefix']=$defaults['is_prefix'];
+			}
+			
+			if(function_exists('bluet_video_metabox')){
+				$reArr['is_video']=$defaults['is_video'];
 			}
 			//
 			$reArr['nbr_posts_related']=$defaults['nbr_posts_related'];
@@ -106,6 +111,11 @@ class bluet_keyword{
 				//if appropriate addon is activated
 				if(function_exists('bluet_show_prefix_in_column')){
 					bluet_show_prefix_in_column();
+				}
+			}elseif($column_name == 'is_video'){
+				//if appropriate addon is activated
+				if(function_exists('bluet_show_video_in_column')){
+					bluet_show_video_in_column();
 				}
 			}
 		},10,2); //10 priority, 2 arguments

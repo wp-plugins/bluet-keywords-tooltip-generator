@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or die("No script kiddies please!");
 
 # Adds a shortcode called 'kttg_glossary'.
 add_shortcode('kttg_glossary', 'bluet_kttg_glossary');
@@ -12,7 +13,8 @@ function bluet_kttg_glossary(){
 	if(!get_option('bluet_kttg_glossary_page')){
 		//attribute glossary page permalink
 		add_option('bluet_kttg_glossary_page',get_the_permalink());
-	}elseif(get_option('bluet_kttg_glossary_page')!=get_the_permalink()){
+	}
+	if(get_option('bluet_kttg_glossary_page')!=get_the_permalink()){
 		//update glossary page permalink if different
 		update_option('bluet_kttg_glossary_page',get_the_permalink());
 	}
@@ -86,7 +88,7 @@ function bluet_kttg_glossary(){
 
                 //echo(substr(get_the_title(),0,1).'<br>');
                 if((strtoupper(substr(get_the_title(),0,1))==$chosen_letter) or $chosen_letter==null){                    
-                    $ret.='<li style="list-style-type: none;">'.get_the_title().'</li>';
+                    $ret.='<li class="kttg_glossary_element" style="list-style-type: none;">'.get_the_title().'</li>';
                 }
                 
 			endwhile;

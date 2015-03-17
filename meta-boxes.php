@@ -72,6 +72,11 @@ function bluet_keyword_settings_render(){
 	if(function_exists('bluet_prefix_metabox')){
 		bluet_prefix_metabox();
 	}
+	
+	if(function_exists('bluet_video_metabox')){
+		bluet_video_metabox();
+	}
+	
 }
 function bluet_keywords_related_render(){
 //exclude checkbox to exclode the current post from being matched
@@ -144,10 +149,15 @@ add_action('save_post',function(){
 			if(function_exists('bluet_prefix_save')){
 				bluet_prefix_save();
 			}
+			
+			//prefixes if exists
+			if(function_exists('bluet_video_save')){
+				bluet_video_save();
+			}
 		}
 		
 		
-	}else if($_POST['post_type']=='post' or $_POST['post_type']=='page'){
+	}else{
 		if($_POST['action'] =='editpost'){
 			$exclude_me=$_POST['bluet_exclude_post_from_matching_name'];
 			

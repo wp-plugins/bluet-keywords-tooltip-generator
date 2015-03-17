@@ -18,6 +18,7 @@ function moveTooltipElementsTop(className){
 		
 	//add listeners to tooltips 
 	jQuery(".bluet_block_to_show").mouseover(function(){
+		//.show()
 		jQuery(this).show();
 	})
 	jQuery(".bluet_block_to_show").mouseout(function(){
@@ -66,7 +67,7 @@ function bluet_placeTooltips(inlineClass,position){
 			if( jQuery(document).outerWidth() < (yLeft_show_center+tooltipBlock.outerWidth(true)) ){
 				yLeft_show_center=yLeft_show_center-(yLeft_show_center+tooltipBlock.outerWidth(true)-jQuery(document).outerWidth())
 			}
-	
+			//.show()
 			tooltipBlock.show();
 
 			switch(position) {

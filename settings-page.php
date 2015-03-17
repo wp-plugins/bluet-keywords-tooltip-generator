@@ -9,6 +9,12 @@ require_once dirname( __FILE__ ) . '/functions.php';
 add_action('wp_head','bluet_kw_custom_style');
 add_action('admin_head','bluet_kw_custom_style');
 
+//actions after update or add setting option
+
+// add_action('update_option_bluet_kw_settings','_________');
+// add_action('add_option_bluet_kw_settings','____________');
+
+
 /* enqueue js functions  for test only*/
 function bluet_kw_load_scripts() {
 	//
@@ -249,21 +255,10 @@ function bt_kw_hide_title_display(){
 
 function bt_kw_show_glossary_link_display(){
 	$options = get_option( 'bluet_kw_settings' );
-	$desable_if_noglossary=null;
-	
-	if(!get_option('bluet_kttg_glossary_page')){
-		$desable_if_noglossary="disabled";
-	}
 ?>
-	<input type="checkbox" 	id="bt_kw_show_glossary_link_id" 	name="bluet_kw_settings[bluet_kttg_show_glossary_link]" <?php if($options['bluet_kttg_show_glossary_link']) echo 'checked'; ?> <?php echo $desable_if_noglossary ?>/>
+	<input type="checkbox" 	id="bt_kw_show_glossary_link_id" 	name="bluet_kw_settings[bluet_kttg_show_glossary_link]" <?php if($options['bluet_kttg_show_glossary_link']) echo 'checked'; ?> />
 		<label for="bt_kw_show_glossary_link_id"><?php _e('Add glossary page link in the tooltip footer','bluet-kw'); ?></label><br>
-		<?php
-		if($desable_if_noglossary){
-			?>
-			<div style="color:red;"><?php _e('This checkbox will be active after creating a glossary page.','bluet-kw')?></div>
-			<?php
-		}
-		?>
+
 <?php
 	 
 }
@@ -296,7 +291,7 @@ function bluet_kw_render_settings_page() {
 					<a class="nav-tab" id="bluet_settings_tab" data-tab="bluet-section-settings"><?php _e('Settings','bluet-kw'); ?></a>
 					<a class="nav-tab" id="bluet_excluded_tab" data-tab="bluet-section-excluded"><?php _e('Excluded posts','bluet-kw');?></a>
 					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="https://wordpress.org/support/plugin/bluet-keywords-tooltip-generator" ><?php _e('Help ?','bluet-kw');?></a>
-					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="http://www.blueskills.net/product/kttg-images-add-on" ><?php _e('Premium Add-Ons','bluet-kw');?></a>
+					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="http://www.blueskills.net/pricing/" ><?php _e('Get the Pro AddOn','bluet-kw');?></a>
 					<a class="nav-tab" target="_blank" style="background-color: aliceblue;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ" ><?php _e('Donate','bluet-kw');?></a>
 
 				</h2>
