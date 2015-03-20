@@ -154,7 +154,7 @@ function bluet_kttg_filter_any_content($post_type_to_filter,$filter_hooks_to_fil
 		return false;
 	}
 	foreach($filter_hooks_to_filter as $hook){
-		add_filter($hook,'kttg_filter_posttype',100);
+		add_filter($hook,'kttg_filter_posttype',100000);//priority to 100 000 to avoid filters after it
 	}
 }
 
