@@ -79,9 +79,7 @@ function bluet_kttg_glossary(){
     $the_query = new WP_Query( $args); 
 							
    // The Loop
-    ?>
-
-    <?php if ( $the_query->have_posts() ) : 
+	if ( $the_query->have_posts() ) : 
         $ret.='<div class="kttg_glossary_content"><ul>';
 			while ( $the_query->have_posts() ) :
                 $the_query->the_post();
@@ -98,16 +96,11 @@ function bluet_kttg_glossary(){
     $ret.=get_previous_posts_link( '<span style="">Prev --   </span>' );
     $ret.=get_next_posts_link( '<span style="">   -- Next</span>', $the_query->max_num_pages );
 
-    ?>
-
-    <?php 
     // clean up after our query
     wp_reset_postdata(); 
-    ?>
 
-    <?php else:  ?>
-    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-	<?php 
+	else:  
+	?><p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p><?php 
 	endif;	
 	
    return $ret;
