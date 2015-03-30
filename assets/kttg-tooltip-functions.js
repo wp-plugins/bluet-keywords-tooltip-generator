@@ -55,6 +55,8 @@ function bluet_placeTooltips(inlineClass,position){
 			//horizontal offsets
 			var yLeft_show_center=jQuery(this).offset().left+(jQuery(this).outerWidth(false)/2)-tooltipBlock.outerWidth(true)/2;
 			
+			/*yLeft_show_center=jQuery(this).offset().left-tooltipBlock.css("padding-left").replace("px", ""); */
+
 			var yLeft_show_left=jQuery(this).offset().left-tooltipBlock.outerWidth(true);			
 			var yLeft_show_right=jQuery(this).offset().left+jQuery(this).outerWidth(true);
 			
