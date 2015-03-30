@@ -21,15 +21,12 @@ $bluet_kw_capability=apply_filters('bluet_kw_capability','manage_options');
 register_activation_hook(__FILE__,'bluet_kw_activation');
 register_activation_hook( __FILE__,'bluet_kttg_regenerate_keywords');
 
-/**** localization ****/
-add_action('init',function(){
+add_action('init',function(){	
+	/**** localization ****/
 	load_plugin_textdomain('bluet-kw', false, dirname( plugin_basename( __FILE__ ) ).'/languages/');
-	
-	//load jQuery once to avoid conflict
-	wp_enqueue_script('jquery');
 });
 
-add_action( 'wp_head', 'bluet_kw_load_scripts_front' );
+add_action('wp_enqueue_scripts', 'bluet_kw_load_scripts_front' );
 
 //create posttype for keywords	
 add_action('init',function(){
@@ -99,6 +96,10 @@ add_action('trashed_post','bluet_kttg_regenerate_keywords');
 
 /* enqueue js functions for the front side*/
 function bluet_kw_load_scripts_front() {
+	
+	//load jQuery once to avoid conflict
+	wp_enqueue_script('jquery');
+
 	//
 	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functions.js',__FILE__), array(), false, true );
 		

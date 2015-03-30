@@ -62,6 +62,8 @@ The plugin is available in these languages :
 * Arabic (ar) - [Jamel Zarga](http://www.BlueSkills.net)
 * Dutch (nl_NL) - [Kees Hessels](http://www.slotschaesberg.nl)
 * Turkish (tr_TR) - Eyyüp Güner
+* Italian (it_IT) - [Genioallopera](https://profiles.wordpress.org/genioallopera)
+* Spanish (es_ES) - Andrew Kurtis - [WebHostingHub.com](http://www.webhostinghub.com)
 
 = ScreenShots =
 
@@ -268,7 +270,7 @@ The menu «Apprence» Then the submenu «Widgets» Choose the widget «My Keywor
 = I have used a similar plugin to KTTG, I want to migrate to KTTG and automatically add my old list of keywords, how to? =
 You can convert the list of keywords for other plugins using the tool «KTTG converter» under the menu «Tools»: Carefully select on the drop down list the name of the post-type in concern and click «Begin conversion», now back on «My Keywords»  and you will find new keywords from the old plugin.
 = Can I apply the tooltips on specific images? =
-This is possible but Premium version, so first you must purchase the add-on «Bluet KTTG images addon» On the following link www.blueskills.net/product/kttg-images-add-on
+This is possible but Premium version, so first you must purchase the add-on «KTTG Pro addon» On the following link http://www.blueskills.net/pricing
 = Can I export and import my keywords from one site to another  ? =
 Yes it is possible by using the tool «Import» and «Export» on the tool menu
 For example:  To import my list of keywords to a new site: Tools> Import>WordPress and select the XML file you exported from the old site.
