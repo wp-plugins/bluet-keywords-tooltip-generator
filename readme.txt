@@ -25,6 +25,9 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * KTTG Pro AddOn : This is the main addOn to upgrade KTTG to the premium Version
 * [Buy Now](http://www.blueskills.net/pricing)
 
+= Check How to add a keyword with KTTG on this 2 minutes video. =
+https://www.youtube.com/watch?v=JBdyLKa4DMI
+
 = New Features =
 * v2.5 is made for the pro addon version (video tooltips, woocommerce support, bbpress support, and much more)
 
