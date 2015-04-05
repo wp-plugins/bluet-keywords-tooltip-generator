@@ -14,7 +14,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 * With shortcode Glossary [kttg_glossary]
 
 > #### DEMO
-> * [FrontEnd Live DEMO](http://www.blueskills.net/talking-birds)
+> * [Live DEMO](http://www.blueskills.net)
 > * [Admin Live DEMO](http://www.blueskills.net/wp-admin/edit.php?post_type=my_keywords) 
 * user 		: demo
 * password 	: demo
@@ -40,7 +40,6 @@ https://www.youtube.com/watch?v=JBdyLKa4DMI
 * Case insensitive fetch
 * A list of related keywords will be updated after each post/keyWord manipulation
 * allow to choose to Match all occurrences or once in the same post from the settings page
-* Choose to activate or not excerpt matching
 * activate or desactivate a specific post being matched by keywors
 * list excluded posts in a new tab in the admin setting page
 * supports synonyms
