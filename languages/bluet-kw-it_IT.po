@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translate Bluet KW\n"
-"POT-Creation-Date: 2015-03-05 00:28+0100\n"
-"PO-Revision-Date: 2015-03-06 11:28+0100\n"
+"POT-Creation-Date: 2015-04-15 12:27+0100\n"
+"PO-Revision-Date: 2015-04-15 12:28+0100\n"
 "Last-Translator: Jamel Zarga <jamel.zarga@gmail.com>\n"
 "Language-Team: leBleut\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: it\n"
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: ..\\..\\Bluet_kttg_pro_prefix_addon\n"
 "X-Poedit-SearchPath-2: ..\\..\\Bluet_kttg_pro_addon\n"
@@ -21,11 +21,19 @@ msgstr ""
 msgid "View glossary"
 msgstr "Visualizza glossario"
 
-#: ../glossary-shortcode.php:21
+#: ../glossary-shortcode.php:23
 msgid "ALL"
 msgstr "TUTTI"
 
-#: ../glossary-shortcode.php:107
+#: ../glossary-shortcode.php:98
+msgid "Previous"
+msgstr "Precedente"
+
+#: ../glossary-shortcode.php:99
+msgid "Next"
+msgstr "Prossimo"
+
+#: ../glossary-shortcode.php:105
 msgid "Sorry, no posts matched your criteria."
 msgstr ""
 
@@ -111,252 +119,234 @@ msgid "Parent KeyWords colon"
 msgstr ""
 
 #: ../keyword-posttype.php:65
-msgid "Posts related"
-msgstr "Articoli"
-
-#: ../keyword-posttype.php:66
 msgid "Picture"
 msgstr "Immagini"
 
-#: ../keyword-posttype.php:67
+#: ../keyword-posttype.php:66
 msgid "Is Prefix ?"
+msgstr ""
+
+#: ../keyword-posttype.php:67
+msgid "Video tooltip"
 msgstr ""
 
 #: ../meta-boxes.php:18
 msgid "Keyword Settings"
 msgstr "Impostazioni KeyWord"
 
-#: ../meta-boxes.php:27
-msgid "Posts in concern"
-msgstr "Articoli coinvolti"
-
-#: ../meta-boxes.php:37 ../meta-boxes.php:47
-#: ..\..\Bluet_kttg_pro_addon/index.php:37
+#: ../meta-boxes.php:28 ../meta-boxes.php:38 ../meta-boxes.php:93
+#: ..\..\Bluet_kttg_pro_addon/index.php:43
 msgid "Keywords related"
 msgstr ""
 
-#: ../meta-boxes.php:64
+#: ../meta-boxes.php:49
 msgid "Synonyms"
 msgstr ""
 
-#: ../meta-boxes.php:64
+#: ../meta-boxes.php:49
 msgid "Type here the keyword's Synonyms separated with '|'"
 msgstr "Scrivi qui i Sinonimi della tua KeyWord separati da '|'"
 
-#: ../meta-boxes.php:68
+#: ../meta-boxes.php:53
 msgid "Make this keyword <b>Case Sensitive</b>"
 msgstr "Rendi questa KeyWord <b>Sensibile alle maiuscole</b>"
 
-#: ../meta-boxes.php:81
+#: ../meta-boxes.php:74
 msgid "Exclude this post from being matched"
 msgstr "Escludi questo Articolo dalla ricerca"
 
-#: ../meta-boxes.php:82
+#: ../meta-boxes.php:76
 msgid "Exclude this post"
 msgstr "Escludi questo articolo"
 
-#: ../meta-boxes.php:95
-msgid "Specify keywords to match"
-msgstr "Specifica le parole da visualizzare"
-
-#: ../meta-boxes.php:109
-msgid "Notice : if you leave them all unchecked they will be ALL matched"
-msgstr "Attento : se le lasci tutte non spuntate si vedranno tutte"
-
-#: ../meta-boxes.php:112
+#: ../meta-boxes.php:101
 msgid "No KeyWords found for this post"
 msgstr "Nessuna KeyWord trovata in questo post"
 
-#: ../meta-boxes.php:116
+#: ../meta-boxes.php:105
 msgid "Manage KeyWords"
 msgstr "Gestisci KeyWords"
 
-#: ../settings-page.php:53
+#: ../settings-page.php:59
 msgid "Post Types in concern :"
 msgstr ""
 
-#: ../settings-page.php:61
+#: ../settings-page.php:67
 msgid "Customise the tooltip style :"
 msgstr "Personalizza lo stile del banner :"
 
-#: ../settings-page.php:72
+#: ../settings-page.php:78
 msgid "Posts / Pages"
 msgstr "Articoli / Pagine"
 
-#: ../settings-page.php:81
+#: ../settings-page.php:87
 msgid "Match once or all occurrences"
 msgstr "Trova la prima o tutte le parole"
 
-#: ../settings-page.php:90
+#: ../settings-page.php:96
 msgid "Tooltip title"
 msgstr "Titolo del banner"
 
-#: ../settings-page.php:99
+#: ../settings-page.php:105
 msgid "Tooltip position"
 msgstr "Posizione del banner"
 
-#: ../settings-page.php:108
+#: ../settings-page.php:114
 msgid "Glossary page"
 msgstr "Pagina Glossario"
 
-#: ../settings-page.php:117
+#: ../settings-page.php:123
 msgid "Keyword style"
 msgstr "Stile KeyWord"
 
-#: ../settings-page.php:125
+#: ../settings-page.php:131
 msgid "Description tooltip style"
 msgstr "Stile del banner descrizione"
 
-#: ../settings-page.php:133
+#: ../settings-page.php:139
 msgid "Description tooltip Font size"
 msgstr "Dimensione carattere del banner descrizione"
 
-#: ../settings-page.php:141
+#: ../settings-page.php:147
 msgid "Activate tooltips for images ?"
 msgstr "Attivare i suggerimenti per le immagini?"
 
-#: ../settings-page.php:166 ../settings-page.php:291
+#: ../settings-page.php:172 ../settings-page.php:286
 msgid "KeyWords Settings"
 msgstr "Impostazioni KeyWords"
 
-#: ../settings-page.php:167 ../settings-page.php:296
+#: ../settings-page.php:173 ../settings-page.php:291
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: ../settings-page.php:185
+#: ../settings-page.php:191
 msgid "alt property of the images will be displayed as a tooltip"
 msgstr "la proprietà ALT delle immagini verrà visualizzata nel banner"
 
-#: ../settings-page.php:198
+#: ../settings-page.php:204
 msgid "Description Background Colour"
 msgstr "Sfondo del banner descrizione"
 
-#: ../settings-page.php:200
+#: ../settings-page.php:206
 msgid "Description font Colour"
 msgstr "Colore carattere del banner descrizione"
 
-#: ../settings-page.php:209
+#: ../settings-page.php:215
 msgid "Background Colour"
 msgstr "Colore di sfondo"
 
-#: ../settings-page.php:209
+#: ../settings-page.php:215
 msgid "No background (Dotted style)"
 msgstr "Nessuno sfondo (stile sottolineato punteggiato)"
 
-#: ../settings-page.php:210
+#: ../settings-page.php:216
 msgid "Font Colour"
 msgstr "Colore Carattere"
 
-#: ../settings-page.php:216
+#: ../settings-page.php:222
 msgid "Choose either Posts or/and Pages in concern"
 msgstr "Seleziona se visualizzare i banner su Articoli e/o Pagine"
 
-#: ../settings-page.php:219
+#: ../settings-page.php:225
 msgid "Make your own style."
 msgstr "Personalizza"
 
-#: ../settings-page.php:225
+#: ../settings-page.php:231
 msgid "Posts"
 msgstr "Articoli"
 
-#: ../settings-page.php:227
+#: ../settings-page.php:233
 msgid "Pages"
 msgstr "Pagine"
 
-#: ../settings-page.php:236
+#: ../settings-page.php:242
 msgid "Match all occurrences"
 msgstr "Individua tutte le parole"
 
-#: ../settings-page.php:245
+#: ../settings-page.php:251
 msgid "Hide the tooltips title"
 msgstr "Nascondi il titolo del banner"
 
-#: ../settings-page.php:259
+#: ../settings-page.php:260
 msgid "Add glossary page link in the tooltip footer"
 msgstr "Aggiungi link pagina glossario nel footer tooltip"
 
-#: ../settings-page.php:263
-msgid "This checkbox will be active after creating a glossary page."
-msgstr ""
-"Questo checkbox sarà attivo dopo aver creato E VISUALIZZATO una pagina "
-"glossario con Permalink <b>glossary</b>"
-
-#: ../settings-page.php:274
+#: ../settings-page.php:269
 msgid "Top"
 msgstr "Sopra"
 
-#: ../settings-page.php:275
+#: ../settings-page.php:270
 msgid "Bottom"
 msgstr "Sotto"
 
-#: ../settings-page.php:276
+#: ../settings-page.php:271
 msgid "Right"
 msgstr "Destra"
 
-#: ../settings-page.php:277
+#: ../settings-page.php:272
 msgid "Left"
 msgstr "Sinistra"
 
-#: ../settings-page.php:295
+#: ../settings-page.php:290
 msgid "Style"
 msgstr "Stile"
 
-#: ../settings-page.php:297 ../settings-page.php:352
+#: ../settings-page.php:292 ../settings-page.php:347
 msgid "Excluded posts"
 msgstr "Articoli esclusi"
 
-#: ../settings-page.php:298
+#: ../settings-page.php:293
 msgid "Help ?"
 msgstr "Aiuto ?"
 
-#: ../settings-page.php:299
-msgid "Premium Add-Ons"
+#: ../settings-page.php:294
+msgid "Get the Pro AddOn"
 msgstr ""
 
-#: ../settings-page.php:300
+#: ../settings-page.php:295
 msgid "Donate"
 msgstr ""
 
-#: ../settings-page.php:319
+#: ../settings-page.php:314
 msgid ""
 "this plugin allows you easely create tooltips for your technical keywords."
 msgstr ""
 "Questo plugin ti permette di creare semplicemente banner per le tue "
 "ParoleChiave tecniche."
 
-#: ../settings-page.php:321
+#: ../settings-page.php:316
 msgid "Click"
 msgstr ""
 
-#: ../settings-page.php:323
+#: ../settings-page.php:318
 msgid "Here"
 msgstr "Qui"
 
-#: ../settings-page.php:325
+#: ../settings-page.php:320
 msgid "to rate our plugin if you appreciate it"
 msgstr "per valutare il nostro plugin se ti è piaciuto"
 
-#: ../settings-page.php:341
+#: ../settings-page.php:336
 msgid "Preview"
 msgstr "Anteprima"
 
-#: ../settings-page.php:342
+#: ../settings-page.php:337
 msgid "Pass your mouse over the word"
 msgstr "Passa col mouse sopra alla parola"
 
-#: ../settings-page.php:343
+#: ../settings-page.php:338
 msgid "to test the tooltip layout."
 msgstr "per visualizzare l'anteprima del banner."
 
-#: ../settings-page.php:353
+#: ../settings-page.php:348
 msgid "Posts which are excluded from being matched"
 msgstr "Elenco Articoli esclusi dalla ricerca"
 
-#: ../settings-page.php:359
+#: ../settings-page.php:354
 msgid "No posts or pages are excluded"
 msgstr "Nessun articolo o pagine sono esclusi"
 
-#: ../settings-page.php:378 ..\..\Bluet_kttg_pro_addon/settings-page.php:82
+#: ../settings-page.php:373 ..\..\Bluet_kttg_pro_addon/settings-page.php:99
 msgid "Save Settings"
 msgstr "Salva impostazioni"
 
@@ -364,67 +354,87 @@ msgstr "Salva impostazioni"
 msgid "no terms found for this post"
 msgstr "Nessuna parola in questo articolo"
 
-#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:9
+#: ..\..\Bluet_kttg_pro_addon/functions.php:174
+msgid "Youtube video ID"
+msgstr ""
+
+#: ..\..\Bluet_kttg_pro_addon/functions.php:191
+msgid "Video :"
+msgstr ""
+
+#: ..\..\Bluet_kttg_pro_addon/functions.php:194
+msgid "-"
+msgstr ""
+
+#: ..\..\Bluet_kttg_pro_addon/functions.php:216
 msgid "This Keyword is a <b>Prefix</b>"
 msgstr ""
 
-#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:23
+#: ..\..\Bluet_kttg_pro_addon/functions.php:230
 msgid "Prefix"
 msgstr ""
 
-#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:26
+#: ..\..\Bluet_kttg_pro_addon/functions.php:233
 msgid "No"
 msgstr ""
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:8
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:14
 msgid "KTTG Advanced"
 msgstr ""
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:9
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:15
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:24
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:30
 msgid "Advance settings for KTTG :"
 msgstr "Impostazioni Avanzate KTTG :"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:34
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:40
+msgid "Supported Plugins"
+msgstr ""
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:51
+msgid "Advanced Style"
+msgstr ""
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:60
 msgid "Match custom-fields"
 msgstr "Individua campi personalizzati"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:43
-msgid "Custom posts types to match"
-msgstr ""
-
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:68
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:85
 msgid "KeyWords Avanced"
 msgstr ""
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:91
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:108
 msgid "Advanced space"
 msgstr ""
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:99
-msgid "Write the name of the hooks in concern separated by \"|\"."
-msgstr ""
+#~ msgid "Posts related"
+#~ msgstr "Articoli"
 
-#: ..\..\Bluet_kttg_pro_addon/settings-page.php:128
-msgid ""
-"Choose <b>custom post types</b> to match from this list (hold <b>CTRL</b> "
-"for a multi choice)."
-msgstr ""
+#~ msgid "Posts in concern"
+#~ msgstr "Articoli coinvolti"
 
-msgid "Match the custom-fields :"
-msgstr "Traiter les champ personnalisé :"
+#~ msgid "Specify keywords to match"
+#~ msgstr "Specifica le parole da visualizzare"
 
-msgid "Match custom-posts"
-msgstr "Traiter les articles personnalisés :"
+#~ msgid "Notice : if you leave them all unchecked they will be ALL matched"
+#~ msgstr "Attento : se le lasci tutte non spuntate si vedranno tutte"
 
-msgid "Write the name of Post types in concern separated by \"|\"."
-msgstr "Saisir les noms articles personnalisés à traiter séparés par '|'"
+#~ msgid "This checkbox will be active after creating a glossary page."
+#~ msgstr ""
+#~ "Questo checkbox sarà attivo dopo aver creato E VISUALIZZATO una pagina "
+#~ "glossario con Permalink <b>glossary</b>"
 
-msgid "Match excerpts"
-msgstr "Appliquer sur les extraits"
+#~ msgid "Match the custom-fields :"
+#~ msgstr "Traiter les champ personnalisé :"
 
-msgid "Keywords Related"
-msgstr ""
+#~ msgid "Match custom-posts"
+#~ msgstr "Traiter les articles personnalisés :"
+
+#~ msgid "Write the name of Post types in concern separated by \"|\"."
+#~ msgstr "Saisir les noms articles personnalisés à traiter séparés par '|'"
+
+#~ msgid "Match excerpts"
+#~ msgstr "Appliquer sur les extraits"

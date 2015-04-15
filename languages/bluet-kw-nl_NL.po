@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translate Bluet KW\n"
-"POT-Creation-Date: 2015-02-22 14:01+0100\n"
-"PO-Revision-Date: 2015-02-22 14:01+0100\n"
+"POT-Creation-Date: 2015-04-15 12:29+0100\n"
+"PO-Revision-Date: 2015-04-15 12:33+0100\n"
 "Last-Translator: Jamel Zarga <jamel.zarga@gmail.com>\n"
 "Language-Team: Kees Hessels <kees.hessels@outlook.com>\n"
 "Language: nl_NL\n"
@@ -14,6 +14,26 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
+
+#: ../functions.php:28
+msgid "View glossary"
+msgstr "View woordenlijst"
+
+#: ../glossary-shortcode.php:23
+msgid "ALL"
+msgstr "alle"
+
+#: ../glossary-shortcode.php:98
+msgid "Previous"
+msgstr "Vorig"
+
+#: ../glossary-shortcode.php:99
+msgid "Next"
+msgstr "Volgende"
+
+#: ../glossary-shortcode.php:105
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
 
 #: ../importer.php:6
 msgid "KeyWords Tooltip Generator Converter"
@@ -98,41 +118,41 @@ msgstr "Trefwoorden niet gevonden in de prullenbak"
 msgid "Parent KeyWords colon"
 msgstr "Hoofd-trefwoorden kolom"
 
-#: ../keyword-posttype.php:66
-msgid "Posts related"
-msgstr "Aantal gerelateerde berichten/pagina's"
-
-#: ../keyword-posttype.php:67
+#: ../keyword-posttype.php:65
 msgid "Picture"
 msgstr "Afbeelding"
 
-#: ../keyword-posttype.php:68
+#: ../keyword-posttype.php:66
 msgid "Is Prefix ?"
 msgstr "Is voorvoegsel ?"
+
+#: ../keyword-posttype.php:67
+msgid "Video tooltip"
+msgstr ""
 
 #: ../meta-boxes.php:18
 msgid "Keyword Settings"
 msgstr "Trefwoorden-instellingen"
 
-#: ../meta-boxes.php:27
-msgid "Posts in concern"
-msgstr "Aantal berichten/pagina's met dit trefwoord"
-
-#: ../meta-boxes.php:37 ../meta-boxes.php:46
+#: ../meta-boxes.php:28 ../meta-boxes.php:38 ../meta-boxes.php:93
 msgid "Keywords related"
 msgstr "Gerelateerde trefwoorden"
 
-#: ../meta-boxes.php:63
+#: ../meta-boxes.php:49
 msgid "Synonyms"
 msgstr "Synoniemen"
 
-#: ../meta-boxes.php:63
+#: ../meta-boxes.php:49
 msgid "Type here the keyword's Synonyms separated with '|'"
 msgstr ""
 "Geef hier de synoniemen van het trefwoord in, van elkaar gescheiden door "
 "'|' (zonder spaties)"
 
-#: ../meta-boxes.php:75
+#: ../meta-boxes.php:53
+msgid "Make this keyword <b>Case Sensitive</b>"
+msgstr ""
+
+#: ../meta-boxes.php:74
 msgid "Exclude this post from being matched"
 msgstr "Sluit dit bericht / deze pagina uit bij het weergeven van trefwoorden"
 
@@ -140,180 +160,220 @@ msgstr "Sluit dit bericht / deze pagina uit bij het weergeven van trefwoorden"
 msgid "Exclude this post"
 msgstr "Sluit dit bericht / deze pagina uit"
 
-#: ../meta-boxes.php:90
-msgid "Specify keywords to match"
-msgstr "Geef de trefwoorden aan die moeten worden weergegeven"
-
-#: ../meta-boxes.php:104
-msgid "Notice : if you leave them all unchecked they will be ALL matched"
-msgstr ""
-"Opgelet : indien u geen enkel trefwoord aanvinkt, worden ALLE trefwoorden "
-"weergegeven"
-
-#: ../meta-boxes.php:107
+#: ../meta-boxes.php:101
 msgid "No KeyWords found for this post"
 msgstr "Geen trefwoorden gevonden in dit bericht / deze pagina"
 
-#: ../meta-boxes.php:111
+#: ../meta-boxes.php:105
 msgid "Manage KeyWords"
 msgstr "Beheer trefwoorden"
 
-#: ../settings-page.php:53
+#: ../settings-page.php:59
 msgid "Post Types in concern :"
 msgstr "Betreffende berichten :"
 
-#: ../settings-page.php:61
+#: ../settings-page.php:67
 msgid "Customise the tooltip style :"
 msgstr "Pas de tooltip-stijl aan :"
 
-#: ../settings-page.php:72
+#: ../settings-page.php:78
 msgid "Posts / Pages"
 msgstr "Berichten / Pagina's"
 
-#: ../settings-page.php:81
+#: ../settings-page.php:87
 msgid "Match once or all occurrences"
 msgstr "Alleen de eerste of alle voorkomens van de trefwoorden weergeven"
 
-#: ../settings-page.php:90
+#: ../settings-page.php:96
+msgid "Tooltip title"
+msgstr ""
+
+#: ../settings-page.php:105
+msgid "Tooltip position"
+msgstr ""
+
+#: ../settings-page.php:114
+msgid "Glossary page"
+msgstr ""
+
+#: ../settings-page.php:123
 msgid "Keyword style"
 msgstr "Trefwoord-stijl"
 
-#: ../settings-page.php:98
+#: ../settings-page.php:131
 msgid "Description tooltip style"
 msgstr "Stijl van de tooltip-omschrijving"
 
-#: ../settings-page.php:106
+#: ../settings-page.php:139
 msgid "Description tooltip Font size"
 msgstr "Lettergrootte voor tooltip-omschrijving"
 
-#: ../settings-page.php:114
+#: ../settings-page.php:147
 msgid "Activate tooltips for images ?"
 msgstr "Tooltips voor afbeeldingen activeren?"
 
-#: ../settings-page.php:139 ../settings-page.php:221
+#: ../settings-page.php:172 ../settings-page.php:286
 msgid "KeyWords Settings"
 msgstr "Trefwoorden-instellingen"
 
-#: ../settings-page.php:140 ../settings-page.php:226
+#: ../settings-page.php:173 ../settings-page.php:291
 msgid "Settings"
 msgstr "Instellingen"
 
-#: ../settings-page.php:158
+#: ../settings-page.php:191
 msgid "alt property of the images will be displayed as a tooltip"
 msgstr ""
 "De ALT-eigenschap van een afbeelding zal als een tooltip worden weergegeven"
 
-#: ../settings-page.php:171
+#: ../settings-page.php:204
 msgid "Description Background Colour"
 msgstr "Achtergrond-kleur van de omschrijving"
 
-#: ../settings-page.php:173
+#: ../settings-page.php:206
 msgid "Description font Colour"
 msgstr "Lettertype-kleur van de omschrijving"
 
-#: ../settings-page.php:182
+#: ../settings-page.php:215
 msgid "Background Colour"
 msgstr "Archtergrond-kleur"
 
-#: ../settings-page.php:182
+#: ../settings-page.php:215
 msgid "No background (Dotted style)"
 msgstr "Geen achtergrond (stippellijn)"
 
-#: ../settings-page.php:183
+#: ../settings-page.php:216
 msgid "Font Colour"
 msgstr "Lettertype-kleur"
 
-#: ../settings-page.php:189
+#: ../settings-page.php:222
 msgid "Choose either Posts or/and Pages in concern"
 msgstr "Waar moeten de tooltips weergegeven worden?"
 
-#: ../settings-page.php:192
+#: ../settings-page.php:225
 msgid "Make your own style."
 msgstr "Maak uw eigen stijl."
 
-#: ../settings-page.php:197
+#: ../settings-page.php:231
 msgid "Posts"
 msgstr "Berichten"
 
-#: ../settings-page.php:198
+#: ../settings-page.php:233
 msgid "Pages"
 msgstr "Pagina's"
 
-#: ../settings-page.php:206
+#: ../settings-page.php:242
 msgid "Match all occurrences"
 msgstr "Geef alle voorkomens van de trefwoorden weer"
 
-#: ../settings-page.php:225
+#: ../settings-page.php:251
+msgid "Hide the tooltips title"
+msgstr "Verberg de tooltips titel"
+
+#: ../settings-page.php:260
+msgid "Add glossary page link in the tooltip footer"
+msgstr ""
+
+#: ../settings-page.php:269
+msgid "Top"
+msgstr ""
+
+#: ../settings-page.php:270
+msgid "Bottom"
+msgstr ""
+
+#: ../settings-page.php:271
+msgid "Right"
+msgstr ""
+
+#: ../settings-page.php:272
+msgid "Left"
+msgstr ""
+
+#: ../settings-page.php:290
 msgid "Style"
 msgstr "Stijl"
 
-#: ../settings-page.php:227 ../settings-page.php:280
+#: ../settings-page.php:292 ../settings-page.php:347
 msgid "Excluded posts"
 msgstr "Uitgesloten berichten/pagina's"
 
-#: ../settings-page.php:228
+#: ../settings-page.php:293
 msgid "Help ?"
 msgstr "Help ?"
 
-#: ../settings-page.php:229
-msgid "Premium Add-Ons"
-msgstr "Premium aanvullingen"
+#: ../settings-page.php:294
+msgid "Get the Pro AddOn"
+msgstr ""
 
-#: ../settings-page.php:230
+#: ../settings-page.php:295
 msgid "Donate"
 msgstr "Donatie"
 
-#: ../settings-page.php:249
+#: ../settings-page.php:314
 msgid ""
-"this plugin allows you easely create tooltips for your technical keywords in "
-"order to explain them for your site visitors making surfing more comfortable."
+"this plugin allows you easely create tooltips for your technical keywords."
 msgstr ""
-"Deze plugin maakt het mogelijk om op een makkelijke manier tooltips aan te "
-"maken. Hierdoor zijn (technische) trefwoorden eenvoudiger uit te leggen aan "
-"de bezoekers van uw site. Hiermee maakt u het surfen voor uw bezoekers "
-"prettiger."
+"Deze plugin maakt het mogelijk eenvoudig tooltips voor uw technische "
+"zoekwoorden te maken."
 
-#: ../settings-page.php:251
+#: ../settings-page.php:316
 msgid "Click"
 msgstr "Klik"
 
-#: ../settings-page.php:253
+#: ../settings-page.php:318
 msgid "Here"
 msgstr "hier"
 
-#: ../settings-page.php:255
+#: ../settings-page.php:320
 msgid "to rate our plugin if you appreciate it"
 msgstr "om onze plugin te waarderen als u deze op prijs stelt"
 
-#: ../settings-page.php:268
+#: ../settings-page.php:336
 msgid "Preview"
 msgstr "Voorbeeld"
 
-#: ../settings-page.php:269
+#: ../settings-page.php:337
 msgid "Pass your mouse over the word"
 msgstr "Beweeg uw muis over de volgende woorden "
 
-#: ../settings-page.php:270
+#: ../settings-page.php:338
 msgid "to test the tooltip layout."
 msgstr "om de tooltip-layout te testen."
 
-#: ../settings-page.php:281
+#: ../settings-page.php:348
 msgid "Posts which are excluded from being matched"
 msgstr ""
 "Berichten of pagina's die worden uitgesloten voor het weergeven van "
 "trefwoorden"
 
-#: ../settings-page.php:287
+#: ../settings-page.php:354
 msgid "No posts or pages are excluded"
 msgstr "Er zijn geen berichten of pagina's uitgesloten"
 
-#: ../settings-page.php:306
+#: ../settings-page.php:373
 msgid "Save Settings"
 msgstr "Bewaar instellingen"
 
-#: ../widget.php:79
+#: ../widget.php:99
 msgid "no terms found for this post"
 msgstr "Geen trefwoord in dit bericht / deze pagina gevonden"
+
+#~ msgid "Posts related"
+#~ msgstr "Aantal gerelateerde berichten/pagina's"
+
+#~ msgid "Posts in concern"
+#~ msgstr "Aantal berichten/pagina's met dit trefwoord"
+
+#~ msgid "Specify keywords to match"
+#~ msgstr "Geef de trefwoorden aan die moeten worden weergegeven"
+
+#~ msgid "Notice : if you leave them all unchecked they will be ALL matched"
+#~ msgstr ""
+#~ "Opgelet : indien u geen enkel trefwoord aanvinkt, worden ALLE trefwoorden "
+#~ "weergegeven"
+
+#~ msgid "Premium Add-Ons"
+#~ msgstr "Premium aanvullingen"
 
 #~ msgid "Match excerpts"
 #~ msgstr "Toepassen op samenvattingen"

@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.5.3
+Version: 2.5.4
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -19,20 +19,18 @@ $bluet_kw_capability=apply_filters('bluet_kw_capability','manage_options');
 
 /*init settings*/
 register_activation_hook(__FILE__,'bluet_kw_activation');
-register_activation_hook( __FILE__,'bluet_kttg_regenerate_keywords');
+
+//pour traiter les termes lors de l'activation de l'ajout d'un nouveau terme ou nouveau post (keyword) publish_{my_keywords}
 
 add_action('init',function(){	
 	/**** localization ****/
 	load_plugin_textdomain('bluet-kw', false, dirname( plugin_basename( __FILE__ ) ).'/languages/');
+	//create posttype for keywords	
+	new bluet_keyword();
+
 });
 
 add_action('wp_enqueue_scripts', 'bluet_kw_load_scripts_front' );
-
-//create posttype for keywords	
-add_action('init',function(){
-	//instenciate the post type
-		new bluet_keyword();
-});
 
 add_action('wp_footer','bluet_kttg_place_tooltips');
 add_action('admin_footer','bluet_kttg_place_tooltips');
@@ -70,7 +68,6 @@ add_action('wp_head',function(){
 	if($option_settings['bt_kw_for_pages']){
 		$posttypes_to_match[]='page';
 	}
-	
 	if(function_exists('bluet_kttg_pro_addon')){//if pro addon activated
 		$contents_to_filter=apply_filters('bluet_kttg_dustom_fields_hooks',$contents_to_filter);
 		$posttypes_to_match=apply_filters('bluet_kttg_posttypes_to_match',$posttypes_to_match);
@@ -84,12 +81,6 @@ add_action('wp_head',function(){
 
 }); //'other content hook' if needed
 
-//pour traiter les termes lors de l'activation de l'ajout d'un nouveau terme ou nouveau post (keyword) publish_{my_keywords}
-
-add_action('publish_my_keywords','bluet_kttg_regenerate_keywords');
-add_action('publish_post','bluet_kttg_regenerate_keywords');
-add_action('publish_page','bluet_kttg_regenerate_keywords');
-add_action('trashed_post','bluet_kttg_regenerate_keywords');
 
 //Functions
 
@@ -169,7 +160,7 @@ function kttg_filter_posttype($cont){
 	if($exclude_me){
 		return $cont;
 	}
-	
+
 	//glossary settings
 	$bluet_kttg_show_glossary_link=get_option('bluet_kw_settings');		
 	$bluet_kttg_show_glossary_link=$bluet_kttg_show_glossary_link['bluet_kttg_show_glossary_link'];
@@ -180,9 +171,9 @@ function kttg_filter_posttype($cont){
 	$option_settings=get_option('bluet_kw_settings');
 
 	//var dans la quelle on cache les tooltips a afficher
-	$html_tooltips_to_add='<div class="my_tooltips_in_block">';			
+	$html_tooltips_to_add='<div class="my_tooltips_in_block">';		
 
-	$my_keywords_ids=get_post_meta($my_post_id,'bluet_matched_keywords',true);
+	$my_keywords_ids=kttg_get_related_keywords($my_post_id);
 	
 	//if user specifies keywords to match
 	$bluet_matching_keywords_field=get_post_meta($my_post_id,'bluet_matching_keywords_field',true);
@@ -288,7 +279,7 @@ function kttg_filter_posttype($cont){
 				}else{
 					$kttg_case_sensitive='i';
 				}							
-				
+
 				foreach($term_and_syns_array as $temr_occ){
 					$cont=preg_replace('#((\W)('.$temr_occ.''.$kw_after.')(\W))#'.$kttg_case_sensitive,'$2__$3__$4',$cont,$limit_match);
 				}					
@@ -370,173 +361,14 @@ function kttg_filter_posttype($cont){
 	return $cont;
 }
 
-function bluet_kttg_regenerate_keywords(){
-	global $more;
-	
-	//fetch terms
-	$all_kw_titles=array(); //will contains keywords names with IDs ready for preg_match
-	
-	$kw_args =array(
-		'post_type'=>'my_keywords', //to receive only keywords
-		'posts_per_page'=>-1
-	);
-	$the_kw_query = new WP_Query( $kw_args );
-	
-	
-	// The Loop to get all the keywords and its syns of the site in $all_kw_titles
-	if ( $the_kw_query->have_posts() ) {
-		while ( $the_kw_query->have_posts() ) {
-			$the_kw_query->the_post();			
-
-			//
-			$syn=get_post_meta(get_the_id(),'bluet_synonyms_keywords',true);
-			
-			//verify if prefix
-			$is_prefix=false;
-			$kw_after='';
-			
-			if(function_exists('bluet_prefix_metabox')){
-				if(get_post_meta(get_the_id(),'bluet_prefix_keywords',true)){
-					$is_prefix=true;
-				}
-			}
-			
-			if($is_prefix){ $kw_after='\w*'; }
-			
-			if(!empty($syn)){
-				$syn='|'.$syn.''.$kw_after;
-			}	
-
-			//change unmatchable apostrophe			
-			//$term_title=str_replace("&#8217;","'",get_the_title());
-			$term_title=get_the_title();
-			$all_kw_titles[get_the_id()]='((\W)('.$term_title.''.$kw_after.''.$syn.')(\W))i';			
-		}
-	}	
-	
-	/* Restore original Post Data */
-	wp_reset_postdata();
-
-	$post_have_kws=array(); //the variable to save earlier
-	
-	/*get all posts (but not post type keywords)*/	
-	$posttypes_to_match=array('post','page');//initial posttypes to match
-	
-	$posttypes_to_match=apply_filters('bluet_kttg_posttypes_to_match',$posttypes_to_match);
-
-	$args =array(
-		'post_type'=>$posttypes_to_match, //to receive only posts and pages (### do something here to support custom post types)
-		'posts_per_page'=>-1
-	);
-	$the_posts_query = new WP_Query( $args );
+function kttg_get_last_revision($post_id,$current=0){
+		$post_revisions=wp_get_post_revisions($post_id);
 		
-	// The Loop
-	if ( $the_posts_query->have_posts() ) {
-		while ( $the_posts_query->have_posts() ) {
-			$the_posts_query->the_post();			
-			
-			//init the post keywords related to zero
-			$post_have_kws[get_the_id()]=array();
-			
-				//set terms for each post , it can be changed to custom fields
-				foreach($all_kw_titles as $term_id=>$term){
-					
-					$more=1; //to make the <!--more--> tag return the hole content of the post
-
-					//look for the $term in the content (### do something here to support custom fields)
-					$content_to_check=' '.get_the_content();
-
-					if(function_exists('bluet_kttg_add_meta_to_check')){
-						$content_to_check.=bluet_kttg_add_meta_to_check();
-					}
-					$content_to_check=strip_tags($content_to_check);//strip_tags eliminates HTML tags before passing in pregmatch
-
-					if(preg_match($term,$content_to_check)){ 
-						$post_have_kws[get_the_id()][]=$term_id;
-					}										
-				}
-		}
-	}
-
-	/* Restore original Post Data */
-	wp_reset_postdata();	
-
-	if(!get_option('bluet_post_have_kws')){ //option contains result ...
-			add_option('bluet_post_have_kws');
+		$last_revision=array_shift($post_revisions); //to eliminate the current revision
+		if($current!=0){
+			return($last_revision);//return current revision
 		}
 		
-		update_option('bluet_post_have_kws',$post_have_kws);
-		
-		/* begin -- save in post meta bluet_matched_keywords */
-		foreach($post_have_kws as $post_id=>$kws_ids){
-			update_post_meta($post_id,'bluet_matched_keywords',$kws_ids);
-		}
-		/*end*/
-		
-		/* begin -- save in post meta bluet_matched_keywords */
-		$Kw_have_posts=bluet_Kw_posts_related();
-		
-		//init every post_meta 'bluet_posts_in_concern' to zero
-		bluet_kw_reset_meta();
-		
-		//process
-		foreach($Kw_have_posts as $kw_id=>$posts_ids){
-			$nbr_posts_related=count($posts_ids);
-			update_post_meta($kw_id,'bluet_posts_in_concern',$nbr_posts_related);
-		}
-		/*end*/
-}
-					
-function bluet_Kw_posts_related(){
-	//returns an array of posts related with the current keyword
-	$post_have_kws=get_option('bluet_post_have_kws');
-	$Kw_have_posts=array();
-	$max_related=0;
-	
-	//calculate the posts related
-	if(!empty($post_have_kws)){
-
-		foreach($post_have_kws as $post_id=>$kws){
-			foreach($kws as $kw){
-				$Kw_have_posts[$kw][]=$post_id;
-			}
-		}
-		
-		//look for max related
-		foreach($Kw_have_posts as $kposts){
-			$tmp_count=count($kposts);
-			if($tmp_count>$max_related){
-				$max_related=$tmp_count;
-			}
-		}
-	}
-	//to prevent zero devision
-	if($max_related==0){
-		$max_related=1;
-	}		
-				
-	$Kw_have_posts['max_related_posts']=$max_related;
-	
-	return $Kw_have_posts;
-}
-
-function bluet_kw_reset_meta(){
-	$kw_args =array(
-		'post_type'=>'my_keywords', //to recieve only keywords
-		'posts_per_page'=>-1
-	);
-	$the_kw_query = new WP_Query( $kw_args );
-	
-	
-	// The Loop
-	if ( $the_kw_query->have_posts() ) {
-		while ( $the_kw_query->have_posts() ) {
-			$the_kw_query->the_post();
-			
-			update_post_meta(get_the_id(),'bluet_posts_in_concern',0); //init by zero every post_meta
-		}
-	}	
-	
-	/* Restore original Post Data */
-	wp_reset_postdata();
+		$last_revision=array_shift($post_revisions); 
+		return($last_revision);//return the last one		
 }
