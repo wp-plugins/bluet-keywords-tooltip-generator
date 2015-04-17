@@ -1,0 +1,430 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: translate Bluet KW\n"
+"POT-Creation-Date: 2015-03-05 00:28+0100\n"
+"PO-Revision-Date: 2015-04-15 12:30+0100\n"
+"Last-Translator: Jamel Zarga <jamel.zarga@gmail.com>\n"
+"Language-Team: leBleut\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: ..\\..\\Bluet_kttg_pro_addon\n"
+
+#: ../functions.php:28
+msgid "View glossary"
+msgstr ""
+
+#: ../glossary-shortcode.php:21
+msgid "ALL"
+msgstr ""
+
+#: ../glossary-shortcode.php:107
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: ../importer.php:6
+msgid "KeyWords Tooltip Generator Converter"
+msgstr ""
+
+#: ../importer.php:7
+msgid "KTTG Converter"
+msgstr ""
+
+#: ../importer.php:17
+msgid "Begin converting my keywords"
+msgstr "Commancer la conversion de mes mots-clés"
+
+#: ../importer.php:31
+msgid "Convert from"
+msgstr "Convertir de"
+
+#: ../importer.php:84
+msgid "keywords converted"
+msgstr "Mots clés convertis"
+
+#: ../importer.php:88
+msgid "These posts were not converted (Duplicated)"
+msgstr "Les articles suivants n'ont pas été convertis (existent déjà)"
+
+#: ../importer.php:94
+msgid ""
+"if you want to re-convert them, you have to delete them from My Keywords."
+msgstr ""
+"Si vous voulez les reconvertir, vous devez les supprimer à partir de Mes "
+"Mots Clés"
+
+#: ../importer.php:104
+msgid "No posts found"
+msgstr "Mots Clés introuvable"
+
+#: ../keyword-posttype.php:24
+msgid "KeyWords"
+msgstr "Mots Clés"
+
+#: ../keyword-posttype.php:25
+msgid "KeyWord"
+msgstr "Mot clé"
+
+#: ../keyword-posttype.php:26 ../keyword-posttype.php:27
+msgid "My KeyWords"
+msgstr "Mes Mots clés"
+
+#: ../keyword-posttype.php:28
+msgid "All my KeyWords"
+msgstr "Tous mes Mots Clés"
+
+#: ../keyword-posttype.php:29
+msgid "Add new one"
+msgstr "Ajouter un autre"
+
+#: ../keyword-posttype.php:30 ../keyword-posttype.php:32
+msgid "New KeyWord"
+msgstr "Nouveau Mot clé"
+
+#: ../keyword-posttype.php:31
+msgid "Edit KeyWord"
+msgstr "Modifier Mot Clé"
+
+#: ../keyword-posttype.php:33
+msgid "View KeyWord"
+msgstr "Afficher le Mot Clé"
+
+#: ../keyword-posttype.php:34
+msgid "Search for KeyWords"
+msgstr "Chercher des Mots Clés"
+
+#: ../keyword-posttype.php:35
+msgid "KeyWords not found"
+msgstr "Mots Clés introuvable"
+
+#: ../keyword-posttype.php:36
+msgid "KeyWords not found in trash"
+msgstr "Mots Clés introuvable dans la corbeille"
+
+#: ../keyword-posttype.php:37
+msgid "Parent KeyWords colon"
+msgstr ""
+
+#: ../keyword-posttype.php:65
+msgid "Posts related"
+msgstr "Articles liés"
+
+#: ../keyword-posttype.php:66
+msgid "Picture"
+msgstr "Image"
+
+#: ../keyword-posttype.php:67
+msgid "Is Prefix ?"
+msgstr "Préfixe ?"
+
+#: ../meta-boxes.php:18
+msgid "Keyword Settings"
+msgstr "Réglages des Mots Clés"
+
+#: ../meta-boxes.php:27
+msgid "Posts in concern"
+msgstr "Articles en sujet"
+
+#: ../meta-boxes.php:37 ../meta-boxes.php:47
+#: ..\..\Bluet_kttg_pro_addon/index.php:37
+msgid "Keywords related"
+msgstr "Mots clés en relation"
+
+#: ../meta-boxes.php:64
+msgid "Synonyms"
+msgstr "Synonymes"
+
+#: ../meta-boxes.php:64
+msgid "Type here the keyword's Synonyms separated with '|'"
+msgstr "Tapez ici les synonymes en les séparant par des '|'"
+
+#: ../meta-boxes.php:68
+msgid "Make this keyword <b>Case Sensitive</b>"
+msgstr "<b>Respecter la casse</b> pour ce mot-clés "
+
+#: ../meta-boxes.php:81
+msgid "Exclude this post from being matched"
+msgstr "Exclure cet article d'etre traité par les mots clés"
+
+#: ../meta-boxes.php:82
+msgid "Exclude this post"
+msgstr "Exclure cet article"
+
+#: ../meta-boxes.php:95
+msgid "Specify keywords to match"
+msgstr "Specifie les mots clés à traiter"
+
+#: ../meta-boxes.php:109
+msgid "Notice : if you leave them all unchecked they will be ALL matched"
+msgstr "NB : si vous ne cochez aucune case ils serons tous traités"
+
+#: ../meta-boxes.php:112
+msgid "No KeyWords found for this post"
+msgstr "Mots Clés introuvable pour cet article"
+
+#: ../meta-boxes.php:116
+msgid "Manage KeyWords"
+msgstr "Gérer les Mots clés"
+
+#: ../settings-page.php:53
+msgid "Post Types in concern :"
+msgstr "Types d'articles en sujet"
+
+#: ../settings-page.php:61
+msgid "Customise the tooltip style :"
+msgstr "Personnaliser le style de l'infobulle"
+
+#: ../settings-page.php:72
+msgid "Posts / Pages"
+msgstr "Articles / Pages"
+
+#: ../settings-page.php:81
+msgid "Match once or all occurrences"
+msgstr "Appliquer sur un/tous les mots clés dans l'article"
+
+#: ../settings-page.php:90
+msgid "Tooltip title"
+msgstr "Titre du tooltip"
+
+#: ../settings-page.php:99
+msgid "Tooltip position"
+msgstr "Position du tooltip"
+
+#: ../settings-page.php:108
+msgid "Glossary page"
+msgstr "Page glossaire"
+
+#: ../settings-page.php:117
+msgid "Keyword style"
+msgstr "Style du Mot Clé"
+
+#: ../settings-page.php:125
+msgid "Description tooltip style"
+msgstr "Style de la description de l'infobulle"
+
+#: ../settings-page.php:133
+msgid "Description tooltip Font size"
+msgstr "Taille de police de l'infobulle"
+
+#: ../settings-page.php:141
+msgid "Activate tooltips for images ?"
+msgstr "Activer les tooltips pour les images ?"
+
+#: ../settings-page.php:166 ../settings-page.php:291
+msgid "KeyWords Settings"
+msgstr "Réglages des Mots Clés"
+
+#: ../settings-page.php:167 ../settings-page.php:296
+msgid "Settings"
+msgstr "Réglages"
+
+#: ../settings-page.php:185
+msgid "alt property of the images will be displayed as a tooltip"
+msgstr "La propriété 'alt' des images sera affiché comme tooltip"
+
+#: ../settings-page.php:198
+msgid "Description Background Colour"
+msgstr "Couleur de l'arrière-plan de l'infobulle"
+
+#: ../settings-page.php:200
+msgid "Description font Colour"
+msgstr "Couleur du texte de l'infobulle"
+
+#: ../settings-page.php:209
+msgid "Background Colour"
+msgstr "Couleur de l'arrière-plan"
+
+#: ../settings-page.php:209
+msgid "No background (Dotted style)"
+msgstr "Pas de surbrillance (style pointillé)"
+
+#: ../settings-page.php:210
+msgid "Font Colour"
+msgstr "Couleur du texte"
+
+#: ../settings-page.php:216
+msgid "Choose either Posts or/and Pages in concern"
+msgstr "Choisir Articles et/ou Pages en sujet"
+
+#: ../settings-page.php:219
+msgid "Make your own style."
+msgstr "Faites votre propre style."
+
+#: ../settings-page.php:225
+msgid "Posts"
+msgstr "Articles"
+
+#: ../settings-page.php:227
+msgid "Pages"
+msgstr ""
+
+#: ../settings-page.php:236
+msgid "Match all occurrences"
+msgstr "Appliquer sur tous les occurences"
+
+#: ../settings-page.php:245
+msgid "Hide the tooltips title"
+msgstr "Cacher le titre de l'infobulle"
+
+#: ../settings-page.php:259
+msgid "Add glossary page link in the tooltip footer"
+msgstr "Ajouter un lien vers la page de glossaire dans le tooltip"
+
+#: ../settings-page.php:263
+msgid "This checkbox will be active after creating a glossary page."
+msgstr ""
+"Cette case à cocher sera active après avoir créer une page de glossaire."
+
+#: ../settings-page.php:274
+msgid "Top"
+msgstr "Haut"
+
+#: ../settings-page.php:275
+msgid "Bottom"
+msgstr "Bas"
+
+#: ../settings-page.php:276
+msgid "Right"
+msgstr "Droite"
+
+#: ../settings-page.php:277
+msgid "Left"
+msgstr "Gauche"
+
+#: ../settings-page.php:295
+msgid "Style"
+msgstr ""
+
+#: ../settings-page.php:297 ../settings-page.php:352
+msgid "Excluded posts"
+msgstr "Articles exclues"
+
+#: ../settings-page.php:298
+msgid "Help ?"
+msgstr "Aide ?"
+
+#: ../settings-page.php:299
+msgid "Premium Add-Ons"
+msgstr ""
+
+#: ../settings-page.php:300
+msgid "Donate"
+msgstr "Faire un don"
+
+#: ../settings-page.php:319
+msgid ""
+"this plugin allows you easely create tooltips for your technical keywords."
+msgstr ""
+"ce plugin vous permet très simplement de créer des infobulles pour vos Mots "
+"Clés techniques."
+
+#: ../settings-page.php:321
+msgid "Click"
+msgstr "Cliquez"
+
+#: ../settings-page.php:323
+msgid "Here"
+msgstr "-- ICI --"
+
+#: ../settings-page.php:325
+msgid "to rate our plugin if you appreciate it"
+msgstr "pour donner une note à notre plugin si vous l'appreciez"
+
+#: ../settings-page.php:341
+msgid "Preview"
+msgstr "Aperçu"
+
+#: ../settings-page.php:342
+msgid "Pass your mouse over the word"
+msgstr "Faite passer le pointeur sur le mot"
+
+#: ../settings-page.php:343
+msgid "to test the tooltip layout."
+msgstr "pour tester l'apparence de l'infobulle"
+
+#: ../settings-page.php:353
+msgid "Posts which are excluded from being matched"
+msgstr "Articles ou pages exclues d'être traités"
+
+#: ../settings-page.php:359
+msgid "No posts or pages are excluded"
+msgstr "Aucun article ou page sont exclues"
+
+#: ../settings-page.php:378 ..\..\Bluet_kttg_pro_addon/settings-page.php:82
+msgid "Save Settings"
+msgstr "Sauvegarder les réglages"
+
+#: ../widget.php:99
+msgid "no terms found for this post"
+msgstr "Pas de mot clés trouvé pour cet article"
+
+#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:9
+msgid "This Keyword is a <b>Prefix</b>"
+msgstr "Ce Mot-clés est un <b>préfixe</b>"
+
+#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:23
+msgid "Prefix"
+msgstr "Préfixe"
+
+#: ..\..\Bluet_kttg_pro_prefix_addon/functions.php:26
+msgid "No"
+msgstr "Non"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:8
+msgid "KTTG Advanced"
+msgstr "KTTG Avancé"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:9
+msgid "Advanced"
+msgstr "Avancé"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:24
+msgid "Advance settings for KTTG :"
+msgstr "Parametres avancés pour KTTG"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:34
+msgid "Match custom-fields"
+msgstr "Traiter les champ personnalisé :"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:43
+msgid "Custom posts types to match"
+msgstr "Les articles personalisés à traiter"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:68
+msgid "KeyWords Avanced"
+msgstr "Mots clés Avancés"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:91
+msgid "Advanced space"
+msgstr "Espace avancé"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:99
+msgid "Write the name of the hooks in concern separated by \"|\"."
+msgstr "Saisir les noms des Hooks à traiter séparés par '|'"
+
+#: ..\..\Bluet_kttg_pro_addon/settings-page.php:128
+msgid ""
+"Choose <b>custom post types</b> to match from this list (hold <b>CTRL</b> "
+"for a multi choice)."
+msgstr ""
+"Choisir <b>les articles personnalisés</b> à traiter à partir de cette liste "
+"(maintenir enfoncée la touche <b>CTRL</b> pour un choix multiple)."
+
+#~ msgid "Match the custom-fields :"
+#~ msgstr "Traiter les champ personnalisé :"
+
+#~ msgid "Match custom-posts"
+#~ msgstr "Traiter les articles personnalisés :"
+
+#~ msgid "Write the name of Post types in concern separated by \"|\"."
+#~ msgstr "Saisir les noms articles personnalisés à traiter séparés par '|'"
+
+#~ msgid "Match excerpts"
+#~ msgstr "Appliquer sur les extraits"
+
+#~ msgid "Keywords Related"
+#~ msgstr "Mots clés en relation"
