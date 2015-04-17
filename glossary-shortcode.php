@@ -39,11 +39,9 @@ function bluet_kttg_glossary(){
 			$link_to_the_letter_page="";
 		}else{
 			$found_letter_class='bluet_glossary_found_letter';
-
-                        $link_to_the_letter_page=add_query_arg( array('letter' => $chara), get_the_permalink());;
-                        
+			$link_to_the_letter_page='href="'.get_the_guid().'&letter='.$chara.'"';
 		}
-       $ret.=' <span class="bluet_glossary_letter '.$found_letter_class.'"><a href="'.$link_to_the_letter_page.'">'.$chara.'<span class="bluet_glossary_letter_count">'.$kttg_posts_num.'</span></a></span>';
+       $ret.=' <span class="bluet_glossary_letter '.$found_letter_class.'"><a '.$link_to_the_letter_page.'>'.$chara.'<span class="bluet_glossary_letter_count">'.$kttg_posts_num.'</span></a></span>';
        $chara++;
    }
    

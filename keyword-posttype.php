@@ -62,6 +62,7 @@ class bluet_keyword{
 		// add the picture among columns
 		add_filter('manage_my_keywords_posts_columns', function($defaults){		
 
+			$defaults['nbr_posts_related'] =__('Posts related','bluet-kw');
 			$defaults['the_picture']=__('Picture','bluet-kw');
 			$defaults['is_prefix'] =__('Is Prefix ?','bluet-kw');
 			$defaults['is_video'] =__('Video tooltip','bluet-kw');
@@ -80,6 +81,7 @@ class bluet_keyword{
 				$reArr['is_video']=$defaults['is_video'];
 			}
 			//
+			$reArr['nbr_posts_related']=$defaults['nbr_posts_related'];
 			$reArr['date']=$defaults['date'];
 			
 			//return the rearranged array
@@ -91,6 +93,20 @@ class bluet_keyword{
 			if ($column_name == 'the_picture') {
 				// show content of 'directors_name' column
 				the_post_thumbnail(array(75,75));
+			}elseif($column_name == 'nbr_posts_related'){				
+				$nbr=get_post_meta(get_the_id(),'bluet_posts_in_concern',true);	
+
+				$posts_related=bluet_Kw_posts_related();
+				$tmp_max=$posts_related['max_related_posts'];
+
+				$progressbar=(int)(($nbr/$tmp_max)*100);
+		
+				
+				?>		
+				<div style=" background-color: aquamarine; width: <?php echo $progressbar ?>%; border-radius: 7px; padding-left: 2px;">
+					<b><?php echo $nbr; ?></b>
+				</div>
+				<?php
 			}elseif($column_name == 'is_prefix'){
 				//if appropriate addon is activated
 				if(function_exists('bluet_show_prefix_in_column')){
@@ -103,7 +119,32 @@ class bluet_keyword{
 				}
 			}
 		},10,2); //10 priority, 2 arguments
+		
+		add_filter('manage_edit-my_keywords_sortable_columns','bluet_kw_manage_sortable_columns');
+		
+		function bluet_kw_manage_sortable_columns( $sortable_columns ) {
 
+		   // Let's also make the nbr_posts_related column sortable
+			$sortable_columns[ 'nbr_posts_related' ] = 'nbr_posts_related';
+			
+			return $sortable_columns;
+		}
+		
+		add_action( 'pre_get_posts', 'bluet_kw_manage_wp_posts_pre_get_posts', 1 );
+		function bluet_kw_manage_wp_posts_pre_get_posts( $query ) {
+		   if ( $query->is_main_query() && ( $orderby = $query->get( 'orderby' ) ) ) {		   
+			  switch( $orderby ) {
+				 // If we're ordering by 'film_rating'
+				 case 'nbr_posts_related':
+					// set our query's meta_key, which is used for custom fields
+					$query->set( 'meta_key', 'bluet_posts_in_concern' );
+						
+					$query->set( 'orderby', 'meta_value_num' );					
+						
+					break;
+			  }
+		   }
+		}
 	}
 }
 

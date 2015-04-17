@@ -45,7 +45,7 @@ class bluet_keyword_widget extends wp_widget{
 			echo($after_title);
 			echo('<ul>');
 			//widget content process here
-				$my_keywords_ids=kttg_get_related_keywords(get_the_id());
+				$my_keywords_ids=get_post_meta(get_the_id(),'bluet_matched_keywords',true);
 				
 				//if user specifies keywords to match
 				$bluet_matching_keywords_field=get_post_meta(get_the_id(),'bluet_matching_keywords_field',true);

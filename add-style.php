@@ -170,12 +170,11 @@ function bluet_kw_custom_style(){
 	.bluet_glossary_found_letter{
 		font-weight: bold;
 	}
-        span.kttg_glossary_nav {
-                background-color: bisque;
-                padding: 5px;
-                margin-left: 5px;
-        }
-	
+	span.kttg_glossary_nav {
+			background-color: bisque;
+			padding: 5px;
+			margin-left: 5px;
+	}
 	/* hide button */
 	.bluet_hide_tooltip_button{
 		width: 25px;
