@@ -21,20 +21,11 @@ add_action('do_meta_boxes',function(){
 		'after_title',
 		'high'
 		);
-
-		add_meta_box(
-		'bluet_kw_related_posts_meta',
-		__('Posts in concern','bluet-kw').' * (BlueT)',
-		'bluet_posts_related_render',
-		'my_keywords',
-		'side',
-		'high'
-		);
 		
 //for posts
 		add_meta_box(
 		'bluet_kw_post_related_keywords_meta',
-		__('Keywords related','bluet-kw').' * (BlueT)',
+		__('Keywords related','bluet-kw').' (KTTG)',
 		'bluet_keywords_related_render',
 		'post',
 		'side',
@@ -44,20 +35,14 @@ add_action('do_meta_boxes',function(){
 //for pages		
 		add_meta_box(
 		'bluet_kw_page_related_keywords_meta',
-		__('Keywords related','bluet-kw').' * (BlueT)',
+		__('Keywords related','bluet-kw').' (KTTG)',
 		'bluet_keywords_related_render',
 		'page',
 		'side',
         'high'
 		);
 });
-function bluet_posts_related_render(){
-	$nbr=get_post_meta(get_the_id(),'bluet_posts_in_concern',true);	
-	if(empty($nbr)){
-		$nbr=0;
-	}
-	echo($nbr);
-}
+
 function bluet_keyword_settings_render(){
 	?>
 	<p>
@@ -78,41 +63,44 @@ function bluet_keyword_settings_render(){
 	}
 	
 }
+
 function bluet_keywords_related_render(){
 //exclude checkbox to exclode the current post from being matched
-	$exclude_me = get_post_meta(get_the_id(),'bluet_exclude_post_from_matching',true);
-?>
+	global $post;
+
+	$current_post_id=$post->ID;
+	$exclude_me = get_post_meta($current_post_id,'bluet_exclude_post_from_matching',true);
+	?>
 	<div>
-		<p><b>- <?php _e('Exclude this post from being matched','bluet-kw'); ?></b></p>
-		<input type="checkbox" id="bluet_kw_admin_exclude_post_from_matching_id" onClick="hideIfChecked('bluet_kw_admin_exclude_post_from_matching_id','bluet_kw_admin_div_terms')" name="bluet_exclude_post_from_matching_name" <?php if($exclude_me) echo "checked"; ?>/><span style="color:red;"><?php _e('Exclude this post','bluet-kw'); ?></span>
+		<h3><?php _e('Exclude this post from being matched','bluet-kw'); ?></h3>
+		<input type="checkbox" id="bluet_kw_admin_exclude_post_from_matching_id" onClick="hideIfChecked('bluet_kw_admin_exclude_post_from_matching_id','bluet_kw_admin_div_terms')" name="bluet_exclude_post_from_matching_name" <?php if($exclude_me) echo "checked"; ?>/>
+		<span style="color:red;"><?php _e('Exclude this post','bluet-kw'); ?></span>
 	
-<?php
+	<?php
 //show keywords list related
-	$my_kws=get_post_meta(get_the_id(),'bluet_matched_keywords',true);
-	$bluet_matching_keywords_field=get_post_meta(get_the_id(),'bluet_matching_keywords_field',true);
+	
+	$my_kws=array();
+	
+	$my_kws=kttg_get_related_keywords($current_post_id);
+	
+	//echo('<pre>');print_r($my_kws);echo('</pre>');
+
+	$bluet_matching_keywords_field=get_post_meta($current_post_id,'bluet_matching_keywords_field',true);
 	
 	?>
+	
 		<div id="bluet_kw_admin_div_terms">
 		<?php
 
 	if(!empty($my_kws)){
-	?>		
-		<p><b>- <?php _e('Specify keywords to match','bluet-kw');?></b></p>
-	<?php
-	echo('<ul>');
-		foreach($my_kws as $kw_id){
-			$check_unchecked="";
-			if(!empty($bluet_matching_keywords_field)){
-				if(!empty($bluet_matching_keywords_field[$kw_id])){
-					$check_unchecked="checked";
-				}
+		?>		
+			<h3><?php _e('Keywords related','bluet-kw');?></h3>
+		<?php
+		echo('<ul style="list-style: initial; padding-left: 20px;">');
+			foreach($my_kws as $kw_id){
+				echo('<li style="color:green;"><i>'.get_the_title($kw_id).'</i></li>'); 
 			}
-			echo('<li><input type="checkbox" name="matchable_keywords['.$kw_id.']" value="'.$kw_id.'" '.$check_unchecked.'>'.get_the_title($kw_id).'</li>'); 
-		}
-	echo('</ul>');
-	?>
-	<p style="color:green;"><?php _e('Notice : if you leave them all unchecked they will be ALL matched','bluet-kw');?></p>
-	<?php
+		echo('</ul>');
 	}else{
 		echo('<p>'.__('No KeyWords found for this post','bluet-kw').'</p>');
 	}
@@ -123,6 +111,7 @@ function bluet_keywords_related_render(){
 		echo('</div>');
 	echo "</div>";
 }
+
 
 add_action('save_post',function(){
 	//saving synonyms

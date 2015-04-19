@@ -57,9 +57,8 @@ function bluet_kw_custom_style(){
 		if(!$bt_kw_on_background){
 			echo("background: ".$tooltip_bg_color." ".$is_important.";");
 			
-			echo("padding: 1px 7px 4px 7px;");
+			echo("padding: 1px 5px 3px 5px;");
 			echo("font-size: 1em;");
-			echo("border-radius: 10px;");
 		}else{
 			echo("border-bottom: 1px dotted;");
 			echo("border-bottom-color: ".$tooltip_color.";");
@@ -170,11 +169,12 @@ function bluet_kw_custom_style(){
 	.bluet_glossary_found_letter{
 		font-weight: bold;
 	}
-	span.kttg_glossary_nav {
-			background-color: bisque;
-			padding: 5px;
-			margin-left: 5px;
-	}
+        span.kttg_glossary_nav {
+                background-color: bisque;
+                padding: 5px;
+                margin-left: 5px;
+        }
+	
 	/* hide button */
 	.bluet_hide_tooltip_button{
 		width: 25px;

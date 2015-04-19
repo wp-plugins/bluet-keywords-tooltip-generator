@@ -87,16 +87,12 @@ function bluet_hide_bg(){
 		elem.style.backgroundColor='initial';		
 		elem.style.borderBottom =txt_color+" 1px dotted";
 		elem.style.borderRadius="0px";
-		elem.style.padding="0px";		
 
 		document.getElementById('bluet_kw_bg_hide').style.display='none';
 	}else{
 		elem.style.backgroundColor=document.getElementsByName('bluet_kw_style[bt_kw_tt_bg_color]')[0].value;
 		document.getElementById('bluet_kw_bg_hide').style.display='block';
 		elem.style.borderBottom="0px";
-
-		elem.style.borderRadius="10px";
-		elem.style.padding="1px 7px 4px 7px";		
 	}
 }
 
