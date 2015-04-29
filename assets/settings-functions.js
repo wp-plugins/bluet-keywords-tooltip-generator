@@ -44,6 +44,12 @@ jQuery(document).ready(function(){
 	bluet_hide_bg();		
 	document.getElementById("bluet_kw_no_background").addEventListener("change",bluet_hide_bg,false);
 	
+	//
+	bluet_tt_width();		
+	document.getElementById("bt_kw_tooltip_width_id").addEventListener("change",bluet_tt_width,false);
+	document.getElementById("bt_kw_tooltip_width_id").addEventListener("keyup",bluet_tt_width,false);
+
+	
 	for(var i=0;i<document.getElementsByClassName('wp-picker-holder').length;i++){
 		document.getElementsByClassName('wp-picker-holder')[i].addEventListener('mousemove',function(e){
 			
@@ -62,7 +68,6 @@ jQuery(document).ready(function(){
 			document.getElementsByClassName('bluet_block_container')[0].style.backgroundColor=bluet_tooltip_bg;
 			document.getElementsByClassName('bluet_block_container')[0].style.boxShadow="0px 0px 10px "+bluet_tooltip_bg;
 			document.getElementsByClassName('bluet_block_container')[0].style.color=bluet_tooltip_color;
-			
 		},false);
 	}
 });
@@ -79,7 +84,15 @@ function bluetShowTab(tabId){
 	
 	document.getElementById(tabId).style.display='block';
 }
+function bluet_tt_width(){
+	elem=document.getElementsByClassName('bluet_block_to_show')[0];
 
+	if(document.getElementById("bt_kw_tooltip_width_id").value!=""){
+		elem.style.maxWidth=document.getElementById("bt_kw_tooltip_width_id").value+"px";		
+	}else{
+		elem.style.maxWidth='400px';		
+	}
+}
 function bluet_hide_bg(){
 		elem=document.getElementsByClassName('bluet_tooltip')[0];
 		txt_color=elem.style.color;

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translate Bluet KW\n"
-"POT-Creation-Date: 2015-04-15 12:33+0100\n"
-"PO-Revision-Date: 2015-04-15 12:34+0100\n"
+"POT-Creation-Date: 2015-04-29 01:05+0100\n"
+"PO-Revision-Date: 2015-04-29 01:05+0100\n"
 "Last-Translator: Jamel Zarga <jamel.zarga@gmail.com>\n"
 "Language-Team: leBleut\n"
 "Language: kw_AR\n"
@@ -23,15 +23,15 @@ msgstr "Ver glosario"
 msgid "ALL"
 msgstr "TODO"
 
-#: ../glossary-shortcode.php:98
+#: ../glossary-shortcode.php:104
 msgid "Previous"
 msgstr "Anterior"
 
-#: ../glossary-shortcode.php:99
+#: ../glossary-shortcode.php:105
 msgid "Next"
 msgstr "Siguiente"
 
-#: ../glossary-shortcode.php:105
+#: ../glossary-shortcode.php:111
 msgid "Sorry, no posts matched your criteria."
 msgstr "Disculpe, no hay post que corresponden con su criterio."
 
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Keyword Settings"
 msgstr "Ajustes de Palabra Clave"
 
-#: ../meta-boxes.php:28 ../meta-boxes.php:38 ../meta-boxes.php:93
+#: ../meta-boxes.php:28 ../meta-boxes.php:38 ../meta-boxes.php:97
 #: ..\..\Bluet_kttg_pro_addon/index.php:43
 msgid "Keywords related"
 msgstr "Palabras Claves relacionadas"
@@ -151,19 +151,19 @@ msgstr "Escribir aquí los Sinónimos de palabras claves con '|' "
 msgid "Make this keyword <b>Case Sensitive</b>"
 msgstr "Hacer esta palabra clave <b>Distintiva entre Mayúscula y Minúscula</b>"
 
-#: ../meta-boxes.php:74
+#: ../meta-boxes.php:75
 msgid "Exclude this post from being matched"
 msgstr "Excluir este post de ser incluído"
 
-#: ../meta-boxes.php:76
+#: ../meta-boxes.php:77
 msgid "Exclude this post"
 msgstr "Excluir este post"
 
-#: ../meta-boxes.php:101
+#: ../meta-boxes.php:105
 msgid "No KeyWords found for this post"
 msgstr "No se encontraron Palabras Claves en este post"
 
-#: ../meta-boxes.php:105
+#: ../meta-boxes.php:109
 msgid "Manage KeyWords"
 msgstr "Gestionar Palabras Claves"
 
@@ -204,150 +204,154 @@ msgid "Description tooltip style"
 msgstr "Estilo del mensaje de ayuda de la descripción"
 
 #: ../settings-page.php:139
+msgid "Tooltip width"
+msgstr ""
+
+#: ../settings-page.php:147
 msgid "Description tooltip Font size"
 msgstr "Tamaño de la Letra del mensaje de ayuda de la descripción"
 
-#: ../settings-page.php:147
+#: ../settings-page.php:155
 msgid "Activate tooltips for images ?"
 msgstr "¿Activar mensaje de ayuda para las imágenes?"
 
-#: ../settings-page.php:172 ../settings-page.php:286
+#: ../settings-page.php:181 ../settings-page.php:302
 msgid "KeyWords Settings"
 msgstr "Ajustes de Palabras Claves"
 
-#: ../settings-page.php:173 ../settings-page.php:291
+#: ../settings-page.php:182 ../settings-page.php:307
 msgid "Settings"
 msgstr "Ajustes"
 
-#: ../settings-page.php:191
+#: ../settings-page.php:207
 msgid "alt property of the images will be displayed as a tooltip"
 msgstr ""
 "la propiedad alt de las imágenes será mostrada como un mensaje de ayuda"
 
-#: ../settings-page.php:204
+#: ../settings-page.php:220
 msgid "Description Background Colour"
 msgstr "Color de Fondo de la Descripción"
 
-#: ../settings-page.php:206
+#: ../settings-page.php:222
 msgid "Description font Colour"
 msgstr "Color de la letra de la descripción"
 
-#: ../settings-page.php:215
+#: ../settings-page.php:231
 msgid "Background Colour"
 msgstr "Color de Fondo"
 
-#: ../settings-page.php:215
+#: ../settings-page.php:231
 msgid "No background (Dotted style)"
 msgstr "Sin Fondo (Estilo de Punto)"
 
-#: ../settings-page.php:216
+#: ../settings-page.php:232
 msgid "Font Colour"
 msgstr "Color de Letra"
 
-#: ../settings-page.php:222
+#: ../settings-page.php:238
 msgid "Choose either Posts or/and Pages in concern"
 msgstr "Escoger entre Posts y/o Páginas de interés"
 
-#: ../settings-page.php:225
+#: ../settings-page.php:241
 msgid "Make your own style."
 msgstr "Haga su propio estilo."
 
-#: ../settings-page.php:231
+#: ../settings-page.php:247
 msgid "Posts"
 msgstr "Posts"
 
-#: ../settings-page.php:233
+#: ../settings-page.php:249
 msgid "Pages"
 msgstr "Páginas"
 
-#: ../settings-page.php:242
+#: ../settings-page.php:258
 msgid "Match all occurrences"
 msgstr "Incluir todas las ocurrencias"
 
-#: ../settings-page.php:251
+#: ../settings-page.php:267
 msgid "Hide the tooltips title"
 msgstr "Ocultar el título de los mensajes de ayuda"
 
-#: ../settings-page.php:260
+#: ../settings-page.php:276
 msgid "Add glossary page link in the tooltip footer"
 msgstr ""
 
-#: ../settings-page.php:269
+#: ../settings-page.php:285
 msgid "Top"
 msgstr "Arriba"
 
-#: ../settings-page.php:270
+#: ../settings-page.php:286
 msgid "Bottom"
 msgstr "Abajo"
 
-#: ../settings-page.php:271
+#: ../settings-page.php:287
 msgid "Right"
 msgstr "Derecha"
 
-#: ../settings-page.php:272
+#: ../settings-page.php:288
 msgid "Left"
 msgstr "Izquierda"
 
-#: ../settings-page.php:290
+#: ../settings-page.php:306
 msgid "Style"
 msgstr "Estilo"
 
-#: ../settings-page.php:292 ../settings-page.php:347
+#: ../settings-page.php:308 ../settings-page.php:363
 msgid "Excluded posts"
 msgstr "Posts excluidos"
 
-#: ../settings-page.php:293
+#: ../settings-page.php:309
 msgid "Help ?"
 msgstr "¿Ayuda?"
 
-#: ../settings-page.php:294
+#: ../settings-page.php:310
 msgid "Get the Pro AddOn"
 msgstr ""
 
-#: ../settings-page.php:295
+#: ../settings-page.php:311
 msgid "Donate"
 msgstr "Donar"
 
-#: ../settings-page.php:314
+#: ../settings-page.php:330
 msgid ""
 "this plugin allows you easely create tooltips for your technical keywords."
 msgstr ""
 "este plugin le permite crear fácilmente mensajes de ayuda para sus palabras "
 "claves técnicas."
 
-#: ../settings-page.php:316
+#: ../settings-page.php:332
 msgid "Click"
 msgstr "Haga clic"
 
-#: ../settings-page.php:318
+#: ../settings-page.php:334
 msgid "Here"
 msgstr "Aquí"
 
-#: ../settings-page.php:320
+#: ../settings-page.php:336
 msgid "to rate our plugin if you appreciate it"
 msgstr "para puntuar nuestro plugin si lo aprecia"
 
-#: ../settings-page.php:336
+#: ../settings-page.php:352
 msgid "Preview"
 msgstr "Vista Previa"
 
-#: ../settings-page.php:337
+#: ../settings-page.php:353
 msgid "Pass your mouse over the word"
 msgstr "Mueva su mouse sobre la palabra"
 
-#: ../settings-page.php:338
+#: ../settings-page.php:354
 msgid "to test the tooltip layout."
 msgstr "para probar el diseño del mensaje de ayuda."
 
-#: ../settings-page.php:348
+#: ../settings-page.php:364
 msgid "Posts which are excluded from being matched"
 msgstr "Los posts que no son incluidos"
 
-#: ../settings-page.php:354
+#: ../settings-page.php:370
 msgid "No posts or pages are excluded"
 msgstr "No se han excluidos páginas o posts"
 
-#: ../settings-page.php:373 ..\..\Bluet_kttg_pro_addon/settings-page.php:99
+#: ../settings-page.php:389 ..\..\Bluet_kttg_pro_addon/settings-page.php:99
 msgid "Save Settings"
 msgstr "Salvar Ajustes"
 

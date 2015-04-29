@@ -21,30 +21,36 @@ function bluet_kttg_glossary(){
 //End -- glossary permalink page option
 
    $ret='<div class="kttg_glossary_header">* <span class="bluet_glossary_all"><a href="'.get_the_guid().'">'.__('ALL','bluet-kw').'</a></span> * ';
-   $chara='A';
-   for($i=0;$i<26;$i++){ 
-   
-   	   $kttg_posts_num=$wpdb->get_var($wpdb->prepare("
-												SELECT      COUNT(*)
-												FROM        $wpdb->posts
-												WHERE       SUBSTR($wpdb->posts.post_title,1,1) = %s
-													AND $wpdb->posts.post_type='my_keywords'
-													AND $wpdb->posts.post_status = 'publish'
-												ORDER BY    $wpdb->posts.post_title"
-											,$chara)); 
-		$found_letter_class='';
-		
-		if($kttg_posts_num==0){
-			$kttg_posts_num='';
-			$link_to_the_letter_page="";
-		}else{
-			$found_letter_class='bluet_glossary_found_letter';
+   /*get chars array*/
+   $chars_count=array();
+    // the query
+	    $args=array(
+			'post_type'     =>'my_keywords',
+            'order'         => 'ASC',
+            'orderby'       => 'title',
+			'posts_per_page'=>-1,
+		);
+	
+    $the_query = new WP_Query($args); 
+							
+   // The Loop
+	if ( $the_query->have_posts() ){
+			while ( $the_query->have_posts() ){
+                $the_query->the_post();
+				$my_char=strtoupper(substr(get_the_title(),0,1));
+				$chars_count[$my_char]++;
+			}
+	}
+    // clean up after our query
+    wp_reset_postdata(); 
+	/**/
 
-                        $link_to_the_letter_page=add_query_arg( array('letter' => $chara), get_the_permalink());;
-                        
-		}
-       $ret.=' <span class="bluet_glossary_letter '.$found_letter_class.'"><a href="'.$link_to_the_letter_page.'">'.$chara.'<span class="bluet_glossary_letter_count">'.$kttg_posts_num.'</span></a></span>';
-       $chara++;
+	foreach($chars_count as $chara=>$nbr){ 
+ 		$found_letter_class='bluet_glossary_found_letter';
+
+        $link_to_the_letter_page=add_query_arg( array('letter' => utf8_decode($chara)), get_the_permalink());;
+ 
+       $ret.=' <span class="bluet_glossary_letter '.$found_letter_class.'"><a href="'.$link_to_the_letter_page.'">'.utf8_decode($chara).'<span class="bluet_glossary_letter_count">'.$nbr.'</span></a></span>';
    }
    
    $ret.='</div>';

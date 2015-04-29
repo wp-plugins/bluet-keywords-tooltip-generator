@@ -28,6 +28,7 @@ function bluet_kw_custom_style(){
 	$desc_bg_color=$style_options['bt_kw_desc_bg_color'];
 	
 	$desc_font_size=(empty($style_options['bt_kw_desc_font_size'])? 17 : $style_options['bt_kw_desc_font_size']);
+	$desc_width=(empty($style_options['bt_kw_tooltip_width'])? 400 : $style_options['bt_kw_tooltip_width']);
 	
 	$is_important="";
 	
@@ -67,8 +68,9 @@ function bluet_kw_custom_style(){
 	}
 	
 	.bluet_block_to_show{
-		display:none;	
-		max-width:300px;
+		display:none;
+		opacity:0;		
+		max-width: <?php echo($desc_width); ?>px;
 		z-index:9999;
 		padding:10px;
 		
@@ -101,6 +103,10 @@ function bluet_kw_custom_style(){
 		height: auto;
 		margin-bottom: 0px;
 	}
+
+	.bluet_text_content p:last-child {
+	  margin-bottom: 0px;
+	}
 	
 	.bluet_text_content{
 		padding:6px 10px 6px 10px;		
@@ -122,17 +128,17 @@ function bluet_kw_custom_style(){
 	}
 	
 	.kttg_arrow_show_top:after{
-		bottom: 5px;
+		bottom: 3px;
 		border-top: 7px solid <?php echo $desc_bg_color; ?>;
 	}
 	
 	.kttg_arrow_show_right:after{
-		bottom: 5px;
+		bottom: 3px;
 		border-top: 7px solid <?php echo $desc_bg_color; ?>;
 	}
 	
 	.kttg_arrow_show_left:after{
-		bottom: 5px;
+		bottom: 3px;
 		border-top: 7px solid <?php echo $desc_bg_color; ?>;
 	}
 	
@@ -147,14 +153,14 @@ function bluet_kw_custom_style(){
 	
 	/* Glossary style */
 	span.bluet_glossary_letter a {
-		text-decoration: none;
+		text-decoration: none !important;
 		padding: 3px;
 		background-color: beige;
 		border-radius: 3px;
 	}
 	
 	.bluet_glossary_all a {
-		text-decoration: none;
+		text-decoration: none !important;
 		padding: 3px;
 		background-color: bisque;
 		font-weight: bold;

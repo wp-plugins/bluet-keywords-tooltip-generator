@@ -135,6 +135,14 @@ add_action( 'admin_init',function () {
 	);
 
 	add_settings_field( 
+		'bt_kw_tooltip_width', 					
+		__('Tooltip width','bluet-kw'),
+		'bt_kw_tooltip_width_display',
+		'my_keywords_style',			
+		'style_section'					
+	);
+	
+	add_settings_field( 
 		'bt_kw_desc_font_size', 					
 		__('Description tooltip Font size','bluet-kw'), 			
 		'bt_kw_desc_font_size_display', 		
@@ -149,6 +157,7 @@ add_action( 'admin_init',function () {
 		'my_keywords_style',			
 		'style_section'					
 	);
+	
 /******************* registrations */
 	//for settings options
 	register_setting(
@@ -184,6 +193,13 @@ add_action('admin_menu',function(){
 /**
  * Renders the content of the options page for the 	
 */
+function bt_kw_tooltip_width_display(){
+	//width tooltip render function	
+	$options = get_option( 'bluet_kw_style' );
+	?>
+	<input id="bt_kw_tooltip_width_id" type="number" min="1" max="5000" name="bluet_kw_style[bt_kw_tooltip_width]" value="<?php echo $options['bt_kw_tooltip_width']; ?>"> px<?php
+}
+
 function bt_kw_alt_img_display(){
 	//img atl tooltip render function	
 	$options = get_option( 'bluet_kw_style' );
@@ -194,7 +210,7 @@ function bt_kw_desc_font_size_display(){
 //font size field render function	
 	$options = get_option( 'bluet_kw_style' );
 	?>
-			<input id="bt_kw_desc_font_size_id" type="number" min="1" max="50" name="bluet_kw_style[bt_kw_desc_font_size]" value="<?php echo $options['bt_kw_desc_font_size']; ?>"> pixels
+			<input id="bt_kw_desc_font_size_id" type="number" min="1" max="50" name="bluet_kw_style[bt_kw_desc_font_size]" value="<?php echo $options['bt_kw_desc_font_size']; ?>"> px
 	<?php
 }
 function bt_kw_desc_colour_display(){
