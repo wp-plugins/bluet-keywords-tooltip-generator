@@ -14,7 +14,7 @@ jQuery(document).ready(function(){
 	hideIfChecked('bluet_kw_admin_exclude_post_from_matching_id','bluet_kw_admin_div_terms');
 
 	//array contains tabs to show
-	var bluet_tab=['bluet_style_tab','bluet_settings_tab','bluet_excluded_tab'];
+	var bluet_tab=['bluet_style_tab','bluet_settings_tab','bluet_excluded_tab','bluet_glossary_tab'];
 
 	for(var i=0;i<bluet_tab.length;i++){
 

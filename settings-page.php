@@ -2,9 +2,10 @@
 defined('ABSPATH') or die("No script kiddies please!");
 
 /*adding custom style*/
-require_once dirname( __FILE__ ) . '/add-style.php';
-require_once dirname( __FILE__ ) . '/importer.php';
-require_once dirname( __FILE__ ) . '/functions.php';
+require_once 'add-style.php';
+require_once 'importer.php';
+require_once 'functions.php';
+require_once 'settings-glossary.php';
 
 add_action('wp_head','bluet_kw_custom_style');
 add_action('admin_head','bluet_kw_custom_style');
@@ -56,7 +57,7 @@ add_action( 'admin_init',function () {
 	// 1st section
 	add_settings_section(
 		'concern_section',					
-		__('Post Types in concern :','bluet-kw'),					
+		__('Tooltips settings :','bluet-kw'),					
 		'bluet_kw_sttings_display',		
 		'my_keywords_settings'				
 	);
@@ -107,16 +108,7 @@ add_action( 'admin_init',function () {
 		'my_keywords_settings',				
 		'concern_section'					
 	);
-	
-	// Define view glossary page field
-	add_settings_field( 
-		'bluet_kttg_show_glossary_link', 					
-		__('Glossary page','bluet-kw'), 			
-		'bt_kw_show_glossary_link_display', 		
-		'my_keywords_settings',				
-		'concern_section'					
-	);
-	
+
 	// Define the settings field for tooltip font color
 	add_settings_field( 
 		'bt_kw_tt_colour', 					// The ID (or the name) of the field
@@ -169,8 +161,8 @@ add_action( 'admin_init',function () {
 	register_setting(
 		'settings_group',					// The name of the group of settings
 		'bluet_kw_style'					// The name of the actual option (or setting)
-	);
-	
+	);	
+
 }); // end bluet_kw_settings_registration
 
 
@@ -193,6 +185,7 @@ add_action('admin_menu',function(){
 /**
  * Renders the content of the options page for the 	
 */
+
 function bt_kw_tooltip_width_display(){
 	//width tooltip render function	
 	$options = get_option( 'bluet_kw_style' );
@@ -228,14 +221,14 @@ function bt_kw_tt_colour_display(){
 	//colour field render function	
 	$options = get_option( 'bluet_kw_style' );
 	?>
-		<?php _e('Background Colour','bluet-kw'); ?> : <br><p><input id="bluet_kw_no_background" type="checkbox" name="bluet_kw_style[bt_kw_on_background]" <?php if($options['bt_kw_on_background']) echo 'checked'; ?>/><label for="bluet_kw_no_background" style="border-bottom: black 1px dotted;"><?php _e('No background (Dotted style)','bluet-kw'); ?></label></p><div id="bluet_kw_bg_hide"><input  type="text" class="color-field" name="bluet_kw_style[bt_kw_tt_bg_color]" value="<?php echo $options['bt_kw_tt_bg_color']; ?>"></div>
+		<?php _e('Background Colour','bluet-kw'); ?> : <br><p><input id="bluet_kw_no_background" type="checkbox" name="bluet_kw_style[bt_kw_on_background]" <?php if(!empty($options['bt_kw_on_background']) and $options['bt_kw_on_background']) echo 'checked'; ?>/><label for="bluet_kw_no_background" style="border-bottom: black 1px dotted;"><?php _e('No background (Dotted style)','bluet-kw'); ?></label></p><div id="bluet_kw_bg_hide"><input  type="text" class="color-field" name="bluet_kw_style[bt_kw_tt_bg_color]" value="<?php echo $options['bt_kw_tt_bg_color']; ?>"></div>
 		<br><?php _e('Font Colour','bluet-kw'); ?> : <br><input  type="text" class="color-field" name="bluet_kw_style[bt_kw_tt_color]" value="<?php echo $options['bt_kw_tt_color']; ?>">
 
 	<?php
 }
 
 function bluet_kw_sttings_display(){
-	echo('<div id="keywords-settings">'.__('Choose either Posts or/and Pages in concern','bluet-kw').'.</div>');
+	echo('<div id="keywords-settings">'.__('General tooltips settings','bluet-kw').'.</div>');
 }
 function bluet_kw_style_display(){
 	echo(__('Make your own style.','bluet-kw'));
@@ -269,15 +262,6 @@ function bt_kw_hide_title_display(){
 	 
 }
 
-function bt_kw_show_glossary_link_display(){
-	$options = get_option( 'bluet_kw_settings' );
-?>
-	<input type="checkbox" 	id="bt_kw_show_glossary_link_id" 	name="bluet_kw_settings[bluet_kttg_show_glossary_link]" <?php if($options['bluet_kttg_show_glossary_link']) echo 'checked'; ?> />
-		<label for="bt_kw_show_glossary_link_id"><?php _e('Add glossary page link in the tooltip footer','bluet-kw'); ?></label><br>
-
-<?php
-	 
-}
 
 function bt_kw_position_display(){
 	$options = get_option( 'bluet_kw_settings' );
@@ -305,6 +289,7 @@ function bluet_kw_render_settings_page() {
 				<h2 class="nav-tab-wrapper">
 					<a class="nav-tab" id="bluet_style_tab" data-tab="bluet-section-style"><?php _e('Style','bluet-kw'); ?></a>
 					<a class="nav-tab" id="bluet_settings_tab" data-tab="bluet-section-settings"><?php _e('Settings','bluet-kw'); ?></a>
+					<a class="nav-tab" id="bluet_glossary_tab" data-tab="bluet-section-glossary"><?php _e('Glossary','bluet-kw'); ?></a>
 					<a class="nav-tab" id="bluet_excluded_tab" data-tab="bluet-section-excluded"><?php _e('Excluded posts','bluet-kw');?></a>
 					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="https://wordpress.org/support/plugin/bluet-keywords-tooltip-generator" ><?php _e('Help ?','bluet-kw');?></a>
 					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="http://www.blueskills.net/pricing/" ><?php _e('Get the Pro AddOn','bluet-kw');?></a>
@@ -317,7 +302,12 @@ function bluet_kw_render_settings_page() {
 				settings_fields( 'settings_group' );
 				
 				//render sections here	
-			echo('<div id="bluet-sections-div">');
+			echo('<div id="bluet-sections-div">');			
+				//glossary settings
+				echo('<div class="bluet-section" id="bluet-section-glossary" >');
+				do_settings_sections( 'my_keywords_glossary_settings' );		
+				echo('</div>');
+				
 				echo('<div class="bluet-section" id="bluet-section-settings" >');
 				do_settings_sections( 'my_keywords_settings' );		
 				echo('</div>');
@@ -343,6 +333,8 @@ function bluet_kw_render_settings_page() {
 				echo(bluet_kttg_tooltip_layout($test_name,$test_dfn,$test_img,$test_id));
 				echo('</div>');
 				
+				
+				//tooltip settings
 				echo('<div id="tooltip_settings_sections">');
 					do_settings_sections( 'my_keywords_style' );	
 				echo('</div>');

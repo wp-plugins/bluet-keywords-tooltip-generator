@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.5.7
+Version: 2.6.0
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -14,6 +14,7 @@ require_once dirname( __FILE__ ) . '/widget.php';
 require_once dirname( __FILE__ ) . '/meta-boxes.php';
 require_once dirname( __FILE__ ) . '/glossary-shortcode.php';
 require_once dirname( __FILE__ ) . '/functions.php';
+
 
 $bluet_kw_capability=apply_filters('bluet_kw_capability','manage_options');
 
@@ -74,7 +75,7 @@ add_action('wp_head',function(){
 	}
 
 	foreach($posttypes_to_match as $k=>$the_posttype_to_match){
-		if($contents_to_filter[$k]!=null){
+		if(!empty($contents_to_filter[$k]) and $contents_to_filter[$k]!=null){
 			bluet_kttg_filter_any_content($the_posttype_to_match,$contents_to_filter[$k]);
 		}
 	}
@@ -106,7 +107,7 @@ function bluet_kw_activation(){
 	
 	//initialise style option if bluet_kw_style is empty
 	$style_options=array(
-		'bt_kw_tt_color'=>'#D5D5D5',
+		'bt_kw_tt_color'=>'inherit',
 		'bt_kw_tt_bg_color'=>'#0D45AA',
 		
 		'bt_kw_desc_color'=>'#ffffff',
@@ -135,7 +136,7 @@ function bluet_kw_activation(){
 }
 
 function bluet_kttg_filter_any_content($post_type_to_filter,$filter_hooks_to_filter){
-//this function filters a specific posttype with specific filter hooks
+	//this function filters a specific posttype with specific filter hooks
 	$my_post_id=get_the_id();
 	$exclude_me = get_post_meta($my_post_id,'bluet_exclude_post_from_matching',true);			
 
@@ -163,8 +164,12 @@ function kttg_filter_posttype($cont){
 
 	//glossary settings
 	$bluet_kttg_show_glossary_link=get_option('bluet_kw_settings');		
-	$bluet_kttg_show_glossary_link=$bluet_kttg_show_glossary_link['bluet_kttg_show_glossary_link'];
-
+	if(!empty($bluet_kttg_show_glossary_link['bluet_kttg_show_glossary_link'])){
+		$bluet_kttg_show_glossary_link=$bluet_kttg_show_glossary_link['bluet_kttg_show_glossary_link'];
+	}else{
+		$bluet_kttg_show_glossary_link=false;
+	}
+	
 	$bluet_kttg_glossary_page=get_option('bluet_kttg_glossary_page');
 
 
@@ -245,7 +250,7 @@ function kttg_filter_posttype($cont){
 			// first preg replace to eliminate html tags 						
 				$regex='<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|\'.*?\'|[^\'">\s]+))?)+\s*|\s*)\/?>';							
 				$out=array();
-				preg_match_all('#('.$regex.')#i',$cont,$out);
+				preg_match_all('#('.$regex.')#iu',$cont,$out);
 				$cont=preg_replace('#('.$regex.')#i','**T_A_G**',$cont); //replace tags by **T_A_G**							
 			//end
 			
@@ -279,9 +284,11 @@ function kttg_filter_posttype($cont){
 				}else{
 					$kttg_case_sensitive='i';
 				}							
-
 				foreach($term_and_syns_array as $temr_occ){
-					$cont=preg_replace('#((\W)('.$temr_occ.''.$kw_after.')(\W))#'.$kttg_case_sensitive,'$2__$3__$4',$cont,$limit_match);
+					$temr_occ=elim_apostrophes($temr_occ);
+					$cont=elim_apostrophes($cont);
+					
+					$cont=preg_replace('#((\W)('.$temr_occ.''.$kw_after.')(\W))#u'.$kttg_case_sensitive,'$2__$3__$4',$cont,$limit_match);
 				}					
 
 			}
@@ -340,7 +347,10 @@ function kttg_filter_posttype($cont){
 					$kttg_case_sensitive='i';
 				}								
 				foreach($term_and_syns_array as $temr_occ){
-					$cont=preg_replace('#(__('.$temr_occ.''.$kw_after.')__)#'.$kttg_case_sensitive,$html_to_replace,$cont,-1);
+					$temr_occ=elim_apostrophes($temr_occ);
+					$cont=elim_apostrophes($cont);
+					
+					$cont=preg_replace('#(__('.$temr_occ.''.$kw_after.')__)#u'.$kttg_case_sensitive,$html_to_replace,$cont,-1);
 				}
 			}
 			
@@ -351,7 +361,7 @@ function kttg_filter_posttype($cont){
 			
 			//prevent HTML Headings (h1 h2 h3) to be matched
 			$regH='(<h[1-3]+>.*)(class="bluet_tooltip")(.*<\/h[1-3]+>)';						
-			$cont=preg_replace('#('.$regH.')#i','$2$4',$cont);					
+			$cont=preg_replace('#('.$regH.')#iu','$2$4',$cont);					
 	}			
 
 	$html_tooltips_to_add=apply_filters('kttg_another_tooltip_in_block',$html_tooltips_to_add);

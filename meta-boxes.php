@@ -115,7 +115,7 @@ function bluet_keywords_related_render(){
 
 add_action('save_post',function(){
 	//saving synonyms
-	if($_POST['post_type']=='my_keywords'){
+	if(!empty($_POST['post_type']) and $_POST['post_type']=='my_keywords'){
 		//do sanitisation and validation
 		
 		//synonyms
@@ -147,7 +147,7 @@ add_action('save_post',function(){
 		
 		
 	}else{
-		if($_POST['action'] =='editpost'){
+		if(!empty($_POST['action']) and $_POST['action'] =='editpost'){
 			$exclude_me=$_POST['bluet_exclude_post_from_matching_name'];
 			
 			//save exclude post from matching

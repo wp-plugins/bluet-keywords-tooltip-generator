@@ -7,6 +7,9 @@ add_shortcode('kttg_glossary', 'bluet_kttg_glossary');
 function bluet_kttg_glossary(){
 	 global $is_kttg_glossary_page;
 	 global $wpdb;
+	 
+	 $glossary_options = get_option( 'bluet_glossary_options' );
+	 
     $is_kttg_glossary_page=true;
 	
 //Begin -- glossary permalink page option
@@ -19,8 +22,13 @@ function bluet_kttg_glossary(){
 		update_option('bluet_kttg_glossary_page',get_the_permalink());
 	}
 //End -- glossary permalink page option
-
-   $ret='<div class="kttg_glossary_header">* <span class="bluet_glossary_all"><a href="'.get_the_guid().'">'.__('ALL','bluet-kw').'</a></span> * ';
+    // next_posts_link() usage with max_num_pages
+	if(!empty($glossary_options['kttg_glossary_text']['kttg_glossary_text_all']) and $glossary_options['kttg_glossary_text']['kttg_glossary_text_all']!=""){
+		$text_all=$glossary_options['kttg_glossary_text']['kttg_glossary_text_all'];
+	}else{
+		$text_all=__('ALL','bluet-kw');
+	}
+   $ret='<div class="kttg_glossary_header"><span class="bluet_glossary_all"><a href="'.get_the_guid().'">'.$text_all.'</a></span> - ';
    /*get chars array*/
    $chars_count=array();
     // the query
@@ -37,7 +45,7 @@ function bluet_kttg_glossary(){
 	if ( $the_query->have_posts() ){
 			while ( $the_query->have_posts() ){
                 $the_query->the_post();
-				$my_char=strtoupper(substr(get_the_title(),0,1));
+				$my_char=strtoupper(mb_substr(get_the_title(),0,1,'utf-8'));
 				$chars_count[$my_char]++;
 			}
 	}
@@ -46,19 +54,24 @@ function bluet_kttg_glossary(){
 	/**/
 
 	foreach($chars_count as $chara=>$nbr){ 
- 		$found_letter_class='bluet_glossary_found_letter';
 
-        $link_to_the_letter_page=add_query_arg( array('letter' => utf8_decode($chara)), get_the_permalink());;
+ 		$found_letter_class='bluet_glossary_found_letter';
+		$current_letter_class='';
+
+        $link_to_the_letter_page=add_query_arg( array('letter' => $chara), get_the_permalink());
+		if(!empty($_GET["letter"]) and $_GET["letter"]==$chara){
+			$current_letter_class='bluet_glossary_current_letter';
+		}
  
-       $ret.=' <span class="bluet_glossary_letter '.$found_letter_class.'"><a href="'.$link_to_the_letter_page.'">'.utf8_decode($chara).'<span class="bluet_glossary_letter_count">'.$nbr.'</span></a></span>';
-   }
+       $ret.=' <span class="bluet_glossary_letter '.$found_letter_class.' '.$current_letter_class.'"><a href="'.$link_to_the_letter_page.'">'.$chara.'<span class="bluet_glossary_letter_count">'.$nbr.'</span></a></span>';
+	}
    
    $ret.='</div>';
    
    $postids=array();
    
    $chosen_letter=null;
-   if($_GET["letter"]){
+   if(!empty($_GET["letter"]) and $_GET["letter"]){
        $chosen_letter=$_GET["letter"];
 	   
 	   $postids=$wpdb->get_col($wpdb->prepare("
@@ -74,13 +87,19 @@ function bluet_kttg_glossary(){
    // set the "paged" parameter (use 'page' if the query is on a static front page)
     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
+	
+	$showposts=-1;
+	if($glossary_options['kttg_kws_per_page']!=""){
+		$showposts=$glossary_options['kttg_kws_per_page'];
+	}
+	
     // the query
 	    $args=array(
 			'post__in'		=>$postids,
 			'post_type'     =>'my_keywords',
             'order'         => 'ASC',
             'orderby'       => 'title',
-			'showposts'		=>10,
+			'showposts'		=>$showposts,
 			'paged'			=>$paged
     );
 	
@@ -93,7 +112,7 @@ function bluet_kttg_glossary(){
                 $the_query->the_post();
 
                 //echo(substr(get_the_title(),0,1).'<br>');
-                if((strtoupper(substr(get_the_title(),0,1))==$chosen_letter) or $chosen_letter==null){                    
+                if((strtoupper(mb_substr(get_the_title(),0,1,'utf-8'))==$chosen_letter) or $chosen_letter==null){                    
                     $ret.='<li class="kttg_glossary_element" style="list-style-type: none;">'.get_the_title().'</li>';
                 }
                 
@@ -101,8 +120,21 @@ function bluet_kttg_glossary(){
         $ret.='</ul></div>';
 	
     // next_posts_link() usage with max_num_pages
-    $ret.=get_previous_posts_link( '<span class="kttg_glossary_nav prev">'.__('Previous','bluet-kw').'</span>' );
-    $ret.=get_next_posts_link( '<span class="kttg_glossary_nav next">'.__('Next','bluet-kw').'</span>', $the_query->max_num_pages );
+	if(!empty($glossary_options['kttg_glossary_text']['kttg_glossary_text_next']) and $glossary_options['kttg_glossary_text']['kttg_glossary_text_next']!=""){
+		$text_next=$glossary_options['kttg_glossary_text']['kttg_glossary_text_next'];
+	}else{
+		$text_next=__('Next','bluet-kw');
+	}
+	
+	if(!empty($glossary_options['kttg_glossary_text']['kttg_glossary_text_previous']) and $glossary_options['kttg_glossary_text']['kttg_glossary_text_previous']!=""){
+		$text_previous=$glossary_options['kttg_glossary_text']['kttg_glossary_text_previous'];
+	}else{
+		$text_previous=__('Previous','bluet-kw');
+	}	
+	
+    $ret.=get_previous_posts_link( '<span class="kttg_glossary_nav prev">'.$text_previous.'</span>' );
+	$ret.=" ";
+    $ret.=get_next_posts_link( '<span class="kttg_glossary_nav next">'.$text_next.'</span>', $the_query->max_num_pages );
 
     // clean up after our query
     wp_reset_postdata(); 

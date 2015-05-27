@@ -6,23 +6,27 @@ function bluet_kw_custom_style(){
 	if(function_exists('bluet_kttg_pro_addon')){//if pro addon activated
 	
 		$adv_options=get_option('bluet_kw_advanced');
-		$apply_custom_style_sheet=$adv_options['bt_kw_adv_style']['apply_custom_style_sheet'];
+		if(!empty($adv_options['bt_kw_adv_style']['apply_custom_style_sheet'])){
+			$apply_custom_style_sheet=$adv_options['bt_kw_adv_style']['apply_custom_style_sheet'];
 		
-		/*
-			If apply custom sheet is activated so don't load this style file
-			
-		*/
-		if($apply_custom_style_sheet){
-			return false;
-		}
-		
+			/*
+				If apply custom sheet is activated so don't load this style file			
+			*/
+			if($apply_custom_style_sheet){
+				return false;
+			}
+		}		
 	}
 	
 	$style_options=get_option('bluet_kw_style');
 	
 	$tooltip_color=$style_options['bt_kw_tt_color'];
 	$tooltip_bg_color=$style_options['bt_kw_tt_bg_color'];
-	$bt_kw_on_background=$style_options['bt_kw_on_background'];
+	if(!empty($style_options['bt_kw_on_background'])){
+		$bt_kw_on_background=$style_options['bt_kw_on_background'];
+	}else{
+		$bt_kw_on_background=null;
+	}
 	
 	$desc_color=$style_options['bt_kw_desc_color'];
 	$desc_bg_color=$style_options['bt_kw_desc_bg_color'];
@@ -158,7 +162,13 @@ function bluet_kw_custom_style(){
 		background-color: beige;
 		border-radius: 3px;
 	}
-	
+	span.bluet_glossary_letter a:hover {
+		background-color: rgb(108, 108, 108) !important;
+		color: white;
+	}
+	span.bluet_glossary_letter a:hover .bluet_glossary_letter_count{
+		color: white;
+	}
 	.bluet_glossary_all a {
 		text-decoration: none !important;
 		padding: 3px;
@@ -175,11 +185,30 @@ function bluet_kw_custom_style(){
 	.bluet_glossary_found_letter{
 		font-weight: bold;
 	}
-        span.kttg_glossary_nav {
-                background-color: bisque;
-                padding: 5px;
-                margin-left: 5px;
-        }
+	span.kttg_glossary_nav {
+		background-color: bisque;
+		padding: 5px;
+	}
+	
+	.bluet_glossary_current_letter a {
+		background-color: rgb(108, 108, 108) !important;
+		color: white;
+		border-color: rgb(69, 69, 69);
+		border-style: solid;
+		border-width: 2px;
+	}
+	.bluet_glossary_current_letter .bluet_glossary_letter_count {
+	  color: white;
+	}
+
+	.kttg_glossary_content {
+	  padding: 15px 0px;
+	}
+	.kttg_glossary_content ul {
+	  margin-bottom: 0px;
+	  margin-left: 0px;
+	}
+	
 	
 	/* hide button */
 	.bluet_hide_tooltip_button{
