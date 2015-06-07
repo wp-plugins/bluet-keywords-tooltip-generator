@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.6.0
+Version: 2.6.1
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -39,10 +39,12 @@ add_action('admin_footer','bluet_kttg_place_tooltips');
 function bluet_kttg_place_tooltips(){
 	$kttg_sttings_options=get_option('bluet_kw_settings');
 	$kttg_tooltip_position=$kttg_sttings_options["bt_kw_position"];
+	$animation_type=$kttg_sttings_options["bt_kw_animation_type"];
 	?>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 			bluet_placeTooltips(".bluet_tooltip, .bluet_img_tooltip","<?php echo($kttg_tooltip_position); ?>");	 
+			animation_type="<?php echo($animation_type);?>";
 			moveTooltipElementsTop(".bluet_block_to_show");
 		})
 	</script>
@@ -88,12 +90,16 @@ add_action('wp_head',function(){
 
 /* enqueue js functions for the front side*/
 function bluet_kw_load_scripts_front() {
-	
+	$options = get_option( 'bluet_kw_settings' );
+	$anim_type=$options['bt_kw_animation_type'];
+	if(!empty($anim_type) and $anim_type!="none"){
+		wp_enqueue_style( 'kttg-tooltips-animations-styles', plugins_url('assets/animate.css',__FILE__), array(), false);
+	}
 	//load jQuery once to avoid conflict
 	wp_enqueue_script('jquery');
 
 	//
-	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functions.js',__FILE__), array(), false, true );
+	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array(), false, true );
 		
 	$opt_tmp=get_option('bluet_kw_style');
 	if($opt_tmp['bt_kw_alt_img']=='on'){
@@ -154,7 +160,24 @@ function bluet_kttg_filter_any_content($post_type_to_filter,$filter_hooks_to_fil
 	}
 }
 
+function kttg_specific_plugins($cont){
+	//specific modification so it can work for fields of "WooCommerce Product Addons"
+	foreach($cont as $k=>$c_arr){
+		//for description field
+		$cont[$k]['description']=kttg_filter_posttype($c_arr['description']);
+	}	
+	return $cont;
+}
+		
 function kttg_filter_posttype($cont){
+	/*28-05-2015*/
+	//specific modification so it can work for "WooCommerce Product Addons" and other addons
+	if(is_array($cont)){
+		$cont=kttg_specific_plugins($cont);		
+		return $cont;
+	}				
+	/*28-05-2015 end*/
+
 	$my_post_id=get_the_id();
 	$exclude_me = get_post_meta($my_post_id,'bluet_exclude_post_from_matching',true);			
 	
@@ -187,8 +210,8 @@ function kttg_filter_posttype($cont){
 	}                                    
 					
 	global $is_kttg_glossary_page;
-						
-	if(!empty($my_keywords_ids) OR $is_kttg_glossary_page){
+	$kttg_fetch_all_keywords=false;
+	if(!empty($my_keywords_ids) OR $is_kttg_glossary_page OR $kttg_fetch_all_keywords){
 		
 		$my_keywords_terms=array(); 
 							
@@ -198,7 +221,9 @@ function kttg_filter_posttype($cont){
 		}else{
 			$post_in=$my_keywords_ids;
 		}
-							
+		if($kttg_fetch_all_keywords){
+			$post_in=null;
+		}
 		// The Query                                                                          
 		$wk_args=array(
 			'post__in'=>$post_in,
@@ -369,16 +394,4 @@ function kttg_filter_posttype($cont){
 
 	$cont=$html_tooltips_to_add.$cont;
 	return $cont;
-}
-
-function kttg_get_last_revision($post_id,$current=0){
-		$post_revisions=wp_get_post_revisions($post_id);
-		
-		$last_revision=array_shift($post_revisions); //to eliminate the current revision
-		if($current!=0){
-			return($last_revision);//return current revision
-		}
-		
-		$last_revision=array_shift($post_revisions); 
-		return($last_revision);//return the last one		
 }

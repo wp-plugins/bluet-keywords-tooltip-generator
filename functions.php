@@ -41,9 +41,9 @@ $kttg_title_layout='';
 function kttg_length_compare( $a, $b ) {
     return strlen($a)-strlen($b) ;
 }
-function is_i_device(){
+ function is_i_device(){
 	 return true;
-}
+ }
 
 function kttg_get_related_keywords($my_post_id){
 	//return an array of related keywords of the current post

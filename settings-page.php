@@ -18,11 +18,17 @@ add_action('admin_head','bluet_kw_custom_style');
 
 /* enqueue js functions  for test only*/
 function bluet_kw_load_scripts() {
+	$options = get_option( 'bluet_kw_settings' );
+	$anim_type=$options['bt_kw_animation_type'];
+	if(!empty($anim_type) and $anim_type!="none"){
+		wp_enqueue_style( 'kttg-tooltips-animations-styles', plugins_url('assets/animate.css',__FILE__), array(), false);
+	}
+	
 	//
 	wp_enqueue_script( 'kttg-settings-functions-script', plugins_url('assets/settings-functions.js',__FILE__), array(), false, true );
 	
 	//
-	wp_enqueue_script( 'kttg-admin-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functions.js',__FILE__), array(), false, true );
+	wp_enqueue_script( 'kttg-admin-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array(), false, true );
 }
 add_action( 'admin_head', 'bluet_kw_load_scripts' );
 
@@ -105,6 +111,14 @@ add_action( 'admin_init',function () {
 		'bt_kw_position', 					
 		__('Tooltip position','bluet-kw'), 			
 		'bt_kw_position_display', 		
+		'my_keywords_settings',				
+		'concern_section'					
+	);
+	// Define the anomation type
+	add_settings_field( 
+		'bt_kw_animation_type', 					
+		__('Animation','bluet-kw'), 			
+		'bt_kw_animation_type_display', 		
 		'my_keywords_settings',				
 		'concern_section'					
 	);
@@ -262,7 +276,45 @@ function bt_kw_hide_title_display(){
 	 
 }
 
+function bt_kw_animation_type_display(){
+	$options = get_option( 'bluet_kw_settings' );
+	$anim_type=$options['bt_kw_animation_type'];
+	$anims=array("fadeInLeft","fadeInLeftBig","fadeInRight","fadeInRightBig","fadeInUp","fadeInUpBig",
+				"flipInX","flipInY",				
+				"rollIn",
+				"rotateIn","rotateInDownLeft","rotateInDownRight","rotateInUpLeft","rotateInUpRight",
+				"slideInDown","slideInLeft","slideInRight","slideInUp",
+				"zoomIn","zoomInDown","zoomInLeft","zoomInRight","zoomInUp"
+				);
+?>
 
+	<select id="select_anim" name="bluet_kw_settings[bt_kw_animation_type]" >	
+        <optgroup label="Select an animation">
+				<option value="none" <?php if("none"==$anim_type){ echo("selected");} ?> style="color: red;" ><?php _e("None",'bluet-kw'); ?></option>
+			<?php
+				foreach($anims as $anim){
+					?>
+					<option value="<?php echo($anim); ?>" <?php if($anim==$anim_type){ echo("selected");} ?>><?php echo($anim); ?></option>
+					<?php
+				}
+			?>			  
+        </optgroup>		
+      </select>
+	  <div id="demo_div" style="width: 200px; text-align: center; font-size: 30px;"><?php _e("click to see a DEMO.",'bluet-kw'); ?></div>
+<script type="text/javascript">
+	jQuery("#select_anim").change(function(){
+		jQuery("#demo_div").removeClass();
+		jQuery("#demo_div").addClass("animated "+jQuery(this).val());
+	});
+	jQuery("#demo_div").mouseenter(function(){
+		jQuery("#demo_div").removeClass();
+	});
+	jQuery("#demo_div").click(function(){
+		jQuery("#demo_div").removeClass().addClass("animated "+jQuery("#select_anim").val());
+	});
+</script>
+<?php
+}
 function bt_kw_position_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>

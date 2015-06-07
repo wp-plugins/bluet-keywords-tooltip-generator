@@ -71,55 +71,60 @@ function bluet_placeTooltips(inlineClass,position){
 			}
 			//.show()
 			tooltipBlock.css("opacity","0").show();
-			animation_margin=10;
+			//pos_margin=0;
 			
 			switch(position) {
 				case "top":		
-					xTop_show_top-=animation_margin;
+					//xTop_show_top-=pos_margin;
 
 					tooltipBlock.offset({"top":xTop_show_top,"left":yLeft_show_center});
 					tooltipBlock.addClass("kttg_arrow_show_top");	
 
-					tooltipBlock.animate({"opacity":"1","top":"+="+animation_margin},300);
+					//tooltipBlock.animate({"opacity":"1","top":"+="+animation_margin},300);
 					break;
 				case "bottom":	
-					xTop_show_bottom+=animation_margin;
+					//xTop_show_bottom+=pos_margin;
 		
 					tooltipBlock.offset({"top":xTop_show_bottom,"left":yLeft_show_center});
 					tooltipBlock.addClass("kttg_arrow_show_bottom");
 
-					tooltipBlock.animate({"opacity":"1","top":"-="+animation_margin},300);
+					//tooltipBlock.animate({"opacity":"1","top":"-="+animation_margin},300);
 
 					break;
 				case "right":
-					yLeft_show_right+=animation_margin;
+					//yLeft_show_right+=pos_margin;
 
 					tooltipBlock.offset({"top":xTop_show_middle,"left":yLeft_show_right});
 					
-					tooltipBlock.animate({"opacity":"1","left":"-="+animation_margin},300);
+					//tooltipBlock.animate({"opacity":"1","left":"-="+animation_margin},300);
 
 					//tooltipBlock.addClass("kttg_arrow_show_right");
 					break;
 					
 				case "left":
-					yLeft_show_left-=animation_margin;
+					//yLeft_show_left-=pos_margin;
 
 					tooltipBlock.offset({"top":xTop_show_middle,"left":yLeft_show_left});
 					
-					tooltipBlock.animate({"opacity":"1","left":"+="+animation_margin},300);
+					//tooltipBlock.animate({"opacity":"1","left":"+="+animation_margin},300);
 
 					//tooltipBlock.addClass("kttg_arrow_show_left");
 					break;
 				default:
-					xTop_show_bottom-=animation_margin;
+					//xTop_show_bottom-=pos_margin;
 
 					tooltipBlock.offset({"top":xTop_show_bottom,"left":yLeft_show_center});
 					tooltipBlock.addClass("kttg_arrow_show_bottom");
 					
-					tooltipBlock.animate({"opacity":"1","bottom":"+="+animation_margin},300);
+					//tooltipBlock.animate({"opacity":"1","bottom":"+="+animation_margin},300);
 
 					break;
 			}
+			/*test*/
+			tooltipBlock.css({"opacity":"1"});
+			tooltipBlock.addClass("animated "+animation_type); //animation_type passed from index.php
+			/*end test*/
+			
 		}
 	});
 	
@@ -134,5 +139,9 @@ function bluet_placeTooltips(inlineClass,position){
 		//tooltipBlock;
 		   
 	   }
+	   
+			/*test*/
+			tooltipBlock.removeClass("animated "+animation_type);
+			/*end test*/
 	});
 }
