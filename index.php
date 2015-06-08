@@ -40,6 +40,9 @@ function bluet_kttg_place_tooltips(){
 	$kttg_sttings_options=get_option('bluet_kw_settings');
 	$kttg_tooltip_position=$kttg_sttings_options["bt_kw_position"];
 	$animation_type=$kttg_sttings_options["bt_kw_animation_type"];
+	if(empty($animation_type)){
+		$animation_type="flipInX";
+	}
 	?>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
