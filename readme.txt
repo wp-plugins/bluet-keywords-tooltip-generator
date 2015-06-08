@@ -29,7 +29,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 https://www.youtube.com/watch?v=JBdyLKa4DMI
 
 = New Features =
-* Several Animations provided (on settings page)
+* Several Animations provided (on settings page) thanks to [Animate.css](https://github.com/daneden/animate.css)
 * Supports Unicode characters (Arabic, Russian ...)
 * Bugs fixed (apostrophe issue, error messages ...)
 * Glossary page new settings (keywords per page, labels ...)
