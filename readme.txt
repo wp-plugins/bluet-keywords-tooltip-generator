@@ -2,8 +2,8 @@
 Contributors: lebleut
 Tags: inline, tooltips, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link, wpml
 Requires at least: 3.8
-Tested up to: 4.2.1
-Stable tag: 2.6.1
+Tested up to: 4.2.2
+Stable tag: 2.6.2
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
@@ -29,6 +29,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 https://www.youtube.com/watch?v=JBdyLKa4DMI
 
 = New Features =
+* Now you are able to generate shortcodes on the tooltips (thanks to [columbusGeek](http://www.blueskills.net/forums/topic/shortcodes-in-tooltip/))
 * Several Animations provided (on settings page) thanks to [Animate.css](https://github.com/daneden/animate.css)
 * Supports Unicode characters (Arabic, Russian ...)
 * Bugs fixed (apostrophe issue, error messages ...)
@@ -105,6 +106,9 @@ The plugin is available in these languages :
 1. Glossary settings page
 
 == Changelog ==
+
+= 2.6.2 =
+* Now you are able to generate shortcodes on the tooltips (thanks to columbusGeek)
 
 = 2.6.1 =
 * Several Animations provided

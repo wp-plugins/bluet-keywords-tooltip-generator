@@ -19,8 +19,8 @@ add_action('admin_head','bluet_kw_custom_style');
 /* enqueue js functions  for test only*/
 function bluet_kw_load_scripts() {
 	$options = get_option( 'bluet_kw_settings' );
-	$anim_type=$options['bt_kw_animation_type'];
-	if(!empty($anim_type) and $anim_type!="none"){
+
+	if(!empty($options['bt_kw_animation_type']) and $options['bt_kw_animation_type']!="none"){
 		wp_enqueue_style( 'kttg-tooltips-animations-styles', plugins_url('assets/animate.css',__FILE__), array(), false);
 	}
 	
