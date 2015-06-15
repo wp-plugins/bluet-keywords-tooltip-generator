@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.6.2
+Version: 2.6.2.1
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -214,7 +214,14 @@ function kttg_filter_posttype($cont){
 	}                                    
 					
 	global $is_kttg_glossary_page;
-	$kttg_fetch_all_keywords=false;
+	$kttg_fetch_all_keywords=get_option('kttg_fetch_all_keywords');
+	if(empty($kttg_fetch_all_keywords)){
+		$kttg_fetch_all_keywords=false;
+	}else if($kttg_fetch_all_keywords=="false"){
+		$kttg_fetch_all_keywords=false;
+	}else if($kttg_fetch_all_keywords=="true"){
+		$kttg_fetch_all_keywords=true;
+	}
 	if(!empty($my_keywords_ids) OR $is_kttg_glossary_page OR $kttg_fetch_all_keywords){
 		
 		$my_keywords_terms=array(); 
