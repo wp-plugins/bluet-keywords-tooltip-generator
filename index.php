@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.6.2.1
+Version: 2.6.2.2
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -68,11 +68,11 @@ add_action('wp_head',function(){
 	$posttypes_to_match=array();//initial posttypes to match	
 	$option_settings=get_option('bluet_kw_settings');
 	
-	if($option_settings['bt_kw_for_posts']){
+	if(!empty($option_settings['bt_kw_for_posts']) and $option_settings['bt_kw_for_posts']=='on'){
 		$posttypes_to_match[]='post';
 	}
 	
-	if($option_settings['bt_kw_for_pages']){
+	if(!empty($option_settings['bt_kw_for_pages']) and $option_settings['bt_kw_for_pages']=='on'){
 		$posttypes_to_match[]='page';
 	}
 	if(function_exists('bluet_kttg_pro_addon')){//if pro addon activated
@@ -106,7 +106,7 @@ function bluet_kw_load_scripts_front() {
 	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array(), false, true );
 		
 	$opt_tmp=get_option('bluet_kw_style');
-	if($opt_tmp['bt_kw_alt_img']=='on'){
+	if(!empty($opt_tmp['bt_kw_alt_img']) and $opt_tmp['bt_kw_alt_img']=='on'){
 		//
 		wp_enqueue_script( 'kttg-functions-alt-img-script', plugins_url('assets/img-alt-tooltip.js',__FILE__), array(), false, true );
 	}
@@ -214,14 +214,14 @@ function kttg_filter_posttype($cont){
 	}                                    
 					
 	global $is_kttg_glossary_page;
-	$kttg_fetch_all_keywords=get_option('kttg_fetch_all_keywords');
-	if(empty($kttg_fetch_all_keywords)){
+	$options=get_option('bluet_kw_advanced');
+	
+	if(empty($options['kttg_fetch_all_keywords'])){
 		$kttg_fetch_all_keywords=false;
-	}else if($kttg_fetch_all_keywords=="false"){
-		$kttg_fetch_all_keywords=false;
-	}else if($kttg_fetch_all_keywords=="true"){
+	}else if($options['kttg_fetch_all_keywords']=="on"){
 		$kttg_fetch_all_keywords=true;
 	}
+	
 	if(!empty($my_keywords_ids) OR $is_kttg_glossary_page OR $kttg_fetch_all_keywords){
 		
 		$my_keywords_terms=array(); 
@@ -279,7 +279,6 @@ function kttg_filter_posttype($cont){
 			}
 			
 		}
-		
 		/* Restore original Post Data */
 		wp_reset_postdata();
 			
@@ -290,7 +289,7 @@ function kttg_filter_posttype($cont){
 				$cont=preg_replace('#('.$regex.')#i','**T_A_G**',$cont); //replace tags by **T_A_G**							
 			//end
 			
-			$limit_match=($option_settings['bt_kw_match_all']=='on'? -1 : 1);
+			$limit_match=((!empty($option_settings['bt_kw_match_all']) and $option_settings['bt_kw_match_all']=='on')? -1 : 1);
 			
 			/*tow loops montioned here to avoid overlapping (chevauchement) */
 			foreach($my_keywords_terms as $id=>$arr){
@@ -323,7 +322,7 @@ function kttg_filter_posttype($cont){
 				foreach($term_and_syns_array as $temr_occ){
 					$temr_occ=elim_apostrophes($temr_occ);
 					$cont=elim_apostrophes($cont);
-					
+
 					$cont=preg_replace('#((\W)('.$temr_occ.''.$kw_after.')(\W))#u'.$kttg_case_sensitive,'$2__$3__$4',$cont,$limit_match);
 				}					
 

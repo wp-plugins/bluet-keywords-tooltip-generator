@@ -46,6 +46,9 @@ function bluet_kttg_glossary(){
 			while ( $the_query->have_posts() ){
                 $the_query->the_post();
 				$my_char=strtoupper(mb_substr(get_the_title(),0,1,'utf-8'));
+				if(empty($chars_count[$my_char])){
+					$chars_count[$my_char]=0;
+				}
 				$chars_count[$my_char]++;
 			}
 	}

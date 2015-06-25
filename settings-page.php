@@ -211,7 +211,7 @@ function bt_kw_alt_img_display(){
 	//img atl tooltip render function	
 	$options = get_option( 'bluet_kw_style' );
 	?>
-	<input type="checkbox" 	id="bt_kw_alt_img" 	name="bluet_kw_style[bt_kw_alt_img]" <?php if($options['bt_kw_alt_img']) echo 'checked'; ?>/><?php _e("alt property of the images will be displayed as a tooltip",'bluet-kw'); ?><br><?php
+	<input type="checkbox" 	id="bt_kw_alt_img" 	name="bluet_kw_style[bt_kw_alt_img]" <?php if(!empty($options['bt_kw_alt_img']) and $options['bt_kw_alt_img']=='on') echo 'checked'; ?>/><?php _e("alt property of the images will be displayed as a tooltip",'bluet-kw'); ?><br><?php
 }
 function bt_kw_desc_font_size_display(){
 //font size field render function	
@@ -245,14 +245,14 @@ function bluet_kw_sttings_display(){
 	echo('<div id="keywords-settings">'.__('General tooltips settings','bluet-kw').'.</div>');
 }
 function bluet_kw_style_display(){
-	echo(__('Make your own style.','bluet-kw'));
+	_e('Make your own style.','bluet-kw');
 }
 function bt_kw_in_concern_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
-	<input type="checkbox" 	id="bt_kw_for_posts_id" 	name="bluet_kw_settings[bt_kw_for_posts]" <?php if($options['bt_kw_for_posts']) echo 'checked'; ?>/>
+	<input type="checkbox" 	id="bt_kw_for_posts_id" 	name="bluet_kw_settings[bt_kw_for_posts]" <?php if(!empty($options['bt_kw_for_posts']) and $options['bt_kw_for_posts']=='on') echo 'checked'; ?>/>
 		<label for="bt_kw_for_posts_id"><?php _e('Posts','bluet-kw'); ?></label><br>
-	<input type="checkbox" 	id="bt_kw_for_pages_id" 	name="bluet_kw_settings[bt_kw_for_pages]" <?php if($options['bt_kw_for_pages']) echo 'checked'; ?>/>
+	<input type="checkbox" 	id="bt_kw_for_pages_id" 	name="bluet_kw_settings[bt_kw_for_pages]" <?php if(!empty($options['bt_kw_for_pages']) and $options['bt_kw_for_pages']=='on') echo 'checked'; ?>/>
 		<label for="bt_kw_for_pages_id"><?php _e('Pages','bluet-kw'); ?></label>
 <?php
 
@@ -261,7 +261,7 @@ function bt_kw_in_concern_display(){
 function bt_kw_match_all_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
-	<input type="checkbox" 	id="bt_kw_match_all_id" 	name="bluet_kw_settings[bt_kw_match_all]" <?php if($options['bt_kw_match_all']) echo 'checked'; ?>/>
+	<input type="checkbox" 	id="bt_kw_match_all_id" 	name="bluet_kw_settings[bt_kw_match_all]" <?php if(!empty($options['bt_kw_match_all']) and $options['bt_kw_match_all']=='on') echo 'checked'; ?>/>
 		<label for="bt_kw_match_all_id"><?php _e('Match all occurrences','bluet-kw'); ?></label><br>
 <?php
 
@@ -270,7 +270,7 @@ function bt_kw_match_all_display(){
 function bt_kw_hide_title_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
-	<input type="checkbox" 	id="bt_kw_hide_title_id" 	name="bluet_kw_settings[bt_kw_hide_title]" <?php if($options['bt_kw_hide_title']) echo 'checked'; ?>/>
+	<input type="checkbox" 	id="bt_kw_hide_title_id" 	name="bluet_kw_settings[bt_kw_hide_title]" <?php if(!empty($options['bt_kw_hide_title']) and $options['bt_kw_hide_title']=='on') echo 'checked'; ?>/>
 		<label for="bt_kw_hide_title_id"><?php _e('Hide the tooltips title','bluet-kw'); ?></label><br>
 <?php
 	 
@@ -300,7 +300,7 @@ function bt_kw_animation_type_display(){
 			?>			  
         </optgroup>		
       </select>
-	  <div id="demo_div" style="width: 200px; text-align: center; font-size: 30px;"><?php _e("click to see a DEMO.",'bluet-kw'); ?></div>
+	  <div id="demo_div" style="width: 200px; text-align: center; font-size: 30px;"><?php _e("click to see a DEMO",'bluet-kw'); ?></div>
 <script type="text/javascript">
 	jQuery("#select_anim").change(function(){
 		jQuery("#demo_div").removeClass();

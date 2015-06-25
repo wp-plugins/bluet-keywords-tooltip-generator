@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltips, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, customize, definition, term, catalog, word, interactive, link, wpml
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 2.6.2.1
+Stable tag: 2.6.2.2
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
 Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
@@ -29,7 +29,7 @@ Bluet keywords tooltip generator allows you to highlight the keywords in your co
 https://www.youtube.com/watch?v=JBdyLKa4DMI
 
 = New Features =
-* Now you are able to generate shortcodes on the tooltips (thanks to [columbusGeek](http://www.blueskills.net/forums/topic/shortcodes-in-tooltip/))
+* Now you are able to generate shortcodes on the tooltips, thanks to [ColumbusCook](http://www.columbuscook.com)
 * Several Animations provided (on settings page) thanks to [Animate.css](https://github.com/daneden/animate.css)
 * Supports Unicode characters (Arabic, Russian ...)
 * Bugs fixed (apostrophe issue, error messages ...)
@@ -68,6 +68,7 @@ The plugin is available in these languages :
 
 * English - [Jamel Zarga](http://www.BlueSkills.net) my self :)
 * French (fr_FR) - [Jamel Zarga](http://www.BlueSkills.net)
+* German (de_DE) - [Michael Padilla](www.Zwilla-Research.com)
 * Arabic (ar) - [Jamel Zarga](http://www.BlueSkills.net)
 * Dutch (nl_NL) - [Kees Hessels](http://www.slotschaesberg.nl)
 * Turkish (tr_TR) - Eyyüp Güner
@@ -107,8 +108,11 @@ The plugin is available in these languages :
 
 == Changelog ==
 
+= 2.6.2.2 =
+* bugs fixed and new pro setting added and German language added
+
 = 2.6.2 =
-* Now you are able to generate shortcodes on the tooltips (thanks to columbusGeek)
+* Now you are able to generate shortcodes on the tooltips thanks to [ColumbusCook](http://www.columbuscook.com)
 
 = 2.6.1 =
 * Several Animations provided

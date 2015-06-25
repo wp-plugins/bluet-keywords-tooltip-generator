@@ -63,13 +63,13 @@ function kttg_glossary_text_display(){
 }
 
 function bluet_kw_glossary_display(){
-	echo(__('Choose settings for your glossary.','bluet-kw'));
+	_e('Choose settings for your glossary.','bluet-kw');
 }
 
 function bt_kw_show_glossary_link_display(){
 	$options = get_option( 'bluet_kw_settings' );
 	?>
-	<input type="checkbox" 	id="bt_kw_show_glossary_link_id" 	name="bluet_kw_settings[bluet_kttg_show_glossary_link]" <?php if($options['bluet_kttg_show_glossary_link']) echo 'checked'; ?> />
+	<input type="checkbox" 	id="bt_kw_show_glossary_link_id" 	name="bluet_kw_settings[bluet_kttg_show_glossary_link]" <?php if(!empty($options['bluet_kttg_show_glossary_link']) and $options['bluet_kttg_show_glossary_link']=='on') echo 'checked'; ?> />
 		<label for="bt_kw_show_glossary_link_id"><?php _e('Add glossary page link in the tooltip footer','bluet-kw'); ?></label><br>
 
 	<?php	 
