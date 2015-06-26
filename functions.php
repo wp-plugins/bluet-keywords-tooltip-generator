@@ -10,14 +10,7 @@ $kttg_title_layout='';
 
 //check if the hide title setting is checked to decide wether to show the title or not
 	$kttg_tmp_title_setting=get_option( 'bluet_kw_settings' );
-	if(!empty($kttg_tmp_title_setting['bt_kw_hide_title'])){
-		$kttg_hide_title_setting=$kttg_tmp_title_setting['bt_kw_hide_title'];
-	}else{
-		$kttg_hide_title_setting='on';
-	}
-	
-	if($kttg_hide_title_setting!='on'){
-		//dont make additional spaces inside this html tag 
+	if(empty($kttg_tmp_title_setting['bt_kw_hide_title'])){
 		$kttg_title_layout='<span class="bluet_title_on_block">'.$term_title.'</span>';
 	}
 	
