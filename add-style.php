@@ -208,7 +208,12 @@ function bluet_kw_custom_style(){
 	  margin-bottom: 0px;
 	  margin-left: 0px;
 	}
-	
+	.kttg_glossary_element_content {
+	  margin-left: 15px;
+	  padding-left: 10px;
+	  margin-bottom: 20px;
+	  border-left: 2px grey solid;
+	}
 	
 	/* hide button */
 	.bluet_hide_tooltip_button{

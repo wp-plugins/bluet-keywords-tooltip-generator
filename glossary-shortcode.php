@@ -28,7 +28,11 @@ function bluet_kttg_glossary(){
 	}else{
 		$text_all=__('ALL','bluet-kw');
 	}
-   $ret='<div class="kttg_glossary_header"><span class="bluet_glossary_all"><a href="'.get_the_guid().'">'.$text_all.'</a></span> - ';
+	$current_letter_class='';
+	if(empty($_GET["letter"])){
+			$current_letter_class='bluet_glossary_current_letter';
+		}
+   $ret='<div class="kttg_glossary_header"><span class="bluet_glossary_all '.$current_letter_class.'"><a href="'.get_the_guid().'">'.$text_all.'</a></span> - ';
    /*get chars array*/
    $chars_count=array();
     // the query
@@ -116,7 +120,10 @@ function bluet_kttg_glossary(){
 
                 //echo(substr(get_the_title(),0,1).'<br>');
                 if((strtoupper(mb_substr(get_the_title(),0,1,'utf-8'))==$chosen_letter) or $chosen_letter==null){                    
-                    $ret.='<li class="kttg_glossary_element" style="list-style-type: none;">'.get_the_title().'</li>';
+                    $ret.='<li class="kttg_glossary_element" style="list-style-type: none;">
+                    <h2 class="kttg_glossary_element_title">'.get_the_title().'</h2>
+                    <div class="kttg_glossary_element_content">'.get_the_content().'</div>
+                    </li>';
                 }
                 
 			endwhile;

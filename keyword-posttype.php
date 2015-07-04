@@ -37,7 +37,7 @@ class bluet_keyword{
 				'parent_item_colon' =>__('Parent KeyWords colon','bluet-kw')
 				),
 			'public'=>true,
-			'supports'=>array('title','editor','thumbnail'),
+			'supports'=>array('title','editor','thumbnail','author'),
 			'menu_icon'=>plugins_url('assets/ico_16x16.png',__FILE__),
 			
 		);

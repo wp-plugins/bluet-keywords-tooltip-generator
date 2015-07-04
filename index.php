@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.6.2.3
+Version: 2.6.3
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -100,15 +100,12 @@ function bluet_kw_load_scripts_front() {
 		wp_enqueue_style( 'kttg-tooltips-animations-styles', plugins_url('assets/animate.css',__FILE__), array(), false);
 	}
 	//load jQuery once to avoid conflict
-	wp_enqueue_script('jquery');
-
-	//
-	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array(), false, true );
+	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array('jquery'), false, true );
 		
 	$opt_tmp=get_option('bluet_kw_style');
 	if(!empty($opt_tmp['bt_kw_alt_img']) and $opt_tmp['bt_kw_alt_img']=='on'){
 		//
-		wp_enqueue_script( 'kttg-functions-alt-img-script', plugins_url('assets/img-alt-tooltip.js',__FILE__), array(), false, true );
+		wp_enqueue_script( 'kttg-functions-alt-img-script', plugins_url('assets/img-alt-tooltip.js',__FILE__), array('jquery'), false, true );
 	}
 }
 
@@ -185,7 +182,10 @@ function kttg_filter_posttype($cont){
 	$my_post_id=get_the_id();
 	$exclude_me = get_post_meta($my_post_id,'bluet_exclude_post_from_matching',true);			
 	
-	if($exclude_me){
+
+	global $is_kttg_glossary_page;
+	
+	if($exclude_me OR $is_kttg_glossary_page){
 		return $cont;
 	}
 
@@ -212,8 +212,7 @@ function kttg_filter_posttype($cont){
 	if(!empty($bluet_matching_keywords_field)){
 		$my_keywords_ids=$bluet_matching_keywords_field;
 	}                                    
-					
-	global $is_kttg_glossary_page;
+
 	$options=get_option('bluet_kw_advanced');
 	
 	if(empty($options['kttg_fetch_all_keywords'])){
@@ -222,16 +221,10 @@ function kttg_filter_posttype($cont){
 		$kttg_fetch_all_keywords=true;
 	}
 	
-	if(!empty($my_keywords_ids) OR $is_kttg_glossary_page OR $kttg_fetch_all_keywords){
+	if(!empty($my_keywords_ids) OR $kttg_fetch_all_keywords){
 		
 		$my_keywords_terms=array(); 
-							
-		//looking in all occurences if glossary page
-		if($is_kttg_glossary_page){
-			$post_in=array();
-		}else{
-			$post_in=$my_keywords_ids;
-		}
+
 		if($kttg_fetch_all_keywords){
 			$post_in=null;
 		}
