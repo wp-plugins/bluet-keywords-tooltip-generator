@@ -225,6 +225,8 @@ function kttg_filter_posttype($cont){
 		
 		$my_keywords_terms=array(); 
 
+		$post_in=$my_keywords_ids;
+		
 		if($kttg_fetch_all_keywords){
 			$post_in=null;
 		}
