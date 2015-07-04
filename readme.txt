@@ -96,16 +96,16 @@ The plugin is available in these languages :
 
 == Screenshots ==
 1. Front end single page highlighted KeyWords
-1. Add a new KeyWord description
-1. My Keywords List
-1. Style customization
-1. Style preview
-1. Settings
-1. Widget
-1. Excluded Posts list
-1. Importing keywords from other plugins you have used
-1. Glossary ShortCode support [kttg_glossary]
-1. Glossary settings page
+2. Add a new KeyWord description
+3. Glossary ShortCode support [kttg_glossary]
+4. Style customization
+5. Style preview
+6. Settings
+7. Widget
+8. Excluded Posts list
+9. Importing keywords from other plugins you have used
+10. My Keywords List
+11. Glossary settings page
 
 == Changelog ==
 
