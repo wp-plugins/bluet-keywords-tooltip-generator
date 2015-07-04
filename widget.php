@@ -75,6 +75,9 @@ class bluet_keyword_widget extends wp_widget{
 								$kw_id=get_the_id();
 
 							// adding &zwnj; (invisible character) to avoid tooltips overlapping 
+								$trm=elim_apostrophes($trm);
+								$dfn=elim_apostrophes($dfn);
+								
 								$dfn=preg_replace('#('.$trm.')#i',$trm.'&zwnj;',get_the_content());
 								
 								$img=get_the_post_thumbnail($term_id,'medium');
