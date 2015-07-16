@@ -217,11 +217,33 @@ function bluet_kw_custom_style(){
 	
 	/* hide button */
 	.bluet_hide_tooltip_button{
+		display: none;
 		width: 25px;
 		height: 25px;
 		position: absolute;
-		right: -4px;
-		top: -2px;
+		right: 10px;
+		top: 10px;
+	}
+
+	@media screen and (max-width:400px){
+		.bluet_hide_tooltip_button{
+			display: block !important;
+		}
+		.bluet_block_to_show{
+			position: fixed;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			max-width: 100% !important;
+			max-height: 90%;
+			padding: 10px;
+			margin: 10px;
+			overflow: auto;
+		}
+
+		.bluet_block_container{			
+			width: 100%;
+		}
 	}
 	</style>
 	<?php

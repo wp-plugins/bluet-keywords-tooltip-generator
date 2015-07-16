@@ -28,7 +28,7 @@ function bluet_kw_load_scripts() {
 	wp_enqueue_script( 'kttg-settings-functions-script', plugins_url('assets/settings-functions.js',__FILE__), array('jquery'), false, true );
 	
 	//
-	wp_enqueue_script( 'kttg-admin-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array('jquery'), false, true );
+	wp_enqueue_script( 'kttg-admin-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.4.js',__FILE__), array('jquery'), false, true );
 }
 add_action( 'admin_head', 'bluet_kw_load_scripts' );
 
@@ -105,7 +105,16 @@ add_action( 'admin_init',function () {
 		'my_keywords_settings',				
 		'concern_section'					
 	);
-	
+
+	//trigger method
+	add_settings_field( 
+		'bt_kw_trigger', 					
+		__('Trigger method','bluet-kw'), 			
+		'bt_kw_trigger_display', 		
+		'my_keywords_settings',				
+		'concern_section'					
+	);
+
 	// Define the position settings field
 	add_settings_field( 
 		'bt_kw_position', 					
@@ -315,13 +324,25 @@ function bt_kw_animation_type_display(){
 </script>
 <?php
 }
+
+
+
+function bt_kw_trigger_display(){
+	$options = get_option( 'bluet_kw_settings' );
+?>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_trigger]" value="mouseover" <?php if(empty($options['bt_kw_trigger']) or $options['bt_kw_trigger']=="mouseover") echo 'checked'; ?> id="kttg_trigger_mouseover" /><label for='kttg_trigger_mouseover'><?php _e('Mouse Over','bluet-kw'); ?></label><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_trigger]" value="click" <?php if($options['bt_kw_trigger']=="click") echo 'checked'; ?> id="kttg_trigger_click" /><label for='kttg_trigger_click'><?php _e('Click','bluet-kw'); ?></label><br>
+<?php
+	 
+ }
+
 function bt_kw_position_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="top" <?php if($options['bt_kw_position']=="top") echo 'checked'; ?>/><?php _e('Top','bluet-kw'); ?><br>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="bottom" <?php if($options['bt_kw_position']=="bottom") echo 'checked'; ?>/><?php _e('Bottom','bluet-kw'); ?><br>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="right" <?php if($options['bt_kw_position']=="right") echo 'checked'; ?>/><?php _e('Right','bluet-kw'); ?><br>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="left" <?php if($options['bt_kw_position']=="left") echo 'checked'; ?>/><?php _e('Left','bluet-kw'); ?><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="top" <?php if($options['bt_kw_position']=="top") echo 'checked'; ?> id='kttg_pos_top' /><label for='kttg_pos_top'><?php _e('Top','bluet-kw'); ?></label><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="bottom" <?php if($options['bt_kw_position']=="bottom") echo 'checked'; ?> id='kttg_pos_bottom' /><label for='kttg_pos_bottom'><?php _e('Bottom','bluet-kw'); ?></label><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="right" <?php if($options['bt_kw_position']=="right") echo 'checked'; ?> id='kttg_pos_right' /><label for='kttg_pos_right'><?php _e('Right','bluet-kw'); ?></label><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="left" <?php if($options['bt_kw_position']=="left") echo 'checked'; ?> id='kttg_pos_left' /><label for='kttg_pos_left'><?php _e('Left','bluet-kw'); ?></label><br>
 <?php
 	 
  }

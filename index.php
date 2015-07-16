@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.6.3
+Version: 2.6.4
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -39,14 +39,24 @@ add_action('admin_footer','bluet_kttg_place_tooltips');
 function bluet_kttg_place_tooltips(){
 	$kttg_sttings_options=get_option('bluet_kw_settings');
 	$kttg_tooltip_position=$kttg_sttings_options["bt_kw_position"];
+
 	if(!empty($kttg_sttings_options["bt_kw_animation_type"])){
 		$animation_type=$kttg_sttings_options["bt_kw_animation_type"];
 	}else{
 		$animation_type="flipInX";
 	}
+
+	$tooltip_trigger_method="mouseover";
+
+	if(!empty($kttg_sttings_options['bt_kw_trigger'])){
+		$tooltip_trigger_method=$kttg_sttings_options['bt_kw_trigger'];
+	}
+	
+
 	?>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
+			tooltip_trigger_method="<?php echo($tooltip_trigger_method); ?>";
 			bluet_placeTooltips(".bluet_tooltip, .bluet_img_tooltip","<?php echo($kttg_tooltip_position); ?>");	 
 			animation_type="<?php echo($animation_type);?>";
 			moveTooltipElementsTop(".bluet_block_to_show");
@@ -100,7 +110,7 @@ function bluet_kw_load_scripts_front() {
 		wp_enqueue_style( 'kttg-tooltips-animations-styles', plugins_url('assets/animate.css',__FILE__), array(), false);
 	}
 	//load jQuery once to avoid conflict
-	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array('jquery'), false, true );
+	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.4.js',__FILE__), array('jquery'), false, true );
 		
 	$opt_tmp=get_option('bluet_kw_style');
 	if(!empty($opt_tmp['bt_kw_alt_img']) and $opt_tmp['bt_kw_alt_img']=='on'){

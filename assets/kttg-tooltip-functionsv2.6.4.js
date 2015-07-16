@@ -36,12 +36,18 @@ function moveTooltipElementsTop(className){
 
 function bluet_placeTooltips(inlineClass,position){
 	//add listeners to inline keywords on mouseover
-	jQuery(inlineClass).mouseover(function(){
+	jQuery(inlineClass).on(tooltip_trigger_method,function(){
 		//id of the posttype in concern
 
 		id_post_type=jQuery(this).data("tooltip");
 		var tooltipBlock=jQuery("#tooltip_blocks_to_show").children("[data-tooltip="+id_post_type+"]").first();
-	  
+	  	  
+	  	  //show and quit if mobile
+	  	if(jQuery(window).width()<401){
+			tooltipBlock.css("opacity","1").show();
+			return;
+
+		}
 		if(tooltipBlock){
 
 			//Calculate the new Position
