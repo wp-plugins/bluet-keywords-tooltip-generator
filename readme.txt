@@ -6,11 +6,11 @@ Tested up to: 4.2.2
 Stable tag: 2.6.4
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
-Bluet keywords tooltip generator allows you to highlight the keywords in your content in order to show a description tooltip
+Keywords tooltip generator allows you to highlight the keywords in your content in order to show a responsive description tooltip
 
 == Description ==
 
-* This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
+* This plugin allows you automatically create responsive tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 * With shortcode Glossary [kttg_glossary]
 
 > #### DEMO
@@ -108,6 +108,7 @@ The plugin is available in these languages :
 9. Importing keywords from other plugins you have used
 10. My Keywords List
 11. Glossary settings page
+12. Responsive leyout
 
 == Changelog ==
 
