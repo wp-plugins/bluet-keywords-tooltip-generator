@@ -1,9 +1,10 @@
-﻿=== Keywords ToolTip Generator ===
+=== Keywords ToolTip Generator ===
 Contributors: lebleut
-Tags: inline, tooltips, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, definition, term, catalog, word, interactive, link, wpml
+Tags: inline, responsive, tooltips, tooltip, highlight, widget, image, style, keyword, post, page, glossary, localization, description, definition, term, word, interactive, link, wpml
 Requires at least: 3.8
 Tested up to: 4.2.2
 Stable tag: 2.6.5
+License: GPLv2 or later
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
 Keywords tooltip generator allows you to highlight the keywords in your content in order to show a responsive description tooltip
