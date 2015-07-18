@@ -51,7 +51,7 @@ function bluet_kw_custom_style(){
 		background-color: <?php echo $desc_bg_color; ?> <?php echo($is_important)?>;
 		position: absolute;
 		border-radius: 4px;
-		z-index:9999;
+		z-index:9999999999;
 	}
 	
 	.bluet_tooltip{
@@ -213,6 +213,11 @@ function bluet_kw_custom_style(){
 	  padding-left: 10px;
 	  margin-bottom: 20px;
 	  border-left: 2px grey solid;
+	}
+
+	/*tooltip footer*/
+	.bluet_block_footer {
+	  padding: 8px 10px;
 	}
 	
 	/* hide button */

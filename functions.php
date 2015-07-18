@@ -2,7 +2,7 @@
 defined('ABSPATH') or die("No script kiddies please!");
 
 //common functions
-function bluet_kttg_tooltip_layout($term_title,$dfn,$img,$id,$bluet_kttg_show_glossary_link = null,$bluet_kttg_glossary_page = null){
+function bluet_kttg_tooltip_layout($term_title,$dfn,$img,$id,$bluet_kttg_show_glossary_link = null,$bluet_kttg_glossary_page = null,$glossary_link_label=null){
 	global $is_kttg_glossary_page;
 //generates the HTML code of the tooltip model
 
@@ -17,8 +17,9 @@ $kttg_title_layout='';
 	$kttg_footer='';
 	
 	if(!$is_kttg_glossary_page and $bluet_kttg_show_glossary_link=="on" and $bluet_kttg_glossary_page!=""){
+
 		//add a note at the footer of the tooltip	
-		$kttg_footer='<a href="'.$bluet_kttg_glossary_page.'">'.__('View glossary','bluet-kw').'</a>';
+		$kttg_footer='<a href="'.$bluet_kttg_glossary_page.'">'.$glossary_link_label.'</a>';
 	}
 	
 		$layout_ret='<span class="bluet_block_to_show" data-tooltip="'.$id.'">'

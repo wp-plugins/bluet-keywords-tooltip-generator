@@ -31,13 +31,13 @@ add_action( 'admin_init',function () {
 	// Define view glossary page field
 	add_settings_field( 
 		'bluet_kttg_show_glossary_link', 					
-		__('Glossary page','bluet-kw'), 			
+		__('Glossary link page','bluet-kw'), 			
 		'bt_kw_show_glossary_link_display', 		
-		'my_keywords_settings',				
-		'concern_section'					
+		'my_keywords_glossary_settings',				// The page on which we'll be rendering this field
+		'glossary_section'					// The section to which we're adding the setting					
 	);
-	
-		
+
+
 	/*for glossary options*/
 	register_setting(
 		'settings_group',					// The name of the group of settings
@@ -68,9 +68,13 @@ function bluet_kw_glossary_display(){
 
 function bt_kw_show_glossary_link_display(){
 	$options = get_option( 'bluet_kw_settings' );
+	$glossary_options = get_option( 'bluet_glossary_options' );
+
 	?>
 	<input type="checkbox" 	id="bt_kw_show_glossary_link_id" 	name="bluet_kw_settings[bluet_kttg_show_glossary_link]" <?php if(!empty($options['bluet_kttg_show_glossary_link']) and $options['bluet_kttg_show_glossary_link']=='on') echo 'checked'; ?> />
-		<label for="bt_kw_show_glossary_link_id"><?php _e('Add glossary page link in the tooltip footer','bluet-kw'); ?></label><br>
+		<label for="bt_kw_show_glossary_link_id"><?php _e('Add glossary link page in the tooltips footer','bluet-kw'); ?></label><br>
 
-	<?php	 
+	<input  type="text" id="bt_kw_glossary_link_label_id" name="bluet_glossary_options[kttg_link_glossary_label]" value="<?php echo $glossary_options['kttg_link_glossary_label']; ?>" placeholder="<?php _e('View glossary','bluet-kw');?>">
+		<label for="bt_kw_glossary_link_label_id"><?php _e('Glossary link label','bluet-kw'); ?></label>
+	<?php
 }

@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, tooltips, tooltip, highlight, widget, image, custom post, style, keyword, post, page, glossary, localization, automatic, description, definition, term, catalog, word, interactive, link, wpml
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 2.6.4
+Stable tag: 2.6.5
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
 Keywords tooltip generator allows you to highlight the keywords in your content in order to show a responsive description tooltip
@@ -31,6 +31,7 @@ https://www.youtube.com/watch?v=JBdyLKa4DMI
 = New Features =
 * KTTG is now responsive (for devices lesst then 400px)
 * new click method trigger
+* Custom glossary link page label
 * New glossary : content is listed under the keywords (thanks for [KaiserSoze13](https://profiles.wordpress.org/kaisersoze13) )
 * Now you are able to generate shortcodes on the tooltips, thanks to [ColumbusCook](http://www.columbuscook.com)
 
@@ -111,6 +112,9 @@ The plugin is available in these languages :
 12. Responsive leyout
 
 == Changelog ==
+
+= 2.6.5 =
+* Custom glossary link page label
 
 = 2.6.4 =
 * KTTG is now responsive (for devices lesst then 400px)
