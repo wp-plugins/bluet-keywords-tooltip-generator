@@ -1,9 +1,9 @@
-=== Keywords ToolTip Generator ===
+﻿=== Keywords ToolTip Generator ===
 Contributors: lebleut
 Tags: inline, responsive, tooltips, tooltip, highlight, widget, image, style, keyword, post, page, glossary, localization, description, definition, term, word, interactive, link, wpml
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 2.6.5
+Stable tag: 2.6.6
 License: GPLv2 or later
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
@@ -30,6 +30,7 @@ Keywords tooltip generator allows you to highlight the keywords in your content 
 https://www.youtube.com/watch?v=JBdyLKa4DMI
 
 = New Features =
+* Now it works with Japanese and Chinese languages thanks to [Plugmon](https://wordpress.org/support/topic/not-works-in-langs-without-space-separation?replies=1#post-7249845)
 * KTTG is now responsive (for devices lesst then 400px)
 * new click method trigger
 * Custom glossary link page label
@@ -113,6 +114,9 @@ The plugin is available in these languages :
 12. Responsive leyout
 
 == Changelog ==
+
+= 2.6.6 =
+* Now it works with Japanese and Chinese thanks to [plugmon](https://wordpress.org/support/topic/not-works-in-langs-without-space-separation?replies=1#post-7249845)
 
 = 2.6.5 =
 * Custom glossary link page label

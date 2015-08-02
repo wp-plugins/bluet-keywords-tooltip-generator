@@ -85,7 +85,16 @@ function kttg_get_related_keywords($my_post_id){
 			//$term_title=str_replace("&#8217;","'",get_the_title());
 
 			$term_title=$kw_post->post_title;
-			$all_kw_titles[$kw_post->ID]='((\W)('.$term_title.''.$kw_after.''.$syn.')(\W))i';				
+			/*test japanese and chinese*/
+			$text_sep="(\W)";
+			$japanese_chinese="/[\x{3000}-\x{303F}]|[\x{3040}-\x{309F}]|[\x{30A0}-\x{30FF}]|[\x{FF00}-\x{FFEF}]|[\x{4E00}-\x{9FAF}]|[\x{2605}-\x{2606}]|[\x{2190}-\x{2195}]|\x{203B}/u";
+			
+			if(preg_match($japanese_chinese,$term_title)==1){
+				//change pattern if japanese or chinese text
+				$text_sep=""; //no separator for japanese and chinese
+			}
+
+			$all_kw_titles[$kw_post->ID]='/'.$text_sep.'('.$term_title.''.$kw_after.''.$syn.')'.$text_sep.'/iu';				
 		}
 	
 

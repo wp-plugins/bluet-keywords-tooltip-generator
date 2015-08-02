@@ -3,7 +3,7 @@
 Plugin Name: BleuT KeyWords ToolTip Generator
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.6.5
+Version: 2.6.6
 Author URI: http://www.blueskills.net/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -336,7 +336,15 @@ function kttg_filter_posttype($cont){
 					$temr_occ=elim_apostrophes($temr_occ);
 					$cont=elim_apostrophes($cont);
 
-					$cont=preg_replace('#((\W)('.$temr_occ.''.$kw_after.')(\W))#u'.$kttg_case_sensitive,'$2__$3__$4',$cont,$limit_match);
+					$text_sep="\W";
+					$japanese_chinese="/[\x{3000}-\x{303F}]|[\x{3040}-\x{309F}]|[\x{30A0}-\x{30FF}]|[\x{FF00}-\x{FFEF}]|[\x{4E00}-\x{9FAF}]|[\x{2605}-\x{2606}]|[\x{2190}-\x{2195}]|\x{203B}/u";
+					
+					if(preg_match($japanese_chinese,$temr_occ)==1){
+						//change pattern if japanese or chinese text
+						$text_sep=""; //no separator for japanese and chinese
+					}
+
+					$cont=preg_replace('#(('.$text_sep.')('.$temr_occ.''.$kw_after.')('.$text_sep.'))#u'.$kttg_case_sensitive,'$2__$3__$4',$cont,$limit_match);
 				}					
 
 			}

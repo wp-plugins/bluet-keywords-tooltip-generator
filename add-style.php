@@ -87,7 +87,6 @@ function bluet_kw_custom_style(){
 		border-radius: 2px;
 		box-shadow: 0px 0px 10px #717171 <?php echo($is_important)?>;
 		font-size:<?php echo $desc_font_size; ?>px <?php echo($is_important)?>;
-		line-height: normal;
 		font-weight: normal;
 		display:inline-block;
 		width:inherit;
@@ -223,16 +222,16 @@ function bluet_kw_custom_style(){
 	/* hide button */
 	.bluet_hide_tooltip_button{
 		display: none;
-		width: 25px;
-		height: 25px;
-		position: absolute;
-		right: 10px;
-		top: 10px;
 	}
 
 	@media screen and (max-width:400px){
 		.bluet_hide_tooltip_button{
 			display: block !important;
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			right: 0px;
+			top: 0px;
 		}
 		.bluet_block_to_show{
 			position: fixed;
@@ -240,11 +239,9 @@ function bluet_kw_custom_style(){
 			left: 0px;
 			right: 0px;
 			max-width: 100% !important;
-			max-height: 90%;
-			padding: 10px;
-			margin: 10px;
+			padding: 0px !important;
 			overflow: auto;
-		}
+  		}
 
 		.bluet_block_container{			
 			width: 100%;
