@@ -421,7 +421,7 @@ function bluet_kw_render_settings_page() {
 				$kttg_version=$kttg_infos['Version'];
 				$kttg_pro_link="<a href='http://www.blueskills.net/downloads/kttg-pro'>Get KTTG PRO</a>";
 			?>
-			<h2><?php _e('KeyWords Settings','bluet-kw'); ?></h2><span><?php echo('<span style="color:red;"><b>'.$kttg_name.'</b></span> (v'.$kttg_version.')');?> [<?php echo($kttg_pro_link); ?>]</span>
+			<h2><?php _e('KeyWords Settings','bluet-kw'); ?></h2><span><?php echo('<b>'.$kttg_name.' <span style="color:red;">Free</span></b> (v'.$kttg_version.')');?> [<?php echo($kttg_pro_link); ?>]</span>
 			
 			<?php settings_errors();?>				
 				<h2 class="nav-tab-wrapper">
