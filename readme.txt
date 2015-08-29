@@ -1,4 +1,4 @@
-﻿=== Keywords ToolTip Generator (free) ===
+﻿=== Keywords ToolTip Generator ===
 Contributors: lebleut
 Tags: inline, responsive, tooltips, tooltip, highlight, widget, image, style, keyword, post, page, glossary, localization, description, definition, term, word, interactive, link, wpml
 Requires at least: 3.9
