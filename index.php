@@ -416,7 +416,7 @@ function bluet_kttg_place_tooltips(){
 					load_tooltip="<span id='loading_tooltip' class='bluet_block_to_show' data-tooltip='0'>";
 						load_tooltip+="<div class='bluet_block_container'>";									
 							load_tooltip+="<div class='bluet_text_content'>";							
-									load_tooltip+="<img width='15px' src='./wp-content/plugins/bluet-keywords-tooltip-generator/assets/loading.gif' onerror=\"this.src='../wp-content/plugins/bluet-keywords-tooltip-generator/assets/loading.gif'\"/>";
+									load_tooltip+="<img width='15px' src='/wp-content/plugins/bluet-keywords-tooltip-generator/assets/loading.gif' />";
 							load_tooltip+="</div>";						
 						load_tooltip+="</div>";
 					load_tooltip+="</span>";
