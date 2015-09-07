@@ -120,6 +120,7 @@ The plugin is available in these languages :
 * Header and nav tegs are now excluded from being fetched
 * space bug fixed
 * bugs fixed
+* thanks to [Alrik Gadkowsky](https://oakwoodhunters.com) for contributing on tooltipy
 
 = 3.1 =
 * KTTG is now Tooltipy
