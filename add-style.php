@@ -19,15 +19,18 @@ function bluet_kw_custom_style(){
 	}
 	
 	$style_options=get_option('bluet_kw_style');
-	
+
+	/**/
 	$tooltip_color=$style_options['bt_kw_tt_color'];
 	$tooltip_bg_color=$style_options['bt_kw_tt_bg_color'];
+
 	if(!empty($style_options['bt_kw_on_background'])){
 		$bt_kw_on_background=$style_options['bt_kw_on_background'];
 	}else{
 		$bt_kw_on_background=null;
 	}
-	
+
+	/**/
 	$desc_color=$style_options['bt_kw_desc_color'];
 	$desc_bg_color=$style_options['bt_kw_desc_bg_color'];
 	
@@ -40,6 +43,30 @@ function bluet_kw_custom_style(){
 		$is_important=" !important";
 	}
 	?>
+	<script>
+		//apply keyword style only if keywords are Fetched
+		jQuery(document).on("keywordsFetched",function(){
+			jQuery(".bluet_tooltip").each(function(){
+				jQuery(this).css({
+					"text-decoration": "none",
+					"color": "<?php echo $tooltip_color; ?>",
+					
+					<?php
+						if(!$bt_kw_on_background){
+							echo('"background": "'.$tooltip_bg_color.'",');
+							
+							echo('"padding": "1px 5px 3px 5px",');
+							echo('"font-size": "1em"');
+						}else{
+							echo('"border-bottom": "1px dotted",');
+							echo('"border-bottom-color": "'.$tooltip_color.'"');
+						}
+					?>
+				});
+			});
+		});
+	</script>
+
 	<style>
 
 	/*for alt images tooltips*/
@@ -54,22 +81,7 @@ function bluet_kw_custom_style(){
 		z-index:9999999999;
 	}
 	
-	.bluet_tooltip{
-		text-decoration: none; 
-		color: <?php echo $tooltip_color; ?> <?php echo($is_important)?>;
-		
-		<?php
-		if(!$bt_kw_on_background){
-			echo("background: ".$tooltip_bg_color." ".$is_important.";");
-			
-			echo("padding: 1px 5px 3px 5px;");
-			echo("font-size: 1em;");
-		}else{
-			echo("border-bottom: 1px dotted;");
-			echo("border-bottom-color: ".$tooltip_color.";");
-		}
-		?>
-	}
+
 	
 	.bluet_block_to_show{
 		display:none;
@@ -105,6 +117,11 @@ function bluet_kw_custom_style(){
 		width:100%;
 		height: auto;
 		margin-bottom: 0px;
+	}
+	
+	img.bluet_tooltip {
+	  border: none;
+	  width:<?php echo $desc_font_size; ?>px;
 	}
 
 	.bluet_text_content p:last-child {
@@ -206,33 +223,35 @@ function bluet_kw_custom_style(){
 	.kttg_glossary_content ul {
 	  margin-bottom: 0px;
 	  margin-left: 0px;
-	}
+	}	
 	.kttg_glossary_element_content {
 	  margin-left: 15px;
 	  padding-left: 10px;
 	  margin-bottom: 20px;
 	  border-left: 2px grey solid;
 	}
-
-	/*tooltip footer*/
-	.bluet_block_footer {
-	  padding: 8px 10px;
-	}
 	
 	/* hide button */
 	.bluet_hide_tooltip_button{
-		display: none;
+		display : none;
+	}
+	.kttg_fast{
+		-webkit-animation-duration: 0.5s !important;
+		-moz-animation-duration: 0.5s !important;
+		-ms-animation-duration: 0.5s !important;
+		-o-animation-duration: 0.5s !important;
+		animation-duration: 0.5s !important;
+	}
+	
+	.kttg_slow{
+		-webkit-animation-duration: 2s !important;
+		-moz-animation-duration: 2s !important;
+		-ms-animation-duration: 2s !important;
+		-o-animation-duration: 2s !important;
+		animation-duration: 2s !important;
 	}
 
 	@media screen and (max-width:400px){
-		.bluet_hide_tooltip_button{
-			display: block !important;
-			width: 25px;
-			height: 25px;
-			position: absolute;
-			right: 0px;
-			top: 0px;
-		}
 		.bluet_block_to_show{
 			position: fixed;
 			bottom: 0px;
@@ -241,11 +260,82 @@ function bluet_kw_custom_style(){
 			max-width: 100% !important;
 			padding: 0px !important;
 			overflow: auto;
-  		}
+		}
 
 		.bluet_block_container{			
 			width: 100%;
+
 		}
+		.bluet_hide_tooltip_button{
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			display: block;
+		}
+	}
+	
+	/*admin*/
+	span.class_val{
+		  margin-right: 5px;
+	}
+	span.elem_class {
+		color: white;
+		margin-top: 3px;
+		border-radius: 5px;
+		padding-left: 15px;	
+		margin-right: 10px !important;	  
+	}
+	#cover_areas_list .elem_class {
+	  background-color: cornflowerblue;
+	}
+	#exclude_areas_list .elem_class {
+	  background-color: indianred;
+	}
+	.easy_tags-list{
+		display: inline-block;
+		margin-left: 5px !important;
+	}
+	.easy_tags-content{
+		border: 1px solid #dcdcdc;
+		max-width: 500px;
+		background-color: white;
+		display: inline-block;
+	}
+	.easy_tags-add{
+		display: inline-block;
+	}
+	.easy_tags-field{
+		width: 100px;
+		border: none !important;
+		box-shadow: none !important;
+		outline: none !important;
+		background: transparent;
+		vertical-align: top;
+	}
+	.easy_tags-field:focus{
+		border: none !important;
+  		box-shadow: none !important;
+	}
+	a.nav-tab{
+	  cursor: pointer !important;
+	}
+
+	.kttg_glossary_element_title sub {
+	  font-size: 50%;
+	}
+	#kttg_exclude_headings_zone label {
+    	display: inline-block;
+	}
+	#kttg_exclude_headings_zone h1,
+	#kttg_exclude_headings_zone h2,
+	#kttg_exclude_headings_zone h3,
+	#kttg_exclude_headings_zone h4,
+	#kttg_exclude_headings_zone h5,
+	#kttg_exclude_headings_zone h6 {
+	    margin: 0px !important;
+	    padding: 0px !important;
 	}
 	</style>
 	<?php

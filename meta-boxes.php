@@ -14,44 +14,56 @@ add_action('edit_form_after_title', function() {
 add_action('do_meta_boxes',function(){
 //for keywords
 		add_meta_box(
-		'bluet_kw_settings_meta',
-		__('Keyword Settings','bluet-kw'),
-		'bluet_keyword_settings_render',
-		'my_keywords',
-		'after_title',
-		'high'
+			'bluet_kw_settings_meta',
+			__('Keyword Settings','bluet-kw'),
+			'bluet_keyword_settings_render',
+			'my_keywords',
+			'after_title',
+			'high'
 		);
 		
-//for posts
+//for post types except my_keywords
+	$screens = array();
+	$all_post_types=get_post_types();
+	foreach ($all_post_types as $key => $pt) {
+		if($pt!='my_keywords'){
+			array_push($screens,$pt);
+		}
+	}
+
+	foreach ( $screens as $screen ) {
+		//related keywords
 		add_meta_box(
-		'bluet_kw_post_related_keywords_meta',
-		__('Keywords related','bluet-kw').' (KTTG)',
-		'bluet_keywords_related_render',
-		'post',
-		'side',
-		'high'
+			'bluet_kw_post_related_keywords_meta',
+			__('Keywords related','bluet-kw').' (KTTG)',
+			'bluet_keywords_related_render',
+			$screen,
+			'side',
+			'high'
 		);
+	}
 		
-//for pages		
-		add_meta_box(
-		'bluet_kw_page_related_keywords_meta',
-		__('Keywords related','bluet-kw').' (KTTG)',
-		'bluet_keywords_related_render',
-		'page',
-		'side',
-        'high'
-		);
 });
 
 function bluet_keyword_settings_render(){
 	?>
 	<p>
-	<Label for="bluet_synonyms_id"><?php _e('Synonyms','bluet-kw');?></label><input id="bluet_synonyms_id" name="bluet_synonyms_name" type="text" value="<?php echo(get_post_meta(get_the_id(),'bluet_synonyms_keywords',true));?>" placeholder="<?php _e("Type here the keyword's Synonyms separated with '|'","bluet-kw");?>" style=" width:100%;" />
+		<Label for="bluet_synonyms_id"><?php _e('Synonyms','bluet-kw');?></label>
+		<input type="text" 
+			id="bluet_synonyms_id" 
+			name="bluet_synonyms_name" 
+			value="<?php echo(get_post_meta(get_the_id(),'bluet_synonyms_keywords',true));?>" 
+			placeholder="<?php _e("Type here the keyword's Synonyms separated with '|'","bluet-kw");?>" 
+			style=" width:100%;" 
+		/>
 	</p>
 	
 	<p>
 		<label for='bluet_case_sensitive_id'><?php _e('Make this keyword <b>Case Sensitive</b>','bluet-kw');?>  </label>
-		<input id="bluet_case_sensitive_id" name="bluet_case_sensitive_name" type="checkbox" <?php if(get_post_meta(get_the_id(),'bluet_case_sensitive_word',true)) echo('checked');?> />
+		<input type="checkbox" 
+			id="bluet_case_sensitive_id" 
+			name="bluet_case_sensitive_name" <?php if(get_post_meta(get_the_id(),'bluet_case_sensitive_word',true)) echo('checked');?> 
+		/>
 	</p>
 	<?php
 	if(function_exists('bluet_prefix_metabox')){
@@ -70,13 +82,37 @@ function bluet_keywords_related_render(){
 
 	$current_post_id=$post->ID;
 	$exclude_me = get_post_meta($current_post_id,'bluet_exclude_post_from_matching',true);
+	$exclude_keywords_string = "";
+
+	//get excluded terms and sanitize them
+	/*begin*/
+		$my_excluded_keywords=explode(',',$exclude_keywords_string);
+		$my_excluded_keywords=array_map('trim',$my_excluded_keywords);
+		$my_excluded_keywords=array_map('strtolower',$my_excluded_keywords);
+		
+		$my_excluded_keywords=array_filter($my_excluded_keywords,function($val){
+			$ret=array();
+			if($val!=""){
+				array_push($ret,$val);
+			}
+			return $ret;
+		});
+	/*end*/
+
 	?>
 	<div>
 		<h3><?php _e('Exclude this post from being matched','bluet-kw'); ?></h3>
-		<input type="checkbox" id="bluet_kw_admin_exclude_post_from_matching_id" onClick="hideIfChecked('bluet_kw_admin_exclude_post_from_matching_id','bluet_kw_admin_div_terms')" name="bluet_exclude_post_from_matching_name" <?php if($exclude_me) echo "checked"; ?>/>
-		<span style="color:red;"><?php _e('Exclude this post','bluet-kw'); ?></span>
+		<input type="checkbox" 
+			id="bluet_kw_admin_exclude_post_from_matching_id" 
+			onClick="hideIfChecked('bluet_kw_admin_exclude_post_from_matching_id','bluet_kw_admin_div_terms')" 
+			name="bluet_exclude_post_from_matching_name" <?php if(!empty($exclude_me)) echo "checked"; ?>
+		/>
+		<label for="bluet_kw_admin_exclude_post_from_matching_id" style="color:red;"><?php _e('Exclude this post','bluet-kw'); ?></label>
+
+
 	
 	<?php
+
 //show keywords list related
 	
 	$my_kws=array();
@@ -98,16 +134,33 @@ function bluet_keywords_related_render(){
 		<?php
 		echo('<ul style="list-style: initial; padding-left: 20px;">');
 			foreach($my_kws as $kw_id){
-				echo('<li style="color:green;"><i>'.get_the_title($kw_id).'</i></li>'); 
+				$kw_title=get_the_title($kw_id);
+
+				if(in_array(strtolower(trim($kw_title)),$my_excluded_keywords)){
+					echo('<li style="color:red;"><i>'.$kw_title.'</i></li>'); 
+				}else{
+					echo('<li style="color:green;"><i>'.$kw_title.'</i></li>'); 
+				}
+				
 			}
 		echo('</ul>');
 	}else{
 		echo('<p>'.__('No KeyWords found for this post','bluet-kw').'</p>');
 	}
 	
-	echo('<a href="'.get_admin_url().'edit.php?post_type=my_keywords">');
+	?>
+		<h3><?php _e('Keywords to exclude','bluet-kw'); ?></h3>			
+		<!-- test -->
+		<?php
+			$kttg_pro_link="<a href='http://www.tooltipy.com/downloads/kttg-pro'>KTTG PRO</a>";
+		?>
+		This section is available only on <?php echo($kttg_pro_link); ?>		
+	<!-- end -->
+	<?php
+
+	echo('<p><a href="'.get_admin_url().'edit.php?post_type=my_keywords">');
 	echo(__('Manage KeyWords','bluet-kw').' >>');
-	echo('</a>');
+	echo('</a></p>');
 		echo('</div>');
 	echo "</div>";
 }
@@ -149,9 +202,11 @@ add_action('save_post',function(){
 	}else{
 		if(!empty($_POST['action']) and $_POST['action'] =='editpost'){
 			$exclude_me=$_POST['bluet_exclude_post_from_matching_name'];
+			$exclude_keywords_string=$_POST['bluet_exclude_keywords_from_matching_name'];
 			
 			//save exclude post from matching
 			update_post_meta($_POST['post_ID'],'bluet_exclude_post_from_matching',$exclude_me);
+			update_post_meta($_POST['post_ID'],'bluet_exclude_keywords_from_matching',$exclude_keywords_string);
 
 			$matchable_keywords=$_POST['matchable_keywords'];
 			$arr_match=array();

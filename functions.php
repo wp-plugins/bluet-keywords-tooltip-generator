@@ -1,29 +1,33 @@
 <?php
 defined('ABSPATH') or die("No script kiddies please!");
 
+define("KTTG_TEMPLATES_DIR","templates");
+
+function kttg_template($template_name,$file=__FILE__){
+	/*
+	to load a template inside another from the template folder
+	*/
+	$current_dir = dirname($file);
+	include($current_dir."/".KTTG_TEMPLATES_DIR."/".$template_name.".php");
+}
+
 //common functions
-function bluet_kttg_tooltip_layout($term_title,$dfn,$img,$id,$bluet_kttg_show_glossary_link = null,$bluet_kttg_glossary_page = null,$glossary_link_label=null){
+function bluet_kttg_tooltip_layout($term_title,$dfn,$img,$id,$bluet_kttg_show_glossary_link = null){
 	global $is_kttg_glossary_page;
 //generates the HTML code of the tooltip model
 
 $kttg_title_layout='';
 
+
 //check if the hide title setting is checked to decide wether to show the title or not
-	$kttg_tmp_title_setting=get_option( 'bluet_kw_settings' );
-	if(empty($kttg_tmp_title_setting['bt_kw_hide_title'])){
-		$kttg_title_layout='<span class="bluet_title_on_block">'.$term_title.'</span>';
-	}
-	
+    $kttg_tmp_title_setting=get_option( 'bluet_kw_settings' );
+    if(empty($kttg_tmp_title_setting['bt_kw_hide_title'])){ 
+        $kttg_title_layout='<span class="bluet_title_on_block">'.$term_title.'</span>';
+    }	
 	$kttg_footer='';
 	
-	if(!$is_kttg_glossary_page and $bluet_kttg_show_glossary_link=="on" and $bluet_kttg_glossary_page!=""){
-
-		//add a note at the footer of the tooltip	
-		$kttg_footer='<a href="'.$bluet_kttg_glossary_page.'">'.$glossary_link_label.'</a>';
-	}
-	
 		$layout_ret='<span class="bluet_block_to_show" data-tooltip="'.$id.'">'
-						.'<img src="'.plugin_dir_url(__FILE__).'assets/close.png" class="bluet_hide_tooltip_button" />'
+						.'<img src="'.plugin_dir_url(__FILE__).'assets/close_button.png" class="bluet_hide_tooltip_button" />'
 						.'<div class="bluet_block_container">'
 							.'<div class="bluet_img_in_tooltip">'.$img.'</div>'
 							.'<div class="bluet_text_content">'
@@ -45,6 +49,7 @@ function kttg_length_compare( $a, $b ) {
  }
 
 function kttg_get_related_keywords($my_post_id){
+	global $tooltip_post_types;
 	//return an array of related keywords of the current post
 		//delete this function for optimization !
 	
@@ -54,7 +59,7 @@ function kttg_get_related_keywords($my_post_id){
 	$all_kw_titles=array(); //will contains keywords names with IDs ready for preg_match
 	
 	$kw_args =array(
-		'post_type'=>'my_keywords', //to receive only keywords
+		'post_type'=> $tooltip_post_types, //to receive only keywords
 		'posts_per_page'=>-1
 	);
 	$the_kw_query=get_posts($kw_args);

@@ -1,38 +1,37 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translate Bluet KW\n"
-"POT-Creation-Date: 2015-06-23 01:11+0100\n"
-"PO-Revision-Date: 2015-06-23 01:11+0100\n"
-"Last-Translator: Jamel Zarga <jamel.zarga@gmail.com>\n"
+"POT-Creation-Date: 2015-04-15 12:29+0100\n"
+"PO-Revision-Date: 2015-06-18 09:16+0100\n"
+"Last-Translator: Mischlis Padillis <wpdos@zwilla.de>\n"
 "Language-Team: Kees Hessels <kees.hessels@outlook.com>\n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.1\n"
 "X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../functions.php:23
+#: ../functions.php:28
 msgid "View glossary"
 msgstr "Glossar"
 
-#: ../glossary-shortcode.php:29 ../settings-glossary.php:52
-#: ../settings-glossary.php:56
+#: ../glossary-shortcode.php:23
 msgid "ALL"
 msgstr "ALLE"
 
-#: ../glossary-shortcode.php:126 ../settings-glossary.php:60
-msgid "Next"
-msgstr "weiter"
-
-#: ../glossary-shortcode.php:132 ../settings-glossary.php:58
+#: ../glossary-shortcode.php:98
 msgid "Previous"
 msgstr "Zurück"
 
-#: ../glossary-shortcode.php:143
+#: ../glossary-shortcode.php:99
+msgid "Next"
+msgstr "weiter"
+
+#: ../glossary-shortcode.php:105
 msgid "Sorry, no posts matched your criteria."
 msgstr "Keine Übereinstimmung der Beiträge mit den Kriterien"
 
@@ -135,7 +134,7 @@ msgstr "Video Tooltip"
 msgid "Keyword Settings"
 msgstr "Schlagwörter Einstellungen"
 
-#: ../meta-boxes.php:28 ../meta-boxes.php:38 ../meta-boxes.php:97
+#: ../meta-boxes.php:28 ../meta-boxes.php:38 ../meta-boxes.php:93
 msgid "Keywords related"
 msgstr "Schlagworte zutreffend"
 
@@ -151,269 +150,217 @@ msgstr "Gebe hier die Schlagwort Synonyme ein, getrennt mit ‚|‘ "
 msgid "Make this keyword <b>Case Sensitive</b>"
 msgstr "Schlagwörter klein schreiben! (besser)"
 
-#: ../meta-boxes.php:75
+#: ../meta-boxes.php:74
 msgid "Exclude this post from being matched"
 msgstr "Diesen Beitrag ausschließen (keine Tooltips)"
 
-#: ../meta-boxes.php:77
+#: ../meta-boxes.php:76
 msgid "Exclude this post"
 msgstr "Beitrag ausschliessen"
 
-#: ../meta-boxes.php:105
+#: ../meta-boxes.php:101
 msgid "No KeyWords found for this post"
 msgstr "Keine ToolTip Schlagworte gefunden im Beitrag!"
 
-#: ../meta-boxes.php:109
+#: ../meta-boxes.php:105
 msgid "Manage KeyWords"
 msgstr "Schlagwort - Manager"
 
-#: ../settings-glossary.php:9
-msgid "Glossary settings :"
+#: ../settings-page.php:59
+msgid "Post Types in concern :"
+msgstr "Beitragstypen einbeziehen :"
+
+#: ../settings-page.php:67
+msgid "Customise the tooltip style :"
+msgstr "Style des Tooltip-Fensters bearbeiten :"
+
+#: ../settings-page.php:78
+msgid "Posts / Pages"
+msgstr "Beiträge / Seiten"
+
+#: ../settings-page.php:87
+msgid "Match once or all occurrences"
 msgstr ""
+"‚Einmal anwenden’ oder auf ‚alle im Text vorkommenden Schlagworte "
+"anwenden‚"
 
-#: ../settings-glossary.php:17
-#, fuzzy
-msgid "Keywords per page"
-msgstr "Schlagworte zutreffend"
+#: ../settings-page.php:96
+msgid "Tooltip title"
+msgstr "Titel des Tooltip"
 
-#: ../settings-glossary.php:25
-#, fuzzy
-msgid "Glossary page labels"
-msgstr "Glossar Seite"
+#: ../settings-page.php:105
+msgid "Tooltip position"
+msgstr "Position des Tooltip"
 
-#: ../settings-glossary.php:34
+#: ../settings-page.php:114
 msgid "Glossary page"
 msgstr "Glossar Seite"
 
-#: ../settings-glossary.php:56
-msgid "<b>ALL</b> label"
-msgstr ""
+#: ../settings-page.php:123
+msgid "Keyword style"
+msgstr "Schlagwort Style"
 
-#: ../settings-glossary.php:58
-msgid "<b>Previous</b> label"
-msgstr ""
+#: ../settings-page.php:131
+msgid "Description tooltip style"
+msgstr "Beschreibung des Tooltip Style"
 
-#: ../settings-glossary.php:60
-msgid "<b>Next</b> label"
-msgstr ""
+#: ../settings-page.php:139
+msgid "Description tooltip Font size"
+msgstr "Beschreibung des ToolTip (Schriftgröße)"
 
-#: ../settings-glossary.php:66
-msgid "Choose settings for your glossary."
-msgstr ""
+#: ../settings-page.php:147
+msgid "Activate tooltips for images ?"
+msgstr "Aktivierung der Tooltips für Bilder?"
 
-#: ../settings-glossary.php:73
+#: ../settings-page.php:172 ../settings-page.php:286
+msgid "KeyWords Settings"
+msgstr "Schlagwort Einstellungen"
+
+#: ../settings-page.php:173 ../settings-page.php:291
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: ../settings-page.php:191
+msgid "alt property of the images will be displayed as a tooltip"
+msgstr ""
+"Die alternative Beschreibung ‚alt‘ des Bildes wird als Tooltipp genutzt."
+
+#: ../settings-page.php:204
+msgid "Description Background Colour"
+msgstr "Hintergrundfarbe: Beschreibung"
+
+#: ../settings-page.php:206
+msgid "Description font Colour"
+msgstr "Textfarbe: Beschreibung"
+
+#: ../settings-page.php:215
+msgid "Background Colour"
+msgstr "Hintergrundfarbe"
+
+#: ../settings-page.php:215
+msgid "No background (Dotted style)"
+msgstr "Kein Hintergrund (gepunkteter Style)"
+
+#: ../settings-page.php:216
+msgid "Font Colour"
+msgstr "Schriftfarbe"
+
+#: ../settings-page.php:222
+msgid "Choose either Posts or/and Pages in concern"
+msgstr "Wähle aus: Beiträge, Seiten, einzeln oder beides."
+
+#: ../settings-page.php:225
+msgid "Make your own style."
+msgstr "Erstelle deinen eigenen Style."
+
+#: ../settings-page.php:231
+msgid "Posts"
+msgstr "Beiträge"
+
+#: ../settings-page.php:233
+msgid "Pages"
+msgstr "Seiten"
+
+#: ../settings-page.php:242
+msgid "Match all occurrences"
+msgstr "auf alle anwenden"
+
+#: ../settings-page.php:251
+msgid "Hide the tooltips title"
+msgstr "Tooltip Titel nicht anzeigen"
+
+#: ../settings-page.php:260
 msgid "Add glossary page link in the tooltip footer"
 msgstr ""
 "In den Fußbereich des Tooltip-Fensters einen Link auf die Glossar-Seite "
 "einbinden."
 
-#: ../settings-page.php:66
-#, fuzzy
-msgid "Tooltips settings :"
-msgstr "Position des Tooltip"
-
-#: ../settings-page.php:74
-msgid "Customise the tooltip style :"
-msgstr "Style des Tooltip-Fensters bearbeiten :"
-
-#: ../settings-page.php:85
-msgid "Posts / Pages"
-msgstr "Beiträge / Seiten"
-
-#: ../settings-page.php:94
-msgid "Match once or all occurrences"
-msgstr ""
-"‚Einmal anwenden’ oder auf ‚alle im Text vorkommenden Schlagworte anwenden‚"
-
-#: ../settings-page.php:103
-msgid "Tooltip title"
-msgstr "Titel des Tooltip"
-
-#: ../settings-page.php:112
-msgid "Tooltip position"
-msgstr "Position des Tooltip"
-
-#: ../settings-page.php:120
-msgid "Animation"
-msgstr ""
-
-#: ../settings-page.php:129
-msgid "Keyword style"
-msgstr "Schlagwort Style"
-
-#: ../settings-page.php:137
-msgid "Description tooltip style"
-msgstr "Beschreibung des Tooltip Style"
-
-#: ../settings-page.php:145
-#, fuzzy
-msgid "Tooltip width"
-msgstr "Titel des Tooltip"
-
-#: ../settings-page.php:153
-msgid "Description tooltip Font size"
-msgstr "Beschreibung des ToolTip (Schriftgröße)"
-
-#: ../settings-page.php:161
-msgid "Activate tooltips for images ?"
-msgstr "Aktivierung der Tooltips für Bilder?"
-
-#: ../settings-page.php:187 ../settings-page.php:338
-msgid "KeyWords Settings"
-msgstr "Schlagwort Einstellungen"
-
-#: ../settings-page.php:188 ../settings-page.php:343
-msgid "Settings"
-msgstr "Einstellungen"
-
-#: ../settings-page.php:214
-msgid "alt property of the images will be displayed as a tooltip"
-msgstr ""
-"Die alternative Beschreibung ‚alt‘ des Bildes wird als Tooltipp genutzt."
-
-#: ../settings-page.php:227
-msgid "Description Background Colour"
-msgstr "Hintergrundfarbe: Beschreibung"
-
-#: ../settings-page.php:229
-msgid "Description font Colour"
-msgstr "Textfarbe: Beschreibung"
-
-#: ../settings-page.php:238
-msgid "Background Colour"
-msgstr "Hintergrundfarbe"
-
-#: ../settings-page.php:238
-msgid "No background (Dotted style)"
-msgstr "Kein Hintergrund (gepunkteter Style)"
-
-#: ../settings-page.php:239
-msgid "Font Colour"
-msgstr "Schriftfarbe"
-
-#: ../settings-page.php:245
-msgid "General tooltips settings"
-msgstr ""
-
-#: ../settings-page.php:248
-msgid "Make your own style."
-msgstr "Erstelle deinen eigenen Style."
-
-#: ../settings-page.php:254
-msgid "Posts"
-msgstr "Beiträge"
-
-#: ../settings-page.php:256
-msgid "Pages"
-msgstr "Seiten"
-
-#: ../settings-page.php:265
-msgid "Match all occurrences"
-msgstr "auf alle anwenden"
-
-#: ../settings-page.php:274
-msgid "Hide the tooltips title"
-msgstr "Tooltip Titel nicht anzeigen"
-
-#: ../settings-page.php:293
-msgid "None"
-msgstr ""
-
-#: ../settings-page.php:303
-msgid "click to see a DEMO"
-msgstr ""
-
-#: ../settings-page.php:321
+#: ../settings-page.php:269
 msgid "Top"
 msgstr "Oben"
 
-#: ../settings-page.php:322
+#: ../settings-page.php:270
 msgid "Bottom"
 msgstr "Unten"
 
-#: ../settings-page.php:323
+#: ../settings-page.php:271
 msgid "Right"
 msgstr "Rechts"
 
-#: ../settings-page.php:324
+#: ../settings-page.php:272
 msgid "Left"
 msgstr "Links"
 
-#: ../settings-page.php:342
+#: ../settings-page.php:290
 msgid "Style"
 msgstr "Style"
 
-#: ../settings-page.php:344
-#, fuzzy
-msgid "Glossary"
-msgstr "Glossar Seite"
-
-#: ../settings-page.php:345 ../settings-page.php:407
+#: ../settings-page.php:292 ../settings-page.php:347
 msgid "Excluded posts"
 msgstr "Beiträge ausschließen "
 
-#: ../settings-page.php:346
+#: ../settings-page.php:293
 msgid "Help ?"
 msgstr "Hilfe ?"
 
-#: ../settings-page.php:347
+#: ../settings-page.php:294
 msgid "Get the Pro AddOn"
 msgstr "Lade das Pro AddOn"
 
-#: ../settings-page.php:348
+#: ../settings-page.php:295
 msgid "Donate"
 msgstr "Spenden"
 
-#: ../settings-page.php:372
+#: ../settings-page.php:314
 msgid ""
 "this plugin allows you easely create tooltips for your technical keywords."
 msgstr ""
 "Dieses PlugIn hilft dir auf einfachste Art und Weise, Tooltipps für deine "
 "Schlagwärter einzubauen, das Fenster lässt sich individualisieren, mit "
 "Bildern, Links, Videos und vieles mehr. Animationen wie es eingeblendet "
-"wird, wo es angezeigt werden soll, wie oft es auf einer Seite erscheint, und "
-"so vieles mehr."
+"wird, wo es angezeigt werden soll, wie oft es auf einer Seite erscheint, "
+"und so vieles mehr."
 
-#: ../settings-page.php:374
+#: ../settings-page.php:316
 msgid "Click"
 msgstr "Klick"
 
-#: ../settings-page.php:376
+#: ../settings-page.php:318
 msgid "Here"
 msgstr "Hier"
 
-#: ../settings-page.php:378
+#: ../settings-page.php:320
 msgid "to rate our plugin if you appreciate it"
 msgstr ""
 "Bitte gebe uns eine Stimme, wenn es dir Spaß bereitet mit dem Plugin zu "
 "arbeiten."
 
-#: ../settings-page.php:396
+#: ../settings-page.php:336
 msgid "Preview"
 msgstr "Vorschau"
 
-#: ../settings-page.php:397
+#: ../settings-page.php:337
 msgid "Pass your mouse over the word"
 msgstr "Bewege deinen Mauszeiger auf das Wort hier"
 
-#: ../settings-page.php:398
+#: ../settings-page.php:338
 msgid "to test the tooltip layout."
 msgstr "um das Layout zu testen."
 
-#: ../settings-page.php:408
+#: ../settings-page.php:348
 msgid "Posts which are excluded from being matched"
 msgstr ""
-"Beiträge in denen deine Schlagworte zutreffen, aber von dir ausgeschlossen "
-"wurden"
+"Beiträge in denen deine Schlagworte zutreffen, aber von dir "
+"ausgeschlossen wurden"
 
-#: ../settings-page.php:414
+#: ../settings-page.php:354
 msgid "No posts or pages are excluded"
 msgstr ""
 "Keine Beiträge oder Seiten wurden bisher ausgeschlossen. Weniger ist oft "
 "mehr, schaue dir mal die Funktion -einmal finden- oder -auf alle im Text "
 "anwenden- an."
 
-#: ../settings-page.php:433
+#: ../settings-page.php:373
 msgid "Save Settings"
 msgstr "Speichern der Einstellungen"
 
@@ -421,29 +368,23 @@ msgstr "Speichern der Einstellungen"
 msgid "no terms found for this post"
 msgstr "Keine Bedingungen für diesen Beitrag gefunden"
 
-#~ msgid "Post Types in concern :"
-#~ msgstr "Beitragstypen einbeziehen :"
+msgid "Posts related"
+msgstr "Zugehörige Seiten/Beiträge"
 
-#~ msgid "Choose either Posts or/and Pages in concern"
-#~ msgstr "Wähle aus: Beiträge, Seiten, einzeln oder beides."
+msgid "Posts in concern"
+msgstr "Ähnliche Seiten/Beiträge"
 
-#~ msgid "Posts related"
-#~ msgstr "Zugehörige Seiten/Beiträge"
+msgid "Specify keywords to match"
+msgstr "Welche Schlagworte sollen zutreffen"
 
-#~ msgid "Posts in concern"
-#~ msgstr "Ähnliche Seiten/Beiträge"
+msgid "Notice : if you leave them all unchecked they will be ALL matched"
+msgstr "Achtung: ohne Bearbeitung werden ALLE als zutreffend markiert "
 
-#~ msgid "Specify keywords to match"
-#~ msgstr "Welche Schlagworte sollen zutreffen"
+msgid "Premium Add-Ons"
+msgstr "Premium Erweiterungen:"
 
-#~ msgid "Notice : if you leave them all unchecked they will be ALL matched"
-#~ msgstr "Achtung: ohne Bearbeitung werden ALLE als zutreffend markiert "
+msgid "Match excerpts"
+msgstr "Treffer Auszug "
 
-#~ msgid "Premium Add-Ons"
-#~ msgstr "Premium Erweiterungen:"
-
-#~ msgid "Match excerpts"
-#~ msgstr "Treffer Auszug "
-
-#~ msgid "Keywords Related"
-#~ msgstr "ähnliche Schlagworte "
+msgid "Keywords Related"
+msgstr "ähnliche Schlagworte "

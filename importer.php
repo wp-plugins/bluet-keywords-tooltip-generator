@@ -12,6 +12,7 @@ add_action('admin_menu',function(){
 });
 
 function bluet_kw_render_importer_page(){
+	global $tooltip_post_types;
 ?>
 	<form  action="<?php echo(get_admin_url().'tools.php?page=my_keywords_settings_importer'); ?>" method="post">
 		<h2><?php _e('Begin converting my keywords','bluet-kw'); ?></h2>
@@ -64,7 +65,7 @@ function bluet_kw_render_importer_page(){
 				if(!in_array(get_the_title(),$tmp_titles)){
 					// Create post object					
 					$my_post = array(
-						'post_type' => 'my_keywords', //post type to convert to
+						'post_type' => $tooltip_post_types, //post type to convert to
 						'post_title'    => get_the_title(),
 						'post_content'  => get_the_content(),
 						'post_author'   => get_the_author(),

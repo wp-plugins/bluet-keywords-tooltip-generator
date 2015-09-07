@@ -5,13 +5,15 @@ class bluet_keyword_widget extends wp_widget{
 	function __construct(){
 		$params=array(
 			'description'=>'contains keywords used in the current single post.',
-			'name'=>'My keywords (BlueT)'
+			'name'=>'My keywords (KTTG)'
 		);
 		parent::__construct('my_keywords_widget','',$params);
 	}
 	
 	public function widget( $args, $instance ) {
 		global $is_kttg_glossary_page;
+		global $tooltip_post_types;
+		
 		if(!(is_single() or is_page())) return;
 		
 		$exclude_me = get_post_meta(get_the_id(),'bluet_exclude_post_from_matching',true);
@@ -27,10 +29,10 @@ class bluet_keyword_widget extends wp_widget{
 
 		if(
 			$exclude_me			
-			or 	(is_single() and (((get_post_type(get_the_id())=='post') and !$settings['bt_kw_for_posts'])
+			/*or 	(is_single() and (((get_post_type(get_the_id())=='post') and !$settings['bt_kw_for_posts'])
 										or ((get_post_type(get_the_id())!='post') and !$filter_this_custom_post_type))
 					)
-			or (is_page() and !$settings['bt_kw_for_pages'])
+			or (is_page() and !$settings['bt_kw_for_pages'])*/
 			or $is_kttg_glossary_page
 		){
 			return false;
@@ -59,7 +61,7 @@ class bluet_keyword_widget extends wp_widget{
 					// The Query
 					$wk_args=array(
 						'p'=>$term_id,
-						'post_type'=>'my_keywords'
+						'post_type'=> $tooltip_post_types
 					);
 					
 						$the_wk_query = new WP_Query( $wk_args );
@@ -77,7 +79,7 @@ class bluet_keyword_widget extends wp_widget{
 							// adding &zwnj; (invisible character) to avoid tooltips overlapping 
 								$trm=elim_apostrophes($trm);
 								$dfn=elim_apostrophes($dfn);
-								
+
 								$dfn=preg_replace('#('.$trm.')#i',$trm.'&zwnj;',get_the_content());
 								
 								$img=get_the_post_thumbnail($term_id,'medium');

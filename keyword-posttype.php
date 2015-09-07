@@ -1,13 +1,6 @@
 <?php
 defined('ABSPATH') or die("No script kiddies please!");
 
-if ( ! defined( 'BT_KW_BASE_FILE' ) )
-    define( 'BT_KW_BASE_FILE', __FILE__ );
-if ( ! defined( 'BT_KW_BASE_DIR' ) )
-    define( 'BT_KW_BASE_DIR', dirname( BT_KW_BASE_FILE ) );
-if ( ! defined( 'BT_KW_PLUGIN_URL' ) )
-    define( 'BT_KW_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-
 class bluet_keyword{
 	
 	function __construct(){
@@ -17,7 +10,7 @@ class bluet_keyword{
 	}
 	
 	public function register_my_post_type(){
-	global $bluet_kw_capability;
+		global $bluet_kw_capability;
 
 		$args=array(
 			'labels'=>array(
@@ -26,11 +19,11 @@ class bluet_keyword{
 				'menu_name'=>__('My KeyWords','bluet-kw'),
 				'name_admin_bar'=>__('My KeyWords','bluet-kw'),
 				'all_items'=>__('All my KeyWords','bluet-kw'),
-				'add_new' =>__('Add new one','bluet-kw'),
-				'add_new_item'=>__('New KeyWord','bluet-kw'),
-				'edit_item'=>__('Edit KeyWord','bluet-kw'),
-				'new_item'=>__('New KeyWord','bluet-kw'),
-				'view_item'=>__('View KeyWord','bluet-kw'),
+				'add_new' =>__('Add'),
+				'add_new_item'=>__('New').' '.__('KeyWord','bluet-kw'),
+				'edit_item'=>__('Edit').' '.__('KeyWord','bluet-kw'),
+				'new_item'=>__('New').' '.__('KeyWord','bluet-kw'),
+				'view_item'=>__('View').' '.__('KeyWord','bluet-kw'),
 				'search_items'=>__('Search for KeyWords','bluet-kw'),
 				'not_found'=>__('KeyWords not found','bluet-kw'),
 				'not_found_in_trash'=>__('KeyWords not found in trash','bluet-kw'),
@@ -55,7 +48,21 @@ class bluet_keyword{
 			
 		}		
 	
-		register_post_type('my_keywords',$args);		
+		register_post_type('my_keywords',$args);
+
+		$fam_args=array(
+			'labels'=>array(
+				'name'=>__('Families','bluet-kw')
+			),
+			'hierarchical'=> true,			
+    		'show_ui' => 'radio',
+			'show_admin_column' => true,
+		);
+
+		register_taxonomy(
+				'keywords_family',
+				'my_keywords',
+				$fam_args);
 	}
 	public function add_columns(){
 		

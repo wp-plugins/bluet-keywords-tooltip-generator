@@ -1,13 +1,13 @@
-﻿=== Keywords ToolTip Generator ===
+﻿=== Tooltipy (KTTG) ===
 Contributors: lebleut
 Tags: inline, responsive, tooltips, tooltip, highlight, widget, image, style, keyword, post, page, glossary, localization, description, definition, term, word, interactive, link, wpml
-Requires at least: 3.8
+Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 2.6.6
+Stable tag: 3.1.1
 License: GPLv2 or later
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
-Keywords tooltip generator allows you to highlight the keywords in your content in order to show a responsive description tooltip
+Tooltipy (Keywords tooltip generator) allows you to highlight the keywords in your content in order to show a responsive description tooltip
 
 == Description ==
 
@@ -15,8 +15,8 @@ Keywords tooltip generator allows you to highlight the keywords in your content 
 * With shortcode Glossary [kttg_glossary]
 
 > #### DEMO
-> * [Live DEMO](http://www.blueskills.net)
-> * [Admin Live DEMO](http://www.blueskills.net/wp-admin/edit.php?post_type=my_keywords) 
+> * [Live DEMO](http://www.tooltipy.com)
+> * [Admin Live DEMO](http://www.tooltipy.com/wp-admin/edit.php?post_type=my_keywords) 
 * user 		: demo
 * password 	: demo
 
@@ -24,12 +24,13 @@ Keywords tooltip generator allows you to highlight the keywords in your content 
 
 = Premium =
 * KTTG Pro AddOn : This is the main addOn to upgrade KTTG to the premium Version
-* [Buy Now](http://www.blueskills.net/pricing)
+* [Buy Now](http://www.tooltipy.com/pricing)
 
 = Check How to add a keyword with KTTG on this 2 minutes video. =
 https://www.youtube.com/watch?v=JBdyLKa4DMI
 
 = New Features =
+* v3.0 keywords appear anywhere on your site not only on the post content, on heders footers and even in widgets
 * Now it works with Japanese and Chinese languages thanks to [Plugmon](https://wordpress.org/support/topic/not-works-in-langs-without-space-separation?replies=1#post-7249845)
 * KTTG is now responsive (for devices lesst then 400px)
 * new click method trigger
@@ -38,6 +39,7 @@ https://www.youtube.com/watch?v=JBdyLKa4DMI
 * Now you are able to generate shortcodes on the tooltips, thanks to [ColumbusCook](http://www.columbuscook.com)
 
 = Features =
+* v3.0 keywords appear anywhere on your site not only on the post content, on heders footers and even in widgets
 * Several Animations provided (on settings page) thanks to [Animate.css](https://github.com/daneden/animate.css)
 * Supports Unicode characters (Arabic, Russian ...)
 * Bugs fixed (apostrophe issue, error messages ...)
@@ -72,10 +74,10 @@ https://www.youtube.com/watch?v=JBdyLKa4DMI
 
 The plugin is available in these languages :
 
-* English - [Jamel Zarga](http://www.BlueSkills.net) my self :)
-* French (fr_FR) - [Jamel Zarga](http://www.BlueSkills.net)
+* English - [Jamel Zarga](http://www.tooltipy.com) my self :)
+* French (fr_FR) - [Jamel Zarga](http://www.tooltipy.com)
 * German (de_DE) - [Michael Padilla](www.Zwilla-Research.com)
-* Arabic (ar) - [Jamel Zarga](http://www.BlueSkills.net)
+* Arabic (ar) - [Jamel Zarga](http://www.tooltipy.com)
 * Dutch (nl_NL) - [Kees Hessels](http://www.slotschaesberg.nl)
 * Turkish (tr_TR) - Eyyüp Güner
 * Italian (it_IT) - [Genioallopera](https://profiles.wordpress.org/genioallopera)
@@ -114,6 +116,19 @@ The plugin is available in these languages :
 12. Responsive leyout
 
 == Changelog ==
+= 3.1.1 =
+* Header and nav tegs are now excluded from being fetched
+* space bug fixed
+* bugs fixed
+
+= 3.1 =
+* KTTG is now Tooltipy
+* Change web Site to www.tooltipy.com
+* tooltipy now supports any post type
+
+= 3.0 =
+* Truely a new version (keywords appear anywhere on your site not only on the post content, on headers footers and even in widgets)
+* To control keywords appearance you can enver return to the previous version (v2.6.6) or get the pro version for funny features
 
 = 2.6.6 =
 * Now it works with Japanese and Chinese thanks to [plugmon](https://wordpress.org/support/topic/not-works-in-langs-without-space-separation?replies=1#post-7249845)
@@ -331,7 +346,7 @@ The menu «Apprence» Then the submenu «Widgets» Choose the widget «My Keywor
 = I have used a similar plugin to KTTG, I want to migrate to KTTG and automatically add my old list of keywords, how to? =
 You can convert the list of keywords for other plugins using the tool «KTTG converter» under the menu «Tools»: Carefully select on the drop down list the name of the post-type in concern and click «Begin conversion», now back on «My Keywords»  and you will find new keywords from the old plugin.
 = Can I apply the tooltips on specific images? =
-This is possible but Premium version, so first you must purchase the add-on «KTTG Pro addon» On the following link http://www.blueskills.net/pricing
+This is possible but Premium version, so first you must purchase the add-on «KTTG Pro addon» On the following link http://www.tooltipy.com/pricing
 = Can I export and import my keywords from one site to another  ? =
 Yes it is possible by using the tool «Import» and «Export» on the tool menu
 For example:  To import my list of keywords to a new site: Tools> Import>WordPress and select the XML file you exported from the old site.

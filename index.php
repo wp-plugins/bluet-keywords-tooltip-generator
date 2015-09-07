@@ -1,13 +1,14 @@
 <?php
 /*
-Plugin Name: BleuT KeyWords ToolTip Generator
+Plugin Name: Tooltipy
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 2.6.6
-Author URI: http://www.blueskills.net/about-us
+Version: 3.1.1
+Author URI: http://www.tooltipy.com/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
 
+require_once dirname( __FILE__ ) . '/pro-addon/pro-index.php'; //pro addon
 require_once dirname( __FILE__ ) . '/keyword-posttype.php'; //contain the class that handles the new custom post
 require_once dirname( __FILE__ ) . '/settings-page.php';
 require_once dirname( __FILE__ ) . '/widget.php';
@@ -26,6 +27,23 @@ register_activation_hook(__FILE__,'bluet_kw_activation');
 add_action('init',function(){	
 	/**** localization ****/
 	load_plugin_textdomain('bluet-kw', false, dirname( plugin_basename( __FILE__ ) ).'/languages/');
+
+	//post types from which we get the tooltips
+	global $tooltip_post_types;
+
+	//$tooltip_post_types=array(get_option('kttg_tooltip_post_types'));
+	$options=get_option('bluet_kw_settings');
+	
+	$tooltip_post_types=null;
+
+	if(!empty($options['kttg_tooltip_post_types'])){
+		$tooltip_post_types=$options['kttg_tooltip_post_types'];
+	}
+
+
+	if(empty($tooltip_post_types) OR !is_array($tooltip_post_types) OR count($tooltip_post_types)<1){
+		$tooltip_post_types=array('my_keywords');
+	}
 	//create posttype for keywords	
 	new bluet_keyword();
 
@@ -35,34 +53,382 @@ add_action('wp_enqueue_scripts', 'bluet_kw_load_scripts_front' );
 
 add_action('wp_footer','bluet_kttg_place_tooltips');
 add_action('admin_footer','bluet_kttg_place_tooltips');
-
+add_action('wp_head',function(){
+	//if(function_exists('bluet_kttg_pro_addon')){
+		//$pro_addon_dir=plugins_url("bluet_kttg_pro_addon");
+		echo('<script type="text/javascript" src="'.plugins_url('pro-addon/assets/findandreplacedomtext.js',__FILE__).'"></script>');
+	//}
+});
+	
 function bluet_kttg_place_tooltips(){
+	global $tooltip_post_types;
+
+	$exclude_me = get_post_meta(get_the_id(),'bluet_exclude_post_from_matching',true);			
+	//exclusions
+	if(is_singular() and $exclude_me == 'on'){
+		return;
+	}
+	
+	$my_keywords_terms=array();
+	$my_excluded_keywords=array();
+
+	if(is_singular()){
+		$exclude_keywords_string = "";
+
+		//get excluded terms and sanitize them
+		$my_excluded_keywords=explode(',',$exclude_keywords_string);
+		$my_excluded_keywords=array_map('trim',$my_excluded_keywords);
+		$my_excluded_keywords=array_map('strtolower',$my_excluded_keywords);
+		
+		$my_excluded_keywords=array_filter($my_excluded_keywords,function($val){
+			$ret=array();
+			if($val!=""){
+				array_push($ret,$val);
+			}
+			return $ret;
+		});
+	}
+
+
+	
 	$kttg_sttings_options=get_option('bluet_kw_settings');
 	$kttg_tooltip_position=$kttg_sttings_options["bt_kw_position"];
-
 	if(!empty($kttg_sttings_options["bt_kw_animation_type"])){
 		$animation_type=$kttg_sttings_options["bt_kw_animation_type"];
 	}else{
 		$animation_type="flipInX";
 	}
-
-	$tooltip_trigger_method="mouseover";
-
-	if(!empty($kttg_sttings_options['bt_kw_trigger'])){
-		$tooltip_trigger_method=$kttg_sttings_options['bt_kw_trigger'];
+	
+	if(!empty($kttg_sttings_options["bt_kw_animation_speed"])){
+		$animation_speed=$kttg_sttings_options["bt_kw_animation_speed"];
+	}else{
+		$animation_speed="";
 	}
 	
+	//get the keywords title and ids
+	// The Query                                                                          
+		$wk_args=array(
+			'post_type'=>$tooltip_post_types,
+			'posts_per_page'=> -1	//to retrieve all keywords
+		);
+		
+		$the_wk_query = new WP_Query( $wk_args );
 
-	?>
-	<script type="text/javascript">
-		jQuery(document).ready(function(){
-			tooltip_trigger_method="<?php echo($tooltip_trigger_method); ?>";
-			bluet_placeTooltips(".bluet_tooltip, .bluet_img_tooltip","<?php echo($kttg_tooltip_position); ?>");	 
-			animation_type="<?php echo($animation_type);?>";
-			moveTooltipElementsTop(".bluet_block_to_show");
-		})
-	</script>
-	<?php
+		// The Loop
+		if ( $the_wk_query->have_posts() ) {
+
+			while ( $the_wk_query->have_posts() ) {
+				$the_wk_query->the_post();
+				$kw_title=get_the_title();
+
+				if($kw_title!="" and !in_array(strtolower(trim($kw_title)),$my_excluded_keywords)){ //to prevent untitled keywords
+					$tmp_array_kw=array(
+						'kw_id'=>get_the_id(),
+						'term'=>get_the_title(),
+						'case'=>false,
+						'pref'=>false,
+						'syns'=>get_post_meta(get_the_id(),'bluet_synonyms_keywords',true),
+						'youtube'=>get_post_meta(get_the_id(),'bluet_youtube_video_id',true),
+						'dfn'=>get_the_content(),
+						'img'=>get_the_post_thumbnail(get_the_id(),'medium')
+					);
+					
+					if(get_post_meta(get_the_id(),'bluet_case_sensitive_word',true)=="on"){
+						$tmp_array_kw['case']=true;
+					}
+					
+					//if prefix addon activated
+					if(function_exists('bluet_prefix_metabox')){
+						if(get_post_meta(get_the_id(),'bluet_prefix_keywords',true)=="on"){
+							$tmp_array_kw['pref']=true;
+						}
+					}
+
+					$my_keywords_terms[]=$tmp_array_kw;
+				}							
+				
+			}
+			
+		}
+		wp_reset_postdata();
+		?>	
+		<script type="text/javascript">
+			/*test*/
+		function kttg_fetch_kws(){
+			/*
+			<?php	var_dump($my_excluded_keywords); ?>
+			*/
+			var tab=[
+			<?php foreach($my_keywords_terms as $my_kw){ ?>
+				<?php 
+					echo("[");
+					
+						echo('"'.preg_replace('/([-[\]{}()*+?.,\\/^$|#\s])/','\\\\\\\\$1',$my_kw['term']));
+						//echo('"'.$my_kw['term']); //fixed by (Alrik Gadkowsky)
+						if(!empty($my_kw['syns'])){
+							echo('|'.preg_replace('/([-[\]{}()*+?.,\\/^$#\s])/','\\\\\\\\$1',$my_kw['syns']).'"');
+						}else{
+							echo('"');
+						}
+						
+						//case sensitive
+						if($my_kw['case']){
+							echo(",true");
+						}else{
+							echo(",false");
+						}				
+						
+						//prefix
+						if($my_kw['pref']){
+							echo(",true");
+						}else{
+							echo(",false");
+						}
+						
+					echo("]");
+				?>,
+			<?php } ?>
+			];
+			tooltipIds=[
+			<?php foreach($my_keywords_terms as $my_kw){ ?>
+				"<?php echo($my_kw['kw_id']) ?>",
+			<?php } ?>
+			];
+			
+			//include or fetch zone
+			<?php
+			$settings= get_option('bluet_kw_settings');
+			
+			$options = get_option('bluet_kw_advanced');
+			$kttg_cover_areas='';
+			$kttg_exclude_areas='';
+		
+			?>
+			var class_to_cover=[
+						<?php
+						if(!empty($kttg_cover_areas)){
+							foreach($kttg_cover_areas as $cover_area){
+								if($cover_area!=""){
+									echo('".'.$cover_area.'",');
+								}
+							}
+						}
+						?>];
+
+				if(class_to_cover.length==0){//if no classes mentioned
+					class_to_cover.push("body");
+				}
+
+				fetch_all="<?php if(!empty($settings["bt_kw_match_all"]) and $settings["bt_kw_match_all"]=='on'){
+						echo('g');
+				}?>";
+
+
+			//exclude zone block			
+			{
+				var zones_to_exclude=[
+							".kttg_glossary_content", //remove tooltips from inside the glossary content
+							"#tooltip_blocks_to_show", //remove tooltips from inside the tooltips
+							<?php
+							if(!empty($kttg_exclude_areas)){
+								foreach($kttg_exclude_areas as $exclude_area){
+									if($exclude_area!=""){
+										echo('".'.$exclude_area.'",');
+									}
+								}
+							}
+							?>];
+				//exclude only h1 for free version
+				zones_to_exclude.push("h1");
+				zones_to_exclude.push("header");
+				zones_to_exclude.push("nav");
+			}
+
+				for(var j=0 ; j<class_to_cover.length ; j++){					
+					/*test overlapping classes*/
+					var tmp_classes=class_to_cover.slice(); //affectation par valeur
+					//remove current elem from tmp tab
+					tmp_classes.splice(j,1);
+
+					//if have parents (to avoid overlapping zones)
+						if(
+							tmp_classes.length>0
+							&&
+							jQuery(class_to_cover[j]).parents(tmp_classes.join(",")).length>0
+						){
+							continue;
+						}
+					/*end : test overlapping classes*/
+
+
+					for(var cls=0 ; cls<jQuery(class_to_cover[j]).length ; cls++){	
+						zone=jQuery(class_to_cover[j])[cls];
+						//to prevent errors in unfound classes
+						if (zone==undefined) {
+							continue;
+						}
+					
+						for(var i=0;i<tab.length;i++){
+
+							suffix='';
+							if(tab[i][2]==true){//if is prefix
+								suffix='\\w*';
+							}
+							txt_to_find=tab[i][0];
+							var text_sep="\\W"; //text separator
+							
+							/*test japanese and chinese*/
+							var japanese_chinese=/[\u3000-\u303F]|[\u3040-\u309F]|[\u30A0-\u30FF]|[\uFF00-\uFFEF]|[\u4E00-\u9FAF]|[\u2605-\u2606]|[\u2190-\u2195]|\u203B/;
+						    var jc_reg = new RegExp(japanese_chinese);
+    						
+							if(jc_reg.test(txt_to_find)){
+								//change pattern if japanese or chinese text
+								text_sep=""; //no separator for japanese and chinese
+							}
+
+							pattern=text_sep+"("+txt_to_find+")"+suffix+""+text_sep+"|^("+txt_to_find+")"+suffix+"$|"+text_sep+"("+txt_to_find+")"+suffix+"$|^("+txt_to_find+")"+suffix+text_sep;
+
+							iscase='';
+							if(tab[i][1]==false){
+								iscase='i';
+							}						
+							var reg=new RegExp(pattern,fetch_all+iscase);
+
+							if (typeof findAndReplaceDOMText == 'function') { //if function exists
+							  findAndReplaceDOMText(zone, {
+									<?php
+									if(!empty($settings["bt_kw_match_all"]) and $settings['bt_kw_match_all']=='on'){
+										echo("preset: 'prose',");
+									}	?>							
+									find: reg,
+									replace: function(portion) {
+
+										splitted=portion.text.split(new RegExp(txt_to_find,'i'));
+										txt_to_display=portion.text.match(new RegExp(txt_to_find,'i'));
+										/*exclude zones_to_exclude*/
+										zones_to_exclude_string=zones_to_exclude.join(", ");
+										if(
+											jQuery(portion.node.parentNode).parents(zones_to_exclude_string).length>0
+											||
+											jQuery(portion.node.parentNode).is(zones_to_exclude_string)
+										){
+											return portion.text;
+										}
+										/*avoid overlaped keywords*/
+										if(
+											jQuery(portion.node.parentNode).parents(".bluet_tooltip").length>0
+											||
+											jQuery(portion.node.parentNode).is(".bluet_tooltip")
+										){
+											return portion.text;
+										}
+
+
+										if(splitted[0]!=undefined){ before_kw=splitted[0]; }else{before_kw="";}
+										if(splitted[1]!=undefined){ after_kw=splitted[1]; }else{after_kw="";}
+										
+										if(portion.text!="" && portion.text!=" " && portion.text!="\t" && portion.text!="\n" ){
+											//console.log(i+" : ("+splitted[0]+"-["+txt_to_find+"]-"+splitted[1]+"-"+splitted[2]+"-"+splitted[3]+")");
+											<?php 
+												$options = get_option( 'bluet_kw_style' ); //to get the ['bt_kw_fetch_mode']
+												if(empty($options['bt_kw_fetch_mode']) or $options['bt_kw_fetch_mode']=='highlight'){
+													//highlight
+											?>
+													var elem = document.createElement("span");
+
+													if(before_kw==undefined || before_kw==null){
+															before_kw="";
+													}
+
+													if(suffix!=""){
+														//console.log("'"+suffix+"'");
+														var reg=new RegExp(suffix,"");
+														suff_after_kw=after_kw.split(reg)[0];
+														if(suff_after_kw==undefined){
+															suff_after_kw="";
+														}														
+														
+														just_after_kw=after_kw.match(reg);
+														if(just_after_kw==undefined || just_after_kw==null){
+															just_after_kw="";
+														}
+
+														elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+just_after_kw+suff_after_kw:before_kw+"<span class='bluet_tooltip' data-tooltip="+tooltipIds[i]+">"+txt_to_display+""+just_after_kw+"</span>"+" "+suff_after_kw;
+                                                    }else{                                                      
+                                                        elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw:before_kw+"<span class='bluet_tooltip' data-tooltip="+tooltipIds[i]+">"+txt_to_display+"</span>"+" "+after_kw;
+                                                    }
+													
+													return elem;
+												
+											<?php
+												}else{
+													//icon
+											?>
+													var elem = document.createElement('span');
+													if(suffix!=""){
+														var reg=new RegExp(suffix,"");
+														suff_after_kw=after_kw.split(reg)[1];
+														if(suff_after_kw==undefined){
+															suff_after_kw="";
+														}
+														 elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw.match(reg)+suff_after_kw:before_kw+txt_to_display+after_kw.match(reg)+"<img src='<?php echo(plugins_url('/assets/qst-mark-1.png',__FILE__)); ?>' class='bluet_tooltip' data-tooltip="+tooltipIds[i]+" />"+suff_after_kw;
+                                                    }else{
+                                                        elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw:before_kw+txt_to_display+"<img src='<?php echo(plugins_url('/assets/qst-mark-1.png',__FILE__)); ?>' class='bluet_tooltip' data-tooltip="+tooltipIds[i]+" />"+after_kw;
+                                                    }
+													return elem;
+												
+											<?php
+													}
+											?>	
+										}else{
+												return "";
+										}																			
+									}
+								});
+							}
+
+						}		
+					}
+				}
+			//trigger event sying that keywords are fetched
+			jQuery.event.trigger("keywordsFetched");
+		}
+			/*end test*/
+
+			jQuery(document).ready(function(){
+				kttg_fetch_kws();
+				
+				bluet_placeTooltips(".bluet_tooltip, .bluet_img_tooltip","<?php echo($kttg_tooltip_position); ?>",true);	 
+				animation_type="<?php echo($animation_type);?>";
+				animation_speed="<?php echo($animation_speed);?>";
+				moveTooltipElementsTop(".bluet_block_to_show");
+			});
+			
+			jQuery(document).on("keywordsLoaded",function(){
+				bluet_placeTooltips(".bluet_tooltip, .bluet_img_tooltip","<?php echo($kttg_tooltip_position); ?>",false);
+			});
+
+		</script>
+		<?php
+		if(!is_admin()){
+			//if not in admin page
+			?>
+			<script>
+				jQuery(document).ready(function(){				
+						/*test begin*/
+					load_tooltip="<span id='loading_tooltip' class='bluet_block_to_show' data-tooltip='0'>";
+						load_tooltip+="<div class='bluet_block_container'>";									
+							load_tooltip+="<div class='bluet_text_content'>";							
+								load_tooltip+="<img width='15px' src='<?php echo plugins_url('/assets/loading.gif',__FILE__); ?>' />";							load_tooltip+="</div>";						
+						load_tooltip+="</div>";
+					load_tooltip+="</span>";
+
+					jQuery("#tooltip_blocks_to_show").append(load_tooltip);
+					/*test end*/
+				});
+			</script>
+			<?php
+		}
 }
 	//call add filter for all hooks in need
 	//you can pass cutom hooks you've done
@@ -78,13 +444,14 @@ add_action('wp_head',function(){
 	$posttypes_to_match=array();//initial posttypes to match	
 	$option_settings=get_option('bluet_kw_settings');
 	
-	if(!empty($option_settings['bt_kw_for_posts']) and $option_settings['bt_kw_for_posts']=='on'){
-		$posttypes_to_match[]='post';
-	}
+	 if(!empty($option_settings['bt_kw_for_posts']) and $option_settings['bt_kw_for_posts']=='on'){
+        $posttypes_to_match[]='post';
+    }
+    
+    if(!empty($option_settings['bt_kw_for_pages']) and $option_settings['bt_kw_for_pages']=='on'){
+        $posttypes_to_match[]='page';
+    }
 	
-	if(!empty($option_settings['bt_kw_for_pages']) and $option_settings['bt_kw_for_pages']=='on'){
-		$posttypes_to_match[]='page';
-	}
 	if(function_exists('bluet_kttg_pro_addon')){//if pro addon activated
 		$contents_to_filter=apply_filters('bluet_kttg_dustom_fields_hooks',$contents_to_filter);
 		$posttypes_to_match=apply_filters('bluet_kttg_posttypes_to_match',$posttypes_to_match);
@@ -110,7 +477,7 @@ function bluet_kw_load_scripts_front() {
 		wp_enqueue_style( 'kttg-tooltips-animations-styles', plugins_url('assets/animate.css',__FILE__), array(), false);
 	}
 	//load jQuery once to avoid conflict
-	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.4.js',__FILE__), array('jquery'), false, true );
+	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array('jquery'), false, true );
 		
 	$opt_tmp=get_option('bluet_kw_style');
 	if(!empty($opt_tmp['bt_kw_alt_img']) and $opt_tmp['bt_kw_alt_img']=='on'){
@@ -181,6 +548,7 @@ function kttg_specific_plugins($cont){
 }
 		
 function kttg_filter_posttype($cont){
+	global $tooltip_post_types;
 	/*28-05-2015*/
 	//specific modification so it can work for "WooCommerce Product Addons" and other addons
 	if(is_array($cont)){
@@ -192,9 +560,7 @@ function kttg_filter_posttype($cont){
 	$my_post_id=get_the_id();
 	$exclude_me = get_post_meta($my_post_id,'bluet_exclude_post_from_matching',true);			
 	
-
 	global $is_kttg_glossary_page;
-	
 	if($exclude_me OR $is_kttg_glossary_page){
 		return $cont;
 	}
@@ -207,16 +573,6 @@ function kttg_filter_posttype($cont){
 		$bluet_kttg_show_glossary_link=false;
 	}
 	
-	$bluet_kttg_glossary_page=get_option('bluet_kttg_glossary_page');
-
-	$glossary_link_label=__('View glossary','bluet-kw');
-
-	$glossary_options=get_option('bluet_glossary_options');
-
-	if (!empty($glossary_options['kttg_link_glossary_label'])){
-		$glossary_link_label=$glossary_options['kttg_link_glossary_label'];
-	}
-
 
 	$option_settings=get_option('bluet_kw_settings');
 
@@ -230,28 +586,24 @@ function kttg_filter_posttype($cont){
 	if(!empty($bluet_matching_keywords_field)){
 		$my_keywords_ids=$bluet_matching_keywords_field;
 	}                                    
-
-	$options=get_option('bluet_kw_advanced');
-	
-	if(empty($options['kttg_fetch_all_keywords'])){
-		$kttg_fetch_all_keywords=false;
-	}else if($options['kttg_fetch_all_keywords']=="on"){
-		$kttg_fetch_all_keywords=true;
-	}
+					
+	$options=get_option('bluet_kw_advanced');    
+ 
+    $kttg_fetch_all_keywords=false; 
 	
 	if(!empty($my_keywords_ids) OR $kttg_fetch_all_keywords){
 		
 		$my_keywords_terms=array(); 
-
+							
 		$post_in=$my_keywords_ids;
-		
+
 		if($kttg_fetch_all_keywords){
 			$post_in=null;
 		}
 		// The Query                                                                          
 		$wk_args=array(
 			'post__in'=>$post_in,
-			'post_type'=>'my_keywords',
+			'post_type'=>$tooltip_post_types,
 			'posts_per_page'=>-1	//to retrieve all keywords
 		);
 		
@@ -292,6 +644,7 @@ function kttg_filter_posttype($cont){
 			}
 			
 		}
+		
 		/* Restore original Post Data */
 		wp_reset_postdata();
 			
@@ -299,10 +652,13 @@ function kttg_filter_posttype($cont){
 				$regex='<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|\'.*?\'|[^\'">\s]+))?)+\s*|\s*)\/?>';							
 				$out=array();
 				preg_match_all('#('.$regex.')#iu',$cont,$out);
-				$cont=preg_replace('#('.$regex.')#i','**T_A_G**',$cont); //replace tags by **T_A_G**							
+				
+				if(!function_exists('bluet_kttg_pro_addon')){
+					$cont=preg_replace('#('.$regex.')#i','**T_A_G**',$cont); //replace tags by **T_A_G**							
+				}
 			//end
 			
-			$limit_match=((!empty($option_settings['bt_kw_match_all']) and $option_settings['bt_kw_match_all']=='on')? -1 : 1);
+            $limit_match=((!empty($option_settings['bt_kw_match_all']) and $option_settings['bt_kw_match_all']=='on')? -1 : 1);
 			
 			/*tow loops montioned here to avoid overlapping (chevauchement) */
 			foreach($my_keywords_terms as $id=>$arr){
@@ -335,16 +691,10 @@ function kttg_filter_posttype($cont){
 				foreach($term_and_syns_array as $temr_occ){
 					$temr_occ=elim_apostrophes($temr_occ);
 					$cont=elim_apostrophes($cont);
-
-					$text_sep="\W";
-					$japanese_chinese="/[\x{3000}-\x{303F}]|[\x{3040}-\x{309F}]|[\x{30A0}-\x{30FF}]|[\x{FF00}-\x{FFEF}]|[\x{4E00}-\x{9FAF}]|[\x{2605}-\x{2606}]|[\x{2190}-\x{2195}]|\x{203B}/u";
 					
-					if(preg_match($japanese_chinese,$temr_occ)==1){
-						//change pattern if japanese or chinese text
-						$text_sep=""; //no separator for japanese and chinese
+					if(!function_exists('bluet_kttg_pro_addon')){
+						$cont=preg_replace('#((\W)('.$temr_occ.''.$kw_after.')(\W))#u'.$kttg_case_sensitive,'$2__$3__$4',$cont,$limit_match);
 					}
-
-					$cont=preg_replace('#(('.$text_sep.')('.$temr_occ.''.$kw_after.')('.$text_sep.'))#u'.$kttg_case_sensitive,'$2__$3__$4',$cont,$limit_match);
 				}					
 
 			}
@@ -391,8 +741,6 @@ function kttg_filter_posttype($cont){
 						,$img				//image
 						,$arr["kw_id"]		//id
 						,$bluet_kttg_show_glossary_link	//show glossary link y/n
-						,$bluet_kttg_glossary_page		//glossary page permalink
-						,$glossary_link_label		//glossary page label
 						);
 				}
 
@@ -406,19 +754,25 @@ function kttg_filter_posttype($cont){
 				foreach($term_and_syns_array as $temr_occ){
 					$temr_occ=elim_apostrophes($temr_occ);
 					$cont=elim_apostrophes($cont);
-					
-					$cont=preg_replace('#(__('.$temr_occ.''.$kw_after.')__)#u'.$kttg_case_sensitive,$html_to_replace,$cont,-1);
+
+					if(!function_exists('bluet_kttg_pro_addon')){
+						$cont=preg_replace('#(__('.$temr_occ.''.$kw_after.')__)#u'.$kttg_case_sensitive,$html_to_replace,$cont,-1);
+					}
 				}
 			}
 			
 			//Reinsert tag HTML elements
-			foreach($out[0] as $id=>$tag){						
-				$cont=preg_replace('#(\*\*T_A_G\*\*)#',$tag,$cont,1);
+			if(!function_exists('bluet_kttg_pro_addon')){
+				foreach($out[0] as $id=>$tag){						
+					$cont=preg_replace('#(\*\*T_A_G\*\*)#',$tag,$cont,1);
+				}
 			}
-			
 			//prevent HTML Headings (h1 h2 h3) to be matched
 			$regH='(<h[1-3]+>.*)(class="bluet_tooltip")(.*<\/h[1-3]+>)';						
-			$cont=preg_replace('#('.$regH.')#iu','$2$4',$cont);					
+
+			if(!function_exists('bluet_kttg_pro_addon')){
+				$cont=preg_replace('#('.$regH.')#iu','$2$4',$cont);					
+			}
 	}			
 
 	$html_tooltips_to_add=apply_filters('kttg_another_tooltip_in_block',$html_tooltips_to_add);

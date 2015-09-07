@@ -70,6 +70,20 @@ jQuery(document).ready(function(){
 			document.getElementsByClassName('bluet_block_container')[0].style.color=bluet_tooltip_color;
 		},false);
 	}
+	
+	//fetch mode
+	//init
+	if(jQuery("#bt_kw_fetch_mode-icon").is(":checked")){
+	   jQuery("#tooltip_highlight_fetch_mode").hide();		
+	}
+	//listeners
+	jQuery("#bt_kw_fetch_mode-highlight").change(function(){
+	   jQuery("#tooltip_highlight_fetch_mode").show();
+	});
+	
+	jQuery("#bt_kw_fetch_mode-icon").change(function(){
+	   jQuery("#tooltip_highlight_fetch_mode").hide();
+	});	
 });
 /**/
 
@@ -140,4 +154,89 @@ function bleutExcludeKwStyle(){
 		}
    })
 }
+
+
+var easy_tags={
+/*Easy_tags an object contains function to perform easy tags (dinamic add tags)*/
+
+	delimiter:" ", //dilimiteur par defaut
+
+	construct:function(deli){
+		this.delimiter=deli;
+		return this;
+	},
+
+	add_to_send:function(element){
+		var field=jQuery(element).find(".easy_tags-field");
+		var to_send=jQuery(element).find(".easy_tags-to_send");
+		var add=jQuery(element).find(".easy_tags-add");
+		var list=jQuery(element).find(".easy_tags-list");
+
+		var res="";
+
+		list.find('.elem_class').each(function(index){			
+			res+=jQuery(this).find('.class_val').html()+easy_tags.delimiter;
+		});
+
+		to_send.val(res);
+	},
+
+
+	init:function(element_class){
+		var element=jQuery(element_class);
+
+		element.each(function(index){
+			var field=jQuery(this).find(".easy_tags-field");
+			var to_send=jQuery(this).find(".easy_tags-to_send");
+			var add=jQuery(this).find(".easy_tags-add");
+			var list=jQuery(this).find(".easy_tags-list");
+
+			var tab_tmp=to_send.val().split(easy_tags.delimiter);
+			for(var i=0;i<tab_tmp.length;i++){
+				if(tab_tmp[i]!=""){
+					elem=document.createElement("span");
+					elem.className="elem_class";
+					elem.innerHTML="<a class='ntdelbutton' onclick='sup_elem=jQuery(this).parent().parent().parent().get(); jQuery(this).parent().remove(); easy_tags.add_to_send(sup_elem,\""+easy_tags.delimiter+"\");'>X</a> <span class='class_val'>"+tab_tmp[i]+"</span>";
+					
+					list.append(elem);  
+				}
+			}
+		});
+
+		//delete last classes if field empty and delete
+		jQuery(".easy_tags-field").keydown(function(e){
+		  if(jQuery(this).val()=="" && e.keyCode==8){//backspace keyCode : 8
+		    jQuery(this).parent().parent().parent().find('.elem_class').last().remove();
+		    easy_tags.add_to_send(jQuery(this).parent().get(),easy_tags.delimiter);
+		  }
+		});
+	},
+
+	fill_classes:function(element_class){
+		var element=jQuery(element_class);
+
+		element.each(function(index){
+			var field=jQuery(this).find(".easy_tags-field");
+			var to_send=jQuery(this).find(".easy_tags-to_send");
+			var add=jQuery(this).find(".easy_tags-add");
+			var list=jQuery(this).find(".easy_tags-list");
+
+				add.click(function(){
+				   // user has pressed space
+				  if(field.val().trim()!=""){
+					elem=document.createElement("span");
+					elem.className="elem_class";
+					elem.innerHTML="<a class='ntdelbutton' onclick='sup_elem=jQuery(this).parent().parent().parent().get(); jQuery(this).parent().remove(); easy_tags.add_to_send(sup_elem,\""+easy_tags.delimiter+"\");'>X</a> <span class='class_val'>"+field.val().trim()+"</span>";
+				
+					list.append(elem);        
+				  }
+
+				  field.val("");
+				  easy_tags.add_to_send(jQuery(this).parent().get(),easy_tags.delimiter);
+				  field.focus();
+				});
+		});
+		
+	}
+};
 /**/

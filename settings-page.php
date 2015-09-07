@@ -28,7 +28,7 @@ function bluet_kw_load_scripts() {
 	wp_enqueue_script( 'kttg-settings-functions-script', plugins_url('assets/settings-functions.js',__FILE__), array('jquery'), false, true );
 	
 	//
-	wp_enqueue_script( 'kttg-admin-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.4.js',__FILE__), array('jquery'), false, true );
+	wp_enqueue_script( 'kttg-admin-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array('jquery'), false, true );
 }
 add_action( 'admin_head', 'bluet_kw_load_scripts' );
 
@@ -75,19 +75,27 @@ add_action( 'admin_init',function () {
 		'bluet_kw_style_display',		// The function used to render the options for this section
 		'my_keywords_style'				// The ID of the page on which this section is rendered
 	);
+
+	// 3rd section (Highlight fetch mode)
+	add_settings_section(
+		'highlight_fetch_mode_section',
+		__('Highlight fetch mode :','bluet-kw'),
+		'bluet_kw_highlight_fetch_mode_display',
+		'my_highlight_fetch_mode'
+	);
 	
 	
 /******************* fields */
-
-	// Define the in concern settings field
+//kttg_tooltip_post_types	
+	// Define the match all settings field
 	add_settings_field( 
-		'bt_kw_in_concern_field', 					
-		__('Posts / Pages','bluet-kw'), 			
-		'bt_kw_in_concern_display', 		
+		'kttg_tooltip_post_types', 					
+		__('Get tooltips from','bluet-kw'), 			
+		'kttg_tooltip_post_types_display', 		
 		'my_keywords_settings',				
 		'concern_section'					
 	);
-	
+
 	// Define the match all settings field
 	add_settings_field( 
 		'bt_kw_match_all_field', 					
@@ -105,16 +113,7 @@ add_action( 'admin_init',function () {
 		'my_keywords_settings',				
 		'concern_section'					
 	);
-
-	//trigger method
-	add_settings_field( 
-		'bt_kw_trigger', 					
-		__('Trigger method','bluet-kw'), 			
-		'bt_kw_trigger_display', 		
-		'my_keywords_settings',				
-		'concern_section'					
-	);
-
+	
 	// Define the position settings field
 	add_settings_field( 
 		'bt_kw_position', 					
@@ -132,21 +131,29 @@ add_action( 'admin_init',function () {
 		'concern_section'					
 	);
 
+	//fetch mode
+	add_settings_field( 
+		'bt_kw_fetch_mode', 
+		__('Fetch mode','bluet-kw'), 			
+		'bt_kw_fetch_mode_display', 		
+		'my_keywords_style',				
+		'style_section'					
+	);
 	// Define the settings field for tooltip font color
 	add_settings_field( 
 		'bt_kw_tt_colour', 					// The ID (or the name) of the field
 		__('Keyword style','bluet-kw'), 			// The text used to label the field
 		'bt_kw_tt_colour_display', 		// The callback function used to render the field
-		'my_keywords_style',				// The page on which we'll be rendering this field
-		'style_section'					// The section to which we're adding the setting
+		'my_highlight_fetch_mode',				// The page on which we'll be rendering this field
+		'highlight_fetch_mode_section'					// The section to which we're adding the setting
 	);
 	
 	add_settings_field( 
 		'bt_kw_desc_colour', 					
 		__('Description tooltip style','bluet-kw'), 			
 		'bt_kw_desc_colour_display', 		
-		'my_keywords_style',				
-		'style_section'					
+		'my_highlight_fetch_mode',				
+		'highlight_fetch_mode_section'					
 	);
 
 	add_settings_field( 
@@ -194,7 +201,7 @@ add_action('admin_menu',function(){
 	add_submenu_page(
 		'edit.php?post_type=my_keywords',
 		__('KeyWords Settings','bluet-kw'), 
-		__('Settings','bluet-kw'), 
+		__('Settings'), 
 		'manage_options', 
 		'my_keywords_settings', 
 		'bluet_kw_render_settings_page'
@@ -240,6 +247,22 @@ function bt_kw_desc_colour_display(){
 	<?php
 }
 
+function bt_kw_fetch_mode_display(){
+	//colour field render function	
+	$options = get_option( 'bluet_kw_style' ); //to get the ['bt_kw_fetch_mode']
+	?>
+		<p>
+			<input value="highlight" id="bt_kw_fetch_mode-highlight" type="radio" name="bluet_kw_style[bt_kw_fetch_mode]" <?php if(empty($options['bt_kw_fetch_mode']) or $options['bt_kw_fetch_mode']=='highlight') echo 'checked'; ?>/>
+			<label for="bt_kw_fetch_mode-highlight"><?php _e('Highlight Mode','bluet-kw'); ?></label>
+		</p>
+
+		<p>
+			<input value="icon" id="bt_kw_fetch_mode-icon" type="radio" name="bluet_kw_style[bt_kw_fetch_mode]" <?php if(!empty($options['bt_kw_fetch_mode']) and $options['bt_kw_fetch_mode']=='icon') echo 'checked'; ?>/>
+			<label for="bt_kw_fetch_mode-icon"><?php _e('Icon Mode','bluet-kw'); ?></label>
+		</p>
+	<?php
+}
+
 function bt_kw_tt_colour_display(){
 	//colour field render function	
 	$options = get_option( 'bluet_kw_style' );
@@ -256,17 +279,46 @@ function bluet_kw_sttings_display(){
 function bluet_kw_style_display(){
 	_e('Make your own style.','bluet-kw');
 }
-function bt_kw_in_concern_display(){
-	$options = get_option( 'bluet_kw_settings' );
-?>
-	<input type="checkbox" 	id="bt_kw_for_posts_id" 	name="bluet_kw_settings[bt_kw_for_posts]" <?php if(!empty($options['bt_kw_for_posts']) and $options['bt_kw_for_posts']=='on') echo 'checked'; ?>/>
-		<label for="bt_kw_for_posts_id"><?php _e('Posts','bluet-kw'); ?></label><br>
-	<input type="checkbox" 	id="bt_kw_for_pages_id" 	name="bluet_kw_settings[bt_kw_for_pages]" <?php if(!empty($options['bt_kw_for_pages']) and $options['bt_kw_for_pages']=='on') echo 'checked'; ?>/>
-		<label for="bt_kw_for_pages_id"><?php _e('Pages','bluet-kw'); ?></label>
-<?php
+function bluet_kw_highlight_fetch_mode_display(){
+	_e('Style for the highlight fetch mode.','bluet-kw');
+}
 
+function kttg_tooltip_post_types_display(){
+	$options = get_option('bluet_kw_settings');
+?>
+	<select multiple name="bluet_kw_settings[kttg_tooltip_post_types][]" size="10">
+		<?php
+			
+			foreach (get_post_types() as $post_tipe_tt) {
+		?>
+				<option
+					value="<?php echo($post_tipe_tt); ?>"
+					<?php if(!empty($options['kttg_tooltip_post_types']) and in_array($post_tipe_tt,$options['kttg_tooltip_post_types'])){ echo 'selected'; } ?> ><?php echo($post_tipe_tt); ?>
+				</option>
+		<?php
+			}
+		?>
+	</select>
+	<div>
+		<?php
+		_e('Select post types from which you wnat to get tooltips (default post type : my_keywords)','bluet-kw');
+		?>
+	</div>
+<?php
+		if(empty($options['kttg_tooltip_post_types']) or !in_array("my_keywords",$options['kttg_tooltip_post_types'])){
+			?>
+			<div style="color:red;">
+				<?php _e('Worning');
+				echo (" : "); 
+				?>
+				<b>
+				  <?php _e('my_keywords is not selected as a tooltip. (only selected post types will be considered as tooltips)','bluet-kw'); ?>
+				</b>
+			</div>
+			<?php
+		}
  }
- 
+
 function bt_kw_match_all_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
@@ -286,8 +338,18 @@ function bt_kw_hide_title_display(){
 }
 
 function bt_kw_animation_type_display(){
-	$options = get_option( 'bluet_kw_settings' );
-	$anim_type=$options['bt_kw_animation_type'];
+	$options = get_option('bluet_kw_settings');
+	
+	$anim_type="none";
+	if(!empty($options['bt_kw_animation_type'])){
+		$anim_type=$options['bt_kw_animation_type'];
+	}
+	
+	$anim_speed="normal";
+	if(!empty($options['bt_kw_animation_speed'])){
+		$anim_speed=$options['bt_kw_animation_speed'];
+	}
+	
 	$anims=array("fadeInLeft","fadeInLeftBig","fadeInRight","fadeInRightBig","fadeInUp","fadeInUpBig",
 				"flipInX","flipInY",				
 				"rollIn",
@@ -296,7 +358,6 @@ function bt_kw_animation_type_display(){
 				"zoomIn","zoomInDown","zoomInLeft","zoomInRight","zoomInUp"
 				);
 ?>
-
 	<select id="select_anim" name="bluet_kw_settings[bt_kw_animation_type]" >	
         <optgroup label="Select an animation">
 				<option value="none" <?php if("none"==$anim_type){ echo("selected");} ?> style="color: red;" ><?php _e("None",'bluet-kw'); ?></option>
@@ -307,42 +368,45 @@ function bt_kw_animation_type_display(){
 					<?php
 				}
 			?>			  
-        </optgroup>		
+        </optgroup>				
       </select>
+  
+		<label for='select_speed_fast'><?php _e('Fast','bluet-kw'); ?></label>
+			<input onchange="select_speed.value=select_speed_fast.value" type="radio" id="select_speed_fast"	name="bluet_kw_settings[bt_kw_animation_speed]" value="kttg_fast" <?php if("kttg_fast"==$anim_speed) echo 'checked'; ?> />
+		<label for='select_speed_normal'><?php _e('Normal','bluet-kw'); ?></label>
+			<input onchange="select_speed.value=select_speed_normal.value" type="radio" id="select_speed_normal"	name="bluet_kw_settings[bt_kw_animation_speed]" value="kttg_normal" <?php if("kttg_normal"==$anim_speed) echo 'checked'; ?> />
+		<label for='select_speed_slow'><?php _e('Slow','bluet-kw'); ?></label>
+			<input onchange="select_speed.value=select_speed_slow.value" type="radio" id="select_speed_slow"	name="bluet_kw_settings[bt_kw_animation_speed]" value="kttg_slow" <?php if("kttg_slow"==$anim_speed) echo 'checked'; ?> />
+		
+		<input type="hidden" id="select_speed" value=""/>
+
 	  <div id="demo_div" style="width: 200px; text-align: center; font-size: 30px;"><?php _e("click to see a DEMO",'bluet-kw'); ?></div>
 <script type="text/javascript">
-	jQuery("#select_anim").change(function(){
-		jQuery("#demo_div").removeClass();
-		jQuery("#demo_div").addClass("animated "+jQuery(this).val());
+	jQuery("#select_speed").change(function(){
+		jQuery("#demo_div").removeClass().addClass("animated "+jQuery(this).val()+" "+jQuery("#select_anim").val());
 	});
+	
+	jQuery("#select_anim").change(function(){
+		jQuery("#demo_div").removeClass().addClass("animated "+jQuery("#select_speed").val()+" "+jQuery(this).val());
+	});
+	
 	jQuery("#demo_div").mouseenter(function(){
 		jQuery("#demo_div").removeClass();
 	});
 	jQuery("#demo_div").click(function(){
-		jQuery("#demo_div").removeClass().addClass("animated "+jQuery("#select_anim").val());
+		jQuery("#demo_div").removeClass().addClass("animated "+jQuery("#select_anim").val()+" "+jQuery("#select_speed").val());
 	});
 </script>
+
 <?php
 }
-
-
-
-function bt_kw_trigger_display(){
-	$options = get_option( 'bluet_kw_settings' );
-?>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_trigger]" value="mouseover" <?php if(empty($options['bt_kw_trigger']) or $options['bt_kw_trigger']=="mouseover") echo 'checked'; ?> id="kttg_trigger_mouseover" /><label for='kttg_trigger_mouseover'><?php _e('Mouse Over','bluet-kw'); ?></label><br>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_trigger]" value="click" <?php if($options['bt_kw_trigger']=="click") echo 'checked'; ?> id="kttg_trigger_click" /><label for='kttg_trigger_click'><?php _e('Click','bluet-kw'); ?></label><br>
-<?php
-	 
- }
-
 function bt_kw_position_display(){
 	$options = get_option( 'bluet_kw_settings' );
 ?>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="top" <?php if($options['bt_kw_position']=="top") echo 'checked'; ?> id='kttg_pos_top' /><label for='kttg_pos_top'><?php _e('Top','bluet-kw'); ?></label><br>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="bottom" <?php if($options['bt_kw_position']=="bottom") echo 'checked'; ?> id='kttg_pos_bottom' /><label for='kttg_pos_bottom'><?php _e('Bottom','bluet-kw'); ?></label><br>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="right" <?php if($options['bt_kw_position']=="right") echo 'checked'; ?> id='kttg_pos_right' /><label for='kttg_pos_right'><?php _e('Right','bluet-kw'); ?></label><br>
-	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="left" <?php if($options['bt_kw_position']=="left") echo 'checked'; ?> id='kttg_pos_left' /><label for='kttg_pos_left'><?php _e('Left','bluet-kw'); ?></label><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="top" <?php if($options['bt_kw_position']=="top") echo 'checked'; ?>/><?php _e('Top','bluet-kw'); ?><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="bottom" <?php if($options['bt_kw_position']=="bottom") echo 'checked'; ?>/><?php _e('Bottom','bluet-kw'); ?><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="right" <?php if($options['bt_kw_position']=="right") echo 'checked'; ?>/><?php _e('Right','bluet-kw'); ?><br>
+	<input type="radio"	name="bluet_kw_settings[bt_kw_position]" value="left" <?php if($options['bt_kw_position']=="left") echo 'checked'; ?>/><?php _e('Left','bluet-kw'); ?><br>
 <?php
 	 
  }
@@ -355,18 +419,20 @@ function bluet_kw_render_settings_page() {
 				$kttg_infos=get_plugin_data(dirname(__FILE__).'/index.php');
 				$kttg_name=$kttg_infos['Name'];
 				$kttg_version=$kttg_infos['Version'];
+				$kttg_pro_link="<a href='http://www.tooltipy.com/downloads/kttg-pro'>Get KTTG PRO</a>";
 			?>
-			<h2><?php _e('KeyWords Settings','bluet-kw'); ?></h2><span><?php echo('<b>'.$kttg_name.'</b> (v'.$kttg_version.')');?></span>
+			<h2><?php _e('KeyWords Settings','bluet-kw'); ?></h2><span><?php echo('<b>'.$kttg_name.' <span style="color:red;">Free</span></b> (v'.$kttg_version.')');?> [<?php echo($kttg_pro_link); ?>]</span>
 			
 			<?php settings_errors();?>				
 				<h2 class="nav-tab-wrapper">
 					<a class="nav-tab" id="bluet_style_tab" data-tab="bluet-section-style"><?php _e('Style','bluet-kw'); ?></a>
-					<a class="nav-tab" id="bluet_settings_tab" data-tab="bluet-section-settings"><?php _e('Settings','bluet-kw'); ?></a>
+					<a class="nav-tab" id="bluet_settings_tab" data-tab="bluet-section-settings"><?php _e('Options','bluet-kw'); ?></a>					
 					<a class="nav-tab" id="bluet_glossary_tab" data-tab="bluet-section-glossary"><?php _e('Glossary','bluet-kw'); ?></a>
+					 
 					<a class="nav-tab" id="bluet_excluded_tab" data-tab="bluet-section-excluded"><?php _e('Excluded posts','bluet-kw');?></a>
-					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="https://wordpress.org/support/plugin/bluet-keywords-tooltip-generator" ><?php _e('Help ?','bluet-kw');?></a>
-					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="http://www.blueskills.net/pricing/" ><?php _e('Get the Pro AddOn','bluet-kw');?></a>
+					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="http://www.tooltipy.com/forums" ><?php _e('Help ?','bluet-kw');?></a>
 					<a class="nav-tab" target="_blank" style="background-color: aliceblue;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ" ><?php _e('Donate','bluet-kw');?></a>
+					<?php echo($kttg_pro_link); ?>
 
 				</h2>
 			<form method="post" action="options.php">
@@ -375,86 +441,32 @@ function bluet_kw_render_settings_page() {
 				settings_fields( 'settings_group' );
 				
 				//render sections here	
-			echo('<div id="bluet-sections-div">');			
+			?><div id="bluet-sections-div"><?php
 				//glossary settings
-				echo('<div class="bluet-section" id="bluet-section-glossary" >');
-				do_settings_sections( 'my_keywords_glossary_settings' );		
-				echo('</div>');
+				?><div class="bluet-section" id="bluet-section-glossary" ><?php
+						do_settings_sections( 'my_keywords_glossary_settings' );	
+				?></div><?php
 				
-				echo('<div class="bluet-section" id="bluet-section-settings" >');
-				do_settings_sections( 'my_keywords_settings' );		
-				echo('</div>');
+				?><div class="bluet-section" id="bluet-section-settings" ><?php
+						do_settings_sections( 'my_keywords_settings' );		
+				?></div><?php
 				
-				echo('<div class="bluet-section" id="bluet-section-style" >');
-				
-			//the tooltip display
-				//tooltip content vars
-				$test_name='Keywords ToolTip Generator';
-				$test_dfn= __('this plugin allows you easely create tooltips for your technical keywords.','bluet-kw')
-							.'<br>'
-							.__('Click','bluet-kw')
-							.'<a target="_blank" href="http://wordpress.org/support/view/plugin-reviews/bluet-keywords-tooltip-generator">'
-							.__('Here','bluet-kw')
-							.'</a>'
-							.__('to rate our plugin if you appreciate it','bluet-kw')
-							.';) ..';
-				$test_img='<img height="auto !important" width="300" src="http://plugins.svn.wordpress.org/bluet-keywords-tooltip-generator/assets/banner-772x250.png" onError="this.src=\'http://plugins.svn.wordpress.org/bluet-keywords-tooltip-generator/assets/banner-772x250.jpg\'" class="attachment-medium wp-post-image" alt="wp-hooks-guide">';
-				$test_id=111;
-				
-				//displaying the tooltip
-				echo('<div id="tooltip_blocks_to_show">');
-				echo(bluet_kttg_tooltip_layout($test_name,$test_dfn,$test_img,$test_id));
-				echo('</div>');
-				
-				
-				//tooltip settings
-				echo('<div id="tooltip_settings_sections">');
-					do_settings_sections( 'my_keywords_style' );	
-				echo('</div>');
-				?>	
-							
-					<div id="bluet_kw_preview" style="background-color: rgb(211, 211, 211);  width: 75%;  padding: 15px;  border-radius: 10px;">
-						<h3 style="margin-bottom: 12px;  margin-top: 0px;"><?php _e('Preview','bluet-kw'); ?> :</h3>
-						<?php _e('Pass your mouse over the word','bluet-kw'); ?>
-						<span class="bluet_tooltip" data-tooltip="111">KTTG</span> <?php _e('to test the tooltip layout.','bluet-kw'); ?>
-					</div>				
-				<?php
+				?><div class="bluet-section" id="bluet-section-style" ><?php
+
+					kttg_template("admin/style");
 						
-				echo('</div>');
-				
-				echo('<div class="bluet-section" id="bluet-section-excluded" >');
-				?>				
-					<div id="bluet_kw_excluded_posts">
-						<h3><?php _e('Excluded posts','bluet-kw');?></h3>
-						<p><?php _e('Posts which are excluded from being matched','bluet-kw');?></p>
-						<?php
-						$excluded_posts=bluet_kw_fetch_excluded_posts();
-						
-						if(empty($excluded_posts)){ 
-							echo('<p style="color:red;">');
-							_e('No posts or pages are excluded','bluet-kw');
-							echo('</p>');
-						}
-						
-						echo('<ul style="list-style: initial; padding-left: 25px;">');
-						foreach($excluded_posts as $k=>$excluded_post){
-							?>
-							<li><a href="<?php echo $excluded_post['permalink']; ?>"><?php echo $excluded_post['title']; ?></a></li>
-							<?php
-						}
-						echo("</ul>");
-						?>
+				?></div><?php
+
+				?><div class="bluet-section" id="bluet-section-excluded" ><?php
+					kttg_template("admin/exclude");
+				?>
 					</div>
-				<?php
-				echo('</div>');
-				
-			?>
+				</div>
 			</div> <!-- end  bluet-sections-div -->
 			
-				<?php submit_button( __('Save Settings','bluet-kw'), 'primary'); ?> 
-
+				<?php submit_button( __('Save Settings','bluet-kw'), 'primary'); ?>
+				<?php echo($kttg_pro_link); ?> 
 			</form>	
-
 		</div>
 <?php 
 

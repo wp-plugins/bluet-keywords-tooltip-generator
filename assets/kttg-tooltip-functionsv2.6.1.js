@@ -1,5 +1,6 @@
 function moveTooltipElementsTop(className){
 //this function moves les tooltip elements after the tag BODY
+
 		jQuery("body").prepend("<div id='tooltip_blocks_to_show'></div>");
 		
 		jQuery("#tooltip_blocks_to_show").prepend(jQuery(className));
@@ -15,34 +16,21 @@ function moveTooltipElementsTop(className){
 				});
 			}
 		});
-		
-	//add listeners to tooltips 
-	jQuery(".bluet_block_to_show").mouseover(function(){
-		//.show()
-		jQuery(this).show();
-	})
-	jQuery(".bluet_block_to_show").mouseout(function(){
-		//leave it like that .css("display","none"); for Safari navigator issue
-		jQuery(this).css("display","none");
-	})
-	
-	jQuery(".bluet_hide_tooltip_button").click(function(){
-		//leave it like that .css("display","none"); for Safari navigator issue
-		jQuery(".bluet_block_to_show").css("display","none");
-		//jQuery(".bluet_block_to_show");
-	})
-
 }
 
-function bluet_placeTooltips(inlineClass,position){
+function bluet_placeTooltips(inlineClass,position,loading){
 	//add listeners to inline keywords on mouseover
-	jQuery(inlineClass).on(tooltip_trigger_method,function(){
+	jQuery(inlineClass).mouseover(function(){
 		//id of the posttype in concern
 
 		id_post_type=jQuery(this).data("tooltip");
+		if (loading){
+			id_post_type=0;
+		};
+
 		var tooltipBlock=jQuery("#tooltip_blocks_to_show").children("[data-tooltip="+id_post_type+"]").first();
-	  	  
-	  	  //show and quit if mobile
+	  
+	  //show and quit if mobile
 	  	if(jQuery(window).width()<401){
 			tooltipBlock.css("opacity","1").show();
 			return;
@@ -128,7 +116,7 @@ function bluet_placeTooltips(inlineClass,position){
 			}
 			/*test*/
 			tooltipBlock.css({"opacity":"1"});
-			tooltipBlock.addClass("animated "+animation_type); //animation_type passed from index.php
+			tooltipBlock.addClass("animated "+animation_type+" "+animation_speed); //animation_type passed from index.php
 			/*end test*/
 			
 		}
@@ -150,4 +138,33 @@ function bluet_placeTooltips(inlineClass,position){
 			tooltipBlock.removeClass("animated "+animation_type);
 			/*end test*/
 	});
+}
+
+function changeQueryStringParameter(uri, key, value){
+  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+  var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+  if (uri.match(re)) {
+    return uri.replace(re, '$1' + key + "=" + value + '$2');
+  }
+  else {
+    return uri + separator + key + "=" + value;
+  }
+}
+
+function removeUrlParam(key, sourceURL) {
+    var rtn = sourceURL.split("?")[0],
+        param,
+        params_arr = [],
+        queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+    if (queryString !== "") {
+        params_arr = queryString.split("&");
+        for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+            param = params_arr[i].split("=")[0];
+            if (param === key) {
+                params_arr.splice(i, 1);
+            }
+        }
+        rtn = rtn + "?" + params_arr.join("&");
+    }
+    return rtn;
 }
