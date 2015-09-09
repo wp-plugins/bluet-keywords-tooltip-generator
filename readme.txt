@@ -23,7 +23,6 @@ Tooltipy (Keywords tooltip generator) allows you to highlight the keywords in yo
 ---
 
 = Premium =
-* KTTG Pro AddOn : This is the main addOn to upgrade KTTG to the premium Version
 * [Buy Now](http://www.tooltipy.com/downloads/kttg-pro)
 
 = Check How to add a keyword with KTTG on this 2 minutes video. =
