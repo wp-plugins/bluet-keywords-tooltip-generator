@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, responsive, tooltips, tooltip, highlight, widget, image, style, keyword, post, page, glossary, localization, description, definition, term, word, interactive, link, wpml
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 3.1.1
+Stable tag: 3.1.2
 License: GPLv2 or later
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
@@ -115,6 +115,9 @@ The plugin is available in these languages :
 12. Responsive leyout
 
 == Changelog ==
+= 3.1.2 =
+* fix asian languages special caracters separtor
+
 = 3.1.1 =
 * Header and nav tegs are now excluded from being fetched
 * space bug fixed
