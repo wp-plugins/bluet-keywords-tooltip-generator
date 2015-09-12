@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, responsive, tooltips, tooltip, highlight, widget, image, style, keyword, post, page, glossary, localization, description, definition, term, word, interactive, link, wpml
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 3.1.2
+Stable tag: 3.3
 License: GPLv2 or later
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
@@ -29,6 +29,7 @@ Tooltipy (Keywords tooltip generator) allows you to highlight the keywords in yo
 https://www.youtube.com/watch?v=JBdyLKa4DMI
 
 = New Features =
+* Multi CSS classes added to keywords and popups so you can easily style you keywords (you can style a specific keyword, keywords from a specific catégorie -family- or a keyword depending on if it contains youtube video or not...)
 * v3.0 keywords appear anywhere on your site not only on the post content, on heders footers and even in widgets
 * Now it works with Japanese and Chinese languages thanks to [Plugmon](https://wordpress.org/support/topic/not-works-in-langs-without-space-separation?replies=1#post-7249845)
 * KTTG is now responsive (for devices lesst then 400px)
@@ -115,6 +116,9 @@ The plugin is available in these languages :
 12. Responsive leyout
 
 == Changelog ==
+= 3.3 =
+* multi CSS classes added to keywords and popups so you can easily style you keywords
+
 = 3.1.2 =
 * fix asian languages special caracters separtor
 

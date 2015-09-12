@@ -3,7 +3,7 @@
 Plugin Name: Tooltipy
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 3.1.2
+Version: 3.3
 Author URI: http://www.tooltipy.com/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -66,6 +66,9 @@ function bluet_kttg_place_tooltips(){
 	$exclude_me = get_post_meta(get_the_id(),'bluet_exclude_post_from_matching',true);			
 	//exclusions
 	if(is_singular() and $exclude_me == 'on'){
+		return;
+	}
+	if(is_admin()){
 		return;
 	}
 	
@@ -137,12 +140,20 @@ function bluet_kttg_place_tooltips(){
 						$tmp_array_kw['case']=true;
 					}
 					
+					//categories or families
+					$tooltipy_families_arr = wp_get_post_terms(get_the_id(),'keywords_family',array("fields" => "ids"));
+					foreach ($tooltipy_families_arr as $key => $value) {
+					 	$tooltipy_families_arr[$key]="tooltipy-kw-cat-".$value;
+					}
+				  	$tooltipy_families_class=implode(" ",$tooltipy_families_arr);
+				  	$tmp_array_kw['families_class']=$tooltipy_families_class;
+
 					//if prefix addon activated
 					if(function_exists('bluet_prefix_metabox')){
 						if(get_post_meta(get_the_id(),'bluet_prefix_keywords',true)=="on"){
 							$tmp_array_kw['pref']=true;
 						}
-					}
+					}					
 
 					$my_keywords_terms[]=$tmp_array_kw;
 				}							
@@ -184,6 +195,16 @@ function bluet_kttg_place_tooltips(){
 						}else{
 							echo(",false");
 						}
+
+						//categories class
+						echo(",'".$my_kw['families_class']."'");
+
+						//if there is a video put a video class
+						if(strlen($my_kw['youtube'])>5){
+							echo(",'tooltipy-kw-youtube'");
+						}else{
+							echo(",''");
+						}
 						
 					echo("]");
 				?>,
@@ -194,7 +215,6 @@ function bluet_kttg_place_tooltips(){
 				"<?php echo($my_kw['kw_id']) ?>",
 			<?php } ?>
 			];
-			
 			//include or fetch zone
 			<?php
 			$settings= get_option('bluet_kw_settings');
@@ -204,6 +224,8 @@ function bluet_kttg_place_tooltips(){
 			$kttg_exclude_areas='';
 		
 			?>
+
+			//console.log(tab);
 			var class_to_cover=[
 						<?php
 						if(!empty($kttg_cover_areas)){
@@ -273,15 +295,23 @@ function bluet_kttg_place_tooltips(){
 							suffix='';
 							if(tab[i][2]==true){//if is prefix
 								suffix='\\w*';
-							}
+							}							
 							txt_to_find=tab[i][0];
-							var text_sep='[\\s<>,;:!$^*=\\-()\'"&?.\\/§%£¨+°~#{}\\[\\]|`\\\^@¤]'; //text separator	
+							var text_sep='[\\s<>,;:!$^*=\\-()\'"&?.\\/§%£¨+°~#{}\\[\\]|`\\\^@¤]'; //text separator
 							
+							//families for class
+							tooltipy_families_class=tab[i][3];
+
+							//video class
+							tooltipy_video_class=tab[i][4];
+
+
 							/*test japanese and chinese*/
 							var japanese_chinese=/[\u3000-\u303F]|[\u3040-\u309F]|[\u30A0-\u30FF]|[\uFF00-\uFFEF]|[\u4E00-\u9FAF]|[\u2605-\u2606]|[\u2190-\u2195]|\u203B/;
 						    var jc_reg = new RegExp(japanese_chinese);
     						
 							if(jc_reg.test(txt_to_find)){
+								//console.log(txt_to_find+" is chinese or japanese!");
 								//change pattern if japanese or chinese text
 								text_sep=""; //no separator for japanese and chinese
 							}
@@ -353,11 +383,12 @@ function bluet_kttg_place_tooltips(){
 															just_after_kw="";
 														}
 
-														elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+just_after_kw+suff_after_kw:before_kw+"<span class='bluet_tooltip' data-tooltip="+tooltipIds[i]+">"+txt_to_display+""+just_after_kw+"</span>"+" "+suff_after_kw;
+														elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+just_after_kw+suff_after_kw:before_kw+"<span class='bluet_tooltip tooltipy-kw-prefix' data-tooltip="+tooltipIds[i]+">"+txt_to_display+""+just_after_kw+"</span>"+" "+suff_after_kw;
                                                     }else{                                                      
                                                         elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw:before_kw+"<span class='bluet_tooltip' data-tooltip="+tooltipIds[i]+">"+txt_to_display+"</span>"+" "+after_kw;
                                                     }
-													
+                                                    //add classes to keywords
+													jQuery(jQuery(elem).children(".bluet_tooltip")[0]).addClass("tooltipy-kw tooltipy-kw-"+tooltipIds[i]+" "+tooltipy_families_class+" "+tooltipy_video_class);
 													return elem;
 												
 											<?php
@@ -371,10 +402,13 @@ function bluet_kttg_place_tooltips(){
 														if(suff_after_kw==undefined){
 															suff_after_kw="";
 														}
-														 elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw.match(reg)+suff_after_kw:before_kw+txt_to_display+after_kw.match(reg)+"<img src='<?php echo(plugins_url('/assets/qst-mark-1.png',__FILE__)); ?>' class='bluet_tooltip' data-tooltip="+tooltipIds[i]+" />"+suff_after_kw;
+														 elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw.match(reg)+suff_after_kw:before_kw+txt_to_display+after_kw.match(reg)+"<img src='<?php echo(plugins_url('/assets/qst-mark-1.png',__FILE__)); ?>' class='bluet_tooltip tooltipy-kw-prefix tooltipy-kw-icon' data-tooltip="+tooltipIds[i]+" />"+suff_after_kw;
                                                     }else{
-                                                        elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw:before_kw+txt_to_display+"<img src='<?php echo(plugins_url('/assets/qst-mark-1.png',__FILE__)); ?>' class='bluet_tooltip' data-tooltip="+tooltipIds[i]+" />"+after_kw;
+                                                        elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw:before_kw+txt_to_display+"<img src='<?php echo(plugins_url('/assets/qst-mark-1.png',__FILE__)); ?>' class='bluet_tooltip tooltipy-kw-icon' data-tooltip="+tooltipIds[i]+" />"+after_kw;
                                                     }
+
+                                                    //add classes to keywords
+                                                    jQuery(jQuery(elem).children(".bluet_tooltip")[0]).addClass("tooltipy-kw tooltipy-kw-"+tooltipIds[i]+" "+tooltipy_families_class+" "+tooltipy_video_class);
 													return elem;
 												
 											<?php

@@ -39,21 +39,38 @@ function kttg_load_keywords() {
 	if ( $ajax_query->have_posts() ) {
 		while ( $ajax_query->have_posts() ){
 			$ajax_query->the_post();
+
+			$tooltipy_kw_id=get_the_id();
+
+			//get youtube class to integrate it on the class
+			$tooltipy_youtube=get_post_meta($tooltipy_kw_id,'bluet_youtube_video_id',true);
+			$tooltipy_youtube_class="";
+			if(strlen($tooltipy_youtube)>5){
+				$tooltipy_youtube_class="tooltipy-pop-youtube";
+			}
+
+			//get families ids to integrate them on the class
+			$tooltipy_families_arr = wp_get_post_terms($tooltipy_kw_id,'keywords_family',array("fields" => "ids"));
+
+			foreach ($tooltipy_families_arr as $key => $value) {
+			 	$tooltipy_families_arr[$key]="tooltipy-pop-cat-".$value;
+			}
+		  	$tooltipy_families_class=implode(" ",$tooltipy_families_arr);
 			?>
-			<span class="bluet_block_to_show" data-tooltip="<?php echo(get_the_id()); ?>">
+			<span class="bluet_block_to_show  tooltipy-pop tooltipy-pop-<?php echo($tooltipy_kw_id.' '.$tooltipy_families_class.' '.$tooltipy_youtube_class);?>" data-tooltip="<?php echo($tooltipy_kw_id); ?>">
 				<img src="<?php echo(plugins_url('assets',__FILE__)); ?>/close_button.png" class="bluet_hide_tooltip_button">
 				<div class="bluet_block_container">
 				<?php
-				if(get_post_meta(get_the_id(),'bluet_youtube_video_id',true)==""){		
+				if($tooltipy_youtube==""){		
 				?>				
 					<div class="bluet_img_in_tooltip">
-						<?php echo(get_the_post_thumbnail(get_the_id(),'medium')); ?>
+						<?php echo(get_the_post_thumbnail($tooltipy_kw_id,'medium')); ?>
 					</div>
 					<?php
 				}else{
 					?>				
 					<div class="bluet_img_in_tooltip">
-						<iframe src="https://www.youtube.com/embed/<?php echo(get_post_meta(get_the_id(),'bluet_youtube_video_id',true)); ?>?rel=0&showinfo=0" frameborder="0" allowfullscreen>
+						<iframe src="https://www.youtube.com/embed/<?php echo($tooltipy_youtube); ?>?rel=0&showinfo=0" frameborder="0" allowfullscreen>
 						</iframe>						
 					</div>
 					<?php
