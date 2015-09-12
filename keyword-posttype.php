@@ -16,7 +16,7 @@ class bluet_keyword{
 			'labels'=>array(
 				'name'=>__('KeyWords','bluet-kw'),
 				'singular_name'=>__('KeyWord','bluet-kw'),
-				'menu_name'=>__('My KeyWords','bluet-kw'),
+				'menu_name'=>__('Tooltipy','bluet-kw'),
 				'name_admin_bar'=>__('My KeyWords','bluet-kw'),
 				'all_items'=>__('All my KeyWords','bluet-kw'),
 				'add_new' =>__('Add'),
