@@ -3,7 +3,7 @@
 Plugin Name: Tooltipy
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 3.3
+Version: 3.3.2
 Author URI: http://www.tooltipy.com/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -169,7 +169,7 @@ function bluet_kttg_place_tooltips(){
 			/*
 			<?php	var_dump($my_excluded_keywords); ?>
 			*/
-			var tab=[
+			var kttg_tab=[
 			<?php foreach($my_keywords_terms as $my_kw){ ?>
 				<?php 
 					echo("[");
@@ -290,20 +290,20 @@ function bluet_kttg_place_tooltips(){
 							continue;
 						}
 					
-						for(var i=0;i<tab.length;i++){
+						for(var i=0;i<kttg_tab.length;i++){
 
 							suffix='';
-							if(tab[i][2]==true){//if is prefix
+							if(kttg_tab[i][2]==true){//if is prefix
 								suffix='\\w*';
 							}							
-							txt_to_find=tab[i][0];
+							txt_to_find=kttg_tab[i][0];
 							var text_sep='[\\s<>,;:!$^*=\\-()\'"&?.\\/§%£¨+°~#{}\\[\\]|`\\\^@¤]'; //text separator
 							
 							//families for class
-							tooltipy_families_class=tab[i][3];
+							tooltipy_families_class=kttg_tab[i][3];
 
 							//video class
-							tooltipy_video_class=tab[i][4];
+							tooltipy_video_class=kttg_tab[i][4];
 
 
 							/*test japanese and chinese*/
@@ -319,7 +319,7 @@ function bluet_kttg_place_tooltips(){
 							pattern=text_sep+"("+txt_to_find+")"+suffix+""+text_sep+"|^("+txt_to_find+")"+suffix+"$|"+text_sep+"("+txt_to_find+")"+suffix+"$|^("+txt_to_find+")"+suffix+text_sep;
 
 							iscase='';
-							if(tab[i][1]==false){
+							if(kttg_tab[i][1]==false){
 								iscase='i';
 							}						
 							var reg=new RegExp(pattern,fetch_all+iscase);

@@ -20,6 +20,9 @@ function kttg_load_keywords() {
 	}else{
 		$keyword_ids = $_POST['keyword_ids'];
 	}
+	
+	//glossary link
+    $glossary_options = get_option('bluet_glossary_options');
 
 	$args = array(
 	    'post__in' => $keyword_ids,
@@ -86,6 +89,23 @@ function kttg_load_keywords() {
 							?>
 						</div>
 					<div class="bluet_block_footer">
+						<?php
+                        if(!empty($glossary_options['bluet_kttg_show_glossary_link']) and $glossary_options['bluet_kttg_show_glossary_link']=='on'){
+                        ?>
+                            <p class="bluet_block_glossary_link">
+                                <a href="<?php echo($glossary_options['kttg_link_glossary_page_link']); ?>">
+                                    <?php
+                                    if(strlen($glossary_options['kttg_link_glossary_label'])){
+                                        echo($glossary_options['kttg_link_glossary_label']);
+                                    }else{
+                                        echo("View glossary");
+                                    }
+                                    ?>
+                                </a>
+                            </p>
+                        <?php
+                        }
+                        ?>  
 					</div>
 				</div>
 			</span>

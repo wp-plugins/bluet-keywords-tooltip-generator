@@ -10,6 +10,8 @@ function bluet_kttg_glossary(){
 	global $wpdb;
 	 
 	$glossary_options = get_option( 'bluet_glossary_options' );
+
+    $tooltipy_glossary_show_thumb=$glossary_options['bluet_kttg_glossary_show_thumb'];
 	 
     $is_kttg_glossary_page=true;
 	
@@ -38,7 +40,8 @@ function bluet_kttg_glossary(){
 
 	/*dropdown*/
 	/*begin*/
-		$ret="<p><label>".__('Select a family','bluet-kw')." : </label><select name='kttg-glossary-family' onchange='document.location.href=changeQueryStringParameter(document.location.href,\"cat\",this.options[this.selectedIndex].value);'>";
+		$ret="<div class='kttg_glossary_div'>";
+		$ret.="<div class='kttg_glossary_families'><label>".__('Select a family','bluet-kw')." : </label><select name='kttg-glossary-family' onchange='document.location.href=changeQueryStringParameter(document.location.href,\"cat\",this.options[this.selectedIndex].value);'>";
 	 	$ret.="<option value='all_families'>".__('All families','bluet-kw')."</option>";
 
 		$families = get_categories(array(
@@ -54,10 +57,10 @@ function bluet_kttg_glossary(){
 			$ret.='<option value="'.$family->category_nicename.'" '.$selected_family.'>';
 			$ret.= $family->cat_name;
 			$ret.= ' ('.$family->category_count.')';
-			$ret.= '</option></p>';
+			$ret.= '</option>';
 		}
 
-		$ret.="</select>";
+		$ret.="</select></div>";
   	/*end*/
 
    $ret.='<div class="kttg_glossary_header"><span class="bluet_glossary_all '.$current_letter_class.'"><a href=\''.$all_link.'\'>'.$text_all.'</a></span> - ';
@@ -139,7 +142,6 @@ function bluet_kttg_glossary(){
 
    // set the "paged" parameter (use 'page' if the query is on a static front page)
     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-
 	
 	$showposts=-1;
 	if($glossary_options['kttg_kws_per_page']!=""){
@@ -181,13 +183,25 @@ function bluet_kttg_glossary(){
 				foreach ($families_list as $family_name) {
 					$families_string.=$family_name." ";
 				}
+				$tooltipy_glossary_thumb='';
+				if (
+						!empty($tooltipy_glossary_show_thumb)
+						and
+						$tooltipy_glossary_show_thumb=="on"
+						and
+						has_post_thumbnail()
+					) {
+						$tooltipy_glossary_thumb='<div class="kttg_glossary_element_thumbnail">'.get_the_post_thumbnail().'</div>';					
+					}
+							
 
                 //echo(substr(get_the_title(),0,1).'<br>');
                 if((strtoupper(mb_substr(get_the_title(),0,1,'utf-8'))==$chosen_letter) or $chosen_letter==null){                    
                 	$fam_action='javascript:document.location.href=changeQueryStringParameter(document.location.href,"cat","'.trim($families_string).'");';
                     $ret.='<li class="kttg_glossary_element" style="list-style-type: none;">
 							<h2 class="kttg_glossary_element_title">'.get_the_title()." ".(count($families_list)>0 ? "<sub>[<a href=".$fam_action.">".$families_string."</a>]</sub>":"" ).'</h2>
-							<div class="kttg_glossary_element_content">'.get_the_content().'</div>
+							<div class="kttg_glossary_element_content">
+							'.$tooltipy_glossary_thumb.get_the_content().'</div>
 						</li>';
                 }
                 
@@ -210,7 +224,7 @@ function bluet_kttg_glossary(){
     $ret.=get_previous_posts_link( '<span class="kttg_glossary_nav prev">'.$text_previous.'</span>' );
 	$ret.=" ";
     $ret.=get_next_posts_link( '<span class="kttg_glossary_nav next">'.$text_next.'</span>', $the_query->max_num_pages );
-
+	$ret.="</div>";
     // clean up after our query
     wp_reset_postdata(); 
 

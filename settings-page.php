@@ -419,7 +419,7 @@ function bluet_kw_render_settings_page() {
 				$kttg_infos=get_plugin_data(dirname(__FILE__).'/index.php');
 				$kttg_name=$kttg_infos['Name'];
 				$kttg_version=$kttg_infos['Version'];
-				$kttg_pro_link="<a href='http://www.tooltipy.com/downloads/kttg-pro'>Get KTTG PRO</a>";
+				$kttg_pro_link="<a href='http://www.tooltipy.com/downloads/kttg-pro'>Get Tooltipy PRO</a>";
 			?>
 			<h2><?php _e('KeyWords Settings','bluet-kw'); ?></h2><span><?php echo('<b>'.$kttg_name.' <span style="color:red;">Free</span></b> (v'.$kttg_version.')');?> [<?php echo($kttg_pro_link); ?>]</span>
 			

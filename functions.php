@@ -142,3 +142,49 @@ function elim_apostrophes($chaine){
 
 	return $resultat;
 }
+
+/* BEGIN -- Edit keywords page */
+add_action( 'restrict_manage_posts', 'tooltipy_families_admin_posts_filter_restrict_manage_posts' );
+function tooltipy_families_admin_posts_filter_restrict_manage_posts(){
+    $type = 'post';
+    if (isset($_GET['post_type'])) {
+        $type = $_GET['post_type'];
+    }
+
+    //only add filter to post type you want
+    if ('my_keywords' == $type){
+        $tax_families = get_terms( "keywords_family");        
+        ?>
+        <select name="tooltipy_family" id='tooltipy_filter_by_family'>
+        <option value=""><?php _e('Filter by Family','bluet-kw'); ?></option>
+        <?php
+            $current_v = isset($_GET['tooltipy_family'])? $_GET['tooltipy_family']:'';
+            foreach ($tax_families as $fam) {
+                printf
+                    (
+                        '<option value="%s"%s>%s</option>',
+                        $fam->slug,
+                        $fam->slug == $current_v? ' selected="selected"':'',
+                        $fam->name
+                    );
+                }
+        ?>
+        </select>
+        <?php
+    }
+}
+
+
+add_filter( 'parse_query', 'tooltipy_families_posts_filter' );
+function tooltipy_families_posts_filter($query){
+    global $pagenow;
+    $type = 'post';
+    if (isset($_GET['post_type'])) {
+        $type = $_GET['post_type'];
+    }
+
+    if ('my_keywords' == $type && is_admin() && $pagenow=='edit.php' && isset($_GET['tooltipy_family']) && $_GET['tooltipy_family'] != ''){
+        $query->query_vars['keywords_family'] = $_GET['tooltipy_family'];
+    }
+}
+/* END -- Edit keywords page */
