@@ -117,6 +117,7 @@ The plugin is available in these languages :
 == Changelog ==
 = 3.3.2 =
 * Now you can filter keywords list by family (category)
+* fix widget classes for keywords
 
 = 3.3.1 =
 * New glossary link setting for tooltip footer
