@@ -85,6 +85,23 @@ class bluet_keyword_widget extends wp_widget{
 								$img=get_the_post_thumbnail($term_id,'medium');
 								
 								$trm=$trm.'&zwnj;';
+
+								//categories or families
+								$tooltipy_families_arr = wp_get_post_terms($kw_id,'keywords_family',array("fields" => "ids"));
+								foreach ($tooltipy_families_arr as $key => $value) {
+								 	$tooltipy_families_arr[$key]="tooltipy-kw-cat-".$value;
+								}
+							  	$tooltipy_families_class=implode(" ",$tooltipy_families_arr);
+
+							  	//youtube
+							  	$tooltipy_video=get_post_meta(get_the_id(),'bluet_youtube_video_id',true);
+
+							  	if(strlen($tooltipy_video)>5){
+							  		$tooltipy_video_class="tooltipy-kw-youtube";							  		
+								}else{
+							  		$tooltipy_video_class="";
+								}
+
 						}
 						
 					}
@@ -93,7 +110,7 @@ class bluet_keyword_widget extends wp_widget{
 					wp_reset_postdata();
 					
 						$string_to_show='<li>
-											<span class="bluet_tooltip" data-tooltip="'.$kw_id.'">
+											<span class="bluet_tooltip tooltipy-kw tooltipy-kw-'.$kw_id.' '.$tooltipy_families_class.' '.$tooltipy_video_class.'" data-tooltip="'.$kw_id.'">
 												'.$trm.'
 											</span> 
 										</li>';
