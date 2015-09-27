@@ -3,7 +3,7 @@
 Plugin Name: Tooltipy
 Description: This plugin allows you automatically create tooltip boxes for your technical keywords in order to explain them for your site visitors making surfing more comfortable.
 Author: Jamel Zarga
-Version: 3.3.2
+Version: 3.3.3
 Author URI: http://www.tooltipy.com/about-us
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -383,9 +383,26 @@ function bluet_kttg_place_tooltips(){
 															just_after_kw="";
 														}
 
-														elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+just_after_kw+suff_after_kw:before_kw+"<span class='bluet_tooltip tooltipy-kw-prefix' data-tooltip="+tooltipIds[i]+">"+txt_to_display+""+just_after_kw+"</span>"+" "+suff_after_kw;
-                                                    }else{                                                      
-                                                        elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw:before_kw+"<span class='bluet_tooltip' data-tooltip="+tooltipIds[i]+">"+txt_to_display+"</span>"+" "+after_kw;
+														if(suff_after_kw==" "){
+                                                            suff_after_kw="  ";
+                                                        }
+
+                                                        if(before_kw==" "){
+                                                            before_kw="  ";
+                                                        }
+														
+														elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+just_after_kw+suff_after_kw:before_kw+"<span class='bluet_tooltip tooltipy-kw-prefix' data-tooltip="+tooltipIds[i]+">"+txt_to_display+""+just_after_kw+"</span>"+suff_after_kw;
+                                                    }else{    
+													
+														if(after_kw==" "){
+                                                            after_kw="  ";
+                                                        }
+
+                                                        if(before_kw==" "){
+                                                            before_kw="  ";
+                                                        } 
+														
+                                                        elem.innerHTML=(txt_to_display==undefined || txt_to_display==null)?before_kw+after_kw:before_kw+"<span class='bluet_tooltip' data-tooltip="+tooltipIds[i]+">"+txt_to_display+"</span>"+after_kw;
                                                     }
                                                     //add classes to keywords
 													jQuery(jQuery(elem).children(".bluet_tooltip")[0]).addClass("tooltipy-kw tooltipy-kw-"+tooltipIds[i]+" "+tooltipy_families_class+" "+tooltipy_video_class);
