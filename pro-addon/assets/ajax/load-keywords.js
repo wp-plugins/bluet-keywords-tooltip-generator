@@ -24,6 +24,10 @@ jQuery(document).on("keywordsFetched",function() {
 
 jQuery(document).on("keywordsLoaded",function() {
 	jQuery('#loading_tooltip').remove();
+	
+	//for [audio] and [video] shortcodes to generate audio after keywords load
+	jQuery('.tooltipy-pop .wp-audio-shortcode[style*="visibility:hidden"], .tooltipy-pop .wp-video-shortcode[style*="visibility:hidden"]').mediaelementplayer();
+	jQuery('.tooltipy-pop .wp-audio-shortcode[style*="visibility: hidden"], .tooltipy-pop .wp-video-shortcode[style*="visibility: hidden"]').mediaelementplayer();
 
 	//to prevent empty div on the top
 	/*if(jQuery("#tooltip_blocks_to_show").find(".bluet_block_to_show").length==0){
