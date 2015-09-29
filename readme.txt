@@ -117,6 +117,7 @@ The plugin is available in these languages :
 == Changelog ==
 = 3.3.3 =
 * space bug fixed
+* [audio] and [video] shortcodes loads as expected now
 
 = 3.3.2 =
 * Now you can filter keywords list by family (category)
