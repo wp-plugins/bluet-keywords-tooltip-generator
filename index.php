@@ -530,6 +530,11 @@ function bluet_kw_load_scripts_front() {
 	//load jQuery once to avoid conflict
 	wp_enqueue_script( 'kttg-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array('jquery'), false, true );
 		
+	//load mediaelement.js for audio and video shortcodes
+	//change this to make it load only when shortcodes are loaded with keywords
+	wp_enqueue_script('wp-mediaelement');
+	wp_enqueue_style('wp-mediaelement');
+	
 	$opt_tmp=get_option('bluet_kw_style');
 	if(!empty($opt_tmp['bt_kw_alt_img']) and $opt_tmp['bt_kw_alt_img']=='on'){
 		//
