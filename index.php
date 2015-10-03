@@ -374,6 +374,11 @@ function bluet_kttg_place_tooltips(){
 														//console.log("'"+suffix+"'");
 														var reg=new RegExp(suffix,"");
 														suff_after_kw=after_kw.split(reg)[0];
+														
+														if(after_kw.split(reg)[0]=="" && after_kw.split(reg)[1]!=undefined){
+															suff_after_kw=after_kw.split(reg)[1];
+														}
+														
 														if(suff_after_kw==undefined){
 															suff_after_kw="";
 														}														
