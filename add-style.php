@@ -275,7 +275,7 @@ function bluet_kw_custom_style(){
 			    top: 2px;
 			    display: block;
 			    color: <?php echo $desc_color; ?> <?php echo($is_important)?>;
-			    background-color: <?php echo $desc_bg_color; ?> <?php echo($is_important)?>;
+			    /*background-color: <?php echo $desc_bg_color; ?> <?php echo($is_important)?>;*/
 			    height: 26px;
 			    font-size: 31px;
 			    border-radius: 50%;
