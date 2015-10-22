@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, responsive, tooltips, tooltip, highlight, widget, image, style, keyword, post, page, glossary, localization, description, definition, term, word, interactive, link, wpml
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 3.3.3
+Stable tag: 3.3.4
 License: GPLv2 or later
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
@@ -102,19 +102,24 @@ The plugin is available in these languages :
 
 
 == Screenshots ==
-1. Front end single page highlighted KeyWords
-2. Add a new KeyWord description
-3. Glossary ShortCode support [kttg_glossary]
-4. Style customization
-5. Style preview
-6. Settings
-7. Widget
-8. Excluded Posts list
+1. Mobile friendly tooltip
+2. Desktop tooltip
+3. Add a new KeyWord description
+4. Glossary ShortCode support [kttg_glossary]
+5. Style customization
+6. Style preview
+7. Settings
+8. Widget
+9. Excluded Posts list
 10. My Keywords List
 11. Glossary settings page
-12. Responsive leyout
 
 == Changelog ==
+= 3.3.4 =
+* Mobile friendly layout
+* Close button new design
+* Youtube video fits 100% in width fixed
+
 = 3.3.3 =
 * space bug fixed
 * [audio] and [video] shortcodes loads as expected now

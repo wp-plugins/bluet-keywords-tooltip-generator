@@ -61,7 +61,9 @@ function kttg_load_keywords() {
 		  	$tooltipy_families_class=implode(" ",$tooltipy_families_arr);
 			?>
 			<span class="bluet_block_to_show  tooltipy-pop tooltipy-pop-<?php echo($tooltipy_kw_id.' '.$tooltipy_families_class.' '.$tooltipy_youtube_class);?>" data-tooltip="<?php echo($tooltipy_kw_id); ?>">
-				<img src="<?php echo(plugins_url('assets',__FILE__)); ?>/close_button.png" class="bluet_hide_tooltip_button">
+
+				<div class="bluet_hide_tooltip_button">×</div>
+
 				<div class="bluet_block_container">
 				<?php
 				if($tooltipy_youtube==""){		
@@ -73,7 +75,7 @@ function kttg_load_keywords() {
 				}else{
 					?>				
 					<div class="bluet_img_in_tooltip">
-						<iframe src="https://www.youtube.com/embed/<?php echo($tooltipy_youtube); ?>?rel=0&showinfo=0" frameborder="0" allowfullscreen>
+						<iframe src="https://www.youtube.com/embed/<?php echo($tooltipy_youtube); ?>?rel=0&showinfo=0" frameborder="0" allowfullscreen width="100%">
 						</iframe>						
 					</div>
 					<?php

@@ -129,7 +129,7 @@ function bluet_kw_custom_style(){
 	}
 	
 	.bluet_text_content{
-		padding:6px 10px 6px 10px;		
+		padding: 10px 15px 7px 15px;		
 	}
 	.bluet_block_to_show:after {
 	  content: '';
@@ -258,6 +258,7 @@ function bluet_kw_custom_style(){
 			left: 0px;
 			right: 0px;
 			max-width: 100% !important;
+			max-height: 95% !important;			
 			padding: 0px !important;
 			overflow: auto;
 		}
@@ -267,12 +268,21 @@ function bluet_kw_custom_style(){
 
 		}
 		.bluet_hide_tooltip_button{
-			width: 25px;
-			height: 25px;
-			position: absolute;
-			right: 0px;
-			top: 0px;
-			display: block;
+			    opacity: 0.7;
+		        position: absolute;
+			    font-family: 'Open sans';
+			    right: 2px;
+			    top: 2px;
+			    display: block;
+			    color: <?php echo $desc_color; ?> <?php echo($is_important)?>;
+			    background-color: <?php echo $desc_bg_color; ?> <?php echo($is_important)?>;
+			    height: 26px;
+			    font-size: 31px;
+			    border-radius: 50%;
+			    font-weight: bold;
+			    line-height: 0px;
+			    padding: 11px 5px;
+			    cursor: pointer;
 		}
 	}
 	
