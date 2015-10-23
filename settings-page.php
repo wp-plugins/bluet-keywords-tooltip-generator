@@ -25,7 +25,7 @@ function bluet_kw_load_scripts() {
 	}
 	
 	//
-	wp_enqueue_script( 'kttg-settings-functions-script', plugins_url('assets/settings-functions.js',__FILE__), array('jquery'), false, true );
+	wp_enqueue_script( 'kttg-settings-functions-script', plugins_url('assets/settings-functions-v3.js',__FILE__), array('jquery'), false, true );
 	
 	//
 	wp_enqueue_script( 'kttg-admin-tooltips-functions-script', plugins_url('assets/kttg-tooltip-functionsv2.6.1.js',__FILE__), array('jquery'), false, true );
