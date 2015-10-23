@@ -428,12 +428,19 @@ function bluet_kw_render_settings_page() {
 					<a class="nav-tab" id="bluet_style_tab" data-tab="bluet-section-style"><?php _e('Style','bluet-kw'); ?></a>
 					<a class="nav-tab" id="bluet_settings_tab" data-tab="bluet-section-settings"><?php _e('Options','bluet-kw'); ?></a>					
 					<a class="nav-tab" id="bluet_glossary_tab" data-tab="bluet-section-glossary"><?php _e('Glossary','bluet-kw'); ?></a>
-					 
+ 					<a class="nav-tab" id="bluet_advanced_tab" data-tab="bluet-section-advanced" style="background-color:#C7E0C1; padding-right: 36px;"><?php _e('Advanced','bluet-kw'); ?></a><sup style="color: blue; padding-left:4px;position: relative;right: 39px;font-size: 13px;font-weight: bold; margin-right:-25px;">Pro</sup>					
 					<a class="nav-tab" id="bluet_excluded_tab" data-tab="bluet-section-excluded"><?php _e('Excluded posts','bluet-kw');?></a>
-					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="http://www.tooltipy.com/forums" ><?php _e('Help ?','bluet-kw');?></a>
-					<a class="nav-tab" target="_blank" style="background-color: aliceblue;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ" ><?php _e('Donate','bluet-kw');?></a>
-					<?php echo($kttg_pro_link); ?>
 
+					<a class="nav-tab" target="_blank" style="background-color: antiquewhite;" href="https://wordpress.org/support/plugin/bluet-keywords-tooltip-generator" ><?php _e('Help ?','bluet-kw');?></a>
+					<a class="nav-tab rate-tooltipy" target="_blank" style="background-color: aliceblue;" href="https://wordpress.org/support/view/plugin-reviews/bluet-keywords-tooltip-generator" ><?php _e('Rate','bluet-kw');?></a>
+					<style>
+						.rate-tooltipy:after{
+							content: " \f155\f155\f155\f155\f155";
+    						font-family: "dashicons";
+    						color: #e6b800;
+						}
+					</style>
+					<?php echo($kttg_pro_link); ?>
 				</h2>
 			<form method="post" action="options.php">
 			<?php
@@ -447,6 +454,11 @@ function bluet_kw_render_settings_page() {
 						do_settings_sections( 'my_keywords_glossary_settings' );	
 				?></div><?php
 				
+				?><div class="bluet-section" id="bluet-section-advanced" name="advanced_tab"><?php
+					//pro demo
+					require_once("pro-version-tab-demo.php");
+				?></div><?php				
+
 				?><div class="bluet-section" id="bluet-section-settings" ><?php
 						do_settings_sections( 'my_keywords_settings' );		
 				?></div><?php

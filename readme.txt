@@ -115,6 +115,9 @@ The plugin is available in these languages :
 11. Glossary settings page
 
 == Changelog ==
+= 3.3.5 =
+* Pro features demo added (Advanced tab)
+
 = 3.3.4 =
 * Mobile friendly layout
 * Close button new design
