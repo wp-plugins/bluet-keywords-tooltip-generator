@@ -3,7 +3,7 @@ Contributors: lebleut
 Tags: inline, responsive, tooltips, tooltip, highlight, widget, image, style, keyword, post, page, glossary, localization, description, definition, term, word, interactive, link, wpml
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 3.3.4
+Stable tag: 3.3.5
 License: GPLv2 or later
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LPKWCDNECSVWJ
 
